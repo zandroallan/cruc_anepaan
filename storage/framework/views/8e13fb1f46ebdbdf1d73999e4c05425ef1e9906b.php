@@ -41,7 +41,7 @@
 							<div class="row">
 								<div class="col-xl-12 col-lg-12 col-md-12">
 									<div class="card-body">
-										@include('backend.mis-tramites.tabs-general')
+										<?php echo $__env->make('backend.mis-tramites.tabs-general', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 									</div>
 								</div>
 							</div>
@@ -51,7 +51,7 @@
 							<div class="row">
 								<div class="col-xl-12 col-lg-12 col-md-12">
 									<div class="card-body">
-										@include('backend.mis-tramites.tabs-documentacion')
+										<?php echo $__env->make('backend.mis-tramites.tabs-documentacion', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 									</div>
 								</div>
 							</div>
@@ -61,7 +61,7 @@
 							<div class="row">
 								<div class="col-xl-12 col-lg-12 col-md-12">
 									<div class="card-body">
-										@include('backend.mis-tramites.tabs-socios')
+										<?php echo $__env->make('backend.mis-tramites.tabs-socios', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 									</div>
 								</div>
 							</div>
@@ -71,7 +71,7 @@
 							<div class="row">
 								<div class="col-xl-12 col-lg-12 col-md-12">
 									<div class="card-body">
-										@include('backend.mis-tramites.tabs-legal')
+										<?php echo $__env->make('backend.mis-tramites.tabs-legal', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 									</div>
 								</div>
 							</div>
@@ -81,7 +81,7 @@
 							<div class="row">
 								<div class="col-xl-12 col-lg-12 col-md-12">
 									<div class="card-body">
-										@include('backend.mis-tramites.tabs-tecnica')
+										<?php echo $__env->make('backend.mis-tramites.tabs-tecnica', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 									</div>
 								</div>
 							</div>
@@ -91,7 +91,7 @@
 							<div class="row">
 								<div class="col-xl-12 col-lg-12 col-md-12">
 									<div class="card-body">
-										@include('backend.mis-tramites.tabs-contacto')
+										<?php echo $__env->make('backend.mis-tramites.tabs-contacto', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 									</div>
 								</div>
 							</div>
@@ -100,7 +100,7 @@
 							<div class="row">
 								<div class="col-xl-12 col-lg-12 col-md-12">
 									<div class="card-body">
-										@include('backend.mis-tramites.tabs-financiera')
+										<?php echo $__env->make('backend.mis-tramites.tabs-financiera', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 									</div>
 								</div>
 							</div>
@@ -111,3 +111,4 @@
 		</div>
 	</div>
 </div>
+<?php /**PATH C:\AppServ\apps\sircse\resources\views/backend/mis-tramites/tabs.blade.php ENDPATH**/ ?>
