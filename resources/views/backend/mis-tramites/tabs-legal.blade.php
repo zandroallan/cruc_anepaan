@@ -75,7 +75,7 @@
 												<div class="input-group date">
 													{!! Form::text('dlg_fecha_inscripcion', null, ['id'=>'dlg_fecha_inscripcion', 'placeholder'=>'',  'class'=>'form-control input-sm fc-datepicker']) !!}
 												</div>							
-												<div id="el-dlg_fecha_inscripcion" class="invalid-feedback lbl-error"></div>											
+												<div id="el-dlg_fecha_inscripcion" class="invalid-feedback lbl-error"></div>
 											</div>
 										</div>
 										<div class="form-group row">
