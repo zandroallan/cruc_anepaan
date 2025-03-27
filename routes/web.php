@@ -19,11 +19,13 @@ Route::get('/', function () {
 |
 */
 Route::get('buscador', ['as'=>'buscador.index', 'uses'=>'ValidacionController@index']);
+
 Route::get('buscador/search', ['as'=>'buscador.search','uses' =>'ValidacionController@buscar']);
+
 Route::get('buscador/{id}/qr', ['as'=>'buscador.qr','uses' =>'ValidacionController@qr']);
 
-
 Route::get('certificado/validar', ['as'=>'certificado.validar', 'uses'=>'ValidacionController@validar']);
+
 Route::get('certificado/datos-certificado', ['as'=>'certificado.datos-certificado', 'uses'=>'ValidacionController@getData']);
 
 Route::get('constancia/validacion/{folio}', ['as'=>'constancia.validacion', 'uses'=>'ValidacionController@getValida']);
@@ -44,8 +46,6 @@ Route::get('/notificaciones/apertura', 'HomeController@notificacionApertura');
 
 Route::get('dias/tramites', 'HomeController@diasHabiles');
 
-
-
 Route::get('consulta/total-folios', function () {
 	return (\App\Http\Models\Backend\T_Tramite::total_anio(date('Y'), 1)) + 1;
 });
@@ -64,6 +64,7 @@ Route::get('/', function () {
 
 //Crea tu cuenta
 Route::get('crear-cuenta/registro', ['as'=>'crear-cuenta.registro','uses' =>'Frontend\CrearCuentaController@create']);
+
 Route::post('crear-cuenta/registro', ['as'=>'crear-cuenta.store','uses' =>'Frontend\CrearCuentaController@store']);
 
 Route::post('password/recuperar', ['as'=>'password.recuperar','uses' =>'Frontend\CrearCuentaController@recuperar_password']);
