@@ -7,89 +7,89 @@ function mdl_documento_1(id_documento, txt_documento, tipo = 0) {
 function fill_soporte(id_documento, tipo = 0) {
     let array = [];
     switch (id_documento) {
-        case 174:
-            array = {
-                "relacion_analitica": "Relación analítica*",
-                "estado_cuenta": "Estado de cuenta*"
-            };
-            break;
-        case 175:
-            array = {
-                "relacion_analitica": "Relación analítica*",
-                "estado_cuenta": "Estado de cuenta*",
-                "facturas_xml": "Facturas y xml*",
-                "contrato": "Contrato*"
-            };
-            break;
-        case 176:
-            array = {
-                "pagare": "Pagare*",
-                "estado_cuenta": "Estado de cuenta*",
-                "contrato": "Contrato*",
-                "relacion_analitica": "Relación analítica*"
-            };
-            break;
-        case 177:
-            array = {
-                "relacion_analitica": "Relación analítica*",
-                "facturas": "Facturas*",
-                "estado_cuenta": "Estado de cuenta*",
-                "contrato": "Contrato*"
-            };
-            break;
-        case 178:
-            array = {
-                "relacion_analitica": "Relación analítica*",
-                "facturas_xml": "Facturas y xml*"
-            };
-            break;
-        case 179:
-            array = {
-                "relacion_analitica": "Relación analítica*",
-                "facturas_xml": "Facturas y xml*"
-            };
-            break;
-        case 180:
-            array = {
-                "relacion_analitica": "Relación analítica*",
-                "escritura_publica": "Escritura Publica*",
-                "pago_predial": "Pago Predial*",
-                "avaluo": "Avalúo*"
-            };
-            break;
-        case 181:
-            array = {
-                "relacion_analitica": "Relación analítica*",
-                "facturas_xml": "Facturas y xml*",
-                "reporte_fotografico": "Reporte Fotográfico*"
-            };
-            break;
-        case 182:
-            array = {
-                "relacion_analitica": "Relación analítica*",
-                "facturas_xml": "Facturas y xml*"
-            };
-            break;
-        case 183:
-            array = {
-                "relacion_analitica": "Relación analítica*",
-                "facturas": "Facturas*",
-                "pago_refrendo": "Pago Refrendo*",
-                // "tarjeta_circulacion": "Tarjeta/Circulación*"
-            };
-            break;
-        case 184:
-            array = {
-                "relacion_analitica": "Relación analítica*",
-                "facturas_xml": "Facturas y xml*"
-            };
-            break;
-        case 185:
-            array = {
-                "relacion_analitica": "Relación analítica*",
-                "facturas_xml": "Facturas y xml*"
-            };
-            break;
+        // case 174:
+        //     array = {
+        //         "relacion_analitica": "Relación analítica*",
+        //         "estado_cuenta": "Estado de cuenta*"
+        //     };
+        //     break;
+        // case 175:
+        //     array = {
+        //         "relacion_analitica": "Relación analítica*",
+        //         "estado_cuenta": "Estado de cuenta*",
+        //         "facturas_xml": "Facturas y xml*",
+        //         "contrato": "Contrato*"
+        //     };
+        //     break;
+        // case 176:
+        //     array = {
+        //         "pagare": "Pagare*",
+        //         "estado_cuenta": "Estado de cuenta*",
+        //         "contrato": "Contrato*",
+        //         "relacion_analitica": "Relación analítica*"
+        //     };
+        //     break;
+        // case 177:
+        //     array = {
+        //         "relacion_analitica": "Relación analítica*",
+        //         "facturas": "Facturas*",
+        //         "estado_cuenta": "Estado de cuenta*",
+        //         "contrato": "Contrato*"
+        //     };
+        //     break;
+        // case 178:
+        //     array = {
+        //         "relacion_analitica": "Relación analítica*",
+        //         "facturas_xml": "Facturas y xml*"
+        //     };
+        //     break;
+        // case 179:
+        //     array = {
+        //         "relacion_analitica": "Relación analítica*",
+        //         "facturas_xml": "Facturas y xml*"
+        //     };
+        //     break;
+        // case 180:
+        //     array = {
+        //         "relacion_analitica": "Relación analítica*",
+        //         "escritura_publica": "Escritura Publica*",
+        //         "pago_predial": "Pago Predial*",
+        //         "avaluo": "Avalúo*"
+        //     };
+        //     break;
+        // case 181:
+        //     array = {
+        //         "relacion_analitica": "Relación analítica*",
+        //         "facturas_xml": "Facturas y xml*",
+        //         "reporte_fotografico": "Reporte Fotográfico*"
+        //     };
+        //     break;
+        // case 182:
+        //     array = {
+        //         "relacion_analitica": "Relación analítica*",
+        //         "facturas_xml": "Facturas y xml*"
+        //     };
+        //     break;
+        // case 183:
+        //     array = {
+        //         "relacion_analitica": "Relación analítica*",
+        //         "facturas": "Facturas*",
+        //         "pago_refrendo": "Pago Refrendo*",
+        //         // "tarjeta_circulacion": "Tarjeta/Circulación*"
+        //     };
+        //     break;
+        // case 184:
+        //     array = {
+        //         "relacion_analitica": "Relación analítica*",
+        //         "facturas_xml": "Facturas y xml*"
+        //     };
+        //     break;
+        // case 185:
+        //     array = {
+        //         "relacion_analitica": "Relación analítica*",
+        //         "facturas_xml": "Facturas y xml*"
+        //     };
+        //     break;
         case 240:
             array = {
                 "contrato": "Contrato*",
@@ -169,12 +169,12 @@ function fill_soporte(id_documento, tipo = 0) {
                 "finiquito_obra": "Finiquito de obra*"
             };
             break;
-        case 266:
-            array = {
-                "relacion_analitica": "Relación analítica*",
-                "documentacion_soporte": "Documentación soporte*"
-            };
-            break;
+        // case 266:
+        //     array = {
+        //         "relacion_analitica": "Relación analítica*",
+        //         "documentacion_soporte": "Documentación soporte*"
+        //     };
+        //     break;
         case 267:
             array = {
                 "contrato": "Contrato*",
@@ -264,95 +264,95 @@ function fill_soporte(id_documento, tipo = 0) {
                 "factura_pago": "Factura de pago"
             };
             break;
-        case 305:
-            array = {
-                "relacion_analitica": "Relación analítica*",
-                "estado_cuenta": "Estado de cuenta*"
-            };
-            break;
-        case 306:
-            array = {
-                "relacion_analitica": "Relación analítica*",
-                "estado_cuenta": "Estado de cuenta*",
-                "facturas_xml": "Facturas y xml*",
-                "contrato": "Contrato*"
-            };
-            break;
-        case 307:
-            array = {
-                "pagare": "Pagare*",
-                "estado_cuenta": "Estado de cuenta*",
-                "contrato": "Contrato*",
-                "relacion_analitica": "Relación analítica*"
-            };
-            break;
-        case 308:
-            array = {
-                "relacion_analitica": "Relación analítica*",
-                "facturas": "Facturas*",
-                "estado_cuenta": "Estado de cuenta*",
-                "contrato": "Contrato*"
-            };
-            break;
-        case 309:
-            array = {
-                "relacion_analitica": "Relación analítica*",
-                "facturas_xml": "Facturas y xml*"
-            };
-            break;
-        case 310:
-            array = {
-                "relacion_analitica": "Relación analítica*",
-                "facturas_xml": "Facturas y xml*"
-            };
-            break;
-        case 311:
-            array = {
-                "relacion_analitica": "Relación analítica*",
-                "escritura_publica": "Escritura Publica*",
-                "pago_predial": "Pago Predial*",
-                "avaluo": "Avalúo*"
-            };
-            break;
-        case 312:
-            array = {
-                "relacion_analitica": "Relación analítica*",
-                "facturas_xml": "Facturas y xml*",
-                "reporte_fotografico": "Reporte Fotográfico*"
-            };
-            break;
-        case 313:
-            array = {
-                "relacion_analitica": "Relación analítica*",
-                "facturas_xml": "Facturas y xml*"
-            };
-            break;
-        case 314:
-            array = {
-                "relacion_analitica": "Relación analítica*",
-                "facturas": "Facturas*",
-                "pago_refrendo": "Pago Refrendo*",
-                "tarjeta_circulacion": "Tarjeta/Circulación*"
-            };
-            break;
-        case 315:
-            array = {
-                "relacion_analitica": "Relación analítica*",
-                "facturas_xml": "Facturas y xml*"
-            };
-            break;
-        case 316:
-            array = {
-                "relacion_analitica": "Relación analítica*",
-                "facturas_xml": "Facturas y xml*"
-            };
-            break;
-        case 317:
-            array = {
-                "relacion_analitica": "Relación analítica*",
-                "documentacion_soporte": "Documentación soporte*"
-            };
-            break;
+        // case 305:
+        //     array = {
+        //         "relacion_analitica": "Relación analítica*",
+        //         "estado_cuenta": "Estado de cuenta*"
+        //     };
+        //     break;
+        // case 306:
+        //     array = {
+        //         "relacion_analitica": "Relación analítica*",
+        //         "estado_cuenta": "Estado de cuenta*",
+        //         "facturas_xml": "Facturas y xml*",
+        //         "contrato": "Contrato*"
+        //     };
+        //     break;
+        // case 307:
+        //     array = {
+        //         "pagare": "Pagare*",
+        //         "estado_cuenta": "Estado de cuenta*",
+        //         "contrato": "Contrato*",
+        //         "relacion_analitica": "Relación analítica*"
+        //     };
+        //     break;
+        // case 308:
+        //     array = {
+        //         "relacion_analitica": "Relación analítica*",
+        //         "facturas": "Facturas*",
+        //         "estado_cuenta": "Estado de cuenta*",
+        //         "contrato": "Contrato*"
+        //     };
+        //     break;
+        // case 309:
+        //     array = {
+        //         "relacion_analitica": "Relación analítica*",
+        //         "facturas_xml": "Facturas y xml*"
+        //     };
+        //     break;
+        // case 310:
+        //     array = {
+        //         "relacion_analitica": "Relación analítica*",
+        //         "facturas_xml": "Facturas y xml*"
+        //     };
+        //     break;
+        // case 311:
+        //     array = {
+        //         "relacion_analitica": "Relación analítica*",
+        //         "escritura_publica": "Escritura Publica*",
+        //         "pago_predial": "Pago Predial*",
+        //         "avaluo": "Avalúo*"
+        //     };
+        //     break;
+        // case 312:
+        //     array = {
+        //         "relacion_analitica": "Relación analítica*",
+        //         "facturas_xml": "Facturas y xml*",
+        //         "reporte_fotografico": "Reporte Fotográfico*"
+        //     };
+        //     break;
+        // case 313:
+        //     array = {
+        //         "relacion_analitica": "Relación analítica*",
+        //         "facturas_xml": "Facturas y xml*"
+        //     };
+        //     break;
+        // case 314:
+        //     array = {
+        //         "relacion_analitica": "Relación analítica*",
+        //         "facturas": "Facturas*",
+        //         "pago_refrendo": "Pago Refrendo*",
+        //         "tarjeta_circulacion": "Tarjeta/Circulación*"
+        //     };
+        //     break;
+        // case 315:
+        //     array = {
+        //         "relacion_analitica": "Relación analítica*",
+        //         "facturas_xml": "Facturas y xml*"
+        //     };
+        //     break;
+        // case 316:
+        //     array = {
+        //         "relacion_analitica": "Relación analítica*",
+        //         "facturas_xml": "Facturas y xml*"
+        //     };
+        //     break;
+        // case 317:
+            // array = {
+            //     "relacion_analitica": "Relación analítica*",
+            //     "documentacion_soporte": "Documentación soporte*"
+            // };
+            // break;
         case 354:
             array = {
                 "cedula": "Cedula Profesional*",
@@ -361,16 +361,16 @@ function fill_soporte(id_documento, tipo = 0) {
                 "curriculum_rtec": "Currículum Vitae del Representante Técnico"
             };
             break;
-        case 356:
-            array = {
-                "cedula": "Cedula Profesional*",
-                "rfc": "Constancia de Situación Fiscal Vigente*",
-                "ife_ine": "IFE o INE*"
-                //"curp": "CURP*",
-                //"comprobante_fiscal": "Comprobante de domicilio fiscal*",
-                //"constancia_colegio": "Constancia del colegio"
-            };
-            break;
+        // case 356:
+        //     array = {
+        //         "cedula": "Cedula Profesional*",
+        //         "rfc": "Constancia de Situación Fiscal Vigente*",
+        //         "ife_ine": "IFE o INE*"
+        //         "curp": "CURP*",
+        //         "comprobante_fiscal": "Comprobante de domicilio fiscal*",
+        //         "constancia_colegio": "Constancia del colegio"
+        //     };
+        //     break;
     }
     return array;
 }

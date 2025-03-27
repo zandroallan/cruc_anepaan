@@ -8,43 +8,43 @@
         <meta content="Spruko Technologies Private Limited" name="author">
         <meta content="Sistema de contratista y supervisores" name="keywords">
         <!-- Favicon -->
-        <link href="{{asset('public/img2/sircse.png')}}" rel="icon" type="image/x-icon"/>
+        <link href="<?php echo e(asset('public/img2/sircse.png')); ?>" rel="icon" type="image/x-icon"/>
         <!-- Title -->
         <title>Sircse | Portal</title>
         <!---Fontawesome css-->
-        <link href="{{ asset('public/dashlead/plugins/fontawesome-free/css/all.min.css') }}" rel="stylesheet"/>
+        <link href="<?php echo e(asset('public/dashlead/plugins/fontawesome-free/css/all.min.css')); ?>" rel="stylesheet"/>
         <!---Ionicons css-->
-        <link href="{{ asset('public/dashlead/plugins/ionicons/css/ionicons.min.css') }}" rel="stylesheet"/>
+        <link href="<?php echo e(asset('public/dashlead/plugins/ionicons/css/ionicons.min.css')); ?>" rel="stylesheet"/>
         <!---Typicons css-->
-        <link href="{{ asset('public/dashlead/plugins/typicons.font/typicons.css') }}" rel="stylesheet"/>
+        <link href="<?php echo e(asset('public/dashlead/plugins/typicons.font/typicons.css')); ?>" rel="stylesheet"/>
         <!---Feather css-->
-        <link href="{{ asset('public/dashlead/plugins/feather/feather.css') }}" rel="stylesheet"/>
+        <link href="<?php echo e(asset('public/dashlead/plugins/feather/feather.css')); ?>" rel="stylesheet"/>
         <!---Falg-icons css-->
-        <link href="{{ asset('public/dashlead/plugins/flag-icon-css/css/flag-icon.min.css') }}" rel="stylesheet"/>
+        <link href="<?php echo e(asset('public/dashlead/plugins/flag-icon-css/css/flag-icon.min.css')); ?>" rel="stylesheet"/>
         <!---Style css-->
-        <link href="{{ asset('public/dashlead/css/style.css') }}" rel="stylesheet"/>
-        <link href="{{ asset('public/dashlead/css/custom-style.css') }}" rel="stylesheet"/>
-        <link href="{{ asset('public/dashlead/css/skins.css') }}" rel="stylesheet"/>
-        <link href="{{ asset('public/dashlead/css/dark-style.css') }}" rel="stylesheet"/>
-        <link href="{{ asset('public/dashlead/css/custom-dark-style.css') }}" rel="stylesheet"/>
+        <link href="<?php echo e(asset('public/dashlead/css/style.css')); ?>" rel="stylesheet"/>
+        <link href="<?php echo e(asset('public/dashlead/css/custom-style.css')); ?>" rel="stylesheet"/>
+        <link href="<?php echo e(asset('public/dashlead/css/skins.css')); ?>" rel="stylesheet"/>
+        <link href="<?php echo e(asset('public/dashlead/css/dark-style.css')); ?>" rel="stylesheet"/>
+        <link href="<?php echo e(asset('public/dashlead/css/custom-dark-style.css')); ?>" rel="stylesheet"/>
         
         <!---Jquery.mCustomScrollbar css-->
-        <link href="{{ asset('public/dashlead/plugins/jquery.mCustomScrollbar/jquery.mCustomScrollbar.css') }}" rel="stylesheet"/>
+        <link href="<?php echo e(asset('public/dashlead/plugins/jquery.mCustomScrollbar/jquery.mCustomScrollbar.css')); ?>" rel="stylesheet"/>
         <!---Sidebar css-->
-        <link href="{{ asset('public/dashlead/plugins/sidebar/sidebar.css') }}" rel="stylesheet"/>
+        <link href="<?php echo e(asset('public/dashlead/plugins/sidebar/sidebar.css')); ?>" rel="stylesheet"/>
         <!---Switcher css-->                            
-        <link href="{{ asset('public/dashlead/switcher/demo.css') }}" rel="stylesheet"/>
+        <link href="<?php echo e(asset('public/dashlead/switcher/demo.css')); ?>" rel="stylesheet"/>
 
         <!--Mi estilo  sircse-->
-        <link href="{{ asset('public/css/cssHeader.css') }}" rel="stylesheet"/>
+        <link href="<?php echo e(asset('public/css/cssHeader.css')); ?>" rel="stylesheet"/>
         
-        @yield('styles')
+        <?php echo $__env->yieldContent('styles'); ?>
 
     </head>
     <body class="light-theme dark-horizontal">  
         <!-- Loader -->
         <div id="global-loader">
-            <img alt="Loader" class="loader-img" src="{{asset('public/dashlead/img/loader.svg')}}" />
+            <img alt="Loader" class="loader-img" src="<?php echo e(asset('public/dashlead/img/loader.svg')); ?>" />
         </div>
         <!-- End Loader -->
         <!-- Page -->
@@ -58,7 +58,7 @@
                             </span>
                         </a>
                         <a class="main-logo" style="color: #6b0f24; text-transform: none;" href="#">
-                            <img src="{{ asset('public/img2/sircse.png') }}" class="header-brand-img desktop-logo" alt="logo"> Portal Sircse
+                            <img src="<?php echo e(asset('public/img2/sircse.png')); ?>" class="header-brand-img desktop-logo" alt="logo"> Portal Sircse
                         </a>
                     </div>
                     <div class="main-header-right">
@@ -79,9 +79,9 @@
                         <div class="dropdown main-header-notification">
                             <a class="nav-link icon" href="#">                                
                                 <i class="fe fe-bell"></i>                                
-                                @if( $count_obs!=0 && $total_obs[0]->id_c_tramites_seguimiento == 2 )
+                                <?php if( $count_obs!=0 && $total_obs[0]->id_c_tramites_seguimiento == 2 ): ?>
                                 <span class="pulse bg-danger"></span>
-                                @endif
+                                <?php endif; ?>
                             </a>
                             <div class="dropdown-menu">
                                 <div class="header-navheading">
@@ -92,39 +92,41 @@
                                 <div class="main-notification-list">
                                     <div class="media new">
                                         <div class="main-img-user online">
-                                            <img alt="avatar" src="{{asset('public/dashlead/img/contratista.png')}}"/>
+                                            <img alt="avatar" src="<?php echo e(asset('public/dashlead/img/contratista.png')); ?>"/>
                                         </div>
                                         <div class="media-body">
                                             <p>
-                                                @if( $count_obs!=0 && $total_obs[0]->id_c_tramites_seguimiento == 2 )
-                                                    Tu trámite tiene <strong>{!! $count_obs !!} observaciones</strong>, las cuales se requieren atiendas a la brevedad.
-                                                @else
+                                                <?php if( $count_obs!=0 && $total_obs[0]->id_c_tramites_seguimiento == 2 ): ?>
+                                                    Tu trámite tiene <strong><?php echo $count_obs; ?> observaciones</strong>, las cuales se requieren atiendas a la brevedad.
+                                                <?php else: ?>
                                                     Ninguna notificación por el momento
-                                                @endif
+                                                <?php endif; ?>
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="dropdown-footer">
-                                    @if( $count_obs!=0 && $total_obs[0]->id_c_tramites_seguimiento == 2 )
-                                    <a href="{{ Route('mis-observaciones.index')}}">
+                                    <?php if( $count_obs!=0 && $total_obs[0]->id_c_tramites_seguimiento == 2 ): ?>
+                                    <a href="<?php echo e(Route('mis-observaciones.index')); ?>">
                                         Ver las observaciones
                                     </a>
-                                    @endif
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
                         <div class="dropdown main-profile-menu">
                             <a class="main-img-user" href="#">
-                                <img alt="avatar" src="{{asset('public/dashlead/img/contratista.png')}}"/>
+                                <img alt="avatar" src="<?php echo e(asset('public/dashlead/img/contratista.png')); ?>"/>
                             </a>
                             <div class="dropdown-menu">
                                 <div class="header-navheading">
                                     <h6 class="main-notification-title">
-                                        {{ Auth::User()->name }}
+                                        <?php echo e(Auth::User()->name); ?>
+
                                     </h6>
                                     <p class="main-notification-text">
-                                        {{ Auth::User()->roles->first()->description }}
+                                        <?php echo e(Auth::User()->roles->first()->description); ?>
+
                                     </p>
                                 </div>
                                 <a class="dropdown-item border-top" href="#">
@@ -133,13 +135,13 @@
                                     Mi Perfil
                                 </a>
                                                                 
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <a class="dropdown-item" href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     <i class="fe fe-power">
                                     </i>
                                     Cerrar sesión
                                 </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-				                    @csrf
+                                <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
+				                    <?php echo csrf_field(); ?>
 				                </form>
                             </div>
                         </div>
@@ -152,27 +154,27 @@
                 <div class="container">
                     <ul class="nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('mis-tramites.index') }}">
+                            <a class="nav-link" href="<?php echo e(route('mis-tramites.index')); ?>">
                                 <i class="fe fe-airplay"></i> Inicio
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ Route('tramites.seguimientos')}}">
+                            <a class="nav-link" href="<?php echo e(Route('tramites.seguimientos')); ?>">
                                 <i class="fa fa-search"></i> Avance Trámite
                             </a>
                         </li>                        
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ Route('mis-observaciones.index')}}">
-                                @if(
+                            <a class="nav-link" href="<?php echo e(Route('mis-observaciones.index')); ?>">
+                                <?php if(
                                     $count_obs!=0 &&
                                     $total_obs[0]->id_c_tramites_seguimiento == 2
-                                )<span class="badge pull-right">{!! $count_obs !!}</span>@endif
+                                ): ?><span class="badge pull-right"><?php echo $count_obs; ?></span><?php endif; ?>
                                 <i class="fe fe-eye"></i> Observaciones
                             </a>                                
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ Route('descargas-f.index')}}"><i class="fe fe-file-text"></i> Formatos</a>                    
+                            <a class="nav-link" href="<?php echo e(Route('descargas-f.index')); ?>"><i class="fe fe-file-text"></i> Formatos</a>                    
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#mdlAtencion" data-toggle="modal"><i class="fe fe-phone-call"></i> Atencion telefonica</a>               
@@ -188,19 +190,19 @@
                     <!-- Page Header -->
                     <div class="page-header">
                         <div>
-                            @yield('title')
+                            <?php echo $__env->yieldContent('title'); ?>
                             <ol class="breadcrumb">
-                                @yield('breadcrumb')
+                                <?php echo $__env->yieldContent('breadcrumb'); ?>
                             </ol>
                         </div>
                         <div class="d-flex">
                             <div class="mr-2">
-                                @yield('buttons')
+                                <?php echo $__env->yieldContent('buttons'); ?>
                             </div>
                         </div>
                     </div>
                     <!-- End Page Header -->
-                    @yield('content')
+                    <?php echo $__env->yieldContent('content'); ?>
                 </div>
             </div>
             <!-- End Main Content-->
@@ -256,32 +258,32 @@
             </i>
         </a>
         <!-- Jquery js-->
-        <script src="{{ asset('public/dashlead/plugins/jquery/jquery.min.js') }}"></script>
+        <script src="<?php echo e(asset('public/dashlead/plugins/jquery/jquery.min.js')); ?>"></script>
         <!-- Bootstrap js-->
-        <script src="{{ asset('public/dashlead/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="<?php echo e(asset('public/dashlead/plugins/bootstrap/js/bootstrap.bundle.min.js')); ?>"></script>
         <!-- Rating js-->
-        <script src="{{ asset('public/dashlead/plugins/rating/jquery.rating-stars.js') }}">  </script>
-        <script src="{{ asset('public/dashlead/plugins/sweetalert/dist/sweetalert.min.js') }}"></script>
+        <script src="<?php echo e(asset('public/dashlead/plugins/rating/jquery.rating-stars.js')); ?>">  </script>
+        <script src="<?php echo e(asset('public/dashlead/plugins/sweetalert/dist/sweetalert.min.js')); ?>"></script>
         <!-- Jquery.mCustomScrollbar js-->
-        <script src="{{ asset('public/dashlead/plugins/jquery.mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+        <script src="<?php echo e(asset('public/dashlead/plugins/jquery.mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js')); ?>"></script>
         <!-- Sidebar js-->
-        <script src="{{ asset('public/dashlead/plugins/sidebar/sidebar.js') }}"></script>
+        <script src="<?php echo e(asset('public/dashlead/plugins/sidebar/sidebar.js')); ?>"></script>
         <!-- Perfect-scrollbar js-->
-        <script src="{{ asset('public/dashlead/plugins/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
+        <script src="<?php echo e(asset('public/dashlead/plugins/perfect-scrollbar/perfect-scrollbar.min.js')); ?>"></script>
         <!-- Sticky js-->
-        <script src="{{ asset('public/dashlead/js/sticky.js') }}"></script>
+        <script src="<?php echo e(asset('public/dashlead/js/sticky.js')); ?>"></script>
         <!-- Custom js-->
-        <script src="{{ asset('public/dashlead/js/custom.js') }}"></script>
+        <script src="<?php echo e(asset('public/dashlead/js/custom.js')); ?>"></script>
 
-        @yield('js')
+        <?php echo $__env->yieldContent('js'); ?>
       
         <script type="text/javascript">
             var project_name= "/sircse";
             var vuri = window.location.origin + '/sircse';
 
             $(document).ready(function () {
-                @yield('script')
+                <?php echo $__env->yieldContent('script'); ?>
             });
         </script>
     </body>
-</html>
+</html><?php /**PATH C:\AppServ\www\sircse\resources\views/layouts/backend.blade.php ENDPATH**/ ?>
