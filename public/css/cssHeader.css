@@ -1,0 +1,226 @@
+.head-color{
+ background-color: #82B548;
+}
+
+.head-dark{
+  background-color: #333333;
+}
+
+.text-success-dark{
+  color: #008eaa;
+}
+
+.text-info-dark{
+  color: #0389ff;
+}
+
+.cssToolTip {
+    position: relative;
+    display: inline-block;
+   
+}
+
+/* El tooltip */
+.cssToolTip span {
+    visibility: hidden;
+    width: 450px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+/* El tooltip cuando se muestra */
+
+.cssToolTip:hover span {
+   visibility: visible;
+    opacity: 1;
+}
+
+/* Tooltip arrow */
+.cssToolTip span::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.md-card {
+  background: #fff;
+  position: relative;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  border: none;
+}
+
+.user_heading {
+  padding: 10px 24px;
+  background: #1976d2;
+    background-color: rgb(25, 118, 210);
+  color: #fff;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.md-bg-gob2-500 {
+  background-color: #475258 !important;
+  background-color: #475258 !important;
+}
+
+.user_heading::before, .user_heading::after {
+  content: " ";
+  display: table;
+}
+
+.user_heading_avatar {
+  float: left;
+  margin-right: 24px;
+  position: relative;
+}
+
+.user_heading_avatar .thumbnail {
+  -webkit-transition: all 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  width: 82px;
+  height: 82px;
+  line-height: 74px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background-color: #ededed;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+.user_heading_content {
+  padding: 16px 0;
+}
+
+.user_heading_content .heading_a, .user_heading_content .heading_b, .user_heading_content .heading_c, .user_heading_content .heading_a .sub-heading, .user_heading_content .heading_b .sub-heading, .user_heading_content .heading_c .sub-heading {
+  color: #fff;
+}
+.heading_b {
+  margin: 0;
+    margin-bottom: 0px;
+  font: 400 22px / 28px "Roboto", sans-serif;
+}
+
+.uk-text-truncate {
+  display: block;
+}
+.uk-text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.heading_b .sub-heading {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 20px;
+  display: block;
+  color: #727272;
+}
+
+.user_heading_content .user_stats {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+  text-align: center;
+}
+
+.user_heading_content .user_stats li {
+  margin-right: 48px;
+  float: left;
+}
+.user_heading_content .user_stats > li {
+  padding: 0;
+  margin: 0;
+    margin-right: 0px;
+  list-style: none;
+}
+
+.uk-margin-right {
+  margin-right: 15px !important;
+}
+
+.uk-text-small {
+  font-size: 12px !important;
+}
+.uk-text-small {
+  font-size: 12px;
+}
+.uk-text-small {
+  font-size: 11px;
+  line-height: 16px;
+}
+
+/*
+.table thead th { vertical-align: bottom; border-bottom: 2px solid #eceeef; }
+.thead-inverse th { color: #f3f4f7; background-color: #6B0133; }
+.table thead, .table th { text-align: center; }
+
+.table thead tr,  .table thead th {
+  padding: 20px 20px;
+  padding-right: 20px;
+  border-bottom: 1px solid  #ddd;
+  color: #f3f4f7;
+}*/
+
+
+  .search {
+    width: 100%;
+    position: relative;
+    display: flex;   
+  }
+
+  .searchTerm {
+    width: 100%;
+    border: 3px solid #aeb6b8;
+    border-right: none;   
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #333333;
+    font-weight: bold;
+    padding-left: 5px;
+  }
+
+  .searchTerm:focus{
+    color: #aeb6b8;
+  }
+
+  .searchButton {
+    width: 40px;
+    height: 36px;
+    border: 1px solid #aeb6b8;
+    background: #aeb6b8;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+  }
+
+  .dataTables_filter {
+      display: none; 
+  }

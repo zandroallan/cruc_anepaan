@@ -1,0 +1,25 @@
+.pagination {
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+.page {
+    display: inline-block;
+    padding: 0px 9px;
+    margin-right: 4px;
+    border-radius: 3px;
+    border: solid 1px #c0c0c0;
+    background: #FFF;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-decoration: none;
+
+}
+
+.page:hover, .page.gradient:hover {
+    background: #fefefe;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FEFEFE), to(#f0f0f0));
+    background: -moz-linear-gradient(0% 0% 270deg,#FEFEFE, #f0f0f0);
+}
+
+.active .page{background:#621132; color:#FFF}
