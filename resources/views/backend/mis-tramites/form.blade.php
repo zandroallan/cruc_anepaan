@@ -1,19 +1,26 @@
-<div class="row">
-	<div class="col-md-12">
-		<p class="text-primary"><b>Notas:</b></p>
-		<div class="activity-block">
-			<ul class="task-list">
-				<li>
-					<i class="task-icon bg-secondary"></i>
-					<h6>El folio de pago requerido es obligatorio, porque es mediante el cual su tramite se llevara a cabo.</h6>
-					
-				</li>
-				<li>
-					<i class="task-icon bg-secondary"></i>
-					<h6>El correo electrónico es importante por que es a través del cual se enviaran notificaciones del sistema</h6>										
-				</li>											
-			</ul>
-		</div>
+<div class="alert alert-custom alert-light-dark fade show mb-10" role="alert">
+	<div class="alert-icon">
+		<span class="svg-icon svg-icon-3x svg-icon-dark">
+			<!--begin::Svg Icon | path:assets/media/svg/icons/Code/Info-circle.svg-->
+			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+				<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+					<rect x="0" y="0" width="24" height="24" />
+					<circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+					<rect fill="#000000" x="11" y="10" width="2" height="7" rx="1" />
+					<rect fill="#000000" x="11" y="7" width="2" height="2" rx="1" />
+				</g>
+			</svg>
+			<!--end::Svg Icon-->
+		</span>
+	</div>
+	<div class="alert-text font-weight-bold">
+		<h6><span class="label label-dot label-dark"></span>
+		El folio de pago requerido es obligatorio, porque es mediante el cual su tramite se llevara a cabo.</h6>
+		
+		<h6><span class="label label-dot label-dark"></span>
+		El correo electrónico es importante por que es a través del cual se enviaran notificaciones del sistema</h6>
+
+
 	</div>
 </div>
 
@@ -25,32 +32,7 @@
 
 				<div class="row row-sm">
 					<div class="col-sm-6 mg-t-20 mg-sm-t-0">
-						@if(!isset($datos))
-							<div class="row row-xs align-items-center mg-b-20">
-								<div class="col-md-3">
-									<label class="tx-12 tx-medium tx-gray-700">Sujeto</label>
-								</div>
-								<div class="col-md-9 mg-t-5 mg-md-t-0">
-									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="radio" name="id_sujeto" id="id_sujeto_1" onclick="cargar_documentacion_requerida($('#id_tipo_tramite').val(),this.value);" value="1" {{ $chk_id_sujeto_1 }} >
-										<label class="form-check-label" for="id_sujeto_1">Contratista</label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="radio" name="id_sujeto" id="id_sujeto_2" onclick="cargar_documentacion_requerida($('#id_tipo_tramite').val(),this.value);" value="2" {{ $chk_id_sujeto_2 }}>
-										<label class="form-check-label" for="id_sujeto_2">Supervisor</label>
-									</div>
-								</div>
-							</div>
-						@else
-							<div class="row row-xs align-items-center mg-b-20">
-								<div class="col-md-3">
-									<label class="tx-12 tx-medium tx-gray-700">Sujeto</label>
-								</div>
-								<div class="col-md-9 mg-t-5 mg-md-t-0">
-									@if($datos->id_sujeto==1) <span class="badge badge-primary">CONTRATISTA</span> @else <span class="badge badge-secondary">SUPERVISOR</span> @endif
-								</div>
-							</div>
-						@endif
+						
 					</div>
 
 					@if($chk_id_tipo_persona_1)
@@ -59,225 +41,163 @@
 					@if($chk_id_tipo_persona_2)
 						<input type="hidden" name="id_tipo_persona" value="2">
 					@endif
-
-					<!--div class="col-sm-6 mg-t-20 mg-sm-t-0">						
-						<div class="row row-xs align-items-center mg-b-20">
-							<div class="col-md-3">
-								<label class="tx-12 tx-medium tx-gray-700">Tipo persona</label>
-							</div>
-							<div class="col-md-9 mg-t-5 mg-md-t-0">
-								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio" name="id_tipo_persona" id="id_tipo_persona_1" onclick="tipo_persona(this.value);" value="1" {{ $chk_id_tipo_persona_1 }}>
-									<label class="form-check-label" for="id_tipo_persona_1">Física</label>
-								</div>
-								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio" name="id_tipo_persona" id="id_tipo_persona_2" onclick="tipo_persona(this.value);" value="2" {{ $chk_id_tipo_persona_2 }}>
-									<label class="form-check-label" for="id_tipo_persona_2">Moral</label>
-								</div>
-							</div>
-						</div>
-					</div-->
 				</div>
 
-				<div class="row row-sm">
-					<div class="col-sm-6 mg-t-20 mg-sm-t-0">						
-						<div class="row row-xs align-items-center mg-b-20">
-							<div class="col-md-3">
-								<label for="rfc" class="tx-12 tx-medium tx-gray-700">RFC*</label>
-							</div>
-							<div class="col-md-9 mg-t-5 mg-md-t-0">
-								<label id="lblrfc" name="lblrfc" class="lblrfc" class="form-control">{!! $datos->rfc !!}</label>
-								<input type="hidden" id="rfc" name="rfc" class="rfc" value="{{ $datos->rfc }}">
-								<div id="el-rfc" class="invalid-feedback lbl-error"></div>
-							</div>
-						</div>
-					</div>
 
-					<div class="col-sm-6 mg-t-20 mg-sm-t-0">						
-						<div class="row row-xs align-items-center mg-b-20 moral">
-							<div class="col-md-3">
-								<label for="razon_social_o_nombre" class="tx-12 tx-medium tx-gray-700">Razón social*</label>
-							</div>
-							<div class="col-md-9 mg-t-5 mg-md-t-0">
-								<label id="lblrazon_social_o_nombre" name="lblrazon_social_o_nombre" class="lblrazon_social_o_nombre">{!! $datos->razon_social_o_nombre !!}</label>
-								<input type="hidden" id="razon_social_o_nombre" name="razon_social_o_nombre" class="razon_social_o_nombre" value="{{ $datos->razon_social_o_nombre }}">
-								<div id="el-razon_social_o_nombre" class="invalid-feedback lbl-error"></div>
-							</div>
-						</div>
-					</div>					
-				</div>
 
-				<div class="row row-sm">
-					<div class="col-sm-6 mg-t-20 mg-sm-t-0">						
-						<div class="row row-xs align-items-center mg-b-20">
-							<div class="col-md-3">
-								<label for="folio_pago_temp" class="tx-12 tx-medium tx-gray-700">Folio de pago*</label>
-							</div>
-							<div class="col-md-9 mg-t-5 mg-md-t-0">
-								{!! Form::text('folio_pago_temp', null, ['id'=>'folio_pago_temp', 'placeholder'=>'',  'class'=>'form-control input-sm']) !!}
-								<div id="el-folio_pago_temp" class="invalid-feedback lbl-error"></div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-sm-6 mg-t-20 mg-sm-t-0">						
-						<div class="row row-xs align-items-center mg-b-20">
-							<div class="col-md-3">
-								<label for="fecha_pago_temp" class="tx-12 tx-medium tx-gray-700">Fecha de pago*</label>
-							</div>
-							<div class="col-md-9 mg-t-5 mg-md-t-0">
-								{!! Form::text('fecha_pago_temp', null, ['id'=>'fecha_pago_temp', 'placeholder'=>'',  'class'=>'form-control  fc-datepicker input-sm']) !!}
-								<div id="el-fecha_pago_temp" class="invalid-feedback lbl-error"></div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="row row-sm">
-					<div class="col-sm-6 mg-t-20 mg-sm-t-0">						
-						<div class="row row-xs align-items-center mg-b-20">
-							<div class="col-md-3">
-								<label for="telefono" class="tx-12 tx-medium tx-gray-700">Teléfono*</label>
-							</div>
-							<div class="col-md-9 mg-t-5 mg-md-t-0">
-								{!! Form::text('telefono', null, ['id'=>'telefono', 'placeholder'=>'',  'class'=>'form-control input-sm']) !!}
-								<div id="el-telefono" class="invalid-feedback lbl-error"></div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-sm-6 mg-t-20 mg-sm-t-0">						
-						<div class="row row-xs align-items-center mg-b-20">
-							<div class="col-md-3">
-								<label for="correo" class="tx-12 tx-medium tx-gray-700">Correo*</label>
-							</div>
-							<div class="col-md-9 mg-t-5 mg-md-t-0">
-								{!! Form::text('correo', null, ['id'=>'correo', 'placeholder'=>'',  'class'=>'form-control input-sm']) !!}
-								<div id="el-correo" class="invalid-feedback lbl-error"></div>
-							</div>
-						</div>
-					</div>
-				</div>				
-
-				<div class="row row-sm fisica">
-					<div class="col-sm-6 mg-t-20 mg-sm-t-0">						
-						<div class="row row-xs align-items-center mg-b-20 fisica">
-							<div class="col-md-3">
-								<label for="nombre" class="tx-12 tx-medium tx-gray-700">Nombre*</label>
-							</div>
-							<div class="col-md-9 mg-t-5 mg-md-t-0">
-								<label id="lblnombre" name="lblnombre" class="lblnombre" class="form-control">{!! $datos->nombre !!}</label>
-								<input type="hidden" id="nombre" name="nombre" class="nombre" value="{{ $datos->nombre }}">
-								<div id="el-nombre" class="invalid-feedback lbl-error"></div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-sm-6 mg-t-20 mg-sm-t-0">						
-						<div class="row row-xs align-items-center mg-b-20 fisica">
-							<div class="col-md-3">
-								<label for="ap_paterno" class="tx-12 tx-medium tx-gray-700">A. Paterno*</label>
-							</div>
-							<div class="col-md-9 mg-t-5 mg-md-t-0">
-								<label id="lblap_paterno" name="lblap_paterno" class="lblap_paterno" class="form-control">{!! $datos->ap_paterno !!}</label>
-								<input type="hidden" id="ap_paterno" name="ap_paterno" class="ap_paterno" value="{{ $datos->ap_paterno }}">
-								<div id="el-ap_paterno" class="invalid-feedback lbl-error"></div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="row row-sm fisica">
-					<div class="col-sm-6 mg-t-20 mg-sm-t-0">						
-						<div class="row row-xs align-items-center mg-b-20 fisica">
-							<div class="col-md-3">
-								<label for="ap_materno" class="tx-12 tx-medium tx-gray-700">A. Materno*</label>
-							</div>
-							<div class="col-md-9 mg-t-5 mg-md-t-0">
-								<label id="lblap_materno" name="lblap_materno" class="lblap_materno" class="form-control">{!! $datos->ap_materno !!}</label>
-								<input type="hidden" id="ap_materno" name="ap_materno" class="ap_materno" value="{{ $datos->ap_materno }}">
-								<div id="el-ap_materno" class="invalid-feedback lbl-error"></div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-sm-6 mg-t-20 mg-sm-t-0">						
-						<div class="row row-xs align-items-center mg-b-20 fisica">
-							<div class="col-md-3">
-								<label for="curp" class="tx-12 tx-medium tx-gray-700">Curp*</label>
-							</div>
-							<div class="col-md-9 mg-t-5 mg-md-t-0">
-								<input type="hidden" name="curp" value="{!! $datos->curp !!}">
-								<label id="lblcurp" name="lblcurp" class="lblcurp" class="form-control">{!! $datos->curp !!}</label>
-								<div id="el-curp" class="invalid-feedback lbl-error"></div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="row row-sm fisica">
-					<div class="col-sm-6 mg-t-20 mg-sm-t-0">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="mb-15">
+						    <div class="form-group row">
+						    	<label class="col-lg-3 col-form-label text-right"><b>RFC:</b></label>
+						    	<div class="col-lg-6">
+						     		<input type="text" class="form-control inp-udi" value="{{ $datos->rfc }}" disabled />
+						     		<input type="hidden" id="rfc" name="rfc" class="rfc" value="{{ $datos->rfc }}">
+						    	</div>
+						    </div>
 						
-						<div class="row row-xs align-items-center mg-b-20 fisica">
-							<div class="col-md-3">
-								<label for="id_tipo_identificacion" class="tx-12 tx-medium tx-gray-700">Tipo identificación</label>
-							</div>
-							<div class="col-md-9 mg-t-5 mg-md-t-0">
-								{!! Form::select('id_tipo_identificacion', $tipo_identificaciones, null, ['id' => 'id_tipo_identificacion', 'style'=>'width: 100%;', 'class' => 'form-control select2 select-sm']) !!}	
-								<div id="el-id_tipo_identificacion" class="invalid-feedback lbl-error"></div>
-							</div>
-						</div>
+						    <div class="form-group row">
+						    	<label class="col-lg-3 col-form-label text-right"><b>Folio de pago *:</b></label>
+						    	<div class="col-lg-6">
+						     		{!! Form::text('folio_pago_temp', null, ['id'=>'folio_pago_temp', 'class'=>'form-control inp-udi input-sm']) !!}
+						    	</div>
+						    </div>
 
+						    <div class="form-group row">
+						    	<label class="col-lg-3 col-form-label text-right"><b>Tel&eacute;fono *:</b></label>
+						    	<div class="col-lg-6">
+						     		{!! Form::text('telefono', null, ['id'=>'telefono',  'class'=>'form-control inp-udi input-sm']) !!}
+						    	</div>
+						    </div>
+
+						    <div class="form-group row moral">
+						    	<label class="col-lg-3 col-form-label text-right"><b>Razon social:</b></label>
+						    	<div class="col-lg-6">
+						     		<input type="text" class="form-control inp-udi" value="{{ $datos->razon_social_o_nombre }}" disabled />
+						     		<input type="hidden" id="razon_social_o_nombre" name="razon_social_o_nombre" class="razon_social_o_nombre" value="{{ $datos->razon_social_o_nombre }}">
+						    	</div>
+						    </div>
+
+						    <div class="form-group row fisica">
+						    	<label class="col-lg-3 col-form-label text-right"><b>Nombre:</b></label>
+						    	<div class="col-lg-6">
+						     		<input type="text" class="form-control inp-udi" value="{{ $datos->nombre }}" disabled />
+									<input type="hidden" id="nombre" name="nombre" class="nombre" value="{{ $datos->nombre }}">
+						    	</div>
+						    </div>
+
+						    <div class="form-group row fisica">
+						    	<label class="col-lg-3 col-form-label text-right"><b>Materno:</b></label>
+						    	<div class="col-lg-6">
+						     		<input type="text" class="form-control inp-udi" value="{{ $datos->ap_materno }}" disabled />
+									<input type="hidden" id="ap_materno" name="ap_materno" class="ap_materno" value="{{ $datos->ap_materno }}">
+						    	</div>
+						    </div>
+
+						    <div class="form-group row fisica">
+						    	<label class="col-lg-3 col-form-label text-right"><b>Tipo identificación:</b></label>
+						    	<div class="col-lg-6">
+						     		{!! Form::select('id_tipo_identificacion', $tipo_identificaciones, null, ['id' => 'id_tipo_identificacion', 'style'=>'width: 100%;', 'class' => 'form-control inp-udi']) !!}
+						    	</div>
+						    </div>
+
+						    <div class="form-group row fisica">
+						    	<label class="col-lg-3 col-form-label text-right"><b>Nacionalidad:</b></label>
+						    	<div class="col-lg-6">
+						     		{!! Form::select('id_nacionalidad', $nacionalidades, $default_nacionalidad, ['id' => 'id_nacionalidad', 'style'=>'width: 100%;', 'class' => 'form-control inp-udi']) !!}
+						    	</div>
+						    </div>
+
+						</div>
 					</div>
-					<div class="col-sm-6 mg-t-20 mg-sm-t-0">
-						
-						<div class="row row-xs align-items-center mg-b-20 fisica">
-							<div class="col-md-3">
-								<label for="numero_identificacion" class="tx-12 tx-medium tx-gray-700">Número de identificación*</label>
+
+					<div class="col-md-6">
+						<div class="mb-15">
+							<div class="form-group row">
+						    	<label class="col-lg-3 col-form-label text-right"><b>Sujeto:</b></label>
+						    	<div class="col-lg-6">
+						     		
+						    		@if(!isset($datos))
+										<div class="row row-xs align-items-center mg-b-20">
+											<div class="col-md-3">
+												<label class="tx-12 tx-medium tx-gray-700"><b>Sujeto</b></label>
+											</div>
+											<div class="col-md-9 mg-t-5 mg-md-t-0">
+												<div class="form-check form-check-inline">
+													<input class="form-check-input" type="radio" name="id_sujeto" id="id_sujeto_1" onclick="cargar_documentacion_requerida($('#id_tipo_tramite').val(),this.value);" value="1" {{ $chk_id_sujeto_1 }} >
+													<label class="form-check-label" for="id_sujeto_1">Contratista</label>
+												</div>
+												<div class="form-check form-check-inline">
+													<input class="form-check-input" type="radio" name="id_sujeto" id="id_sujeto_2" onclick="cargar_documentacion_requerida($('#id_tipo_tramite').val(),this.value);" value="2" {{ $chk_id_sujeto_2 }}>
+													<label class="form-check-label" for="id_sujeto_2">Supervisor</label>
+												</div>
+											</div>
+										</div>
+									@else
+										@if($datos->id_sujeto==1) <span class="label label-lg label-light-primary label-inline font-weight-bold py-4"><b>CONTRATISTA</b></span> @else <span class="label label-lg label-light-primary label-inline font-weight-bold py-4"><b>SUPERVISOR</b></span> @endif											
+									@endif
+
+						    	</div>
+						    </div>
+
+							<div class="form-group row">
+						    	<label class="col-lg-3 col-form-label text-right"><b>Fecha de pago*:</b></label>
+						    	<div class="col-lg-6">
+						     		{!! Form::text('fecha_pago_temp', null, ['id'=>'fecha_pago_temp', 'class'=>'form-control  fc-datepicker inp-udi']) !!}
+						    	</div>
 							</div>
-							<div class="col-md-9 mg-t-5 mg-md-t-0">
-								{!! Form::text('numero_identificacion', null, ['id'=>'numero_identificacion', 'placeholder'=>'',  'class'=>'form-control input-sm']) !!}
-								<div id="el-numero_identificacion" class="invalid-feedback lbl-error"></div>	
+
+							<div class="form-group row">
+						    	<label class="col-lg-3 col-form-label text-right"><b>Correo *:</b></label>
+						    	<div class="col-lg-6">
+						     		{!! Form::text('correo', null, ['id'=>'correo', 'class'=>'form-control inp-udi']) !!}
+						    	</div>
+						   	</div>
+
+						    <div class="form-group row fisica">
+						    	<label class="col-lg-3 col-form-label text-right"><b>Paterno:</b></label>
+						    	<div class="col-lg-6">
+						     		<input type="text" class="form-control inp-udi" value="{{ $datos->ap_paterno }}" disabled />
+									<input type="hidden" id="ap_paterno" name="ap_paterno" class="ap_paterno" value="{{ $datos->ap_paterno }}">
+						    	</div>
+						    </div>
+
+						    <div class="form-group row fisica">
+						    	<label class="col-lg-3 col-form-label text-right"><b>CURP:</b></label>
+						    	<div class="col-lg-6">
+						     		<input type="text" class="form-control inp-udi" value="{{ $datos->curp }}" disabled />
+									<input type="hidden" name="curp" value="{!! $datos->curp !!}">
+						    	</div>
+						    </div>
+
+						    <div class="form-group row fisica">
+						    	<label class="col-lg-3 col-form-label text-right"><b>Número identificación:</b></label>
+						    	<div class="col-lg-6">
+									{!! Form::text('numero_identificacion', null, ['id'=>'numero_identificacion', 'class'=>'form-control inp-udi']) !!}
+						    	</div>
+						    </div>
+
+						    <div class="form-group row fisica">
+							    <label class="col-lg-3 col-form-label text-right"><b>Sexo</b></label>
+							    <div class="col-lg-6">
+								    <div class="radio-inline pt-2">
+								        <label class="radio radio-rounded">
+								            <input type="radio" name="sexo" id="sexo_1" value="1" {{ $chk_sexo_1 }}/>
+								            <span></span>
+								            Masculino
+								        </label>
+								        <label class="radio radio-rounded">
+								            <input type="radio" name="sexo" id="sexo_2" value="2" {{ $chk_sexo_2 }}/>
+								            <span></span>
+								            Femenino
+								        </label>								        
+								    </div>
+								</div>
 							</div>
 						</div>
-
 					</div>
 				</div>
-
-				<div class="row row-sm fisica">
-					<div class="col-sm-6 mg-t-20 mg-sm-t-0">						
-						<div class="row row-xs align-items-center mg-b-20 fisica">
-							<div class="col-md-3">
-								<label for="id_nacionalidad" class="tx-12 tx-medium tx-gray-700">Nacionalidad</label>
-							</div>
-							<div class="col-md-9 mg-t-5 mg-md-t-0">
-								{!! Form::select('id_nacionalidad', $nacionalidades, $default_nacionalidad, ['id' => 'id_nacionalidad', 'style'=>'width: 100%;', 'class' => 'form-control select2 select-sm']) !!}	
-								<div id="el-id_nacionalidad" class="invalid-feedback lbl-error"></div>	
-							</div>
-						</div>
-					</div>
-
-					<div class="col-sm-6 mg-t-20 mg-sm-t-0">						
-						<div class="row row-xs align-items-center mg-b-20 fisica">
-							<div class="col-md-3">
-								<label class="tx-12 tx-medium tx-gray-700">Genero</label>
-							</div>
-							<div class="col-md-9 mg-t-5 mg-md-t-0">
-								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio" name="sexo" id="sexo_1" value="1" {{ $chk_sexo_1 }}>
-									<label class="form-check-label" for="sexo_1">Masculino</label>
-								</div>
-								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio" name="sexo" id="sexo_2" value="2" {{ $chk_sexo_2 }}>
-									<label class="form-check-label" for="sexo_2">Femenino</label>
-								</div>
-							</div>
-						</div>
-					</div>					
-				</div>
-
-			</div>
-			
+			</div>			
 		</div>
 	</div>
 </div>

@@ -2,7 +2,7 @@
     <div class="user_heading md-bg-gob2-500">
         <div class="user_heading_avatar">
             <div class="thumbnail">
-                <img src="<?php echo e(asset('public/img2/sircse.png')); ?>" class="" alt="usuario">
+                <img src="<?php echo e(asset('public/img2/sircse.png')); ?>" class="" alt="usuario" width="100%">
             </div>
         </div>
         <div class="user_heading_content">
