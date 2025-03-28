@@ -239,4 +239,4 @@
 
 
 
-<?php /**PATH C:\AppServ\apps\sircse\resources\views/backend/mis-tramites/tabs-financiera.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\AppServ\www\sircse\resources\views/backend/mis-tramites/tabs-financiera.blade.php ENDPATH**/ ?>

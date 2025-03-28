@@ -1,4 +1,86 @@
-.head-color{
+.bgi-position-y-center {
+      background-position-y: center;
+    }
+    .bgi-no-repeat {
+      background-repeat: no-repeat;
+    }
+    .card {
+      --bs-card-box-shadow: var(--bs-root-card-box-shadow);
+      --bs-card-border-color: var(--bs-root-card-border-color);
+      border: 1px solid var(--bs-card-border-color);
+    }
+    .pb-0 {
+      padding-bottom: 0 !important;
+    }
+    .mb-10 {
+      margin-bottom: 2.5rem !important;
+    }
+    .card {
+      --bs-card-spacer-y: 1rem;
+      --bs-card-spacer-x: 1rem;
+      --bs-card-title-spacer-y: 0.5rem;
+      --bs-card-title-color: var(--bs-gray-900);
+      --bs-card-border-width: 1px;
+      --bs-card-border-color: #F1F1F4;
+      --bs-card-border-radius: 1.25rem;
+      --bs-card-box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.03);
+      --bs-card-inner-border-radius: calc(1.25rem - 1px);
+      --bs-card-cap-padding-y: 0.5rem;
+      --bs-card-cap-padding-x: 1rem;
+      --bs-card-cap-bg: transparent;
+      --bs-card-bg: var(--bs-body-bg);
+      --bs-card-img-overlay-padding: 1rem;
+      --bs-card-group-margin: 0.75rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      
+      border-radius: 5px;
+      box-shadow: var(--bs-card-box-shadow);
+    }
+
+    .card-header {
+      padding: var(--bs-card-cap-padding-y) var(--bs-card-cap-padding-x);
+      margin-bottom: 0;
+      color: var(--bs-card-cap-color);
+      background-color: var(--bs-card-cap-bg);
+      border-bottom: var(--bs-card-border-width) solid var(--bs-card-border-color);
+    }
+
+    .symbol.symbol-circle, .symbol.symbol-circle .symbol-label, .symbol.symbol-circle > img {
+      border-radius: 50%;
+    }
+    .symbol {
+      display: inline-block;
+      flex-shrink: 0;
+      position: relative;
+      border-radius: .75rem;
+    }
+    .me-5 {
+      margin-right: 1.25rem !important;
+    }
+    .flex-column {
+      flex-direction: column !important;
+    }
+    .d-flex {
+      display: flex !important;
+    }
+    .mb-1 {
+      margin-bottom: .25rem !important;
+    }
+    .text-muted {
+      color: var(--bs-text-muted) !important;
+    }
+    .text-muted {
+      --bs-text-opacity: 1;
+      color: var(--bs-secondary-color) !important;
+    }
+    .fw-bold {
+      font-weight: 600 !important;
+    }
+
+/*.head-color{
  background-color: #82B548;
 }
 
@@ -20,7 +102,6 @@
    
 }
 
-/* El tooltip */
 .cssToolTip span {
     visibility: hidden;
     width: 450px;
@@ -30,26 +111,22 @@
     padding: 5px 0;
     border-radius: 6px;
 
-    /* Position the tooltip text */
     position: absolute;
     z-index: 1;
     bottom: 125%;
     left: 50%;
     margin-left: -60px;
 
-    /* Fade in tooltip */
     opacity: 0;
     transition: opacity 1s;
 }
 
-/* El tooltip cuando se muestra */
 
 .cssToolTip:hover span {
    visibility: visible;
     opacity: 1;
 }
 
-/* Tooltip arrow */
 .cssToolTip span::after {
     content: "";
     position: absolute;
@@ -175,19 +252,6 @@
   line-height: 16px;
 }
 
-/*
-.table thead th { vertical-align: bottom; border-bottom: 2px solid #eceeef; }
-.thead-inverse th { color: #f3f4f7; background-color: #6B0133; }
-.table thead, .table th { text-align: center; }
-
-.table thead tr,  .table thead th {
-  padding: 20px 20px;
-  padding-right: 20px;
-  border-bottom: 1px solid  #ddd;
-  color: #f3f4f7;
-}*/
-
-
   .search {
     width: 100%;
     position: relative;
@@ -223,4 +287,4 @@
 
   .dataTables_filter {
       display: none; 
-  }
+  }*/

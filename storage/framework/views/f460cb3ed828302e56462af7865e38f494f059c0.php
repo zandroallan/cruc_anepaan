@@ -298,4 +298,4 @@
 </div>
 <!-- Fin modal documentos del trámite -->
 
-</div><?php /**PATH C:\AppServ\apps\sircse\resources\views/backend/mis-tramites/tabs-documentacion.blade.php ENDPATH**/ ?>
+</div><?php /**PATH C:\AppServ\www\sircse\resources\views/backend/mis-tramites/tabs-documentacion.blade.php ENDPATH**/ ?>

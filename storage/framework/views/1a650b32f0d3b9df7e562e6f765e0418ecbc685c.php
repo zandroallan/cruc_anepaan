@@ -35,4 +35,4 @@
             </div>
 
             <?php echo $__env->make('backend.mis-tramites.mdl_rep_tec', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-            <?php echo $__env->make('backend.mis-tramites.mdl_esp_rtec', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\AppServ\apps\sircse\resources\views/backend/mis-tramites/tabs-tecnica.blade.php ENDPATH**/ ?>
+            <?php echo $__env->make('backend.mis-tramites.mdl_esp_rtec', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\AppServ\www\sircse\resources\views/backend/mis-tramites/tabs-tecnica.blade.php ENDPATH**/ ?>
