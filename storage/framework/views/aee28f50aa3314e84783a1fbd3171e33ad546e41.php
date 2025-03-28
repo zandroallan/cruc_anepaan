@@ -108,56 +108,63 @@
 	<?php endif; ?>
 
 	<br />
-	<div class="row">
-		<div class="col-lg-12">
-			<div class="card custom-card overflow-hidden">
-				<div class="card-body">
-					<div>
-						<h6 class="card-title mb-1">Trámites</h6>
-						<p class="text-muted card-sub-title">Listado de trámites genereados por el contratista.</p>
-					</div>
-					
-						<div class="row">
-							<div class="col-lg-6"></div>
-							<div class="col-lg-6">
-								<div class="search">
-							      <input type="text" id="searchBox" class="searchTerm" name="searchBox">
-							      <button type="submit" class="searchButton">
-							        <i class="fa fa-search"></i>
-							     </button>
-							    </div>
-							</div>
-						</div>
-						   
-					
-					<div class="table-responsive">
-						<table id="mis-tramites" class="table">
-							<thead style="background-color: #333333 !important;">
-								<tr>
-									<th style="color: #fff; padding: 15px 15px;">#</th>
-									<th style="color: #fff; padding: 15px 15px;" class="wd-10p">Folio</th>
-									<th style="color: #fff; padding: 15px 15px;">Sujeto</th>
-									<th style="color: #fff; padding: 15px 15px;">Tipo de trámite</th>
-									<th style="color: #fff; padding: 15px 15px;">Estatus</th>
-									<th style="color: #fff; padding: 15px 15px;">Inicio</th>
-									<th style="color: #fff; padding: 15px 15px;">Fin</th>
-									<th style="color: #fff; padding: 15px 15px;" class="text-center">
-										<i class="fe fe-book-open"></i>
-									</th>
-									<th style="color: #fff; padding: 15px 15px;" class="text-center">
-										<i class="fe fe-align-center"></i>
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-							</tbody>
-						</table>
-					</div>
-				</div>
+
+
+
+
+
+
+
+	<div class="card card-custom card-sticky" id="kt_page_sticky_card">
+		<div class="card-header">
+			<div class="card-title">
+				<h3 class="card-label">
+					Trámites <br />
+					<small class="">Listado de trámites genereados por el contratista</small>
+				</h3>
 			</div>
 		</div>
-	</div>
+		<div class="card-body">
+			<!--  -->
 
+			<!-- <div class="row">
+				<div class="col-lg-4"></div>
+				<div class="col-lg-8">
+					<div class="search">
+				      <input type="text" id="searchBox" class="searchTerm" name="searchBox">
+				      <button type="submit" class="searchButton">
+				        <i class="fa fa-search"></i>
+				     </button>
+				    </div>
+				</div>
+			</div> -->
+			
+			<div class="table-responsive _response">
+				<!-- <table id="mis-tramites" class="table">
+					<thead class="thead-dark">
+						<tr>
+							<th style="color: #fff; padding: 15px 15px;">#</th>
+							<th style="color: #fff; padding: 15px 15px;" class="wd-10p">Folio</th>
+							<th style="color: #fff; padding: 15px 15px;">Sujeto</th>
+							<th style="color: #fff; padding: 15px 15px;">Tipo de trámite</th>
+							<th style="color: #fff; padding: 15px 15px;">Estatus</th>
+							<th style="color: #fff; padding: 15px 15px;">Inicio</th>
+							<th style="color: #fff; padding: 15px 15px;">Fin</th>
+							<th style="color: #fff; padding: 15px 15px;" class="text-center">
+								<i class="fe fe-book-open"></i>
+							</th>
+							<th style="color: #fff; padding: 15px 15px;" class="text-center">
+								<i class="fe fe-align-center"></i>
+							</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table> -->
+			</div>
+
+			<!--  -->
+		</div>
+	</div>
 
 	<div class="modal modal-message-contacto fade" id="modal-message-contacto">
 		<div class="modal-dialog">
