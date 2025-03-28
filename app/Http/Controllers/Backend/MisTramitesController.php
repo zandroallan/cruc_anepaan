@@ -59,13 +59,15 @@ class MisTramitesController extends Controller
                 $array['anio'] = $get['anio'];
             }
         }
-        $resultados = \App\Http\Models\Backend\T_Tramite::general($array)->get();
+        $resultados = T_Tramite::general($array)->get();
         return $resultados;
     }
 
     public function mis_tramites($id_cs)
     {
-        $resultados = \App\Http\Models\Backend\T_Tramite::tramites(['id_cs' => $id_cs])->get();
+        $resultados = T_Tramite::tramites(['id_cs' => $id_cs])->get();
+
+        // print_r($resultados); exit();
         return $resultados;
     }
 
@@ -262,7 +264,6 @@ class MisTramitesController extends Controller
                     if ( (int)$value == (int)Auth::User()->id_registro )  $limiteTramite = false;
                 }
             }
-
             if ( $this->ventanillaCerrada && $limiteTramite ) {
                 $send = 0;
                 return response()->json([
@@ -389,7 +390,6 @@ class MisTramitesController extends Controller
                     $p_personal['nombre']     = $post['nombre'];
                     $p_personal['ap_paterno'] = $post['ap_paterno'];
                     $p_personal['ap_materno'] = $post['ap_materno'];
-                    // $p_personal['curp']= $post['curp'];
                     $p_personal['rfc']                    = $post['rfc'];
                     $p_personal['id_nacionalidad']        = $post['id_nacionalidad'];
                     $p_personal['sexo']                   = $post['sexo'];
@@ -474,7 +474,7 @@ class MisTramitesController extends Controller
                         }
                         $d_registro->fill($p_registro)->save();
                         if ($send == 1 && $id_tipo_tramite != 0) {
-                            $v_folio_p = \App\Http\Classes\Herramientas::setFolioPago($d_registro->folio_pago_temp);
+                            $v_folio_p = Herramientas::setFolioPago($d_registro->folio_pago_temp);
                             if ($v_folio_p == 1) {
                                 $msg    = "No puedes utilizar este folio de pago, porque ya ha sido utilizado en un tramite distinto al suyo.";
                                 $status = 3;
@@ -482,7 +482,7 @@ class MisTramitesController extends Controller
                                 $data   = [];
                             } 
                             else {
-                                $existe_contacto = \App\Http\Classes\Herramientas::setContacto($d_registro->id);
+                                $existe_contacto = Herramientas::setContacto($d_registro->id);
                                 if ($existe_contacto == 0) {
                                     $status_mensaje = 1;
                                     $msg            = "No has agregado ningun contacto es obligatorio para que tu tramite se pueda generar.";
@@ -699,7 +699,6 @@ class MisTramitesController extends Controller
                                 if ($send != 0) {
                                     $msg = "La información ha sido actualizada";
                                 }
-
                                 $route_redirect = route($this->route . '.index');
                             }
                         }
@@ -837,7 +836,6 @@ class MisTramitesController extends Controller
         $folder     = '/expedientes/' . date('Y') . '/' . $t_registro->rfc . '/tmp';
 
         $path = substr(Storage::disk('sircs')->getAdapter()->getPathPrefix(), 0, -1) . $folder;
-
         $validation->registroSubirDocumentoTmp(['id_registro' => $id_registro, 'id_documento' => $id_documento]);
         if (!$validation->getStatusB()) {
             try {
@@ -870,7 +868,8 @@ class MisTramitesController extends Controller
                 $data["id_sujeto"]        = $t_registro->id_sujeto;
                 $data["tec_acredita_tmp"] = $t_registro->tec_acredita_tmp;
                 $data["obligado_dec_isr"] = $t_registro->obligado_dec_isr;
-            } catch (\Exception $e) {
+            } 
+            catch (\Exception $e) {
                 $status         = 3;
                 $code           = 409;
                 $msg            = $e->getMessage();
@@ -925,10 +924,9 @@ class MisTramitesController extends Controller
                 }
 
                 if (count($desglose) > 0) {
-
-                    if ($id_documento == 266 || $id_documento == 317) {
-                        $post_documento["alias"] = $file_alias;
-                    }
+                    // if ($id_documento == 266 || $id_documento == 317) {
+                    //     $post_documento["alias"] = $file_alias;
+                    // }
 
                     $post_documento["id_registro_temp"] = $id_registro;
                     $post_documento["id_documentacion"] = $id_documento;
@@ -963,7 +961,8 @@ class MisTramitesController extends Controller
                 $data           = [];
                 DB::rollback();
             }
-        } else {
+        } 
+        else {
             $status         = 3;
             $code           = $validation->getStatusCode();
             $msg            = $validation->getStatusMsg();

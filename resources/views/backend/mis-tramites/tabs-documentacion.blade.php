@@ -29,12 +29,12 @@
 
 @if($datos->id_sujeto==1)
 <h5 class="mb-1 mt-3">Documentación financiera</h5><hr />
+
+<?php
+/*
 <p>
 	Los Suscritos manifestamos, bajo protesta de decir verdad, si la empresa esta obligada a presentar la Declaración Anual del Impuesto Sobre la Renta. motivo por el cual asumimos cualquier responsabilidad administrativa y/o penal derivada de cualquier declaración en falso sobre las mismas
 </p>
-
-
-
 <div  class="col-md-12">
 	<div class="form-group row align-items-center">
 		<label style="display:none" class="col-md-2 col-form-label">
@@ -55,6 +55,8 @@
 		</div>
 	</div>
 </div>
+*/
+?>
 
 <div class="form-group row m-b-10">
 	<div id="doctos-financiera" class="col-md-12"></div>
@@ -117,25 +119,17 @@
                         <div id="el-archivosubido" class="invalid-feedback lbl-error"></div>
 					</div>
 				</div>
-
 			</div>
 
 			<div class="modal-footer">
-
-
-
 				<div class="spinner_no_wait">
                 	<button type="button" class="btn btn-primary" onclick="upload_tmp('frm-subir-adjunto-tmp')"><i class="fa fa-search fa-upload"></i> Subir</button>
 				</div>
-
 				<div class="spinner_wait"  style="display:none">
 					<button class="btn ripple btn-secondary" disabled type="button"><span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Subiendo, por favor espere...</button>
 				</div>
-				
 				<a href="javascript:;" class="btn btn-white" data-dismiss="modal">Cerrar</a>
-
 			</div>
-
 
 			{!! Form::close() !!}
 		</div>

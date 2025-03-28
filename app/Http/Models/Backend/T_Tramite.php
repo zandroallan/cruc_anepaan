@@ -296,8 +296,32 @@ class T_Tramite extends Model
 
     public static function tramites($data=[])
      {
-        $result = T_Tramite::select('t_tramites.id','t_tramites.folio', 't_tramites.id_tipo_tramite', 't_tramites.id_c_tramites_seguimiento', 't_tramites.fecha_inicio', 't_tramites.fecha_fin','r.id_sujeto', 'r.razon_social_o_nombre as razon_social', 'r.id_tipo_persona', 'r.rfc', 'tt.nombre as tipo_tramite', 's.id as id_status', 's.nombre as status', 's.color as status_color', 'sl.nombre as status_l', 'sl.color as status_color_l', 'sf.nombre as status_f', 'sf.color as status_color_f', 'st.nombre as status_t', 'st.color as status_color_t', 't_tramites.id_sujeto_tramite', 'tc.motivo as motivo_cancelado', 'tc.path', 'tc.acuse');
-        
+        $result = T_Tramite::select(
+            't_tramites.id',
+            't_tramites.folio', 
+            't_tramites.id_tipo_tramite', 
+            't_tramites.id_c_tramites_seguimiento',
+            't_tramites.fecha_inicio', 
+            't_tramites.fecha_fin',
+            'r.id_sujeto', 
+            'r.razon_social_o_nombre as razon_social',
+            'r.id_tipo_persona', 
+            'r.rfc',
+            'tt.nombre as tipo_tramite',
+            's.id as id_status',
+            's.nombre as status',
+            's.color as status_color',
+            'sl.nombre as status_l',
+            'sl.color as status_color_l',
+            'sf.nombre as status_f',
+            'sf.color as status_color_f',
+            'st.nombre as status_t',
+            'st.color as status_color_t',
+            't_tramites.id_sujeto_tramite',
+            'tc.motivo as motivo_cancelado',
+            'tc.path',
+            'tc.acuse'
+        );
         $result= $result->leftJoin('t_tramites_cancelados as tc', 'tc.id_tramite', '=', 't_tramites.id');
         $result= $result->leftJoin('t_registro as r', 'r.id', '=', 't_tramites.id_cs');
         $result= $result->leftJoin('c_tipos_tramite as tt', 'tt.id', '=', 't_tramites.id_tipo_tramite');
@@ -309,36 +333,32 @@ class T_Tramite extends Model
         if(array_key_exists('id_cs', $data)){
             $filtro= $data["id_cs"];
             $result= $result->where( function($sql) use ($filtro){
-                    $sql->where('id_cs', $filtro);
-                });
+                $sql->where('id_cs', $filtro);
+            });
         }  
-        
         if(array_key_exists('anio', $data)){
             $filtro= $data["anio"];
             $result= $result->where( function($sql) use ($filtro){
-                    $sql->whereRaw('YEAR(t_tramites.created_at)='.$filtro);
-                });
+                $sql->whereRaw('YEAR(t_tramites.created_at)='.$filtro);
+            });
         }
-        
         if(array_key_exists('i_search', $data)){
             $filtro= $data["i_search"];
             $result= $result->where( function($sql) use ($filtro){
-                    $sql->where('r.razon_social_o_nombre','like', '%'.$filtro.'%')->orWhere('r.rfc','like', '%'.$filtro.'%');
-                });
+                $sql->where('r.razon_social_o_nombre','like', '%'.$filtro.'%')->orWhere('r.rfc','like', '%'.$filtro.'%');
+            });
         }
-
         if(array_key_exists('rfc', $data)){
             $filtro= $data["rfc"];
             $result= $result->where( function($sql) use ($filtro){
-                    $sql->where('r.rfc','=',$filtro);
-                });
+                $sql->where('r.rfc','=',$filtro);
+            });
         }
-
         if(array_key_exists('razon_social_o_nombre', $data)){
             $filtro= $data["razon_social_o_nombre"];
             $result= $result->where( function($sql) use ($filtro){
-                    $sql->where('r.razon_social_o_nombre','=',$filtro);
-                });
+                $sql->where('r.razon_social_o_nombre','=',$filtro);
+            });
         }
 
         $result= $result->groupBy('t_tramites.id');
@@ -429,13 +449,16 @@ class T_Tramite extends Model
 
     public static function edit($id)
      {
-        $result = T_Tramite::select('*', DB::raw('YEAR(fecha_inicio) as anio_inicio'));
+        $result = T_Tramite::select(
+            '*', 
+            DB::raw('YEAR(fecha_inicio) as anio_inicio')
+        );
         $result= $result->where('id', $id);
         return $result->first();    
      }
 
-
-    public static function datos_validacion_movil($id){
+    public static function datos_validacion_movil($id)
+    {
         $result = T_Tramite::select('t_tramites.*','r.id_sujeto', 'r.id_tipo_persona', 'r.rfc', 'p.curp', 'r.razon_social_o_nombre', 'p.nombre', 'p.ap_paterno', 'ap_materno', 'p.id_nacionalidad', 'p.sexo', 'p.id_tipo_identificacion', 'p.numero_identificacion', 'df.id as id_domicilio_fiscal', 'mf.id_estado as id_estado_fiscal', 'mf.nombre as municipio_fiscal', 'ef.nombre as estado_fiscal', 'df.id_municipio as id_municipio_fiscal', 'df.ciudad as ciudad_fiscal', 'df.calle as calle_fiscal', 'df.num_exterior as ext_fiscal', 'df.num_interior as int_fiscal', 'df.colonia as colonia_fiscal', 'df.codigo_postal as cp_fiscal', 'df.referencias as referencias_fiscal', 'dp.id as id_domicilio_particular', 'mp.id_estado as id_estado_particular', 'dp.id_municipio as id_municipio_particular', 'dp.ciudad as ciudad_particular', 'dp.calle as calle_particular', 'dp.num_exterior  as ext_particular', 'dp.num_interior  as int_particular', 'dp.colonia as colonia_particular', 'dp.codigo_postal as cp_particular', 'dp.referencias as referencias_particular', 'tt.nombre as tipo_tramite', 'tdl.boleta_pago as boleta_pago_alegal', 'tc.motivo', 'tc.created_at as fecha_cancelacion');
         
         $result= $result->leftJoin('t_tramites_datos_legales as tdl', 't_tramites.id', '=', 'tdl.id_tramite');
