@@ -142,7 +142,11 @@
 			
 
 
+<<<<<<< HEAD
 			<div class="alert alert-custom alert-light-dark fade show mb-5" role="alert">
+=======
+			<div class="alert alert-custom alert-dark fade show" role="alert">
+>>>>>>> branch_adrian
 			    <div class="alert-icon"><i class="flaticon-warning"></i></div>
 			    <div class="alert-text">
 			    	<h5>Trámite en proceso de <span class="text-primary"><?php echo e($lbl_tramite_siguiente); ?></span>
@@ -187,6 +191,7 @@
 				</div>			
 			</div>
 			<?php else: ?>
+<<<<<<< HEAD
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="accordion accordion-toggle-arrow" id="accordionExample1">
@@ -209,6 +214,8 @@
 				</div>
 			</div>
 
+=======
+>>>>>>> branch_adrian
 			<div class="card card-custom">
 				<div class="card-body">
 					<?php echo $__env->make('backend.mis-tramites.tabs', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>

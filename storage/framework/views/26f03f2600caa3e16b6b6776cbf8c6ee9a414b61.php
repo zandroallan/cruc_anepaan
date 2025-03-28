@@ -6,6 +6,7 @@
 		<title>Sircse | Web</title>
 		<meta name="description" content="Updates and statistics" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<<<<<<< HEAD
 
 		<link rel="canonical" href="https://keenthemes.com/metronic" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
@@ -13,6 +14,20 @@
 		<link rel="stylesheet" href="<?php echo e(asset('public/assets/plugins/custom/prismjs/prismjs.bundle.css')); ?>">
 		<link rel="stylesheet" href="<?php echo e(asset('public/assets/css/style.bundle.css')); ?>">
 		<link rel="stylesheet" href="<?php echo e(asset('public/css/cssHeader.css')); ?>">
+=======
+		<link rel="canonical" href="https://keenthemes.com/metronic" />
+
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+		
+		<link rel="stylesheet" href="<?php echo e(asset('public/assets/plugins/global/plugins.bundle.css')); ?>">
+		<link rel="stylesheet" href="<?php echo e(asset('public/assets/plugins/custom/prismjs/prismjs.bundle.css')); ?>">
+		<link rel="stylesheet" href="<?php echo e(asset('public/assets/css/style.bundle.css')); ?>">
+
+		<link rel="stylesheet" href="<?php echo e(asset('public/css/cssHeader.css')); ?>">
+
+		<link rel="stylesheet" href="<?php echo e(asset('public/assets/plugins/confirm/css/jquery-confirm.css')); ?>">
+		
+>>>>>>> branch_adrian
 		<link rel="shortcut icon" href="<?php echo e(asset('public/assets/media/logos/favicon.ico')); ?>">
 
 		<?php echo $__env->yieldContent('styles'); ?>
@@ -23,6 +38,7 @@
 		<div id="kt_header_mobile" class="header-mobile header-mobile-fixed">
 			<div class="d-flex align-items-center">
 				<!--begin::Logo-->
+<<<<<<< HEAD
 				<a href="index.html" class="mr-7">
 					<img alt="Logo" src="<?php echo e(asset('public/assets/media/logos/logo-letter-5.png')); ?>" class="max-h-30px" />
 				</a>
@@ -113,6 +129,12 @@
 					</div>
 				</div>
 				<!--end::Dropdown-->
+=======
+				<a href="#" class="mr-7">
+					<img alt="Logo" src="<?php echo e(asset('public/img2/saybg_blanco.png')); ?>" class="max-h-30px" />
+				</a>
+				<!--end::Logo-->				
+>>>>>>> branch_adrian
 			</div>
 			<!--begin::Toolbar-->
 			<div class="d-flex align-items-center">
@@ -150,8 +172,13 @@
 								<!--begin::Left-->
 								<div class="d-none d-lg-flex align-items-center mr-3">
 									<!--begin::Logo-->
+<<<<<<< HEAD
 									<a href="index.html" class="mr-10">
 										<img alt="Logo" src="<?php echo e(asset('public/assets/media/logos/logo-letter-5.png')); ?>" class="max-h-35px" />
+=======
+									<a href="#" class="mr-10">
+										<img alt="Logo" src="<?php echo e(asset('public/img2/saybg_blanco.png')); ?>" class="max-h-65px" />
+>>>>>>> branch_adrian
 									</a>
 									<!--end::Logo-->
 								</div>
@@ -536,6 +563,11 @@
 		<script src="<?php echo e(asset('public/assets/plugins/custom/prismjs/prismjs.bundle.js')); ?>"></script>
 		<script src="<?php echo e(asset('public/assets/js/scripts.bundle.js')); ?>"></script>
 
+<<<<<<< HEAD
+=======
+		<script src="<?php echo e(asset('public/assets/plugins/confirm/js/jquery-confirm.js')); ?>"></script>
+
+>>>>>>> branch_adrian
 	
 		<?php echo $__env->yieldContent('js'); ?>
       
