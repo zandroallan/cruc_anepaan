@@ -4,14 +4,16 @@
 				<input type="hidden" name="_acordionThree" id="_acordionThree">
 				<input type="hidden" name="_tipoPersona" id="_tipoPersona" value="{{ $datos->id_tipo_persona }}">
 
-				<div aria-multiselectable="true" class="accordion" id="accordionLegal" role="tablist">
+
+				<div  class="accordion accordion-solid accordion-toggle-plus" id="accordionExample5">
 					<div class="card">
-						<div class="card-header" id="headingDatosGenerales" role="tab">
-							<a aria-controls="collapseDatosGeneral" aria-expanded="true" data-toggle="collapse" href="#collapseDatosGeneral" style="background-color: #333333; color: #fff;" id="datosGenerales">Datos Generales</a>
+						<div class="card-header" id="headingOne5">
+							<div class="card-title" data-toggle="collapse" data-target="#collapseOne5">
+								<i class="flaticon-pie-chart-1"></i>Datos generales
+							</div>
 						</div>
-						<div aria-labelledby="headingDatosGenerales" class="collapse show" data-parent="#accordionLegal" id="collapseDatosGeneral" role="tabpanel">
+						<div id="collapseOne5" class="collapse show" data-parent="#accordionExample5">
 							<div class="card-body">
-								<!-- Begin accordion DATOS GENERALES -->
 
 								{!! Form::open([
 										'route' => 'tramites-area-legal.store-datos-legales',
@@ -130,23 +132,22 @@
 										</div>
 									</div>
 					            </div>
-								{!! Form::close() !!}	
+								{!! Form::close() !!}
 
 
-								<!-- End accordion -->
 							</div>
 						</div>
 					</div>
 					@if( $datos->id_tipo_persona != 1)
 					<div class="card">
-						<div class="card-header" id="headingTwo" role="tab">
-							<a aria-controls="collapseTwo" aria-expanded="false" class="collapsed" data-toggle="collapse" href="#collapseTwo" style="background-color: #333333; color: #fff;" id="actaConstitutiva">
-								@if ( $id_tipo_tramite == 3 ) Modificaciones al @endif Acta Constitutiva
-							</a>
+						<div class="card-header" id="headingTwo5">
+							<div class="card-title collapsed" data-toggle="collapse" data-target="#collapseTwo5">
+								<i class="flaticon2-notification"></i> @if ( $id_tipo_tramite == 3 ) Modificaciones al @endif Acta Constitutiva
+							</div>
 						</div>
-						<div aria-labelledby="headingTwo" class="collapse" data-parent="#accordionLegal" id="collapseTwo" role="tabpanel">
+						<div id="collapseTwo5" class="collapse" data-parent="#accordionExample5">
 							<div class="card-body">
-								<!-- Begin accordion DATOS GENERALES -->
+
 								<div class="row">
 					        		<div class="col-md-12 form-group text-right">
 										@if ( $id_tipo_tramite != 1 )
@@ -333,18 +334,19 @@
 									</div>
 								</form>
 
-								<!-- End accordion -->
 							</div>
 						</div>
 					</div>
 					<div class="card">
-						<div class="card-header" id="headingThree" role="tab">
-							<a aria-controls="collapseThree" aria-expanded="false" class="collapsed" data-toggle="collapse" href="#collapseThree" style="background-color: #333333; color: #fff;" id="datosRepresentanteLegal">Representante Legal</a>
+						<div class="card-header" id="headingThree5">
+							<div class="card-title collapsed" data-toggle="collapse" data-target="#collapseThree5">
+								<i class="flaticon2-chart"></i> Representante Legal
+							</div>
 						</div>
-						<div aria-labelledby="headingThree" class="collapse" data-parent="#accordionLegal" id="collapseThree" role="tabpanel">
+						<div id="collapseThree5" class="collapse" data-parent="#accordionExample5">
 							<div class="card-body">
-								<!-- Begin accordion DATOS GENERALES -->
-							{!! Form::open([
+
+								{!! Form::open([
 									'route'=>'tramites-area-legal.store-representante-legal',
 									'method'=>'POST',
 									'files'=>true,
@@ -610,9 +612,45 @@
 
 								{!! Form::close() !!}
 
-								<!-- End accordion -->
 							</div>
-						</div><!-- collapse -->
+						</div>
 					</div>
 					@endif
 				</div>
+
+
+<!-- 
+				<div aria-multiselectable="true" class="accordion" id="accordionLegal" role="tablist">
+					<div class="card">
+						<div class="card-header" id="headingDatosGenerales" role="tab">
+							<a aria-controls="collapseDatosGeneral" aria-expanded="true" data-toggle="collapse" href="#collapseDatosGeneral" style="background-color: #333333; color: #fff;" id="datosGenerales">Datos Generales</a>
+						</div>
+						<div aria-labelledby="headingDatosGenerales" class="collapse show" data-parent="#accordionLegal" id="collapseDatosGeneral" role="tabpanel">
+							<div class="card-body">
+
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header" id="headingTwo" role="tab">
+							<a aria-controls="collapseTwo" aria-expanded="false" class="collapsed" data-toggle="collapse" href="#collapseTwo" style="background-color: #333333; color: #fff;" id="actaConstitutiva">
+								Acta Constitutiva
+							</a>
+						</div>
+						<div aria-labelledby="headingTwo" class="collapse" data-parent="#accordionLegal" id="collapseTwo" role="tabpanel">
+							<div class="card-body">
+
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header" id="headingThree" role="tab">
+							<a aria-controls="collapseThree" aria-expanded="false" class="collapsed" data-toggle="collapse" href="#collapseThree" style="background-color: #333333; color: #fff;" id="datosRepresentanteLegal">Representante Legal</a>
+						</div>
+						<div aria-labelledby="headingThree" class="collapse" data-parent="#accordionLegal" id="collapseThree" role="tabpanel">
+							<div class="card-body">
+
+							</div>
+						</div>
+					</div>
+				</div> -->

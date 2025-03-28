@@ -47,4 +47,4 @@
 		   </div>
         </div>
     </div>
-</div><?php /**PATH C:\AppServ\www\sircse\resources\views/backend/mis-tramites/mdl_esp_rtec.blade.php ENDPATH**/ ?>
+</div><?php /**PATH C:\AppServ\apps\sircse\resources\views/backend/mis-tramites/mdl_esp_rtec.blade.php ENDPATH**/ ?>

@@ -23,4 +23,4 @@
 		<?php echo Form::close(); ?>
 
 		            
-<?php /**PATH C:\AppServ\www\sircse\resources\views/backend/mis-tramites/tabs-socios.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\AppServ\apps\sircse\resources\views/backend/mis-tramites/tabs-socios.blade.php ENDPATH**/ ?>

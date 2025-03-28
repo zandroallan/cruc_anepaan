@@ -2,16 +2,16 @@
 
 		@section('styles')	
 
-			<link href="{{ asset('public/dashlead/plugins/select2/css/select2.min.css') }}" rel="stylesheet"/>
+			<!-- <link href="{{ asset('public/dashlead/plugins/select2/css/select2.min.css') }}" rel="stylesheet"/> -->
 			<link href="{{ asset('public/css/tabs.css') }}" rel="stylesheet"/>
 
 		@endsection
 
 		@section('js')
 
-			<script src="{{ asset('public/dashlead/plugins/jquery-ui/ui/widgets/datepicker.js') }}"></script>
-			<script src="{{ asset('public/dashlead/plugins/select2/js/select2.min.js') }}"></script>
-			<script src="{{ asset('public/dashlead/js/select2.js') }}"></script>
+			<!-- <script src="{{ asset('public/dashlead/plugins/jquery-ui/ui/widgets/datepicker.js') }}"></script> -->
+			<!-- <script src="{{ asset('public/dashlead/plugins/select2/js/select2.min.js') }}"></script> -->
+			<!-- <script src="{{ asset('public/dashlead/js/select2.js') }}"></script> -->
 			<script src="{{ asset('public/js/backend/general.js') }}"></script>			
 			<script src="{{ asset('public/js/backend/mis-tramites.js') }}"></script>
 			<!--Archivos para los documentos de las areas-->

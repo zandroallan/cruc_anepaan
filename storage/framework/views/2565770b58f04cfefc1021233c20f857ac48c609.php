@@ -2,16 +2,16 @@
 
 		<?php $__env->startSection('styles'); ?>	
 
-			<link href="<?php echo e(asset('public/dashlead/plugins/select2/css/select2.min.css')); ?>" rel="stylesheet"/>
+			<!-- <link href="<?php echo e(asset('public/dashlead/plugins/select2/css/select2.min.css')); ?>" rel="stylesheet"/> -->
 			<link href="<?php echo e(asset('public/css/tabs.css')); ?>" rel="stylesheet"/>
 
 		<?php $__env->stopSection(); ?>
 
 		<?php $__env->startSection('js'); ?>
 
-			<script src="<?php echo e(asset('public/dashlead/plugins/jquery-ui/ui/widgets/datepicker.js')); ?>"></script>
-			<script src="<?php echo e(asset('public/dashlead/plugins/select2/js/select2.min.js')); ?>"></script>
-			<script src="<?php echo e(asset('public/dashlead/js/select2.js')); ?>"></script>
+			<!-- <script src="<?php echo e(asset('public/dashlead/plugins/jquery-ui/ui/widgets/datepicker.js')); ?>"></script> -->
+			<!-- <script src="<?php echo e(asset('public/dashlead/plugins/select2/js/select2.min.js')); ?>"></script> -->
+			<!-- <script src="<?php echo e(asset('public/dashlead/js/select2.js')); ?>"></script> -->
 			<script src="<?php echo e(asset('public/js/backend/general.js')); ?>"></script>			
 			<script src="<?php echo e(asset('public/js/backend/mis-tramites.js')); ?>"></script>
 			<!--Archivos para los documentos de las areas-->
@@ -217,4 +217,4 @@
 			<?php endif; ?>
 
 		<?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\AppServ\www\sircse\resources\views/backend/mis-tramites/nuevo-tramite.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\AppServ\apps\sircse\resources\views/backend/mis-tramites/nuevo-tramite.blade.php ENDPATH**/ ?>

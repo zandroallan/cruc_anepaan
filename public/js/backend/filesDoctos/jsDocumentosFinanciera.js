@@ -4,16 +4,29 @@ function cargar_documentacion_requerida_financiera(id_tipo_tramite, id_area, id_
         let str = '<ol>';
         $.each(data, function(i, valor) {
             var strTooltip = '';
-            if (valor.nota != '' && valor.nota != null) strTooltip = '<span class="cssToolTip"><i class="fas fa-lg fa-fw m-r-10 fa-exclamation-circle text-warning"></i><span><b>Información</b><br>' + valor.nota + ' </span> </span>';
             let objeto = '';
             let lbl_nombre = valor.documento;
+
+            if (valor.nota != '' && valor.nota != null){
+                strTooltip ='<span class="cssToolTip">';
+                strTooltip+='   <i class="fas fa-lg fa-fw m-r-10 fa-exclamation-circle text-warning"></i>';
+                strTooltip+='   <span><b>Información</b><br>' + valor.nota + ' </span>';
+                strTooltip+='</span>';
+            }
             if (valor.obligatorio == 1) {
                 lbl_nombre += " <b>(Obligatorio)</b>";
             }
             if (valor.id_tramite_documento != null) {
                 let download = project_name + "/tramites-adjuntos/" + valor.id_tramite_documento + "/descargar";
-                objeto += '<span class="text-success-dark">' + lbl_nombre + '</span> <a href="' + download + '" class="text-info-dark" target="_blank"><i class="fa fa-download"></i></a> | <a href="#" onclick="eliminar_adjunto_tmp(' + valor.id_tramite_documento + ')" class="text-danger"><i class="far fa-trash-alt"></i></a>';
-            } else {
+                objeto+='<span class="text-success-dark">' + lbl_nombre + '</span>';
+                objeto+='<a href="' + download + '" class="text-info-dark" target="_blank">';
+                objeto+='   <i class="fa fa-download"></i>';
+                objeto+='</a> |';
+                objeto+='<a href="#" onclick="eliminar_adjunto_tmp(' + valor.id_tramite_documento + ')" class="text-danger">';
+                objeto+='   <i class="far fa-trash-alt"></i>';
+                objeto+='</a>';
+            }
+            else {
                 objeto += '<span class="">' + lbl_nombre + strTooltip + ' </span>';
                 if (valor.subir == 1) {
                     objeto += ' <a href="#" onclick="mdl_documento_1(' + valor.id + ', \'' + lbl_nombre + '\')">' + 'Subir</a>';
@@ -21,7 +34,8 @@ function cargar_documentacion_requerida_financiera(id_tipo_tramite, id_area, id_
                 if (valor.subir_n == 1) {
                     if (valor.id == 356) { //356 documentacion del contador
                         objeto += ' <a href="#" onclick="mdl_documento_soporte(' + valor.id + ', \'' + lbl_nombre + '\',0,0)">' + 'Agregar</a>';
-                    } else {
+                    } 
+                    else {
                         objeto += ' <a href="#" onclick="mdl_documento_1(' + valor.id + ', \'' + lbl_nombre + '\')">' + 'Agregar</a>';
                     }
                 }

@@ -59,13 +59,15 @@ class MisTramitesController extends Controller
                 $array['anio'] = $get['anio'];
             }
         }
-        $resultados = \App\Http\Models\Backend\T_Tramite::general($array)->get();
+        $resultados = T_Tramite::general($array)->get();
         return $resultados;
     }
 
     public function mis_tramites($id_cs)
     {
-        $resultados = \App\Http\Models\Backend\T_Tramite::tramites(['id_cs' => $id_cs])->get();
+        $resultados = T_Tramite::tramites(['id_cs' => $id_cs])->get();
+
+        // print_r($resultados); exit();
         return $resultados;
     }
 
