@@ -301,4 +301,4 @@
 
 	</body>
 </html>
-<?php /**PATH C:\AppServ\www\sircse\resources\views/layouts/login.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\AppServ\apps\sircse\resources\views/layouts/login.blade.php ENDPATH**/ ?>

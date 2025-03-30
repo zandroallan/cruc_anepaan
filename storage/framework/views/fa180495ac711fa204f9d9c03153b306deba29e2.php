@@ -109,12 +109,6 @@
 
 	<br />
 
-
-
-
-
-
-
 	<div class="card card-custom card-sticky" id="kt_page_sticky_card">
 		<div class="card-header">
 			<div class="card-title">
@@ -139,29 +133,7 @@
 				</div>
 			</div> -->
 			
-			<div class="table-responsive _response">
-				<!-- <table id="mis-tramites" class="table">
-					<thead class="thead-dark">
-						<tr>
-							<th style="color: #fff; padding: 15px 15px;">#</th>
-							<th style="color: #fff; padding: 15px 15px;" class="wd-10p">Folio</th>
-							<th style="color: #fff; padding: 15px 15px;">Sujeto</th>
-							<th style="color: #fff; padding: 15px 15px;">Tipo de trámite</th>
-							<th style="color: #fff; padding: 15px 15px;">Estatus</th>
-							<th style="color: #fff; padding: 15px 15px;">Inicio</th>
-							<th style="color: #fff; padding: 15px 15px;">Fin</th>
-							<th style="color: #fff; padding: 15px 15px;" class="text-center">
-								<i class="fe fe-book-open"></i>
-							</th>
-							<th style="color: #fff; padding: 15px 15px;" class="text-center">
-								<i class="fe fe-align-center"></i>
-							</th>
-						</tr>
-					</thead>
-					<tbody></tbody>
-				</table> -->
-			</div>
-
+			<div class="table-responsive _response"></div>
 			<!--  -->
 		</div>
 	</div>
@@ -174,42 +146,40 @@
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 				</div>
 				<div class="modal-body">
-
-						<div class="form-group row m-b-15">
-							<label class="col-sm-3 col-form-label">Nombre</label>
-							<div class="col-sm-9">
-								<input class="form-control" type="text" id="txtNombre" name="txtNombre" readonly />
-							</div>
+					<div class="form-group row m-b-15">
+						<label class="col-sm-3 col-form-label">Nombre</label>
+						<div class="col-sm-9">
+							<input class="form-control" type="text" id="txtNombre" name="txtNombre" readonly />
 						</div>
+					</div>
 
-						<div class="form-group row m-b-15">
-							<label class="col-sm-3 col-form-label">Paterno</label>
-							<div class="col-sm-9">
-								<input class="form-control" type="text" id="txtPaterno" name="txtPaterno" readonly />
-							</div>
+					<div class="form-group row m-b-15">
+						<label class="col-sm-3 col-form-label">Paterno</label>
+						<div class="col-sm-9">
+							<input class="form-control" type="text" id="txtPaterno" name="txtPaterno" readonly />
 						</div>
+					</div>
 
-						<div class="form-group row m-b-15">
-							<label class="col-sm-3 col-form-label">Materno</label>
-							<div class="col-sm-9">
-								<input class="form-control" type="text" id="txtMaterno" name="txtMaterno" readonly />
-							</div>
+					<div class="form-group row m-b-15">
+						<label class="col-sm-3 col-form-label">Materno</label>
+						<div class="col-sm-9">
+							<input class="form-control" type="text" id="txtMaterno" name="txtMaterno" readonly />
 						</div>
+					</div>
 
-						<div class="form-group row m-b-15">
-							<label class="col-sm-3 col-form-label">Cargo</label>
-							<div class="col-sm-9">
-								<input class="form-control" type="text" id="txtCargo" name="txtCargo" readonly />
-							</div>
+					<div class="form-group row m-b-15">
+						<label class="col-sm-3 col-form-label">Cargo</label>
+						<div class="col-sm-9">
+							<input class="form-control" type="text" id="txtCargo" name="txtCargo" readonly />
 						</div>
+					</div>
 
-						<div class="form-group row m-b-15">
-							<label class="col-sm-3 col-form-label">Clave de atencion</label>
-							<div class="col-sm-9">
-								<input class="form-control" type="text" id="txtClave" name="txtClave" readonly />
-							</div>
+					<div class="form-group row m-b-15">
+						<label class="col-sm-3 col-form-label">Clave de atencion</label>
+						<div class="col-sm-9">
+							<input class="form-control" type="text" id="txtClave" name="txtClave" readonly />
 						</div>
-
+					</div>
 				</div>
 				<div class="modal-footer">
 					<a href="javascript:;" class="btn ripple btn-dark" data-dismiss="modal">Cerrar</a>
@@ -261,9 +231,7 @@
 								</div>
 							<?php endif; ?>
 
-
             				<legend class="no-border f-w-700 p-b-0 m-t-0 m-b-20 f-s-16 text-inverse">Documentación técnica</legend>
-
 				            <div class="form-group row m-b-10">
 				                <div id="doctos-tecnica" class="col-md-12"></div>
 				            </div>
@@ -278,4 +246,4 @@
 	</div>
 	<!-- Fin Nuevo modal documentos del trámite -->
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\AppServ\www\sircse\resources\views/backend/mis-tramites/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\AppServ\apps\sircse\resources\views/backend/mis-tramites/index.blade.php ENDPATH**/ ?>
