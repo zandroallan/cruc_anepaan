@@ -2,8 +2,8 @@
 <div class="modal fade" id="mdl_dtrtec">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Representante técnico</h4>
+            <div class="modal-header" style="color: #1f5c01; background-color: #ced7df; border-color: #ced7df;">
+                <h4 class="modal-title">Información del representante técnico</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <form id="frmRepresentanteTecnico" name="frmRepresentanteTecnico">
@@ -17,127 +17,131 @@
 
                     <!-- <?php echo Form::hidden('dtrtec_domicilio', 0,['id'=>'dtrtec_domicilio', 'class'=>'form-control gui-input']); ?> -->
 
-                    <h5 class="mb-1 mt-3 tx-gray-700">Datos generales</h5><hr />
-                    <div class="form-group row m-b-15">
-                        <label for="dtrtec_nombre" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Nombre*</label>
-                        <div class="col-md-8">
-                            <?php echo Form::text('dtrtec_nombre', null, ['id'=>'dtrtec_nombre', 'placeholder'=>'',  'class'=>'form-control input-sm']); ?>
 
-                            <div id="el-dtrtec_nombre" class="invalid-feedback lbl-error"></div>
-                        </div>
-                    </div>
-                    <div class="form-group row m-b-15">
-                        <label for="dtrtec_ap_paterno" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">A. paterno*</label>
-                        <div class="col-md-8">
-                            <?php echo Form::text('dtrtec_ap_paterno', null, ['id'=>'dtrtec_ap_paterno', 'placeholder'=>'',  'class'=>'form-control input-sm']); ?>
+                    <ul class="nav nav-success nav-pills" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="tab-rt-1" data-toggle="tab" href="#tbgralrtec">
+                                <span class="nav-icon">
+                                    <b><i class="far fa-user"></i></b>
+                                </span>
+                                <span class="nav-text"><b>Datos generales</b></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="tab-rt-2" data-toggle="tab" href="#tbconst" aria-controls="profile">
+                                <span class="nav-icon">
+                                    <b><i class="fas fa-globe"></i></b>
+                                </span>
+                                <span class="nav-text"><b>Constancia de Representante Técnico (RTEC)</b></span>
+                            </a>
+                        </li>
+                    </ul>
 
-                            <div id="el-dtrtec_ap_paterno" class="invalid-feedback lbl-error"></div>
-                        </div>
-                    </div>
-                    <div class="form-group row m-b-15">
-                        <label for="dtrtec_ap_materno" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">A. materno*</label>
-                        <div class="col-md-8">
-                            <?php echo Form::text('dtrtec_ap_materno', null, ['id'=>'dtrtec_ap_materno', 'placeholder'=>'',  'class'=>'form-control input-sm']); ?>
+                    <div class="tab-content mt-5">
+                        <div class="tab-pane fade show active" id="tbgralrtec" role="tabpanel" aria-labelledby="tab-rt-1">                             
+                            <h5 class="mb-1 mt-3 tx-gray-700">Datos generales</h5><hr />
 
-                            <div id="el-dtrtec_ap_materno" class="invalid-feedback lbl-error"></div>
-                        </div>
-                    </div>
+                            <div class="form-group row">
+                                <div class="col-lg-6">
+                                    <label><b>Nombre:</b></label>
+                                    <?php echo Form::text('dtrtec_nombre', null, ['id'=>'dtrtec_nombre', 'class'=>'form-control inp-udi']); ?>
 
-                    <div class="form-group row m-b-15">
-                        <label for="dtrtec_curp" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Curp*</label>
-                        <div class="col-md-8">
-                            <?php echo Form::text('dtrtec_curp', null, ['id'=>'dtrtec_curp', 'placeholder'=>'',  'class'=>'form-control input-sm']); ?>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label><b>Paterno:</b></label>
+                                    <?php echo Form::text('dtrtec_ap_paterno', null, ['id'=>'dtrtec_ap_paterno', 'class'=>'form-control inp-udi']); ?>
 
-                            <div id="el-dtrtec_curp" class="invalid-feedback lbl-error"></div>
-                            <small class="f-s-12 text-grey-darker">Nota: A este campo es importante pues sirve para validar si el RTEC ya uso su constancia en el año. </small>
-                        </div>
-                    </div>
-
-                    <!-- <div class="form-group row m-b-15">
-                        <label for="dtrtec_rfc" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">R.F.C.</label>
-                        <div class="col-md-8">
-                            <?php echo Form::text('dtrtec_rfc', null, ['id'=>'dtrtec_rfc', 'placeholder'=>'',  'class'=>'form-control input-sm']); ?>
-
-                            <div id="el-dtrtec_rfc" class="invalid-feedback lbl-error"></div>
-                        </div>
-                    </div> -->
-
-                    <div class="form-group row  m-b-15 ">
-                        <label class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Sexo*</label>
-                        <div class="col-md-8">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="dtrtec_sexo" id="dtrtec_sexo_1" value="1" checked>
-                                <label class="form-check-label" for="dtrtec_sexo_1">Hombre</label>
+                                </div>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="dtrtec_sexo" id="dtrtec_sexo_2" value="2">
-                                <label class="form-check-label" for="dtrtec_sexo_2">Mujer</label>
+
+                            <div class="form-group row">
+                                <div class="col-lg-6">
+                                    <label><b>Materno:</b></label>
+                                    <?php echo Form::text('dtrtec_ap_materno', null, ['id'=>'dtrtec_ap_materno', 'class'=>'form-control inp-udi']); ?>
+
+                                </div>
+                                <div class="col-lg-6">
+                                    <label><b>Curp:</b></label>
+                                    <?php echo Form::text('dtrtec_curp', null, ['id'=>'dtrtec_curp', 'class'=>'form-control inp-udi']); ?>
+
+                                </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <h5 class="mb-1 mt-3 tx-gray-700">Constancia de Representante Técnico (RTEC)</h5><hr />
-                    <div class="form-group row m-b-15">
-                        <label for="dtrtec_id_tipo_constancia" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Tipo de constancia*</label>
-                        <div class="col-md-8">
-                            <?php echo Form::select('dtrtec_id_tipo_constancia', [1=>"Propia", 2=>"Ajena"], null, ['id' => 'dtrtec_id_tipo_constancia', 'style'=>'width: 100%;', 'class' => 'default-select2 form-control']); ?>           
-                            <div id="el-dtrtec_id_tipo_constancia" class="invalid-feedback lbl-error"></div>
-                        </div>
-                    </div>
+                            <div class="form-group row">
+                                <div class="col-lg-6">
+                                    <label><b>Sexo:</b></label>
+                                    <div class="radio-inline pt-2">
+                                        <label class="radio radio-rounded">
+                                            <input type="radio" name="dtrtec_sexo" id="dtrtec_sexo_1" value="1" checked />
+                                            <span></span>
+                                            Hombre
+                                        </label>
+                                        <label class="radio radio-rounded">
+                                            <input type="radio" name="dtrtec_sexo" id="dtrtec_sexo_2" value="2" />
+                                            <span></span>
+                                            Mujer
+                                        </label>                                        
+                                    </div>
+                                </div>
+                            </div>
 
-                    <div class="form-group row m-b-15">
-                        <label for="dtrtec_num_constancia" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Número de constancia*</label>
-                        <div class="col-md-8">
-                            <?php echo Form::text('dtrtec_num_constancia', null, ['id'=>'dtrtec_num_constancia', 'placeholder'=>'',  'class'=>'form-control input-sm']); ?>
+                            <div class="form-group row">
+                                <div class="col-lg-12">
+                                    <small>Nota:  El campo  CURP es importante pues sirve para validar si el RTEC ya uso su constancia en el año. </small>
 
-                            <div id="el-dtrtec_num_constancia" class="invalid-feedback lbl-error"></div>
-                        </div>
-                    </div>
-
-                    <div class="form-group row m-b-15">
-                        <label for="dtrtec_reposicion" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Reposición*</label>
-                        <div class="col-md-8">
-                            <?php echo Form::select('dtrtec_reposicion', [0=>"No", 1=>"Si"], null, ['id' => 'dtrtec_reposicion', 'style'=>'width: 100%;', 'class' => 'default-select2 form-control']); ?>          
-                            <div id="el-dtrtec_reposicion" class="invalid-feedback lbl-error"></div>
-                        </div>
-                    </div>
-
-                    <div class="form-group row m-b-15">
-                        <label for="dtrtec_id_profesion" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Profesión*</label>
-                        <div class="col-md-8">
-                            <?php echo Form::select('dtrtec_id_profesion', $profesiones, null, ['id' => 'dtrtec_id_profesion', 'style'=>'width: 100%;', 'class' => 'default-select2 form-control']); ?>
-
-                            <div id="el-dtrtec_id_profesion" class="invalid-feedback lbl-error"></div>
-                        </div>
-                    </div>
-
-                    <div class="form-group row m-b-15">
-                        <label for="dtrtec_id_colegio" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Colegio*</label>
-                        <div class="col-md-8">
-                            <?php echo Form::select('dtrtec_id_colegio', $colegios_rtecs, null, ['id' => 'dtrtec_id_colegio', 'style'=>'width: 100%;', 'class' => 'default-select2 form-control']); ?>
-
-                            <div id="el-dtrtec_id_colegio" class="invalid-feedback lbl-error"></div>
-                        </div>
-                    </div>
-
-                    <div class="form-group row m-b-15">
-                        <label for="dtrtec_cedula" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Cédula profesional*</label>
-                        <div class="col-md-8">
-                            <?php echo Form::text('dtrtec_cedula', null, ['id'=>'dtrtec_cedula', 'placeholder'=>'',  'class'=>'form-control input-sm']); ?>
-
-                            <div id="el-dtrtec_cedula" class="invalid-feedback lbl-error"></div>
-                        </div>
-                    </div>
-                    <div class="form-group row m-b-15">
-                        <label for="dtrtec_fecha_cedula" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Fecha de expedición de cédula*</label>
-                        <div class="col-md-8">
-                            <div class="input-group date">
-                                <?php echo Form::text('dtrtec_fecha_cedula', null, ['id'=>'dtrtec_fecha_cedula', 'placeholder'=>'',  'class'=>'form-control datepicker']); ?>
-
-                                <div id="el-dtrtec_fecha_cedula" class="invalid-feedback lbl-error"></div>
+                                </div>                                
                             </div>
                         </div>
+
+                        <div class="tab-pane fade" id="tbconst" role="tabpanel" aria-labelledby="tab-rt-2">
+                            <h5 class="mb-1 mt-4 tx-gray-700">Constancia</h5><hr />
+
+                            <div class="form-group row">
+                                <div class="col-lg-6">
+                                    <label><b>Tipo de constancia:</b></label>
+                                    <?php echo Form::select('dtrtec_id_tipo_constancia', [1=>"Propia", 2=>"Ajena"], null, ['id' => 'dtrtec_id_tipo_constancia', 'style'=>'width: 100%;', 'class' => 'form-control inp-udi']); ?>  
+                                </div>
+                                <div class="col-lg-6">
+                                    <label><b>Número de constancia:</b></label>
+                                    <?php echo Form::text('dtrtec_num_constancia', null, ['id'=>'dtrtec_num_constancia', 'class'=>'form-control inp-udi']); ?>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-lg-6">
+                                    <label><b>Reposición:</b></label>
+                                    <?php echo Form::select('dtrtec_reposicion', [0=>"No", 1=>"Si"], null, ['id' => 'dtrtec_reposicion', 'style'=>'width: 100%;', 'class' => 'form-control inp-udi']); ?>    
+                                </div>
+                                <div class="col-lg-6">
+                                    <label><b>Profesión:</b></label>
+                                    <?php echo Form::select('dtrtec_id_profesion', $profesiones, null, ['id' => 'dtrtec_id_profesion', 'style'=>'width: 100%;', 'class' => 'form-control inp-udi']); ?>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-lg-6">
+                                    <label><b>Colegio:</b></label>
+                                    <?php echo Form::select('dtrtec_id_colegio', $colegios_rtecs, null, ['id' => 'dtrtec_id_colegio', 'style'=>'width: 100%;', 'class' => 'form-control inp-udi']); ?>    
+                                </div>
+                                <div class="col-lg-6">
+                                    <label><b>Cédula profesional:</b></label>
+                                    <?php echo Form::text('dtrtec_cedula', null, ['id'=>'dtrtec_cedula', 'class'=>'form-control inp-udi']); ?>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-lg-6">
+                                    <label><b>Fecha de expedición de cédula:</b></label>
+                                    <?php echo Form::text('dtrtec_fecha_cedula', null, ['id'=>'dtrtec_fecha_cedula', 'class'=>'form-control inp-udi datepicker']); ?>   
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
+
                 </div>
                 <div class="modal-footer">
                     <a href="javascript:;" class="btn ripple btn-outline-warning" data-dismiss="modal">

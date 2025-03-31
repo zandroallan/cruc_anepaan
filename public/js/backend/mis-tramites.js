@@ -6,20 +6,29 @@ function aceptar_terminos()
         type: "GET",
         url: vuri + '/mis-tramites/condiciones/aceptar',
         success: function(json) {
-           swal({
-                type: 'success',
-                title: 'Confirmación',
-                content: {
-                    element: 'p',
-                    attributes: {
-                        innerHTML: json.msg,
+
+            $.confirm({   
+                icon: 'fa fa-info-circle',
+                title: 'Notificacion !',
+                content: json.msg,
+                type: 'green',       
+                typeAnimated: true,
+                animation: 'zoom',
+                closeAnimation: 'scale',
+                autoClose: 'confirmar|1000',
+                buttons: {
+                    confirmar: {
+                        isHidden: true,                
+                        action: function () {
+                            window.location = vuri + '/mis-tramites/tramite/nuevo';
+                        }
                     },
-                },
-                showConfirmButton: false,
-                timer: 1500
-            }).then(function() {
-                window.location = vuri + '/mis-tramites/tramite/nuevo';
-            });
+                    cancelar: { 
+                        isHidden: true,                
+                        action: function () {}
+                    },
+                }
+            }); 
         },
         error: function(json) {}
     });
