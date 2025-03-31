@@ -1,24 +1,24 @@
-@extends('layouts.backend')
 
-@section('styles')
 
-	<link href="{{ asset('public/dashlead/plugins/datatable/dataTables.bootstrap4.min.css') }}" rel="stylesheet"/>
-	<link href="{{ asset('public/dashlead/plugins/datatable/responsivebootstrap4.min.css') }}" rel="stylesheet"/>
-	<link href="{{ asset('public/dashlead/plugins/datatable/fileexport/buttons.bootstrap4.min.css') }}" rel="stylesheet"/>
+<?php $__env->startSection('styles'); ?>
 
-@endsection
+	<link href="<?php echo e(asset('public/dashlead/plugins/datatable/dataTables.bootstrap4.min.css')); ?>" rel="stylesheet"/>
+	<link href="<?php echo e(asset('public/dashlead/plugins/datatable/responsivebootstrap4.min.css')); ?>" rel="stylesheet"/>
+	<link href="<?php echo e(asset('public/dashlead/plugins/datatable/fileexport/buttons.bootstrap4.min.css')); ?>" rel="stylesheet"/>
 
-@section('js')
+<?php $__env->stopSection(); ?>
 
-    <script src="{{ asset('public/dashlead/plugins/datatable/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('public/dashlead/plugins/datatable/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('public/dashlead/plugins/datatable/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('public/js/backend/general.js') }}"></script>
-    <script src="{{ asset('public/js/backend/mis-tramites.js') }}"></script>
+<?php $__env->startSection('js'); ?>
 
-@endsection
+    <script src="<?php echo e(asset('public/dashlead/plugins/datatable/jquery.dataTables.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('public/dashlead/plugins/datatable/dataTables.bootstrap4.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('public/dashlead/plugins/datatable/dataTables.responsive.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('public/js/backend/general.js')); ?>"></script>
+    <script src="<?php echo e(asset('public/js/backend/mis-tramites.js')); ?>"></script>
 
-@section('buttons')
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('buttons'); ?>
 
 <?php
 	$cierreVentanilla = 0;
@@ -38,74 +38,74 @@
 	else {
     ?>
 
-	@if($tramite_siguiente==1 || $tramite_siguiente==2 || $tramite_siguiente==3)
-		<a href="{{ route($current_route.'.nuevo.tramite') }}" class="btn ripple btn-dark">Nuevo trámite de {!!$lbl_tramite_siguiente !!}</a>
-	@endif
+	<?php if($tramite_siguiente==1 || $tramite_siguiente==2 || $tramite_siguiente==3): ?>
+		<a href="<?php echo e(route($current_route.'.nuevo.tramite')); ?>" class="btn ripple btn-dark">Nuevo trámite de <?php echo $lbl_tramite_siguiente; ?></a>
+	<?php endif; ?>
 
 <?php }?>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('title')
+<?php $__env->startSection('title'); ?>
 	<h2 class="main-content-title tx-24 mg-b-5">Historial de trámites</h2>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('breadcrumb')
-    <li class="breadcrumb-item">{!! html_entity_decode(link_to_route($current_route.'.index', $title, null, [])) !!}</li>
+<?php $__env->startSection('breadcrumb'); ?>
+    <li class="breadcrumb-item"><?php echo html_entity_decode(link_to_route($current_route.'.index', $title, null, [])); ?></li>
     <li class="breadcrumb-item active">Expediente</li>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('script')
-	cargar_mis_tramites({{ $datos->id }});
-@endsection
+<?php $__env->startSection('script'); ?>
+	cargar_mis_tramites(<?php echo e($datos->id); ?>);
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 <style>
 	table.dataTable td {
   		font-size: 12px;
 	}	      
 </style>
-	@include('backend.encabezado')
+	<?php echo $__env->make('backend.encabezado', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 	<div class="row">
 		<div class="col-lg-12">
-			@if( $cierreVentanilla == 1 )
+			<?php if( $cierreVentanilla == 1 ): ?>
 			<div class="alert alert-warning fade show m-b-0">
 				<b>Cierre de Ventanilla:</b>
 				A las y los Contratistas o Supervisores Externos, se les comunica el cierre de la ventanilla, para el trámite y expedición de las constancias de Registro de Contratistas y de Registro Supervisores Externos concluyó el día 07 de Octubre de 2022 hasta nuevo aviso.
 			</div>
-			@endif
+			<?php endif; ?>
 		</div>
 	</div>
 
-	@if($tramite_siguiente!=1 && $tramite_siguiente!=2 && $tramite_siguiente!=3)
-		@if($tramite_siguiente==88)
+	<?php if($tramite_siguiente!=1 && $tramite_siguiente!=2 && $tramite_siguiente!=3): ?>
+		<?php if($tramite_siguiente==88): ?>
 
 			<div class="alert alert-dark mb-0" role="alert">
-			  	<h4 class="alert-heading text-danger"><b>Usted tiene un <strong>"{{ $lbl_tramite_siguiente }}"</strong>.</b></h4>
+			  	<h4 class="alert-heading text-danger"><b>Usted tiene un <strong>"<?php echo e($lbl_tramite_siguiente); ?>"</strong>.</b></h4>
 			  	<p class="text-justify">La Secretaría procederá al análisis de la documentación proporcionada, en caso de que no cumpla con los requisitos aplicables o se le requiera alguna aclaración. La Secretaría prevendrá por una sola vez, para que subsane la omisión u observaciones dentro del término de <b>cinco días hábiles</b>, contados a partir de que haya surtido efectos la notificación; transcurrido el plazo sin que el solicitante desahogue la prevención, se desechará el trámite de la solicitud, pudiendo el interesado solicitar nuevamente el trámite correspondiente.</p>
 			  	<hr>
 			  	<p class="mb-0 text-justify">La Secretaría tendrá por recibida una solicitud y comenzará a correr el plazo de treinta días naturales, para que otorgue o niegue la constancia de inscripción, modificación o actualización en el registro de Contratistas o de Supervisores Externos, cuando el solicitante solvente las observaciones o presente la documentación completa con todos los requisitos.</p>
 			</div>
-		@endif
-		@if($tramite_siguiente==89)
+		<?php endif; ?>
+		<?php if($tramite_siguiente==89): ?>
 			<div class="alert alert-dark mb-0" role="alert">
 			  	<h4 class="alert-heading text-danger"><b>Advertencia</b></h4>
-			  	<p class="text-justify">Usted tiene un <strong>"{{ $lbl_tramite_siguiente }}"</strong>.</p>
+			  	<p class="text-justify">Usted tiene un <strong>"<?php echo e($lbl_tramite_siguiente); ?>"</strong>.</p>
 			</div>
-		@endif
-		@if($tramite_siguiente==90)
+		<?php endif; ?>
+		<?php if($tramite_siguiente==90): ?>
 			<div class="alert alert-dark mb-0" role="alert">
 			  	<h4 class="alert-heading text-danger"><b>Advertencia</b></h4>
-			  	<p class="text-justify">Usted tiene un <strong>"{{ $lbl_tramite_siguiente }}"</strong>.</p>
+			  	<p class="text-justify">Usted tiene un <strong>"<?php echo e($lbl_tramite_siguiente); ?>"</strong>.</p>
 			</div>
-		@endif
-		@if($tramite_siguiente==100)
+		<?php endif; ?>
+		<?php if($tramite_siguiente==100): ?>
 			<div class="alert alert-dark mb-0" role="alert">
 			  	<h4 class="alert-heading text-danger"><b>Advertencia</b></h4>
-			  	<p class="text-justify">Usted tiene un <strong>"{{ $lbl_tramite_siguiente }}"</strong>.</p>
+			  	<p class="text-justify">Usted tiene un <strong>"<?php echo e($lbl_tramite_siguiente); ?>"</strong>.</p>
 			</div>
-		@endif
-	@endif
+		<?php endif; ?>
+	<?php endif; ?>
 
 	<br />
 
@@ -197,7 +197,8 @@
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 				</div>
 				<div class="modal-body">
-					{!! Form::hidden('id_tramite', null,['id'=>'id_tramite', 'class'=>'form-control gui-input']) !!}
+					<?php echo Form::hidden('id_tramite', null,['id'=>'id_tramite', 'class'=>'form-control gui-input']); ?>
+
 
 					<div class="row">
         				<div class="col-md-12">
@@ -211,7 +212,7 @@
 				                <div id="doctos-legal" class="col-md-12"></div>
 				            </div>
 
-							@if($datos->id_sujeto==1)
+							<?php if($datos->id_sujeto==1): ?>
 								<legend class="no-border f-w-700 p-b-0 m-t-0 m-b-20 f-s-16 text-inverse">Documentación financiera</legend>
 								<div  class="col-md-12">
 									<div class="form-group row align-items-center">
@@ -219,16 +220,16 @@
 									</div>
 								</div>
 
-								@if($datos->obligado_dec_isr==1)
+								<?php if($datos->obligado_dec_isr==1): ?>
 				                	<p>Los Suscritos manifestamos, bajo protesta de decir verdad, que la empresa si esta obligada a presentar la Declaración Anual del Impuesto Sobre la Renta.</p>
-				               @else
+				               <?php else: ?>
 				               	<p>Los Suscritos manifestamos, bajo protesta de decir verdad, que la empresa no esta obligada a presentar la Declaración Anual del Impuesto Sobre la Renta.</p>
-				               @endif
+				               <?php endif; ?>
 
 								<div class="form-group row m-b-10">
 									<div id="doctos-financiera" class="col-md-12"></div>
 								</div>
-							@endif
+							<?php endif; ?>
 
             				<legend class="no-border f-w-700 p-b-0 m-t-0 m-b-20 f-s-16 text-inverse">Documentación técnica</legend>
 				            <div class="form-group row m-b-10">
@@ -244,4 +245,5 @@
 		</div>
 	</div>
 	<!-- Fin Nuevo modal documentos del trámite -->
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\AppServ\apps\sircse\resources\views/backend/mis-tramites/index.blade.php ENDPATH**/ ?>
