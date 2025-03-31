@@ -45,7 +45,11 @@
 	<label class="tablabel label7" for="tab7">Contacto</label>
 
 	<section id="content1">
-		<?php echo $__env->make('backend.mis-tramites.tabs-general', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+		<div class="card">
+			<div class="card-body">
+				<?php echo $__env->make('backend.mis-tramites.tabs-general', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>		
+			</div>
+		</div>		
 	</section>
 
 	<section id="content2">
@@ -57,7 +61,11 @@
 	</section>
 
 	<section id="content3">
-		<?php echo $__env->make('backend.mis-tramites.tabs-socios', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+		<div class="card">
+			<div class="card-body">
+				<?php echo $__env->make('backend.mis-tramites.tabs-socios', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+			</div>
+		</div>
 	</section>
 
 	<section id="content4">
@@ -65,14 +73,26 @@
 	</section>
 
 	<section id="content5">
-		<?php echo $__env->make('backend.mis-tramites.tabs-tecnica', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+		<div class="card">
+			<div class="card-body">
+				<?php echo $__env->make('backend.mis-tramites.tabs-tecnica', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+			</div>
+		</div>
 	</section>
 
 	<section id="content6">
-		<?php echo $__env->make('backend.mis-tramites.tabs-financiera', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+		<div class="card">
+			<div class="card-body">
+				<?php echo $__env->make('backend.mis-tramites.tabs-financiera', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+			</div>
+		</div>
 	</section>
 
 	<section id="content7">
-		<?php echo $__env->make('backend.mis-tramites.tabs-contacto', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+		<div class="card">
+			<div class="card-body">
+				<?php echo $__env->make('backend.mis-tramites.tabs-contacto', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+			</div>
+		</div>
 	</section>
 <?php /**PATH C:\AppServ\www\sircse\resources\views/backend/mis-tramites/tabs.blade.php ENDPATH**/ ?>

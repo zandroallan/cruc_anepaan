@@ -45,7 +45,11 @@
 	<label class="tablabel label7" for="tab7">Contacto</label>
 
 	<section id="content1">
-		@include('backend.mis-tramites.tabs-general')
+		<div class="card">
+			<div class="card-body">
+				@include('backend.mis-tramites.tabs-general')		
+			</div>
+		</div>		
 	</section>
 
 	<section id="content2">
@@ -57,7 +61,11 @@
 	</section>
 
 	<section id="content3">
-		@include('backend.mis-tramites.tabs-socios')
+		<div class="card">
+			<div class="card-body">
+				@include('backend.mis-tramites.tabs-socios')
+			</div>
+		</div>
 	</section>
 
 	<section id="content4">
@@ -65,13 +73,25 @@
 	</section>
 
 	<section id="content5">
-		@include('backend.mis-tramites.tabs-tecnica')
+		<div class="card">
+			<div class="card-body">
+				@include('backend.mis-tramites.tabs-tecnica')
+			</div>
+		</div>
 	</section>
 
 	<section id="content6">
-		@include('backend.mis-tramites.tabs-financiera')
+		<div class="card">
+			<div class="card-body">
+				@include('backend.mis-tramites.tabs-financiera')
+			</div>
+		</div>
 	</section>
 
 	<section id="content7">
-		@include('backend.mis-tramites.tabs-contacto')
+		<div class="card">
+			<div class="card-body">
+				@include('backend.mis-tramites.tabs-contacto')
+			</div>
+		</div>
 	</section>

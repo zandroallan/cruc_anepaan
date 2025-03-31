@@ -137,8 +137,8 @@
 		@endsection
 
 		@section('content')
-
-			@include('backend.encabezado')	
+			@include('backend.encabezado')
+			
 
 			@if($terminos == 1)
 			<div class="alert alert-custom alert-dark fade show" role="alert">

@@ -37,37 +37,10 @@
 
 <?php if($datos->id_sujeto==1): ?>
 <h5 class="mb-1 mt-3">Documentación financiera</h5><hr />
-
-<?php
-/*
-<p>
-	Los Suscritos manifestamos, bajo protesta de decir verdad, si la empresa esta obligada a presentar la Declaración Anual del Impuesto Sobre la Renta. motivo por el cual asumimos cualquier responsabilidad administrativa y/o penal derivada de cualquier declaración en falso sobre las mismas
-</p>
-<div  class="col-md-12">
-	<div class="form-group row align-items-center">
-		<label style="display:none" class="col-md-2 col-form-label">
-			Los Suscritos manifestamos, bajo protesta de decir verdad, que la empresa no estamos obligados a presentar la Declaración Anual del Impuesto Sobre la Renta. motivo por el cual asumimos cualquier responsabilidad administrativa y/o penal derivada de cualquier declaración en falso sobre las mismas
-		</label>
-		<div class="col-md-10">
-			<div class="form-check form-check-inline">
-				<input class="form-check-input" type="radio" name="obligado_dec_isr" id="obligado_dec_isr_1" onclick="obligado_dec_isr(<?php echo $id_tipo_tramite; ?>,<?php echo $datos->id; ?>,this.value);" value="1" {{ $chk_obligado_dec_isr_1 }}>
-
-				<label class="form-check-label" for="obligado_dec_isr_1">
-					<span class="badge badge-success">Si</span> estoy obligado a presentar la Declaración Anual del Impuesto Sobre la Renta
-				</label>
-			</div>
-			<div class="form-check form-check-inline">
-				<input class="form-check-input" type="radio" name="obligado_dec_isr" id="obligado_dec_isr_2" onclick="obligado_dec_isr(<?php echo $id_tipo_tramite; ?>, <?php echo $datos->id; ?>,this.value);" value="2" {{ $chk_obligado_dec_isr_2 }}>
-				<label class="form-check-label" for="obligado_dec_isr_2"><span class="badge badge-danger">No</span> estoy obligado a presentar la Declaración Anual del Impuesto Sobre la Renta</label>
-			</div>
-		</div>
+<div class="row p-3">
+	<div class="col-md-12">
+		<div id="doctos-financiera"></div>
 	</div>
-</div>
-*/
-?>
-
-<div class="row m-b-10">
-	<div id="doctos-financiera" class="col-md-12"></div>
 </div>
 <?php endif; ?>
 
