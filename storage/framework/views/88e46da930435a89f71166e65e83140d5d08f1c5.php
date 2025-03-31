@@ -142,11 +142,7 @@
 			
 
 
-<<<<<<< HEAD
-			<div class="alert alert-custom alert-light-dark fade show mb-5" role="alert">
-=======
 			<div class="alert alert-custom alert-dark fade show" role="alert">
->>>>>>> branch_adrian
 			    <div class="alert-icon"><i class="flaticon-warning"></i></div>
 			    <div class="alert-text">
 			    	<h5>Trámite en proceso de <span class="text-primary"><?php echo e($lbl_tramite_siguiente); ?></span>
@@ -191,31 +187,6 @@
 				</div>			
 			</div>
 			<?php else: ?>
-<<<<<<< HEAD
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="accordion accordion-toggle-arrow" id="accordionExample1">
-						<div class="card">
-							<div class="card-header">
-								<div class="card-title" data-toggle="collapse" data-target="#collapseOne1">Informaci&oacute;n importante</div>
-							</div>
-							<div id="collapseOne1" class="collapse" data-parent="#accordionExample1">
-								<div class="alert alert-custom alert-outline-info fade show mb-1" role="alert">
-								    <div class="alert-text">
-								    	<b>Información importante</b><br>
-								    	<p>La Secretaría procederá al análisis de la documentación proporcionada, en caso de que no cumpla con los requisitos aplicables o se le requiera alguna aclaración. La Secretaría prevendrá por una sola vez, para que subsane la omisión u observaciones dentro del término de <b>cinco días hábiles</b>, contados a partir de que haya surtido efectos la notificación; transcurrido el plazo sin que el solicitante desahogue la prevención, se desechará el trámite de la solicitud, pudiendo el interesado solicitar nuevamente el trámite correspondiente.</p>
-										  <hr>
-										  <p class="mb-0">La Secretaría tendrá por recibida una solicitud y comenzará a correr el plazo de treinta días naturales, para que otorgue o niegue la constancia de inscripción, modificación o actualización en el registro de Contratistas o de Supervisores Externos, cuando el solicitante solvente las observaciones o presente la documentación completa con todos los requisitos.</p>
-								    </div>					    
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-=======
->>>>>>> branch_adrian
 			<div class="card card-custom">
 				<div class="card-body">
 					<?php echo $__env->make('backend.mis-tramites.tabs', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
