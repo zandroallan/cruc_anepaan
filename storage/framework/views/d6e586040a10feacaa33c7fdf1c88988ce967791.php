@@ -1,33 +1,23 @@
-<div class="card card-custom gutter-b">
-	<div class="card-body">
-		
-		<div class="example mb-10">			
-			<div class="example-preview">
-				<div class="row">
-		            <div class="col-md-12 form-group text-right">
-						<a href="#" class="btn btn-outline-info btn-sm" data-effect="effect-scale" onclick="modal_socio_legal(0)">
-							<i class="fa fa-save"></i> Agregar socio legal
-						</a> 
-					</div>
-		        </div>
-				<table id="scs_tbl" class="table">
-					<thead id="hdSocio" class="thead-dark">
-						<tr>
-							<th scope="col">#</th>
-							<th scope="col">Nombre</th>
-							<th scope="col">RFC</th>
-							<th scope="col">Correo electrónico</th>
-							<th scope="col"><i class="fa fa-list"></i></th>
-						</tr>
-					</thead>
-					<tbody>						
-					</tbody>
-				</table>
-				
+		<div class="row">
+            <div class="col-md-12 form-group text-right">
+				<a href="#" class="btn btn-outline-info btn-sm" data-effect="effect-scale" onclick="modal_socio_legal(0)">
+					<i class="fa fa-save"></i> Agregar socio legal
+				</a> 
 			</div>
-		</div>
-	</div>
-</div>
+        </div>
+		<table id="scs_tbl" class="table">
+			<thead id="hdSocio" class="thead-dark">
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">RFC</th>
+					<th scope="col">Correo electrónico</th>
+					<th scope="col"><i class="fa fa-list"></i></th>
+				</tr>
+			</thead>
+			<tbody>						
+			</tbody>
+		</table>
 
 
 		<!-- Modal Socios Legales --> 

@@ -137,7 +137,6 @@
 		<?php $__env->stopSection(); ?>
 
 		<?php $__env->startSection('content'); ?>
-
 			<?php echo $__env->make('backend.encabezado', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 			
 

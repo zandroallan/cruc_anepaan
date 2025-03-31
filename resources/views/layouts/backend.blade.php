@@ -75,65 +75,23 @@
 									<!--end::Logo-->
 								</div>
 								<!--end::Left-->
+
+								<?php 
+		                            $id_registro=Auth::User()->id_registro;                     
+		                            $count_obs=0;                                                       
+		                            $ult_tramite=\App\Http\Models\Backend\T_Registro::find($id_registro);
+		                            if($ult_tramite->id_ultimo_tramite!=0)
+		                            {
+		                                $array_o=[];
+		                                $array_o['id_tramite']=$ult_tramite->id_ultimo_tramite;
+		                                $array_o['status_t']=1;
+		                                $total_obs=\App\Http\Models\Backend\T_Tramite_Observacion::totalObservaciones($array_o);
+		                                $count_obs=count($total_obs);
+		                            }
+		                        ?>
+
 								<!--begin::Topbar-->
-								<div class="topbar">
-									<!--begin::Tablet & Mobile Search-->
-									<div class="dropdown d-flex d-lg-none">
-										<!--begin::Toggle-->
-										<div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px">
-											<div class="btn btn-icon btn-lg btn-dropdown mr-1">
-												<span class="svg-icon svg-icon-xl">
-													<!--begin::Svg Icon | path:assets/media/svg/icons/General/Search.svg-->
-													<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-														<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-															<rect x="0" y="0" width="24" height="24" />
-															<path d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
-															<path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z" fill="#000000" fill-rule="nonzero" />
-														</g>
-													</svg>
-													<!--end::Svg Icon-->
-												</span>
-											</div>
-										</div>
-										<!--end::Toggle-->
-										<!--begin::Dropdown-->
-										<div class="dropdown-menu p-0 m-0 dropdown-menu-right dropdown-menu-anim-up dropdown-menu-lg">
-											<div class="quick-search quick-search-dropdown" id="kt_quick_search_dropdown">
-												<!--begin:Form-->
-												<form method="get" class="quick-search-form">
-													<div class="input-group">
-														<div class="input-group-prepend">
-															<span class="input-group-text">
-																<span class="svg-icon svg-icon-lg">
-																	<!--begin::Svg Icon | path:assets/media/svg/icons/General/Search.svg-->
-																	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-																		<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-																			<rect x="0" y="0" width="24" height="24" />
-																			<path d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
-																			<path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z" fill="#000000" fill-rule="nonzero" />
-																		</g>
-																	</svg>
-																	<!--end::Svg Icon-->
-																</span>
-															</span>
-														</div>
-														<input type="text" class="form-control" placeholder="Search..." />
-														<div class="input-group-append">
-															<span class="input-group-text">
-																<i class="quick-search-close ki ki-close icon-sm text-muted"></i>
-															</span>
-														</div>
-													</div>
-												</form>
-												<!--end::Form-->
-												<!--begin::Scroll-->
-												<div class="quick-search-wrapper scroll" data-scroll="true" data-height="325" data-mobile-height="200"></div>
-												<!--end::Scroll-->
-											</div>
-										</div>
-										<!--end::Dropdown-->
-									</div>
-									<!--end::Tablet & Mobile Search-->
+								<div class="topbar">									
 									<!--begin::Notifications-->
 									<div class="dropdown">
 										<!--begin::Toggle-->
@@ -150,20 +108,22 @@
 													</svg>
 													<!--end::Svg Icon-->
 												</span>
+												@if( $count_obs!=0 && $total_obs[0]->id_c_tramites_seguimiento == 2 )
 												<span class="pulse-ring"></span>
+												@endif
 											</div>
 										</div>
 										<!--end::Toggle-->
 										<!--begin::Dropdown-->
 										<div class="dropdown-menu p-0 m-0 dropdown-menu-right dropdown-menu-anim-up dropdown-menu-lg">
-											<form>
+											<form>		
 												<!--begin::Header-->
-												<div class="d-flex flex-column pt-12 bg-dark-o-5 rounded-top">
+												<div class="d-flex flex-column p-6 rounded-top" style="color: #1f5c01; background-color: #ced7df; border-color: #ced7df;">
 													<!--begin::Title-->
-													<h4 class="d-flex flex-center">
-														<span class="text-dark">Notificaticones</span>
-														<span class="btn btn-text btn-success btn-sm font-weight-bold btn-font-md ml-2">23</span>
-													</h4>
+													<h3 class="d-flex flex-center">
+														<span class="text-dark">Notificaciones</span>
+														<hr>
+													</h3>
 													<!--end::Title-->
 													
 												</div>
@@ -174,30 +134,19 @@
 													<div class="tab-pane active show p-8" id="topbar_notifications_notifications" role="tabpanel">
 														<!--begin::Scroll-->
 														<div class="scroll pr-7 mr-n7" data-scroll="true" data-height="300" data-mobile-height="200">
-														
+															
 															<!--begin::Item-->
 															<div class="d-flex align-items-center mb-6">
-																<!--begin::Symbol-->
-																<div class="symbol symbol-40 symbol-light-success mr-5">
-																	<span class="symbol-label">
-																		<span class="svg-icon svg-icon-lg svg-icon-success">
-																			<!--begin::Svg Icon | path:assets/media/svg/icons/Design/Bucket.svg-->
-																			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-																				<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-																					<rect x="0" y="0" width="24" height="24" />
-																					<path d="M5,5 L5,15 C5,15.5948613 5.25970314,16.1290656 5.6719139,16.4954176 C5.71978107,16.5379595 5.76682388,16.5788906 5.81365532,16.6178662 C5.82524933,16.6294602 15,7.45470952 15,7.45470952 C15,6.9962515 15,6.17801499 15,5 L5,5 Z M5,3 L15,3 C16.1045695,3 17,3.8954305 17,5 L17,15 C17,17.209139 15.209139,19 13,19 L7,19 C4.790861,19 3,17.209139 3,15 L3,5 C3,3.8954305 3.8954305,3 5,3 Z" fill="#000000" fill-rule="nonzero" transform="translate(10.000000, 11.000000) rotate(-315.000000) translate(-10.000000, -11.000000)" />
-																					<path d="M20,22 C21.6568542,22 23,20.6568542 23,19 C23,17.8954305 22,16.2287638 20,14 C18,16.2287638 17,17.8954305 17,19 C17,20.6568542 18.3431458,22 20,22 Z" fill="#000000" opacity="0.3" />
-																				</g>
-																			</svg>
-																			<!--end::Svg Icon-->
-																		</span>
-																	</span>
-																</div>
-																<!--end::Symbol-->
 																<!--begin::Text-->
 																<div class="d-flex flex-column font-weight-bold">
-																	<a href="#" class="text-dark text-hover-primary mb-1 font-size-lg">Financiera</a>
-																	<span class="text-muted">Web Design &amp; Development</span>
+																	<a href="#" class="text-dark text-hover-primary mb-1 font-size-lg">Información importante:</a>
+																	<p class="text-muted text-justify">
+						                                                @if( $count_obs!=0 && $total_obs[0]->id_c_tramites_seguimiento == 2 )
+						                                                    Le informamos que su trámite presenta <strong>{!! $count_obs !!} observaciones</strong>, las cuales requieren de su atención inmediata. Es imprescindible que estas observaciones sean atendidas a la mayor brevedad posible, ya que de no ser así, podría verse afectado el progreso de su trámite. Agradecemos su comprensión y colaboración para asegurar la correcta continuación del proceso.
+						                                                @else
+						                                                    En este momento, no se han generado notificaciones relacionadas con su trámite. Le informaremos de cualquier actualización o avance relevante en cuanto se disponga de nueva información.
+						                                                @endif
+						                                            </p>
 																</div>
 																<!--end::Text-->
 															</div>
@@ -206,18 +155,11 @@
 														<!--end::Scroll-->
 														<!--begin::Action-->
 														<div class="d-flex flex-center pt-7">
-															<a href="#" class="btn btn-light-primary font-weight-bold text-center">Ver todas</a>
+															@if( $count_obs!=0 && $total_obs[0]->id_c_tramites_seguimiento == 2 )
+															<a href="{{ Route('mis-observaciones.index')}}" class="btn btn-light-primary font-weight-bold text-center">Ver observaciones</a>
+															@endif
 														</div>
 														<!--end::Action-->
-													</div>
-													<!--end::Tabpane-->
-													
-													<!--begin::Tabpane-->
-													<div class="tab-pane" id="topbar_notifications_logs" role="tabpanel">
-														<!--begin::Nav-->
-														<div class="d-flex flex-center text-center text-muted min-h-200px">All caught up!
-														<br />No new notifications.</div>
-														<!--end::Nav-->
 													</div>
 													<!--end::Tabpane-->
 												</div>
@@ -228,40 +170,44 @@
 									</div>
 									<!--end::Notifications-->
 								
-									<!--begin::User-->
 									<div class="topbar-item">
-										<div class="btn btn-icon w-auto d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
+										<div class="btn btn-icon w-auto d-flex align-items-center btn-lg px-2" data-toggle="dropdown" data-offset="0px,1px" aria-haspopup="true" aria-expanded="false">
 											<div class="d-flex text-right pr-3">
 												<span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">{{ Auth::User()->name }}</span>
 											</div>
 											<span class="symbol symbol-35">
-												<span class="symbol-label font-size-h5 font-weight-bold text-white bg-white-o-15">S</span>
+												<span class="symbol-label font-size-h5 font-weight-bold text-white bg-white-o-15">{{ substr(Auth::user()->name, 0, 1) }}</span>
 											</span>
 										</div>
+
+										<div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-left">
+											<ul class="navi navi-hover py-5">
+												<li class="navi-item">
+													<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="navi-link">
+														<span class="navi-icon">
+															<span class="svg-icon svg-icon-primary svg-icon-2x"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+															    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+															        <mask fill="white">
+															            <use xlink:href="#path-1"/>
+															        </mask>
+															        <g/>
+															        <path d="M7,10 L7,8 C7,5.23857625 9.23857625,3 12,3 C14.7614237,3 17,5.23857625 17,8 L17,10 L18,10 C19.1045695,10 20,10.8954305 20,12 L20,18 C20,19.1045695 19.1045695,20 18,20 L6,20 C4.8954305,20 4,19.1045695 4,18 L4,12 C4,10.8954305 4.8954305,10 6,10 L7,10 Z M12,5 C10.3431458,5 9,6.34314575 9,8 L9,10 L15,10 L15,8 C15,6.34314575 13.6568542,5 12,5 Z" fill="#000000"/>
+															    </g>
+															</svg></span>
+														</span>
+														<span class="navi-text pl-3">Cerrar sesión</span>
+													</a>
+
+													<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+									                    @csrf
+									                </form>
+												</li>																								
+											</ul>
+										</div>
 									</div>
-									<!--end::User-->
 								</div>
-								<!--end::Topbar-->
 							</div>
-							<!--end::Container-->
 						</div>
-						
-
-						<?php 
-                            $id_registro=Auth::User()->id_registro;                     
-                            $count_obs=0;                                                       
-                            $ult_tramite=\App\Http\Models\Backend\T_Registro::find($id_registro);
-                            if($ult_tramite->id_ultimo_tramite!=0)
-                            {
-                                $array_o=[];
-                                $array_o['id_tramite']=$ult_tramite->id_ultimo_tramite;
-                                $array_o['status_t']=1;
-                                $total_obs=\App\Http\Models\Backend\T_Tramite_Observacion::totalObservaciones($array_o);
-                                $count_obs=count($total_obs);
-                            }
-                        ?>
-
-
 
 						<div class="header-bottom">
 							<!--begin::Container-->
@@ -323,48 +269,7 @@
 									</div>
 									<!--end::Header Menu-->
 								</div>
-								<!--end::Header Menu Wrapper-->
-								<!--begin::Desktop Search-->
-								<div class="d-none d-lg-flex align-items-center">
-									<div class="quick-search quick-search-inline ml-4 w-250px" id="kt_quick_search_inline">
-										<!--begin::Form-->
-										<form method="get" class="quick-search-form">
-											<div class="input-group rounded">
-												<div class="input-group-prepend">
-													<span class="input-group-text">
-														<span class="svg-icon svg-icon-lg">
-															<!--begin::Svg Icon | path:assets/media/svg/icons/General/Search.svg-->
-															<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-																<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-																	<rect x="0" y="0" width="24" height="24" />
-																	<path d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
-																	<path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z" fill="#000000" fill-rule="nonzero" />
-																</g>
-															</svg>
-															<!--end::Svg Icon-->
-														</span>
-													</span>
-												</div>
-												<input type="text" class="form-control h-40px" placeholder="Search..." />
-												<div class="input-group-append">
-													<span class="input-group-text">
-														<i class="quick-search-close ki ki-close icon-sm"></i>
-													</span>
-												</div>
-											</div>
-										</form>
-										<!--end::Form-->
-										<!--begin::Search Toggle-->
-										<div id="kt_quick_search_toggle" data-toggle="dropdown" data-offset="0px,0px"></div>
-										<!--end::Search Toggle-->
-										<!--begin::Dropdown-->
-										<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg dropdown-menu-anim-up">
-											<div class="quick-search-wrapper scroll" data-scroll="true" data-height="350" data-mobile-height="200"></div>
-										</div>
-										<!--end::Dropdown-->
-									</div>
-								</div>
-								<!--end::Desktop Search-->
+								<!--end::Header Menu Wrapper-->								
 							</div>
 							<!--end::Container-->
 						</div>
@@ -427,6 +332,50 @@
 				<!--end::Wrapper-->
 			</div>
 			<!--end::Page-->
+
+			<div class="modal fade" id="mdlAtencion">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="width: 640px;">
+                        <div class="modal-header"  style="color: #1f5c01; background-color: #ced7df; border-color: #ced7df;">
+                            <h4 class="modal-title">Atenci&oacute;n Telef&oacute;nica</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-center">
+                                <b style="font-size: 18px;">Secretaría Anticorrupción y Buen Gobierno</b><br>
+                                Blvd. los Castillos No. 410, Fracc. Montes Azules, C.P. 29056 Tuxtla Gutiérrez, Chiapas.
+                            </p>
+
+                            <p class="text-center">
+                                <b style="font-size: 15px;">Coordinación de Verificación de la Supervisión Externa de la Obra Pública Estatal</b>                       
+                            </p>
+
+                            <p class="text-center">
+                                <b style="font-size: 18px;">SIRCSE</b><br>
+                                Servicio de Informaci&oacute;n Telef&oacute;nica
+                            </p>
+                            <hr>
+                            <p class="text-center">
+                                <b style="font-size: 15px;">&Aacute;rea Legal</b><br>
+                                Conmutador: 961 61 87530, ext. 22022
+                            </p>
+
+                            <p class="text-center">
+                                <b style="font-size: 15px;">&Aacute;rea Financiera</b><br>
+                                Conmutador: 961 61 87530, ext. 22351
+                            </p>
+
+                            <p class="text-center">
+                                <b style="font-size: 15px;">&Aacute;rea T&eacute;cnica</b><br>
+                                Conmutador: 961 61 87530, ext. 22232
+                            </p>                        
+                        </div>
+                        <div class="modal-footer">
+                            <a href="javascript:;" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 		</div>
 		<!--end::Main-->
 		
