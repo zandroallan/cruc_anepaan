@@ -138,8 +138,7 @@
 
 		<?php $__env->startSection('content'); ?>
 
-			<?php echo $__env->make('backend.encabezado', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-			
+			<?php echo $__env->make('backend.encabezado', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>	
 
 			<?php if($terminos == 1): ?>
 			<div class="alert alert-custom alert-dark fade show" role="alert">

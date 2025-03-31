@@ -55,7 +55,11 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('script'); ?>
+
+	$('._inicio').addClass('menu-item-active');
 	cargar_mis_tramites(<?php echo e($datos->id); ?>);
+
+
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -246,4 +250,7 @@
 	</div>
 	<!-- Fin Nuevo modal documentos del trámite -->
 <?php $__env->stopSection(); ?>
+
+
+
 <?php echo $__env->make('layouts.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\AppServ\www\sircse\resources\views/backend/mis-tramites/index.blade.php ENDPATH**/ ?>

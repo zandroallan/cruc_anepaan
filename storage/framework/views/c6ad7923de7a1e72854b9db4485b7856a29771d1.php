@@ -53,7 +53,9 @@
 
 	<?php $__env->startSection('script'); ?>
 		
-		console.log(<?php echo e($datos->id_ultimo_tramite); ?>);
+
+		console.log('Ultimo tramite'+ <?php echo e($datos->id_ultimo_tramite); ?>);
+		$('._observaciones').addClass('menu-item-active');
 		cargar_mis_observaciones(<?php echo e($datos->id_ultimo_tramite); ?>);	
 
 		var avisoEnvioSolventacion ="Los Archivos han sido cargados, a continuación proceda a enviar las solventaciones,";

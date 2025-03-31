@@ -1,5 +1,0 @@
-<<<<<<< HEAD:storage/framework/sessions/cQ88UbAuUO7RonMb6zWZPSnuOlDUDBiIt03oRR1O
-a:5:{s:6:"_token";s:40:"d3Qhw2ZlEFE3XV5KbuKXlSylGutZQHt2CIvqhGYr";s:3:"url";a:1:{s:8:"intended";s:50:"http://localhost/sircse/mis-tramites/tramite/nuevo";}s:9:"_previous";a:1:{s:3:"url";s:36:"http://localhost/sircse/mis-tramites";}s:6:"_flash";a:2:{s:3:"old";a:0:{}s:3:"new";a:0:{}}s:50:"login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d";i:1543;}
-=======
-a:5:{s:6:"_token";s:40:"epKXVp1vdaJZz9ZnOVQBkWbAmVbQCfk7PWB7LRnh";s:3:"url";a:1:{s:8:"intended";s:50:"http://localhost/sircse/mis-tramites/tramite/nuevo";}s:9:"_previous";a:1:{s:3:"url";s:50:"http://localhost/sircse/mis-tramites/tramite/nuevo";}s:6:"_flash";a:2:{s:3:"old";a:0:{}s:3:"new";a:0:{}}s:50:"login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d";i:353;}
->>>>>>> d447a71677e0c480c8b9b638e71f35d6e547c077:storage/framework/sessions/LTU6fCs7qItqpyuAZSL0CYnZsDiO3mceqfan6BLC

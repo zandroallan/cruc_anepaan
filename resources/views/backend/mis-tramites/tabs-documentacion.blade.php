@@ -1,29 +1,37 @@
 <div id="documentacion_areas_spinner">
 
-<h4 class="m-t-10">Expedición de la Constancia de {!! $lbl_tramite_siguiente !!} en el Registro de {{$lbl_contratista_supervisor}}.</h4>
+<h4 class="m-t-10">Documentación para la Constancia de <span class="text-primary">{!! $lbl_tramite_siguiente !!}</span> en el Registro de {{$lbl_contratista_supervisor}}.</h4>
 
-<div class="row">
-	<div class="col-md-12">
-		<p class="text-primary"><b>Notas:</b></p>
-		<div class="activity-block">
-			<ul class="task-list">
-				<li>
-					<i class="task-icon bg-secondary"></i>
-					<h6>Los documentos presentados deben ser legibles para evitar ser observados. El tamaño maximo de <b>cada archivo no debe sobrepasar los 40mb</b>. Los archivos deben ser subidos en formato <b>PDF</b>.</h6>					
-				</li>
-				<li>
-					<i class="task-icon bg-secondary"></i>
-					<h6>Derivado de los cambios del <b>SAT</b>: En su declaración ISR 2022, adjuntar al final de su declaración, el total de fojas que integra el <b>Concepto Estados Financieros</b>, presentada ante el SAT en un solo PDF.</h6>
-				</li>														
-			</ul>
-		</div>
+
+
+<div class="alert alert-custom alert-light-dark fade show mb-10" role="alert">
+	<div class="alert-icon">
+		<span class="svg-icon svg-icon-3x svg-icon-dark">
+			<!--begin::Svg Icon | path:assets/media/svg/icons/Code/Info-circle.svg-->
+			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+				<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+					<rect x="0" y="0" width="24" height="24"></rect>
+					<circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10"></circle>
+					<rect fill="#000000" x="11" y="10" width="2" height="7" rx="1"></rect>
+					<rect fill="#000000" x="11" y="7" width="2" height="2" rx="1"></rect>
+				</g>
+			</svg>
+			<!--end::Svg Icon-->
+		</span>
+	</div>
+	<div class="alert-text font-weight-bold">
+		<h6>
+			<span class="label label-dot label-dark"></span>
+			Los documentos presentados deben ser legibles para evitar ser observados, el tamaño maximo de <b>cada archivo no debe sobrepasar los 40mb</b>. Los archivos deben ser subidos en formato <b>PDF</b>.
+		</h6>
 	</div>
 </div>
 
 
 
+
 <h5 class="mb-1 mt-3">Documentación legal</h5><hr />
-<div class="form-group row m-b-10">
+<div class="row m-b-10">
     <div id="doctos-legal" class="col-md-12"></div>
 </div>
 
@@ -58,7 +66,7 @@
 */
 ?>
 
-<div class="form-group row m-b-10">
+<div class="row m-b-10">
 	<div id="doctos-financiera" class="col-md-12"></div>
 </div>
 @endif
@@ -88,7 +96,7 @@
 	<p><b>(OP)</b>: En caso de pretender acreditar especialidades adicionales la empresa contratista o el representante técnico.</p>
 </div>
 @endif
-<div class="form-group row m-b-10">
+<div class="row m-b-10">
     <div id="doctos-tecnica" class="col-md-12"></div>
 </div>
 

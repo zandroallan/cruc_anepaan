@@ -29,6 +29,8 @@
 	<?php $__env->stopSection(); ?>
 
 	<?php $__env->startSection('script'); ?>
+
+		$('._formatos').addClass('menu-item-active');
 		cargarTabla();
 		
 	<?php $__env->stopSection(); ?>

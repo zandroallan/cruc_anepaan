@@ -261,8 +261,6 @@
                             }
                         ?>
 
-
-
 						<div class="header-bottom">
 							<!--begin::Container-->
 							<div class="container">
@@ -278,22 +276,21 @@
 												</a>
 											</li> -->
 
-
-					                        <li class="menu-item menu-item-active" aria-haspopup="true">
+					                        <li class="menu-item _inicio" aria-haspopup="true">
 					                            <a class="menu-link" href="<?php echo e(route('mis-tramites.index')); ?>">
 					                                <span class="menu-text">
 					                                	<i class="fe fe-airplay"></i> Inicio
 					                                </span>
 					                            </a>
 					                        </li>
-					                        <li class="menu-item">
+					                        <li class="menu-item _avance_tramite">
 					                            <a class="menu-link" href="<?php echo e(Route('tramites.seguimientos')); ?>">
 					                            	<span class="menu-text">
 					                            		<i class="fa fa-rch"></i> Avance Trámite
 						                            </span>
 					                            </a>
 					                        </li>                        
-					                        <li class="menu-item">
+					                        <li class="menu-item _observaciones">
 					                            <a class="menu-link" href="<?php echo e(Route('mis-observaciones.index')); ?>">
 					                            	<span class="menu-text">
 						                                <?php if( $count_obs!=0 && $total_obs[0]->id_c_tramites_seguimiento == 2 ): ?>
@@ -303,14 +300,14 @@
 						                            </span>
 					                            </a>                                
 					                        </li>
-					                        <li class="menu-item">
+					                        <li class="menu-item _formatos">
 					                            <a class="menu-link" href="<?php echo e(Route('descargas-f.index')); ?>">
 					                            	<span class="menu-text">
 						                            	<i class="fe fe-file-text"></i> Formatos
 						                            </span>
 					                            </a>                    
 					                        </li>
-					                        <li class="menu-item">
+					                        <li class="menu-item _atencion_telefonica">
 					                            <a class="menu-link" href="#mdlAtencion" data-toggle="modal">
 					                            	<span class="menu-text">
 						                            	<i class="fe fe-phone-call"></i> Atencion telefonica
@@ -454,7 +451,6 @@
 		<script src="<?php echo e(asset('public/assets/plugins/global/plugins.bundle.js')); ?>"></script>
 		<script src="<?php echo e(asset('public/assets/plugins/custom/prismjs/prismjs.bundle.js')); ?>"></script>
 		<script src="<?php echo e(asset('public/assets/js/scripts.bundle.js')); ?>"></script>
-
 		<script src="<?php echo e(asset('public/assets/plugins/confirm/js/jquery-confirm.js')); ?>"></script>
 
 	
@@ -466,7 +462,9 @@
 
             $(document).ready(
             	function () {
+
                 	<?php echo $__env->yieldContent('script'); ?>
+
             	}
             );
         </script>

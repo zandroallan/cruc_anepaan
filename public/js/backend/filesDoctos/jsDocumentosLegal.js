@@ -2,7 +2,7 @@ function cargar_documentacion_requerida_legal(id_tipo_tramite, id_area, id_regis
     let url = project_name + "/listas/documentacion-requerida/" + id_tipo_tramite + "/registro/" + id_registro + "/area/" + id_area;
     $.get(url, function (data, textStatus) {
        
-        let str= '<ol>';
+        let str= '<ol class="mi-lista">';
         $.each(data, function (i, valor) {
             var strTooltip='';
 

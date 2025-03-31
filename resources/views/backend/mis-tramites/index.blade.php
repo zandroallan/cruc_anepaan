@@ -55,7 +55,11 @@
 @endsection
 
 @section('script')
+
+	$('._inicio').addClass('menu-item-active');
 	cargar_mis_tramites({{ $datos->id }});
+
+
 @endsection
 
 @section('content')
@@ -245,3 +249,5 @@
 	</div>
 	<!-- Fin Nuevo modal documentos del trámite -->
 @endsection
+
+

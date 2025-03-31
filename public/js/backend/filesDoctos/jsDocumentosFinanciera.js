@@ -1,7 +1,7 @@
 function cargar_documentacion_requerida_financiera(id_tipo_tramite, id_area, id_registro, obligado_dec_isr) {
     let url = project_name + "/listas/documentacion-requerida/" + id_tipo_tramite + "/registro/" + id_registro + "/area-financiera/" + obligado_dec_isr;
     $.get(url, function(data, textStatus) {
-        let str = '<ol>';
+        let str = '<ol class="mi-lista">';
         $.each(data, function(i, valor) {
             var strTooltip = '';
             let objeto = '';

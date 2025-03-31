@@ -29,6 +29,8 @@
 	@endsection
 
 	@section('script')
+
+		$('._formatos').addClass('menu-item-active');
 		cargarTabla();
 		
 	@endsection
