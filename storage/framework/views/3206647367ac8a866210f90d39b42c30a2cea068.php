@@ -60,4 +60,4 @@
         </div>
     </body>
 </html>
-<?php /**PATH C:\AppServ\apps\sircse\resources\views/errors/minimal.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\AppServ\www\sircse\resources\views/errors/minimal.blade.php ENDPATH**/ ?>

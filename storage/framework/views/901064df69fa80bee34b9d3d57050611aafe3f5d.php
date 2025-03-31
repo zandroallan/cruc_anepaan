@@ -69,4 +69,4 @@
 	<section id="content7">
 		<?php echo $__env->make('backend.mis-tramites.tabs-contacto', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 	</section>
-<?php /**PATH C:\AppServ\apps\sircse\resources\views/backend/mis-tramites/tabs.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\AppServ\www\sircse\resources\views/backend/mis-tramites/tabs.blade.php ENDPATH**/ ?>

@@ -141,7 +141,7 @@
 			<?php echo $__env->make('backend.encabezado', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 			
 
-
+			<?php if($terminos == 1): ?>
 			<div class="alert alert-custom alert-dark fade show" role="alert">
 			    <div class="alert-icon"><i class="flaticon-warning"></i></div>
 			    <div class="alert-text">
@@ -150,6 +150,7 @@
 					<strong style="color: #ed8b00"><i class="fe fe-info"></i> Advertencia!</strong> Este tramite aun no ha sido enviado.</h5>
 				</div>			    
 			</div>	
+			<?php endif; ?>
 
 			<?php if( $cierreVentanilla == 1 ): ?>
 			<div class="alert alert-custom alert-outline-2x alert-outline-dark fade show mb-5" role="alert">
@@ -195,4 +196,4 @@
 			<?php endif; ?>
 
 		<?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\AppServ\apps\sircse\resources\views/backend/mis-tramites/nuevo-tramite.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\AppServ\www\sircse\resources\views/backend/mis-tramites/nuevo-tramite.blade.php ENDPATH**/ ?>

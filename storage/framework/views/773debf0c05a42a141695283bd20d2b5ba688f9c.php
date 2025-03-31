@@ -246,4 +246,4 @@
 	</div>
 	<!-- Fin Nuevo modal documentos del trámite -->
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\AppServ\apps\sircse\resources\views/backend/mis-tramites/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\AppServ\www\sircse\resources\views/backend/mis-tramites/index.blade.php ENDPATH**/ ?>

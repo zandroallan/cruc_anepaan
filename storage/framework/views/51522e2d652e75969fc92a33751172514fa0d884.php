@@ -7,12 +7,15 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <form id="frmRepresentanteTecnico" name="frmRepresentanteTecnico">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
                 <div class="modal-body">
-                    {!! Form::hidden('dtrtec_id', 0,['id'=>'dtrtec_id', 'class'=>'form-control gui-input']) !!}
-                    {!! Form::hidden('dtrtec_id_tramite', $datos->id,['id'=>'dtrtec_id_tramite', 'class'=>'form-control gui-input']) !!}
-                    {!! Form::hidden('dtrtec_id_d_personal', 0,['id'=>'dtrtec_id_d_personal', 'class'=>'form-control gui-input']) !!}
-                    <!-- {!! Form::hidden('dtrtec_domicilio', 0,['id'=>'dtrtec_domicilio', 'class'=>'form-control gui-input']) !!} -->
+                    <?php echo Form::hidden('dtrtec_id', 0,['id'=>'dtrtec_id', 'class'=>'form-control gui-input']); ?>
+
+                    <?php echo Form::hidden('dtrtec_id_tramite', $datos->id,['id'=>'dtrtec_id_tramite', 'class'=>'form-control gui-input']); ?>
+
+                    <?php echo Form::hidden('dtrtec_id_d_personal', 0,['id'=>'dtrtec_id_d_personal', 'class'=>'form-control gui-input']); ?>
+
+                    <!-- <?php echo Form::hidden('dtrtec_domicilio', 0,['id'=>'dtrtec_domicilio', 'class'=>'form-control gui-input']); ?> -->
 
 
                     <ul class="nav nav-success nav-pills" role="tablist">
@@ -41,22 +44,26 @@
                             <div class="form-group row">
                                 <div class="col-lg-6">
                                     <label><b>Nombre:</b></label>
-                                    {!! Form::text('dtrtec_nombre', null, ['id'=>'dtrtec_nombre', 'class'=>'form-control inp-udi']) !!}
+                                    <?php echo Form::text('dtrtec_nombre', null, ['id'=>'dtrtec_nombre', 'class'=>'form-control inp-udi']); ?>
+
                                 </div>
                                 <div class="col-lg-6">
                                     <label><b>Paterno:</b></label>
-                                    {!! Form::text('dtrtec_ap_paterno', null, ['id'=>'dtrtec_ap_paterno', 'class'=>'form-control inp-udi']) !!}
+                                    <?php echo Form::text('dtrtec_ap_paterno', null, ['id'=>'dtrtec_ap_paterno', 'class'=>'form-control inp-udi']); ?>
+
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <div class="col-lg-6">
                                     <label><b>Materno:</b></label>
-                                    {!! Form::text('dtrtec_ap_materno', null, ['id'=>'dtrtec_ap_materno', 'class'=>'form-control inp-udi']) !!}
+                                    <?php echo Form::text('dtrtec_ap_materno', null, ['id'=>'dtrtec_ap_materno', 'class'=>'form-control inp-udi']); ?>
+
                                 </div>
                                 <div class="col-lg-6">
                                     <label><b>Curp:</b></label>
-                                    {!! Form::text('dtrtec_curp', null, ['id'=>'dtrtec_curp', 'class'=>'form-control inp-udi']) !!}
+                                    <?php echo Form::text('dtrtec_curp', null, ['id'=>'dtrtec_curp', 'class'=>'form-control inp-udi']); ?>
+
                                 </div>
                             </div>
 
@@ -92,40 +99,43 @@
                             <div class="form-group row">
                                 <div class="col-lg-6">
                                     <label><b>Tipo de constancia:</b></label>
-                                    {!! Form::select('dtrtec_id_tipo_constancia', [1=>"Propia", 2=>"Ajena"], null, ['id' => 'dtrtec_id_tipo_constancia', 'style'=>'width: 100%;', 'class' => 'form-control inp-udi']) !!}  
+                                    <?php echo Form::select('dtrtec_id_tipo_constancia', [1=>"Propia", 2=>"Ajena"], null, ['id' => 'dtrtec_id_tipo_constancia', 'style'=>'width: 100%;', 'class' => 'form-control inp-udi']); ?>  
                                 </div>
                                 <div class="col-lg-6">
                                     <label><b>Número de constancia:</b></label>
-                                    {!! Form::text('dtrtec_num_constancia', null, ['id'=>'dtrtec_num_constancia', 'class'=>'form-control inp-udi']) !!}
+                                    <?php echo Form::text('dtrtec_num_constancia', null, ['id'=>'dtrtec_num_constancia', 'class'=>'form-control inp-udi']); ?>
+
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <div class="col-lg-6">
                                     <label><b>Reposición:</b></label>
-                                    {!! Form::select('dtrtec_reposicion', [0=>"No", 1=>"Si"], null, ['id' => 'dtrtec_reposicion', 'style'=>'width: 100%;', 'class' => 'form-control inp-udi']) !!}    
+                                    <?php echo Form::select('dtrtec_reposicion', [0=>"No", 1=>"Si"], null, ['id' => 'dtrtec_reposicion', 'style'=>'width: 100%;', 'class' => 'form-control inp-udi']); ?>    
                                 </div>
                                 <div class="col-lg-6">
                                     <label><b>Profesión:</b></label>
-                                    {!! Form::select('dtrtec_id_profesion', $profesiones, null, ['id' => 'dtrtec_id_profesion', 'style'=>'width: 100%;', 'class' => 'form-control inp-udi']) !!}
+                                    <?php echo Form::select('dtrtec_id_profesion', $profesiones, null, ['id' => 'dtrtec_id_profesion', 'style'=>'width: 100%;', 'class' => 'form-control inp-udi']); ?>
+
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <div class="col-lg-6">
                                     <label><b>Colegio:</b></label>
-                                    {!! Form::select('dtrtec_id_colegio', $colegios_rtecs, null, ['id' => 'dtrtec_id_colegio', 'style'=>'width: 100%;', 'class' => 'form-control inp-udi']) !!}    
+                                    <?php echo Form::select('dtrtec_id_colegio', $colegios_rtecs, null, ['id' => 'dtrtec_id_colegio', 'style'=>'width: 100%;', 'class' => 'form-control inp-udi']); ?>    
                                 </div>
                                 <div class="col-lg-6">
                                     <label><b>Cédula profesional:</b></label>
-                                    {!! Form::text('dtrtec_cedula', null, ['id'=>'dtrtec_cedula', 'class'=>'form-control inp-udi']) !!}
+                                    <?php echo Form::text('dtrtec_cedula', null, ['id'=>'dtrtec_cedula', 'class'=>'form-control inp-udi']); ?>
+
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <div class="col-lg-6">
                                     <label><b>Fecha de expedición de cédula:</b></label>
-                                    {!! Form::text('dtrtec_fecha_cedula', null, ['id'=>'dtrtec_fecha_cedula', 'class'=>'form-control inp-udi datepicker']) !!}   
+                                    <?php echo Form::text('dtrtec_fecha_cedula', null, ['id'=>'dtrtec_fecha_cedula', 'class'=>'form-control inp-udi datepicker']); ?>   
                                 </div>
                             </div>
 
@@ -144,4 +154,4 @@
             </form>  
         </div>
     </div>
-</div>                          
+</div>                          <?php /**PATH C:\AppServ\www\sircse\resources\views/backend/mis-tramites/mdl_rep_tec.blade.php ENDPATH**/ ?>

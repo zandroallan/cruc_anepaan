@@ -237,4 +237,4 @@
 			</div>
 		</div>
 
-		<!-- Fin Modal Socios Legales --> <?php /**PATH C:\AppServ\apps\sircse\resources\views/backend/mis-tramites/form-socios.blade.php ENDPATH**/ ?>
+		<!-- Fin Modal Socios Legales --> <?php /**PATH C:\AppServ\www\sircse\resources\views/backend/mis-tramites/form-socios.blade.php ENDPATH**/ ?>
