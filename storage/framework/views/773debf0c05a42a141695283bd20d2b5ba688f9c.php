@@ -50,12 +50,19 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('breadcrumb'); ?>
-    <li class="breadcrumb-item"><?php echo html_entity_decode(link_to_route($current_route.'.index', $title, null, [])); ?></li>
-    <li class="breadcrumb-item active">Expediente</li>
+
+	<h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5"><?php echo html_entity_decode(link_to_route($current_route.'.index', $title, null, [])); ?></h5>	
+	<div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>
+	<span class="text-muted font-weight-bold mr-4">Expediente</span>
+
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('script'); ?>
+
+	$('._inicio').addClass('menu-item-active');
 	cargar_mis_tramites(<?php echo e($datos->id); ?>);
+
+
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -246,4 +253,7 @@
 	</div>
 	<!-- Fin Nuevo modal documentos del trámite -->
 <?php $__env->stopSection(); ?>
+
+
+
 <?php echo $__env->make('layouts.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\AppServ\www\sircse\resources\views/backend/mis-tramites/index.blade.php ENDPATH**/ ?>

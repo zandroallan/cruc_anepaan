@@ -47,13 +47,18 @@
 	@endsection
 
 	@section('breadcrumb')
-	    <li class="breadcrumb-item">{!! html_entity_decode(link_to_route($current_route.'.index', $title, null, [])) !!}</li>
-	    <li class="breadcrumb-item active">Observaciones</li>
+
+		<h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">{!! html_entity_decode(link_to_route($current_route.'.index', $title, null, [])) !!}</h5>	
+		<div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>
+		<span class="text-muted font-weight-bold mr-4">Observaciones</span>
+
 	@endsection
 
 	@section('script')
 		
-		console.log({{ $datos->id_ultimo_tramite }});
+
+		console.log('Ultimo tramite'+ {{ $datos->id_ultimo_tramite }});
+		$('._observaciones').addClass('menu-item-active');
 		cargar_mis_observaciones({{ $datos->id_ultimo_tramite }});	
 
 		var avisoEnvioSolventacion ="Los Archivos han sido cargados, a continuación proceda a enviar las solventaciones,";

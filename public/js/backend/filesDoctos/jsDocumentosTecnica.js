@@ -1,7 +1,7 @@
 function cargar_documentacion_requerida_tecnica(id_tipo_tramite, id_area, id_registro, tec_acredita_tmp){
     let url = project_name + "/listas/documentacion-requerida/" + id_tipo_tramite + "/registro/" + id_registro + "/area-tecnica/" + tec_acredita_tmp;
     $.get(url, function (data, textStatus) {
-        let str= '<ol>';
+        let str= '<ol class="mi-lista">';
         $.each(data, function (i, valor) {
             var strTooltip='';
             if(valor.nota!='' && valor.nota!=null)

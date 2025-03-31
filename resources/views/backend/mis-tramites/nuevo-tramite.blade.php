@@ -137,7 +137,6 @@
 		@endsection
 
 		@section('content')
-
 			@include('backend.encabezado')
 			
 
