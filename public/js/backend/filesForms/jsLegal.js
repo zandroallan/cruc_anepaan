@@ -14,7 +14,7 @@ function cargar_socios_legales(id_tramite) {
         }
 
         $.each(data, function(i, valor) {
-            body += '<tr>' + '<td>' + j + '</td>' + '<td>' + valor.nombre + " " + valor.ap_paterno + " " + valor.ap_materno + '</td>' + '<td>' + valor.rfc + '</td>' + '<td>' + valor.correo_electronico + '</td>' + '<td class="text-center">' + '<a onclick="modal_socio_legal(' + valor.id + ');" class="btn btn-default btn-icon btn-circle"><i class="fa fa-pen"></i></a>' + '<a onclick="eliminar_socio_legal(' + valor.id + ');" class="btn btn-default btn-icon btn-circle"><i class="fa fa-trash"></i></a>' + '</td>' + '</tr>';
+            body += '<tr>' + '<td>' + j + '</td>' + '<td>' + valor.nombre + " " + valor.ap_paterno + " " + valor.ap_materno + '</td>' + '<td>' + valor.rfc + '</td>' + '<td>' + valor.correo_electronico + '</td>' + '<td class="text-center">' + '<a onclick="modal_socio_legal(' + valor.id + ');" class="btn btn-icon btn-outline-primary btn-circle btn-sm mr-2"><i class="fa fa-pen"></i></a>' + '<a onclick="eliminar_socio_legal(' + valor.id + ');" class="btn btn-icon btn-outline-danger btn-circle btn-sm mr-2"><i class="fa fa-trash"></i></a>' + '</td>' + '</tr>';
             j++;
             if(!status)
             {
@@ -72,6 +72,7 @@ function modal_socio_legal(id) {
     get_socio_legal(id);
     $("#mdl_dlscs").modal();
 }
+
 $('#dlscs_frm').on('submit', function(e) {
     var el = $('#dlscs_frm');
     e.preventDefault();
@@ -84,22 +85,30 @@ $('#dlscs_frm').on('submit', function(e) {
         contentType: false,
         success: function(json) {
             messages_validation(json.data, false);
-            swal({
-                type: 'success',
-                title: 'Confirmación',
-                icon: 'success',
-                content: {
-                    element: 'p',
-                    attributes: {
-                        innerHTML: json.msg,
+
+             $.confirm({   
+                icon: 'fa fa-info-circle',
+                title: 'Notificacion !',
+                content: json.msg,
+                type: 'green',       
+                typeAnimated: true,
+                animation: 'zoom',
+                closeAnimation: 'scale',
+                autoClose: 'confirmar|1000',
+                buttons: {
+                    confirmar: {
+                        isHidden: true,                
+                        action: function () {
+                            cargar_socios_legales(json.data.id_registro_temp);
+                            $("#mdl_dlscs").modal("toggle");
+                        }
                     },
-                },
-                showConfirmButton: false,
-                timer: 1500
-            }).then(function() {
-                cargar_socios_legales(json.data.id_registro_temp);
-                $("#mdl_dlscs").modal("toggle");
-            });
+                    cancelar: { 
+                        isHidden: true,                
+                        action: function () {}
+                    },
+                }
+            }); 
         },
         error: function(json) {
             var jsonString = json.responseJSON;
@@ -135,34 +144,32 @@ $('#dlscs_frm').on('submit', function(e) {
 });
 
 function eliminar_socio_legal(id) {
-    swal({
-        title: 'Advertencia!',
-        text: "Esta seguro de eliminar este registro ?",
-        icon: "warning",
+    $.confirm({   
+        icon: 'fa fa-warning',
+        title: 'Confirmar !',
+        content: 'Esta seguro de eliminar el socio legal ?',
+        type: 'dark',       
+        typeAnimated: true,
+        confirmButton: 'Yes i agree',
+        cancelButton: 'NO never !',             
         buttons: {
-            cancel: {
-                text: 'Cancelar',
-                value: false,
-                visible: true,
-                className: 'btn btn-default',
-                closeModal: true,
+            confirmar: function () {
+                var url = $('#socios_frm_destroy').attr('action');
+                url = url.replace(/\/[^\/]*$/, '/' + id)
+                $('#socios_frm_destroy').attr('action', url).submit();
             },
-            confirm: {
-                text: 'Confirmar',
-                value: true,
-                visible: true,
-                className: 'btn btn-primary',
-                closeModal: true
-            }
-        }
-    }).then((result) => {
-        if (result) {
-            var url = $('#socios_frm_destroy').attr('action');
-            url = url.replace(/\/[^\/]*$/, '/' + id)
-            $('#socios_frm_destroy').attr('action', url).submit();
-        }
-    });
+            cancelar: function () {
+                
+            }           
+        },      
+        animation: 'zoom',
+        closeAnimation: 'scale'     
+    }); 
+    
 }
+
+
+
 $('#socios_frm_destroy').on('submit', function(e) {
     var el = $('#socios_frm_destroy');
     e.preventDefault();
@@ -171,22 +178,30 @@ $('#socios_frm_destroy').on('submit', function(e) {
         url: el.attr('action'),
         data: $(this).serialize(),
         success: function(json) {
-            swal({
-                icon: 'success',
-                title: 'Exito',
-                content: {
-                    element: 'p',
-                    attributes: {
-                        innerHTML: json.success,
+            $.confirm({   
+                icon: 'fa fa-info-circle',
+                title: 'Notificacion !',
+                content: 'Socio legal eliminado correctamente',
+                type: 'green',       
+                typeAnimated: true,
+                animation: 'zoom',
+                closeAnimation: 'scale',
+                autoClose: 'confirmar|1000',
+                buttons: {
+                    confirmar: {
+                        isHidden: true,                
+                        action: function () {
+                            var url = $('#socios_frm_destroy').attr('action');
+                            url = url.replace(/\/[^\/]*$/, '/0');
+                            $('#socios_frm_destroy').attr('action', url);
+                            cargar_socios_legales(json.id_tramite);
+                        }
                     },
-                },
-                showConfirmButton: false,
-                timer: 1500
-            }).then(function() {
-                var url = $('#socios_frm_destroy').attr('action');
-                url = url.replace(/\/[^\/]*$/, '/0');
-                $('#socios_frm_destroy').attr('action', url);
-                cargar_socios_legales(json.id_tramite);
+                    cancelar: { 
+                        isHidden: true,                
+                        action: function () {}
+                    },
+                }
             });
         },
         error: function(json) {

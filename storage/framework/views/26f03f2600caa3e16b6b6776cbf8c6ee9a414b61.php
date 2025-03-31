@@ -10,17 +10,17 @@
 
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 		
-		<link rel="stylesheet" href="{{asset('public/assets/plugins/global/plugins.bundle.css')}}">
-		<link rel="stylesheet" href="{{asset('public/assets/plugins/custom/prismjs/prismjs.bundle.css')}}">
-		<link rel="stylesheet" href="{{asset('public/assets/css/style.bundle.css')}}">
+		<link rel="stylesheet" href="<?php echo e(asset('public/assets/plugins/global/plugins.bundle.css')); ?>">
+		<link rel="stylesheet" href="<?php echo e(asset('public/assets/plugins/custom/prismjs/prismjs.bundle.css')); ?>">
+		<link rel="stylesheet" href="<?php echo e(asset('public/assets/css/style.bundle.css')); ?>">
 
-		<link rel="stylesheet" href="{{asset('public/css/cssHeader.css')}}">
+		<link rel="stylesheet" href="<?php echo e(asset('public/css/cssHeader.css')); ?>">
 
-		<link rel="stylesheet" href="{{asset('public/assets/plugins/confirm/css/jquery-confirm.css')}}">
+		<link rel="stylesheet" href="<?php echo e(asset('public/assets/plugins/confirm/css/jquery-confirm.css')); ?>">
 		
-		<link rel="shortcut icon" href="{{ asset('public/assets/media/logos/favicon.ico') }}">
+		<link rel="shortcut icon" href="<?php echo e(asset('public/assets/media/logos/favicon.ico')); ?>">
 
-		@yield('styles')
+		<?php echo $__env->yieldContent('styles'); ?>
 	</head>
 	<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled page-loading">
 		<!--begin::Main-->
@@ -29,7 +29,7 @@
 			<div class="d-flex align-items-center">
 				<!--begin::Logo-->
 				<a href="#" class="mr-7">
-					<img alt="Logo" src="{{asset('public/img2/saybg_blanco.png')}}" class="max-h-30px" />
+					<img alt="Logo" src="<?php echo e(asset('public/img2/saybg_blanco.png')); ?>" class="max-h-30px" />
 				</a>
 				<!--end::Logo-->				
 			</div>
@@ -70,7 +70,7 @@
 								<div class="d-none d-lg-flex align-items-center mr-3">
 									<!--begin::Logo-->
 									<a href="#" class="mr-10">
-										<img alt="Logo" src="{{asset('public/img2/saybg_blanco.png')}}" class="max-h-65px" />
+										<img alt="Logo" src="<?php echo e(asset('public/img2/saybg_blanco.png')); ?>" class="max-h-65px" />
 									</a>
 									<!--end::Logo-->
 								</div>
@@ -232,7 +232,7 @@
 									<div class="topbar-item">
 										<div class="btn btn-icon w-auto d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
 											<div class="d-flex text-right pr-3">
-												<span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">{{ Auth::User()->name }}</span>
+												<span class="text-white font-weight-bolder font-size-sm d-none d-md-inline"><?php echo e(Auth::User()->name); ?></span>
 											</div>
 											<span class="symbol symbol-35">
 												<span class="symbol-label font-size-h5 font-weight-bold text-white bg-white-o-15">S</span>
@@ -280,31 +280,31 @@
 
 
 					                        <li class="menu-item menu-item-active" aria-haspopup="true">
-					                            <a class="menu-link" href="{{ route('mis-tramites.index') }}">
+					                            <a class="menu-link" href="<?php echo e(route('mis-tramites.index')); ?>">
 					                                <span class="menu-text">
 					                                	<i class="fe fe-airplay"></i> Inicio
 					                                </span>
 					                            </a>
 					                        </li>
 					                        <li class="menu-item">
-					                            <a class="menu-link" href="{{ Route('tramites.seguimientos')}}">
+					                            <a class="menu-link" href="<?php echo e(Route('tramites.seguimientos')); ?>">
 					                            	<span class="menu-text">
 					                            		<i class="fa fa-rch"></i> Avance Trámite
 						                            </span>
 					                            </a>
 					                        </li>                        
 					                        <li class="menu-item">
-					                            <a class="menu-link" href="{{ Route('mis-observaciones.index')}}">
+					                            <a class="menu-link" href="<?php echo e(Route('mis-observaciones.index')); ?>">
 					                            	<span class="menu-text">
-						                                @if( $count_obs!=0 && $total_obs[0]->id_c_tramites_seguimiento == 2 )
-						                                	<span class="badge pull-right">{!! $count_obs !!}</span>
-						                                @endif
+						                                <?php if( $count_obs!=0 && $total_obs[0]->id_c_tramites_seguimiento == 2 ): ?>
+						                                	<span class="badge pull-right"><?php echo $count_obs; ?></span>
+						                                <?php endif; ?>
 						                                <i class="fe fe-eye"></i> Observaciones
 						                            </span>
 					                            </a>                                
 					                        </li>
 					                        <li class="menu-item">
-					                            <a class="menu-link" href="{{ Route('descargas-f.index')}}">
+					                            <a class="menu-link" href="<?php echo e(Route('descargas-f.index')); ?>">
 					                            	<span class="menu-text">
 						                            	<i class="fe fe-file-text"></i> Formatos
 						                            </span>
@@ -378,12 +378,12 @@
 							<div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
 								<!--begin::Info-->
 								<div class="d-flex align-items-center flex-wrap mr-2">
-									@yield('breadcrumb')
+									<?php echo $__env->yieldContent('breadcrumb'); ?>
 								</div>
 								<!--end::Info-->
 								<!--begin::Toolbar-->
 								<div class="d-flex align-items-center flex-wrap">
-									@yield('buttons')
+									<?php echo $__env->yieldContent('buttons'); ?>
 								</div>
 								<!--end::Toolbar-->
 							</div>
@@ -394,7 +394,7 @@
 							<!--begin::Container-->
 							<div class="container">
 								<!--begin::content-->
-								@yield('content')
+								<?php echo $__env->yieldContent('content'); ?>
 								<!--end::content-->
 							</div>
 							<!--end::Container-->
@@ -451,14 +451,14 @@
 		<!--end::Global Config-->
 
 		<!--begin::Global Theme Bundle(used by all pages)-->
-		<script src="{{asset('public/assets/plugins/global/plugins.bundle.js')}}"></script>
-		<script src="{{asset('public/assets/plugins/custom/prismjs/prismjs.bundle.js')}}"></script>
-		<script src="{{asset('public/assets/js/scripts.bundle.js')}}"></script>
+		<script src="<?php echo e(asset('public/assets/plugins/global/plugins.bundle.js')); ?>"></script>
+		<script src="<?php echo e(asset('public/assets/plugins/custom/prismjs/prismjs.bundle.js')); ?>"></script>
+		<script src="<?php echo e(asset('public/assets/js/scripts.bundle.js')); ?>"></script>
 
-		<script src="{{asset('public/assets/plugins/confirm/js/jquery-confirm.js')}}"></script>
+		<script src="<?php echo e(asset('public/assets/plugins/confirm/js/jquery-confirm.js')); ?>"></script>
 
 	
-		@yield('js')
+		<?php echo $__env->yieldContent('js'); ?>
       
         <script type="text/javascript">
             var project_name= "/sircse";
@@ -466,11 +466,11 @@
 
             $(document).ready(
             	function () {
-                	@yield('script')
+                	<?php echo $__env->yieldContent('script'); ?>
             	}
             );
         </script>
 	
 	</body>
 	<!--end::Body-->
-</html>
+</html><?php /**PATH C:\AppServ\www\sircse\resources\views/layouts/backend.blade.php ENDPATH**/ ?>

@@ -43,29 +43,30 @@
 
 
 	<section id="content1">
-		@include('backend.mis-tramites.tabs-general')
+		<?php echo $__env->make('backend.mis-tramites.tabs-general', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 	</section>
 
 	<section id="content2">
-		@include('backend.mis-tramites.tabs-documentacion')
+		<?php echo $__env->make('backend.mis-tramites.tabs-documentacion', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 	</section>
 
 	<section id="content3">
-		@include('backend.mis-tramites.tabs-socios')
+		<?php echo $__env->make('backend.mis-tramites.tabs-socios', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 	</section>
 
 	<section id="content4">
-		@include('backend.mis-tramites.tabs-legal')
+		<?php echo $__env->make('backend.mis-tramites.tabs-legal', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 	</section>
 
 	<section id="content5">
-		@include('backend.mis-tramites.tabs-tecnica')
+		<?php echo $__env->make('backend.mis-tramites.tabs-tecnica', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 	</section>
 
 	<section id="content6">
-		@include('backend.mis-tramites.tabs-financiera')
+		<?php echo $__env->make('backend.mis-tramites.tabs-financiera', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 	</section>
 
 	<section id="content7">
-		@include('backend.mis-tramites.tabs-contacto')
+		<?php echo $__env->make('backend.mis-tramites.tabs-contacto', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 	</section>
+<?php /**PATH C:\AppServ\www\sircse\resources\views/backend/mis-tramites/tabs.blade.php ENDPATH**/ ?>

@@ -1,4 +1,4 @@
-<div class="card card-flush pb-0 bgi-position-y-center bgi-no-repeat mb-2" style="background-size: auto calc(100% + 10rem); background-position-x: 100%; background-image: url('{{ asset('public/img2/fondo_encabezado.png') }}');">
+<div class="card card-flush pb-0 bgi-position-y-center bgi-no-repeat mb-2" style="background-size: auto calc(100% + 10rem); background-position-x: 100%; background-image: url('<?php echo e(asset('public/img2/fondo_encabezado.png')); ?>');">
 
     <div class="card-header pt-10 pb-10">
         <div class="d-flex align-items-center">
@@ -15,15 +15,16 @@
             </div>
 
             <div class="d-flex flex-column">
-                <h2 class="mb-1">{{ $datos->razon_social_o_nombre }}</h2>
+                <h2 class="mb-1"><?php echo e($datos->razon_social_o_nombre); ?></h2>
                 <div class="text-muted fw-bold">
-                    <a href="#">@if($datos->id_sujeto==1) CONTRATISTA @else SUPERVISOR @endif</a> <span class="mx-3">|</span>
-                    <a href="#">Persona @if($datos->id_tipo_persona==1) física @else moral @endif</a> <span class="mx-3">|</span>
-                    <a href="#">R.F.C. {{ $datos->rfc }}</a> <span class="mx-3">|</span>
-                    <a href="#">Telefono {{ $datos->telefono }}</a> <span class="mx-3">|</span>
-                    <a href="#">Correo {{ $datos->email }}</a>
+                    <a href="#"><?php if($datos->id_sujeto==1): ?> CONTRATISTA <?php else: ?> SUPERVISOR <?php endif; ?></a> <span class="mx-3">|</span>
+                    <a href="#">Persona <?php if($datos->id_tipo_persona==1): ?> física <?php else: ?> moral <?php endif; ?></a> <span class="mx-3">|</span>
+                    <a href="#">R.F.C. <?php echo e($datos->rfc); ?></a> <span class="mx-3">|</span>
+                    <a href="#">Telefono <?php echo e($datos->telefono); ?></a> <span class="mx-3">|</span>
+                    <a href="#">Correo <?php echo e($datos->email); ?></a>
                 </div> 
             </div>
         </div>
     </div>
 </div>
+<?php /**PATH C:\AppServ\www\sircse\resources\views/backend/encabezado.blade.php ENDPATH**/ ?>
