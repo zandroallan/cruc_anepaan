@@ -77,146 +77,139 @@
 										?>
 
 
-<div class="row">										
-	<div class="col-md-6">
-		<div class="flex-grow-1 card-spacer-x">
-			<div class="d-flex align-items-center justify-content-between mb-10">
-				<div class="d-flex align-items-center mr-2">
-					<div class="symbol symbol-50 symbol-light mr-3 flex-shrink-0">
-						<div class="symbol-label">
-							<i class="icon-xl fas fa-gavel"></i>
-						</div>
-					</div>
-					<div>
-						<a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">
-							Estatus área legal
-						</a>
-						<div class="font-size-sm text-muted font-weight-bold mt-1">
-							<span class="badge badge-<?php echo $datosTramite->status_legal_color; ?>" style="display: inline; color: #fff;">
-								<?php echo $datosTramite->status_legal; ?>
+									<div class="row">										
+										<div class="col-md-6">
+											<div class="flex-grow-1 card-spacer-x">
+												<div class="d-flex align-items-center justify-content-between mb-10">
+													<div class="d-flex align-items-center mr-2">
+														<div class="symbol symbol-50 symbol-light mr-3 flex-shrink-0">
+															<div class="symbol-label">
+																<i class="icon-xl fas fa-gavel"></i>
+															</div>
+														</div>
+														<div>
+															<a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">
+																Estatus área legal
+															</a>
+															<div class="font-size-sm text-muted font-weight-bold mt-1">
+																<span class="badge badge-<?php echo $datosTramite->status_legal_color; ?>" style="display: inline; color: #fff;">
+																	<?php echo $datosTramite->status_legal; ?>
 
-							</span> 
-						</div>
-					</div>
-				</div>
-			</div>
-			<?php if( $datosTramite->id_sujeto_tramite != 2 ): ?>
-			<div class="d-flex align-items-center justify-content-between mb-10">
-				<div class="d-flex align-items-center mr-2">
-					<div class="symbol symbol-50 symbol-light mr-3 flex-shrink-0">
-						<div class="symbol-label">
-							<i class="icon-xl fas fa-dollar-sign"></i>
-						</div>
-					</div>
-					<div>
-						<a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">
-							Estatus área financiera
-						</a>
-						<div class="font-size-sm text-muted font-weight-bold mt-1">
-							<span class="badge badge-<?php echo $datosTramite->status_financiera_color; ?>" style="display: inline; color: #fff;">
-								<?php echo $datosTramite->status_financiera; ?>
+																</span> 
+															</div>
+														</div>
+													</div>
+												</div>
+												<?php if( $datosTramite->id_sujeto_tramite != 2 ): ?>
+												<div class="d-flex align-items-center justify-content-between mb-10">
+													<div class="d-flex align-items-center mr-2">
+														<div class="symbol symbol-50 symbol-light mr-3 flex-shrink-0">
+															<div class="symbol-label">
+																<i class="icon-xl fas fa-dollar-sign"></i>
+															</div>
+														</div>
+														<div>
+															<a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">
+																Estatus área financiera
+															</a>
+															<div class="font-size-sm text-muted font-weight-bold mt-1">
+																<span class="badge badge-<?php echo $datosTramite->status_financiera_color; ?>" style="display: inline; color: #fff;">
+																	<?php echo $datosTramite->status_financiera; ?>
 
-							</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<?php endif; ?>
-			<div class="d-flex align-items-center justify-content-between">
-				<div class="d-flex align-items-center mr-2">
-					<div class="symbol symbol-50 symbol-light mr-3 flex-shrink-0">
-						<div class="symbol-label">
-							<i class="icon-xl fas fa-hard-hat"></i>
-						</div>
-					</div>
-					<div>
-						<a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">
-							Estatus área técnica
-						</a>
-						<div class="font-size-sm text-muted font-weight-bold mt-1">
-							<span class="badge badge-<?php echo $datosTramite->status_tecnica_color; ?>" style="display: inline; color: #fff;">
-								<?php echo $datosTramite->status_tecnica; ?>
+																</span>
+															</div>
+														</div>
+													</div>
+												</div>
+												<?php endif; ?>
+												<div class="d-flex align-items-center justify-content-between">
+													<div class="d-flex align-items-center mr-2">
+														<div class="symbol symbol-50 symbol-light mr-3 flex-shrink-0">
+															<div class="symbol-label">
+																<i class="icon-xl fas fa-hard-hat"></i>
+															</div>
+														</div>
+														<div>
+															<a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">
+																Estatus área técnica
+															</a>
+															<div class="font-size-sm text-muted font-weight-bold mt-1">
+																<span class="badge badge-<?php echo $datosTramite->status_tecnica_color; ?>" style="display: inline; color: #fff;">
+																	<?php echo $datosTramite->status_tecnica; ?>
 
-							</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-6">
-		<div class="flex-grow-1 card-spacer-x">
-			<div class="d-flex align-items-center justify-content-between mb-10">
-				<div class="d-flex align-items-center mr-2">
-					<div class="symbol symbol-50 symbol-light mr-3 flex-shrink-0">
-						<div class="symbol-label">
-							<i class="icon-xl fas fa-chart-line"></i>
-						</div>
-					</div>
-					<div>
-						<a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">
-							Estatus general del trámite
-						</a>
-						<div class="font-size-sm text-muted font-weight-bold mt-1">
-							<span class="badge badge-<?php echo $datosTramite->status_legal_color; ?>" style="display: inline; color: #fff;">
-								<?php echo $folio; ?>
+																</span>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="flex-grow-1 card-spacer-x">
+												<div class="d-flex align-items-center justify-content-between mb-10">
+													<div class="d-flex align-items-center mr-2">
+														<div class="symbol symbol-50 symbol-light mr-3 flex-shrink-0">
+															<div class="symbol-label">
+																<i class="icon-xl fas fa-chart-line"></i>
+															</div>
+														</div>
+														<div>
+															<a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">
+																Estatus general del trámite
+															</a>
+															<div class="font-size-sm text-muted font-weight-bold mt-1">
+																<span class="badge badge-<?php echo $datosTramite->status_legal_color; ?>" style="display: inline; color: #fff;">
+																	<?php echo $folio; ?>
 
-							</span> 
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="d-flex align-items-center justify-content-between mb-10">
-				<div class="d-flex align-items-center mr-2">
-					<div class="symbol symbol-50 symbol-light mr-3 flex-shrink-0">
-						<div class="symbol-label">
-							<i class="icon-xl fas fa-calendar"></i>
-						</div>
-					</div>
-					<div>
-						<a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">
-							Fecha de inicio del tramite
-						</a>
-						<div class="font-size-sm text-muted font-weight-bold mt-1">
-							<span class="badge badge-<?php echo $datosTramite->status_financiera_color; ?>" style="display: inline; color: #fff;">
-								<?php echo $datosTramite->fecha_inicio; ?>
+																</span> 
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="d-flex align-items-center justify-content-between mb-10">
+													<div class="d-flex align-items-center mr-2">
+														<div class="symbol symbol-50 symbol-light mr-3 flex-shrink-0">
+															<div class="symbol-label">
+																<i class="icon-xl fas fa-calendar"></i>
+															</div>
+														</div>
+														<div>
+															<a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">
+																Fecha de inicio del tramite
+															</a>
+															<div class="font-size-sm text-muted font-weight-bold mt-1">
+																<span class="badge badge-<?php echo $datosTramite->status_financiera_color; ?>" style="display: inline; color: #fff;">
+																	<?php echo $datosTramite->fecha_inicio; ?>
 
-							</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="d-flex align-items-center justify-content-between">
-				<div class="d-flex align-items-center mr-2">
-					<div class="symbol symbol-50 symbol-light mr-3 flex-shrink-0">
-						<div class="symbol-label">
-							<i class="icon-xl fas fa-coins"></i>
-						</div>
-					</div>
-					<div>
-						<a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">
-							Capital contable
-						</a>
-						<div class="font-size-sm text-muted font-weight-bold mt-1">
-							<span class="badge badge-<?php echo $datosTramite->status_tecnica_color; ?>" style="display: inline; color: #fff;">
-								div>ACTUAL &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php echo $vcp; ?></div>
-							</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-
-
-
-
-
-
-
+																</span>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="d-flex align-items-center justify-content-between">
+													<div class="d-flex align-items-center mr-2">
+														<div class="symbol symbol-50 symbol-light mr-3 flex-shrink-0">
+															<div class="symbol-label">
+																<i class="icon-xl fas fa-coins"></i>
+															</div>
+														</div>
+														<div>
+															<a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">
+																Capital contable
+															</a>
+															<div class="font-size-sm text-muted font-weight-bold mt-1">
+																<span class="badge badge-<?php echo $datosTramite->status_tecnica_color; ?>" style="display: inline; color: #fff;">
+																	div>ACTUAL &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php echo $vcp; ?></div>
+																</span>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
+
+
 									<hr />
 									<div class="tab-pane fade" role="tabpanel" id="tab2rev">
 										<?php

@@ -1,4 +1,26 @@
 var _id_tramites_documentacion=0;
+
+FilePond.registerPlugin(
+    
+    // encodes the file as base64 data
+  FilePondPluginFileEncode,
+    
+    // validates the size of the file
+    FilePondPluginFileValidateSize,
+    
+    // corrects mobile image orientation
+    FilePondPluginImageExifOrientation,
+    
+    // previews dropped images
+  FilePondPluginImagePreview
+);
+
+// Select the file input and use create() to turn it into a pond
+FilePond.create(
+    document.querySelector('input')
+);
+
+
 $(document).ready(function() {
     
     $('#btnterminarSolventacion').attr('onclick', 'store_end()');
@@ -168,7 +190,7 @@ function cargarInputs(id_documento, tipo=0, alias=0)
         vhtml+='    <div class="form-group row m-b-15">';
         vhtml+='        <label for="alias" class="col-form-label col-md-3" style="font-size: 12px">Nombre Cuenta</label>';
         vhtml+='        <div class="col-md-9">';
-        vhtml+='            <input type="text" id="alias" name="alias" class="form-control">';
+        vhtml+='            <input type="text" id="alias" name="alias" class="form-control filepond">';
         vhtml+='        </div>';
         vhtml+='    </div>';
     }
@@ -182,7 +204,7 @@ function cargarInputs(id_documento, tipo=0, alias=0)
             vhtml+='    <div class="form-group row m-b-15">';
             vhtml+='        <label for="file_documento-'+ key +'" class="col-form-label col-md-3" style="font-size: 12px">'+ vtextoArray +'</label>';
             vhtml+='        <div class="col-md-9">';
-            vhtml+='            <input type="file" id="file_documento-'+ key +'" name="file_documento['+ key +']" class="form-control">';
+            vhtml+='            <input type="file" id="file_documento-'+ key +'" name="file_documento['+ key +']" class="form-control filepond">';
             vhtml+='        </div>';
             vhtml+='    </div>';
         }
@@ -194,7 +216,7 @@ function cargarInputs(id_documento, tipo=0, alias=0)
         vhtml+='    <div class="form-group row m-b-15">';
         vhtml+='        <label for="id_documento" class="col-form-label col-md-3" style="font-size: 15px">Solventacion *</label>';
         vhtml+='        <div class="col-md-9">';
-        vhtml+='            <input type="file" id="file_documento" name="file_documento" class="form-control">';
+        vhtml+='            <input type="file" id="file_documento" name="file_documento" class="form-control filepond">';
         vhtml+='            <div id="el-archivosubido" class="invalid-feedback lbl-error"></div>';
         vhtml+='        </div>';
         vhtml+='    </div>';
