@@ -203,10 +203,9 @@ function cargar_mis_tramites(id_cs)
         url: project_name + "/mis-tramites/expediente/" + id_cs,
         dataType: "JSON",
         success: function(vresponse, vtextStatus, vjqXHR) {
-
             var vhtml ='';
-                vhtml+='<table class="table table-hover table-bordered">';
-                vhtml+='    <thead class="bg-thead">';
+                vhtml+='<table id="mis-observaciones" class="table table-bordered table-checkable dataTable no-footer dtr-inline">';
+                vhtml+='    <thead class="thead-dark head-dark">';
                 vhtml+='        <tr>';
                 vhtml+='            <th>#</th>';
                 vhtml+='            <th>FOLIO</th>';

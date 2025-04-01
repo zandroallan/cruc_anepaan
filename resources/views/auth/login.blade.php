@@ -1,174 +1,226 @@
-@extends('layouts.login')
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style type="text/css">
+        body {
+            color: #000;
+            overflow-x: hidden;
+            height: 100%;
+            background-color: #B0BEC5;
+            background-repeat: no-repeat;
+        }
 
-@section('content')
-    <br>
-	<div class="container">
-		<div class="row">
-		    <div class="col-md-12 text-center" id="logo">
-                <img src="public/img2/sircse.png" width="220px">
-            </div>
-		    <!-- <div class="col-md-12 text-center" id="texto"><h1>Bienvenidos</h1></div> -->
-		</div>	
-	</div>	
+        .card0 {
+            box-shadow: 0px 4px 8px 0px #757575;
+            border-radius: 0px;
+        }
 
-    <br />
-    <div class="login login-v1">
-        <!-- begin login-container -->
-        <div class="login-container">
-                                            
-            <!-- begin login-body -->
-            <div class="login-body">
-                <!-- begin login-content -->
-                <div class="login-content">
-                    <div class="row">
-                        <div class="col-md-12 text-center" id="texto"><h1>Bienvenidos</h1></div>
+        .card2 {
+            margin: 0px 40px;
+        }
+
+        .logo {
+            width: 200px;
+            height: 100px;
+            margin-top: 20px;
+            margin-left: 35px;
+        }
+
+        .image {
+            width: 360px;
+            height: 280px;
+        }
+
+        .border-line {
+            border-right: 1px solid #EEEEEE;
+        }
+
+        .facebook {
+            background-color: #3b5998;
+            color: #fff;
+            font-size: 18px;
+            padding-top: 5px;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+        }
+
+        .twitter {
+            background-color: #1DA1F2;
+            color: #fff;
+            font-size: 18px;
+            padding-top: 5px;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+        }
+
+        .linkedin {
+            background-color: #2867B2;
+            color: #fff;
+            font-size: 18px;
+            padding-top: 5px;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+        }
+
+        .line {
+            height: 1px;
+            width: 45%;
+            background-color: #E0E0E0;
+            margin-top: 10px;
+        }
+
+        .or {
+            width: 10%;
+            font-weight: bold;
+        }
+
+        .text-sm {
+            font-size: 14px !important;
+        }
+
+        ::placeholder {
+            color: #BDBDBD;
+            opacity: 1;
+            font-weight: 300
+        }
+
+        :-ms-input-placeholder {
+            color: #BDBDBD;
+            font-weight: 300
+        }
+
+        ::-ms-input-placeholder {
+            color: #BDBDBD;
+            font-weight: 300
+        }
+
+        input, textarea {
+            padding: 10px 12px 10px 12px;
+            border: 1px solid lightgrey;
+            border-radius: 2px;
+            margin-bottom: 5px;
+            margin-top: 2px;
+            width: 100%;
+            box-sizing: border-box;
+            color: #2C3E50;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        input:focus, textarea:focus {
+            -moz-box-shadow: none !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            border: 1px solid #304FFE;
+            outline-width: 0;
+        }
+
+        button:focus {
+            -moz-box-shadow: none !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            outline-width: 0;
+        }
+
+        a {
+            color: inherit;
+            cursor: pointer;
+        }
+
+        .btn-blue {
+            background-color: #181824;
+            width: 150px;
+            color: #fff;
+            border-radius: 2px;
+        }
+
+        .btn-blue:hover {
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .bg-blue {
+            color: #fff;
+            background-color: #181824;
+        }
+
+        @media screen and (max-width: 991px) {
+            .logo {
+                margin-left: 0px;
+            }
+
+            .image {
+                width: 300px;
+                height: 220px;
+            }
+
+            .border-line {
+                border-right: none;
+            }
+
+            .card2 {
+                border-top: 1px solid #EEEEEE !important;
+                margin: 0px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container px-1 px-md-5 px-lg-1 px-xl-5 py-5">
+        <div class="card card0 border-0">
+            <div class="row d-flex">
+                <div class="col-lg-6">
+                    <div class="card1 pb-5 p-5">
+                        <div class="row">
+                            <img alt="Logo" src="{{asset('public/img2/saybg.png')}}" width="80%" />
+                        </div>
+                        <div class="row px-3 justify-content-center mt-4 mb-5 border-line">
+                            <img alt="Logo" src="{{asset('public/img2/contratista.jpg')}}" width="80%" />
+                        </div>
                     </div>
-                    <p>Por favor ingresa tu nombre de usuario y contraseña:</p>                    
+                </div>
+                <div class="col-lg-6">
                     {!! Form::open(['url' => 'login', 'method' => 'POST', 'class'=>'margin-bottom-0']) !!}
-                        <div class="form-group m-b-20">
-                            <!--<input id="nickname" placeholder="Usuario" required="true" class="form-control form-control-lg inverse-mode" name="nickname" type="text"> -->
-                            {!! Form::text('nickname', old('nickname'),['id'=>'nickname', 'placeholder'=>'Usuario', 'required'=>'true', 'class'=>'form-control form-control-lg inverse-mode']) !!}
+                    <div class="card2 card border-0 px-4 py-5">
+                        <div class="row mb-4 px-3">
+                            <h5 class="mb-0 mr-4 mt-2"><b>Ingrese sus datos para accesar</b></h5>
                         </div>
-                        <div class="form-group m-b-20">
-                            <!--<input id="password" placeholder="Contraseña" required="true" class="form-control form-control-lg inverse-mode" name="password" type="password" value=""> -->
-                            {!! Form::password('password', ['id'=>'password', 'placeholder'=>'Contraseña', 'required'=>'true', 'class'=>'form-control form-control-lg inverse-mode']) !!}                                   
+                       
+                        <div class="row px-3">
+                            <label class="mb-1"><h6 class="mb-0 text-sm">Usuario:</h6></label>
+                            <input class="mb-4" type="text" id="nickname" name="nickname" placeholder="Ingrese su usuario">
                         </div>
-                        <div class="login-buttons">
-                            <button type="submit" class="btn btn-info btn-block btn-lg">Ingresar</button>
+                        <div class="row px-3">
+                            <label class="mb-1"><h6 class="mb-0 text-sm">Contraseña:</h6></label>
+                            <input type="password" id="password" name="password" placeholder="Ingrese su contraseña">
                         </div>
-                    {!! Form::close() !!}
-                    <div class="m-t-20">
-					
-                        <p class="r-d-10">¿ Olvidaste tu usuario y/o contraseña ? Haz click
-                            <a href="#modal-alert" class="g-color-white-opacity-0_9 g-text-underline--hover" data-toggle="modal">
-                                <b>aqu&iacute;</b>
-                            </a>
-                        </p>
-					
-                    </div>
-					<br />
-                    <div class="m-t-20">
                         
-                        <!-- <h4>&#191; Aun no tienes <b>Cuenta</b> &#63;</h4>                            
-                        <div class="login-buttons">
-                            <a class="btn btn-light btn-block btn-lg" href="crear-cuenta/registro" role="button">Crea tu cuenta</a>
-                        </div> -->
-						
-						<br />
-						<p style="text-align: center">Coordinación de Verificación de la Supervisión Externa de la Obra Pública Estatal</p>
-						<p style="text-align: center">Teléfono (961) 61-87-530, Ext. 22022 y 22232.</p>
+                        <div class="row pt-2 mb-3 px-3">
+                            <button type="submit" class="btn btn-blue text-center">Accesar</button>
+                        </div>                     
                     </div>
-                    
+                    {!! Form::close() !!}
                 </div>
-                <!-- end login-content -->
             </div>
-            <!-- end login-body -->	
-        </div>
-        <!-- end login-container -->
-    </div>
-
-    <div class="modal fade" id="modal-alert">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header" style="background-color: #621132; color: #f1f2f1;">
-                    <h4 class="modal-title">Restablecer  contraseña</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group row m-b-15">
-                        <div class="alert alert-muted">
-                            <code><b>Nota:</b></code> Los datos requeridos son obligatorios porque a traves de ellos se realizara la busqueda en el padron, de no ser asi se omitira.
-                        </div>
+            <div class="bg-blue py-4">
+                <div class="row px-3">
+                    <small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2019. All rights reserved.</small>
+                    <div class="social-contact pr-3 ml-sm-auto">
+                        <small><b>Secretaría Anticorrupción y Buen Gobierno</b></small>
                     </div>
-
-                    <form id="frmRecuperarPass" name="frmRecuperarPass" class="frmRecuperarPass">
-                        @csrf  
-                        <div class="form-group" id="vpassword">
-                        <div class="form-group row m-b-15">
-                            <label for="txtRfc" class="col-form-label col-md-3">RFC*</label>
-                            <div class="col-md-9">
-                                <input type="text" id="txtRfc" name="txtRfc" class="form-control m-b-5"  placeholder="Ingresa el RFC" />
-                                <div id="el-txtRfc" class="invalid-feedback lbl-error"></div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row m-b-15">
-                            <label for="txtCorreo" class="col-form-label col-md-3">Correo*</label>
-                            <div class="col-md-9">
-                                <input type="email" id="txtCorreo" name="txtCorreo"  class="form-control m-b-5"  placeholder="Ingresa el correo" />
-                                <small class="f-s-12 text-grey-darker">Poner la direccion completa del correo.</small>
-                                <div id="el-txtCorreo" class="invalid-feedback lbl-error"></div>
-                            </div>
-                        </div>                        
-                    </form>
-
-                </div>
-                <div class="modal-footer">
-                    <a href="javascript:;" class="btn btn-white" data-dismiss="modal">Salir</a>
-                    <button type="button" onclick="recuperarPass()" id="btnAceptPass" class="btn btn-info">Aceptar</button>
                 </div>
             </div>
         </div>
     </div>
-    
-    @endsection
-
-    @section('content-original')
-
-            <div class="login login-v1">
-                <!-- begin login-container -->
-                <div class="login-container">
-                    <div class="login-header">
-                        <div class="brand">
-							{!! Html::image('img/sircs.png', 'alt', ['height'=>'150']) !!}<br />
-                            <b>Portal</b> del Contratista
-                            <small>Bienvenid@ a tu portal, </small>
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-lock"></i>
-                        </div>
-                    </div>
-                    <!-- begin login-body -->
-                    <div class="login-body">
-                        <!-- begin login-content -->
-                        <div class="login-content">
-                            <p>Por favor ingresa tu nombre de usuario y contraseña:</p>
-                            {!! Form::open(['url' => 'login', 'method' => 'POST', 'class'=>'margin-bottom-0']) !!}
-                                <div class="form-group m-b-20">
-                                    {!! Form::text('nickname', old('nickname'),['id'=>'nickname', 'placeholder'=>'Usuario', 'required'=>'true', 'class'=>'form-control form-control-lg inverse-mode']) !!}
-                                </div>
-                                <div class="form-group m-b-20">
-                                    {!! Form::password('password', ['id'=>'password', 'placeholder'=>'Contraseña', 'required'=>'true', 'class'=>'form-control form-control-lg inverse-mode']) !!}
-                                    
-                                </div>
-                                <div class="login-buttons">
-                                    <button type="submit" class="btn btn-success btn-block btn-lg">Ingresar</button>
-                                </div>                                
-                            {!! Form::close() !!}
-                            <div class="m-t-20">
-                                ¿ Olvidaste tu usuario y/o contraseña ? Haz click <a href="javascript:;">aqui</a>
-					        </div>
-							<div class="m-t-20 text-justify">
-								A continuación se presenta un listado con los navegadores soportados, para el optimo funcionamiento del sistema, utilizar la versión mas actualizada.
-								<br>
-								<img src="{{asset('img/iconos/chrome.png')}}"> Google Chrome <img src="{{asset('img/iconos/mozilla.png')}}"> Mozilla Firefox
-							</div>
-                        </div>
-                        <!-- end login-content -->
-                    </div>
-                </div>
-            </div>  
-            <div class="container">
-                <div class="note note-default ">								
-                    <div class="note-content">
-                        <h4>
-                            <b>Avisoo de privacidad</b>
-                        </h4>
-                        <p>
-                            Los datos recabados en este formato, serán protegidos, incorporados y tratados en los términos establecidos en la Ley de Protección de Datos Personales en Posesión de Sujetos Obligados del Estado de Chiapas (LPDPPSOCHIS), así como en los Lineamientos Generales para la Custodia y Protección de Datos Personales e Información Reservada y Confidencial en posesión de los Sujetos Obligados del Estado de Chiapas y demas normatividad aplicable. Para mayor información puede consultar nuestro aviso de privacidad en la página: https://www.shyfpchiapas.gob.mx/
-                        </p>
-                    </div>
-				</div> 
-            </div>
-
-@endsection
+</body>
+</html>

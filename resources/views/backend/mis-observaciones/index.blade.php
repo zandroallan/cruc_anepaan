@@ -26,7 +26,7 @@
 		@endif
 
 		@if( ($id_c_tramites_seguimiento != 0) && ($id_c_tramites_seguimiento == 2)	)
-			<a href="{{ Route('impresion.tramite.observaciones', $datos->id_ultimo_tramite) }}" class="btn ripple btn-outline-dark">
+			<a href="{{ Route('impresion.tramite.observaciones', $datos->id_ultimo_tramite) }}" class="btn ripple btn-outline-danger">
 				<i class="fa fa-file-pdf t-plus-1 text-danger fa-fw fa-lg"></i> Observaciones
 			</a>
 		@endif
@@ -67,33 +67,24 @@
 		@if( $en_tiempo!=1 && $datos->id_ultimo_tramite != 0)
 			@if( $si_o_no==1 )
 				@if( $yano==0 )
-					
-					swal({
+
+					$.confirm({
 				        title: '¡ Advertencia !',
-				        text: avisoEnvioSolventacion,
-				        icon: 'warning',
+				        content: avisoEnvioSolventacion,
+				        type: 'orange',
+				        theme: 'material',
 				        buttons: {
-				            cancel: {
-				                text: 'Cancelar',
-				                value: false,
-				                visible: true,
-				                className: 'btn btn-default',
-				                closeModal: true,
+				            Aceptar: function() {
+				                enviar_solventacion( {{ $datos->id_ultimo_tramite }} );
 				            },
-				            confirm: {
-				                text: 'Enviar solventacion de observaciones',
-				                value: true,
-				                visible: true,
-				                className: 'btn btn-warning',
-				                closeModal: true
+				            Cancelar: function() {
+			                    $.alert({
+							        title: 'Mensaje!',
+							        content: '¡El usuario ha cancelado la acción!',
+							    });
 				            }
 				        }
-				    }).then((result) => { 
-				        if (result) {             
-				            enviar_solventacion( {{ $datos->id_ultimo_tramite }} );
-				        }
 				    });
-
 					
 				@endif
 			@endif
@@ -110,36 +101,43 @@
 
 		@include('backend.encabezado')
 		@if($en_tiempo!=1)	
-			<div class="row">
-				<div class="col-xl-12 col-lg-12 col-md-12">
-					<div class="pd-10 bg-gray-400" style="text-align: left;">	
-						<p class="text-primary"><b>Notas:</b></p>
-						<div class="activity-block">
-							<ul class="task-list">
-								@if($contar_observaciones!=0)
-									@if($si_o_no==1 )
-										<li>
-											<i class="task-icon bg-secondary"></i>
-											<h6>Observaciones @if($yano==0 )-  Tiene hasta el dia {{$fecha_larga}} para solventar @endif</h6>
-										</li>
-									@else
-										<li>
-											<i class="task-icon bg-secondary"></i>
-											<h6>Revise periódicamente su correo electrónico proporcionado para avisos y notificaciones del Sistema.<br /> Tiene hasta el dia {{$fecha_larga}} para solventar. Gracias por su atención.</h6>
-										</li>
-									@endif
-								@else
-									<li>
-										<i class="task-icon bg-secondary"></i>
-										<h6>No tiene observaciones</h6>
-									</li>
-								@endif										
-							</ul>
-						</div>				
-						
-					</div>
+
+			<div class="alert alert-custom alert-light-dark fade show mb-10" role="alert">
+				<div class="alert-icon">
+					<span class="svg-icon svg-icon-3x svg-icon-dark">
+						<!--begin::Svg Icon | path:assets/media/svg/icons/Code/Info-circle.svg-->
+						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+							<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+								<rect x="0" y="0" width="24" height="24"></rect>
+								<circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10"></circle>
+								<rect fill="#000000" x="11" y="10" width="2" height="7" rx="1"></rect>
+								<rect fill="#000000" x="11" y="7" width="2" height="2" rx="1"></rect>
+							</g>
+						</svg>
+						<!--end::Svg Icon-->
+					</span>
 				</div>
-			</div><br/>
+				<div class="alert-text font-weight-bold">
+					@if($contar_observaciones!=0)
+						@if($si_o_no==1 )
+							<p>
+								<i class="task-icon bg-secondary"></i>
+								<h6>Observaciones @if($yano==0 )-  Tiene hasta el dia {{$fecha_larga}} para solventar @endif</h6>
+							</p>
+						@else
+							<p>
+								<i class="task-icon bg-secondary"></i>
+								<h6>Revise periódicamente su correo electrónico proporcionado para avisos y notificaciones del Sistema.<br /> Tiene hasta el dia {{$fecha_larga}} para solventar. Gracias por su atención.</h6>
+							</p>
+						@endif
+					@else
+						<p>
+							<i class="task-icon bg-secondary"></i>
+							<h6>No tiene observaciones</h6>
+						</p>
+					@endif
+				</div>
+			</div>
 
 			@if($yano==1 )
 				<div class="alert alert-dark mb-0" role="alert">
@@ -166,7 +164,7 @@
 							<h6 class="card-title mb-1">Observaciones del trámite</h6>
 							<p class="text-muted card-sub-title">Listado observaciones realizadas al trámite.</p>
 						</div>
-						<div class="row">
+						<!-- <div class="row">
 							<div class="col-lg-6"></div>
 							<div class="col-lg-6">
 								<div class="search">
@@ -176,13 +174,16 @@
 							     </button>
 							    </div>
 							</div>
-						</div>
+						</div> -->
 							
 						<div class="table-responsive">
-							<table id="mis-observaciones" class="table table-hover">
-								<thead style="background-color: #333333 !important;">
+							<table id="mis-observaciones" class="table table-bordered table-checkable dataTable no-footer dtr-inline">
+								<thead class="thead-dark head-dark">
 									<tr>
-										<th style="color: #fff; padding: 15px 15px;">#</th>
+										<!-- <th style="color: #fff; padding: 15px 15px;">#</th> -->
+										<th style="color: #fff; padding: 15px 15px;">
+											<i class="far fa-check-circle"></i>
+										</th>
 										<th style="color: #fff; padding: 15px 15px;" class="wd-10p">Folio</th>
 										<th style="color: #fff; padding: 15px 15px;">Documento observado</th>
 										<th style="color: #fff; padding: 15px 15px;">Observación</th>
