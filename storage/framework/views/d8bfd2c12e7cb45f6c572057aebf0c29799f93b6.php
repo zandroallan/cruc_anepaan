@@ -10,40 +10,56 @@
 						<input type="hidden" id="hdIdRegistro" name="hdIdRegistro" value="<?php echo e($datos->id); ?>">
 						<input type="hidden" id="hdIdContacto" name="hdIdContacto">
 						<legend class="no-border f-w-700 p-b-0 m-t-0 m-b-20 f-s-16 text-inverse">Datos del contacto</legend>
-						<p><b>Nota:</b> Con el fin de que se atiendan a personas autorizadas y den buen uso de la información, es obligatorio capturar un contacto.</p>
 
-						<div class="form-group row m-b-15">
-							<label for="nombre_contacto" class="col-form-label col-md-3">Nombre*</label>
-							<div class="col-md-9">
-								<?php echo Form::text('nombre_contacto', null, ['id'=>'nombre_contacto', 'placeholder'=>'',  'class'=>'form-control m-b-5']); ?>
-
-								<div id="el-nombre_contacto" class="invalid-feedback lbl-error"></div>
-							</div>
+						<div class="alert alert-custom alert-light-dark" role="alert">
+						    <div class="alert-icon">
+						    	<span class="svg-icon svg-icon-3x svg-icon-dark">
+									<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+										<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+											<rect x="0" y="0" width="24" height="24" />
+											<circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+											<rect fill="#000000" x="11" y="10" width="2" height="7" rx="1" />
+											<rect fill="#000000" x="11" y="7" width="2" height="2" rx="1" />
+										</g>
+									</svg>
+								</span>
+						    </div>
+						    <div class="alert-text">
+						      	<b>Nota:</b> Con el fin de que se atiendan a personas autorizadas y den buen uso de la información, es obligatorio capturar un contacto.
+						    </div>
 						</div>
-						<div class="form-group row m-b-15">
-							<label for="ap_paterno_contacto" class="col-form-label col-md-3">A. paterno*</label>
-							<div class="col-md-9">
-								<?php echo Form::text('ap_paterno_contacto', null, ['id'=>'ap_paterno_contacto', 'placeholder'=>'',  'class'=>'form-control m-b-5']); ?>
 
-								<div id="el-ap_paterno_contacto" class="invalid-feedback lbl-error"></div>
-							</div>
-						</div>
-						<div class="form-group row m-b-15">
-							<label for="ap_materno_contacto" class="col-form-label col-md-3">A. materno*</label>
-							<div class="col-md-9">
-								<?php echo Form::text('ap_materno_contacto', null, ['id'=>'ap_materno_contacto', 'placeholder'=>'',  'class'=>'form-control m-b-5']); ?>
+						<div class="form-group row">
+					    	<label  class="col-2 col-form-label"><b>Nombre</b></label>
+						    <div class="col-10">
+						    	<?php echo Form::text('nombre_contacto', null, ['id'=>'nombre_contacto', 'class'=>'form-control inp-udi m-b-5']); ?>
 
-								<div id="el-ap_materno_contacto" class="invalid-feedback lbl-error"></div>
-							</div>
-						</div>
-						<div class="form-group row m-b-15">
-							<label for="cargo_contacto" class="col-form-label col-md-3">Cargo en la empresa*</label>
-							<div class="col-md-9">
-								<?php echo Form::text('cargo_contacto', null, ['id'=>'cargo_contacto', 'placeholder'=>'',  'class'=>'form-control m-b-5']); ?>
+						    </div>
+					    </div>
 
-								<div id="el-cargo_contacto" class="invalid-feedback lbl-error"></div>
-							</div>
-						</div>
+					    <div class="form-group row">
+					    	<label  class="col-2 col-form-label"><b>A. paterno</b></label>
+						    <div class="col-10">
+						    	<?php echo Form::text('ap_paterno_contacto', null, ['id'=>'ap_paterno_contacto', 'class'=>'form-control inp-udi m-b-5']); ?>
+
+						    </div>
+					    </div>
+
+					    <div class="form-group row">
+					    	<label  class="col-2 col-form-label"><b>A. materno</b></label>
+						    <div class="col-10">
+						    	<?php echo Form::text('ap_materno_contacto', null, ['id'=>'ap_materno_contacto', 'class'=>'form-control inp-udi m-b-5']); ?>
+
+						    </div>
+					    </div>
+
+					    <div class="form-group row">
+					    	<label  class="col-2 col-form-label"><b>Cargo</b></label>
+						    <div class="col-10">
+						    	<?php echo Form::text('cargo_contacto', null, ['id'=>'cargo_contacto', 'class'=>'form-control inp-udi m-b-5']); ?>
+
+						    </div>
+					    </div>
 					</form>
 					<div class="text-right form-group">
 						<button id="btn-guardar-contacto" class="btn ripple btn-outline-success" onclick="AddContacto()">
@@ -52,7 +68,6 @@
 					</div>
 				</div>
 			
-		</div>
-		<div class="col-md-2"></div>
+		</div>		
 	</div>
 <?php /**PATH C:\AppServ\apps\sircse\resources\views/backend/mis-tramites/tabs-contacto.blade.php ENDPATH**/ ?>

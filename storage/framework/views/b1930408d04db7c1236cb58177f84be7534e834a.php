@@ -34,33 +34,33 @@
 									</div>
 								</div>
 
-					    		<?php echo Form::hidden('dlg_id', 0, ['id'=>'dlg_id', 'class'=>'form-control input-sm gui-input']); ?>
+					    		<?php echo Form::hidden('dlg_id', 0, ['id'=>'dlg_id', 'class'=>'form-control inp-udi gui-input']); ?>
 
-					    		<?php echo Form::hidden('id', 0, ['id'=>'id', 'class'=>'form-control input-sm gui-input']); ?>
+					    		<?php echo Form::hidden('id', 0, ['id'=>'id', 'class'=>'form-control inp-udi gui-input']); ?>
 
 					            <div class="row" >
 					                <div class="col-md-6">
 										<div class="form-group row ">
-											<label for="dlg_imss" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-6">Número de registro patronal IMSS*</label>
+											<label for="dlg_imss" class="col-form-label text-right col-md-6"><b>Número de registro patronal IMSS *</b></label>
 											<div class="col-md-6">
-												<?php echo Form::text('dlg_imss', null, ['id'=>'dlg_imss', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+												<?php echo Form::text('dlg_imss', null, ['id'=>'dlg_imss', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 												<div id="el-dlg_imss" class="invalid-feedback lbl-error"></div>
 											</div>
 										</div>	
 										<div class="form-group row">
-											<label for="dlg_boleta_pago" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-6">Folio de boleta de pago*</label>
+											<label for="dlg_boleta_pago" class="col-form-label text-right col-md-6"><b>Folio de boleta de pago *</b></label>
 											<div class="col-md-6">
-												<?php echo Form::text('dlg_boleta_pago', null, ['id'=>'dlg_boleta_pago', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+												<?php echo Form::text('dlg_boleta_pago', null, ['id'=>'dlg_boleta_pago', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 												<div id="el-dlg_boleta_pago" class="invalid-feedback lbl-error"></div>
 											</div>
 										</div>	
 										<div class="form-group row">
-											<label for="dlg_fecha_pago" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-6">Folio de Fecha de pago*</label>
+											<label for="dlg_fecha_pago" class="col-form-label text-right col-md-6"><b>Folio de Fecha de pago *</b></label>
 											<div class="col-md-6">							
 												<div class="input-group date">
-													<?php echo Form::text('dlg_fecha_pago', null, ['id'=>'dlg_fecha_pago', 'placeholder'=>'',  'class'=>'form-control input-sm fc-datepicker']); ?>
+													<?php echo Form::text('dlg_fecha_pago', null, ['id'=>'dlg_fecha_pago', 'placeholder'=>'',  'class'=>'form-control inp-udi fc-datepicker']); ?>
 
 													<div id="el-dlg_fecha_pago" class="invalid-feedback lbl-error"></div>
 												</div>
@@ -68,29 +68,29 @@
 										</div>					
 										<h5 class="mb-1 mt-3 tx-gray-700">Datos del RFC</h5><hr />
 										<div class="form-group row">
-											<label for="dlg_fecha_inicio" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-6">Fecha de inicio*</label>
+											<label for="dlg_fecha_inicio" class="col-form-label text-right col-md-6"><b>Fecha de inicio *</b></label>
 											<div class="col-md-6">							
 												<div class="input-group date">
-													<?php echo Form::text('dlg_fecha_inicio', null, ['id'=>'dlg_fecha_inicio', 'placeholder'=>'',  'class'=>'form-control input-sm fc-datepicker']); ?>
+													<?php echo Form::text('dlg_fecha_inicio', null, ['id'=>'dlg_fecha_inicio', 'placeholder'=>'',  'class'=>'form-control inp-udi fc-datepicker']); ?>
 
 												</div>							
 												<div id="el-dlg_fecha_inicio" class="invalid-feedback lbl-error"></div>											
 											</div>
 										</div>
 										<div class="form-group row">
-											<label for="dlg_fecha_inscripcion" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-6">Fecha de inscripción*</label>
+											<label for="dlg_fecha_inscripcion" class="col-form-label text-right col-md-6"><b>Fecha de inscripción *</b></label>
 											<div class="col-md-6">							
 												<div class="input-group date">
-													<?php echo Form::text('dlg_fecha_inscripcion', null, ['id'=>'dlg_fecha_inscripcion', 'placeholder'=>'',  'class'=>'form-control input-sm fc-datepicker']); ?>
+													<?php echo Form::text('dlg_fecha_inscripcion', null, ['id'=>'dlg_fecha_inscripcion', 'placeholder'=>'',  'class'=>'form-control inp-udi fc-datepicker']); ?>
 
 												</div>							
 												<div id="el-dlg_fecha_inscripcion" class="invalid-feedback lbl-error"></div>
 											</div>
 										</div>
 										<div class="form-group row">
-											<label for="dlg_actividad" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-6">Actividad preponderante*</label>
+											<label for="dlg_actividad" class="col-form-label text-right col-md-6"><b>Actividad preponderante *</b></label>
 											<div class="col-md-6">
-												<?php echo Form::text('dlg_actividad', null, ['id'=>'dlg_actividad', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+												<?php echo Form::text('dlg_actividad', null, ['id'=>'dlg_actividad', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 												<div id="el-dlg_actividad" class="invalid-feedback lbl-error"></div>											
 											</div>
@@ -98,46 +98,46 @@
 									</div>
 									<div class="col-md-6">  
 										<div class="form-group row ">
-											<label for="dlg_rec" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-6">Fecha de registro estatal de contribuyentes*</label>
+											<label for="dlg_rec" class="col-form-label text-right col-md-6"><b>Fecha de registro estatal de contribuyentes *</b></label>
 											<div class="col-md-6">							
 												<div class="input-group date">
-													<?php echo Form::text('dlg_rec', null, ['id'=>'dlg_rec', 'placeholder'=>'',  'class'=>'form-control input-sm fc-datepicker']); ?>
+													<?php echo Form::text('dlg_rec', null, ['id'=>'dlg_rec', 'placeholder'=>'',  'class'=>'form-control inp-udi fc-datepicker']); ?>
 
 												</div>							
 												<div id="el-dlg_rec" class="invalid-feedback lbl-error"></div>											
 											</div>
 										</div>	
 										<div class="form-group row ">
-											<label for="dlg_num_constancia" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-6">Núm. de constancia de no adeudos fiscales*</label>
+											<label for="dlg_num_constancia" class="col-form-label text-right col-md-6"><b>Núm. de constancia de no adeudos fiscales *</b></label>
 											<div class="col-md-6">
-												<?php echo Form::text('dlg_num_constancia', null, ['id'=>'dlg_num_constancia', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+												<?php echo Form::text('dlg_num_constancia', null, ['id'=>'dlg_num_constancia', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 												<div id="el-dlg_num_constancia" class="invalid-feedback lbl-error"></div>											
 											</div>
 										</div>
 										<div class="form-group row ">
-											<label for="dlg_num_control" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-6">Núm. de control*</label>
+											<label for="dlg_num_control" class="col-form-label text-right col-md-6"><b>Núm. de control *</b></label>
 											<div class="col-md-6">
-												<?php echo Form::text('dlg_num_control', null, ['id'=>'dlg_num_control', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+												<?php echo Form::text('dlg_num_control', null, ['id'=>'dlg_num_control', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 												<div id="el-dlg_num_control" class="invalid-feedback lbl-error"></div>											
 											</div>
 										</div>	
 										<div class="form-group row ">
-											<label for="dlg_vigencia_de" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-6">Vigencia de inicio*</label>
+											<label for="dlg_vigencia_de" class="col-form-label text-right col-md-6"><b>Vigencia de inicio *</b></label>
 											<div class="col-md-6">							
 												<div class="input-group date">
-													<?php echo Form::text('dlg_vigencia_de', null, ['id'=>'dlg_vigencia_de', 'placeholder'=>'',  'class'=>'form-control input-sm fc-datepicker']); ?>
+													<?php echo Form::text('dlg_vigencia_de', null, ['id'=>'dlg_vigencia_de', 'placeholder'=>'',  'class'=>'form-control inp-udi fc-datepicker']); ?>
 
 												</div>							
 												<div id="el-dlg_vigencia_de" class="invalid-feedback lbl-error"></div>											
 											</div>
 										</div>
 										<div class="form-group row ">
-											<label for="dlg_vigencia_al" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-6">Vigencia de término*</label>
+											<label for="dlg_vigencia_al" class="col-form-label text-right col-md-6"><b>Vigencia de término *</b></label>
 											<div class="col-md-6">							
 												<div class="input-group date">
-													<?php echo Form::text('dlg_vigencia_al', null, ['id'=>'dlg_vigencia_al', 'placeholder'=>'',  'class'=>'form-control input-sm fc-datepicker']); ?>
+													<?php echo Form::text('dlg_vigencia_al', null, ['id'=>'dlg_vigencia_al', 'placeholder'=>'',  'class'=>'form-control inp-udi fc-datepicker']); ?>
 
 												</div>							
 												<div id="el-dlg_vigencia_al" class="invalid-feedback lbl-error"></div>											
@@ -177,50 +177,50 @@
 
 								<form id="frmAddActaConstitutiva" name="frmAddActaConstitutiva" enctype="multipart/form-data" accept-charset="UTF-8">
 									<?php echo csrf_field(); ?>       
-									<?php echo Form::hidden('dlac_id', 0,['id'=>'dlac_id', 'class'=>'form-control input-sm gui-input']); ?>    
-									<?php echo Form::hidden('dlac_id_m', 0,['id'=>'dlac_id_m', 'class'=>'form-control input-sm gui-input']); ?>
+									<?php echo Form::hidden('dlac_id', 0,['id'=>'dlac_id', 'class'=>'form-control inp-udi gui-input']); ?>    
+									<?php echo Form::hidden('dlac_id_m', 0,['id'=>'dlac_id_m', 'class'=>'form-control inp-udi gui-input']); ?>
 
-									<?php echo Form::hidden('dlac_id_tramite', $datos->id,['id'=>'dlac_id_tramite', 'class'=>'form-control input-sm gui-input']); ?>
+									<?php echo Form::hidden('dlac_id_tramite', $datos->id,['id'=>'dlac_id_tramite', 'class'=>'form-control inp-udi gui-input']); ?>
 
 									<div class="row">
 										<div class="col-md-6 ">
 											<h5 class="mb-1 mt-3 tx-gray-700">Acta</h5><hr />
 											<div class="form-group row ">
-												<label for="dlac_num_escritura" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Núm. de escritura*</label>
+												<label for="dlac_num_escritura" class="col-form-label text-right col-md-4"><b>Núm. de escritura *</b></label>
 												<div class="col-md-8">
-													<?php echo Form::text('dlac_num_escritura', null, ['id'=>'dlac_num_escritura', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+													<?php echo Form::text('dlac_num_escritura', null, ['id'=>'dlac_num_escritura', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 													<div id="el-dlac_num_escritura" class="invalid-feedback lbl-error"></div>                     
 												</div>
 											</div>
 											<div class="form-group row ">
-												<label for="dlac_fecha_escritura" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Fecha de escritura*</label>
+												<label for="dlac_fecha_escritura" class="col-form-label text-right col-md-4"><b>Fecha de escritura *</b></label>
 												<div class="col-md-8">              
 													<div class="input-group date">
-														<?php echo Form::text('dlac_fecha_escritura', null, ['id'=>'dlac_fecha_escritura', 'placeholder'=>'',  'class'=>'form-control input-sm fc-datepicker']); ?>
+														<?php echo Form::text('dlac_fecha_escritura', null, ['id'=>'dlac_fecha_escritura', 'placeholder'=>'',  'class'=>'form-control inp-udi fc-datepicker']); ?>
 
 														<div id="el-dlac_fecha_escritura" class="invalid-feedback lbl-error"></div>
 													</div>
 												</div>
 											</div>  
 											<div class="form-group row ">
-												<label for="dlac_notario_nombre" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Nombre del notario*</label>
+												<label for="dlac_notario_nombre" class="col-form-label text-right col-md-4"><b>Nombre del notario *</b></label>
 												<div class="col-md-8">
-													<?php echo Form::text('dlac_notario_nombre', null, ['id'=>'dlac_notario_nombre', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+													<?php echo Form::text('dlac_notario_nombre', null, ['id'=>'dlac_notario_nombre', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 													<div id="el-dlac_notario_nombre" class="invalid-feedback lbl-error"></div>                      
 												</div>
 											</div>
 											<div class="form-group row ">
-												<label for="dlac_notario_numero" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Número de notario*</label>
+												<label for="dlac_notario_numero" class="col-form-label text-right col-md-4"><b>Número de notario *</b></label>
 												<div class="col-md-8">
-													<?php echo Form::text('dlac_notario_numero', null, ['id'=>'dlac_notario_numero', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+													<?php echo Form::text('dlac_notario_numero', null, ['id'=>'dlac_notario_numero', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 													<div id="el-dlac_notario_numero" class="invalid-feedback lbl-error"></div>                      
 												</div>
 											</div>        
 											<div class="form-group row ">
-												<label for="dlac_id_estado" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Estado*</label>
+												<label for="dlac_id_estado" class="col-form-label text-right col-md-4"><b>Estado *</b></label>
 												<div class="col-md-8">
 													<?php echo Form::select('dlac_id_estado', $estados, null, ['id' => 'dlac_id_estado', 'style'=>'width: 100%;', 'class' => 'default-select2 form-control input-sm']); ?>      
 													<div id="el-dlac_id_estado" class="invalid-feedback lbl-error"></div>     
@@ -230,41 +230,41 @@
 										<div class="col-md-6 "> 
 											<h5 class="mb-1 mt-3 tx-gray-700">Registro público de la propiedad</h5><hr />
 											<div class="form-group row ">
-												<label for="dlac_num_registro_publico" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Número de registro público*</label>
+												<label for="dlac_num_registro_publico" class="col-form-label text-right col-md-4"><b>Número de registro público *</b></label>
 												<div class="col-md-8">
-													<?php echo Form::text('dlac_num_registro_publico', null, ['id'=>'dlac_num_registro_publico', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+													<?php echo Form::text('dlac_num_registro_publico', null, ['id'=>'dlac_num_registro_publico', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 													<div id="el-dlac_num_registro_publico" class="invalid-feedback lbl-error"></div>                      
 												</div>
 											</div>
 											<div class="form-group row ">
-												<label for="dlac_seccion" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Sección*</label>
+												<label for="dlac_seccion" class="col-form-label text-right col-md-4"><b>Sección *</b></label>
 												<div class="col-md-8">
-													<?php echo Form::text('dlac_seccion', null, ['id'=>'dlac_seccion', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+													<?php echo Form::text('dlac_seccion', null, ['id'=>'dlac_seccion', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 													<div id="el-dlac_seccion" class="invalid-feedback lbl-error"></div>                     
 												</div>
 											</div>
 											<div class="form-group row ">
-												<label for="dlac_ciudad" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Ciudad*</label>
+												<label for="dlac_ciudad" class="col-form-label text-right col-md-4"><b>Ciudad *</b></label>
 												<div class="col-md-8">
-													<?php echo Form::text('dlac_ciudad', null, ['id'=>'dlac_ciudad', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+													<?php echo Form::text('dlac_ciudad', null, ['id'=>'dlac_ciudad', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 													<div id="el-dlac_ciudad" class="invalid-feedback lbl-error"></div>                      
 												</div>
 											</div>
 											<div class="form-group row ">
-												<label for="dlac_fecha_registro_publico" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Fecha de registro público*</label>
+												<label for="dlac_fecha_registro_publico" class="col-form-label text-right col-md-4"><b>Fecha de registro público *</b></label>
 												<div class="col-md-8">
 													<div class="input-group date">
-														<?php echo Form::text('dlac_fecha_registro_publico', null, ['id'=>'dlac_fecha_registro_publico', 'placeholder'=>'',  'class'=>'form-control input-sm fc-datepicker']); ?>
+														<?php echo Form::text('dlac_fecha_registro_publico', null, ['id'=>'dlac_fecha_registro_publico', 'placeholder'=>'',  'class'=>'form-control inp-udi fc-datepicker']); ?>
 
 														<div id="el-dlac_fecha_registro_publico" class="invalid-feedback lbl-error"></div>  
 													</div>
 												</div>
 											</div>  
 											<div class="form-group row ">
-												<label for="dlac_id_estado_registro" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Estado*</label>
+												<label for="dlac_id_estado_registro" class="col-form-label text-right col-md-4"><b>Estado *</b></label>
 												<div class="col-md-8">
 													<?php echo Form::select('dlac_id_estado_registro', $estados, null, ['id' => 'dlac_id_estado_registro', 'style'=>'width: 100%;', 'class' => 'default-select2 form-control input-sm']); ?>      
 													<div id="el-dlac_id_estado_registro" class="invalid-feedback lbl-error"></div>      
@@ -276,43 +276,43 @@
 
 									<div class="row">
 										<div class="col-md-6 ">
-											<h5 class="mb-1 mt-3 tx-gray-700">Modificaciones  al Acta</h5><hr />
+											<h5 class="mb-1 mt-3 tx-gray-700"><b>Modificaciones  al Acta</b></h5><hr />
 											<div class="form-group row ">
-												<label for="dlac_num_escritura_m" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Núm. de escritura*</label>
+												<label for="dlac_num_escritura_m" class="col-form-label text-right col-md-4"><b>Núm. de escritura *</b></label>
 												<div class="col-md-8">
-													<?php echo Form::text('dlac_num_escritura_m', null, ['id'=>'dlac_num_escritura_m', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+													<?php echo Form::text('dlac_num_escritura_m', null, ['id'=>'dlac_num_escritura_m', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 													<div id="el-dlac_num_escritura_m" class="invalid-feedback lbl-error"></div>                     
 												</div>
 											</div>
 											<div class="form-group row ">
-												<label for="dlac_fecha_escritura_m" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Fecha de escritura*</label>
+												<label for="dlac_fecha_escritura_m" class="col-form-label text-right col-md-4"><b>Fecha de escritura *</b></label>
 												<div class="col-md-8">              
 													<div class="input-group date">
-														<?php echo Form::text('dlac_fecha_escritura_m', null, ['id'=>'dlac_fecha_escritura_m', 'placeholder'=>'',  'class'=>'form-control input-sm fc-datepicker']); ?>
+														<?php echo Form::text('dlac_fecha_escritura_m', null, ['id'=>'dlac_fecha_escritura_m', 'placeholder'=>'',  'class'=>'form-control inp-udi fc-datepicker']); ?>
 
 														<div id="el-dlac_fecha_escritura_m" class="invalid-feedback lbl-error"></div>
 													</div>
 												</div>
 											</div>  
 											<div class="form-group row ">
-												<label for="dlac_notario_nombre_m" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Nombre del notario*</label>
+												<label for="dlac_notario_nombre_m" class="col-form-label text-right col-md-4"><b>Nombre del notario *</b></label>
 												<div class="col-md-8">
-													<?php echo Form::text('dlac_notario_nombre_m', null, ['id'=>'dlac_notario_nombre_m', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+													<?php echo Form::text('dlac_notario_nombre_m', null, ['id'=>'dlac_notario_nombre_m', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 													<div id="el-dlac_notario_nombre_m" class="invalid-feedback lbl-error"></div>                      
 												</div>
 											</div>
 											<div class="form-group row ">
-												<label for="dlac_notario_numero_m" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Número de notario*</label>
+												<label for="dlac_notario_numero_m" class="col-form-label text-right col-md-4"><b>Número de notario *</b></label>
 												<div class="col-md-8">
-													<?php echo Form::text('dlac_notario_numero_m', null, ['id'=>'dlac_notario_numero_m', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+													<?php echo Form::text('dlac_notario_numero_m', null, ['id'=>'dlac_notario_numero_m', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 													<div id="el-dlac_notario_numero_m" class="invalid-feedback lbl-error"></div>                      
 												</div>
 											</div>        
 											<div class="form-group row ">
-												<label for="dlac_id_estado_m" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Estado*</label>
+												<label for="dlac_id_estado_m" class="col-form-label text-right col-md-4"><b>Estado *</b></label>
 												<div class="col-md-8">
 													<?php echo Form::select('dlac_id_estado_m', $estados_m, null, ['id' => 'dlac_id_estado_m', 'style'=>'width: 100%;', 'class' => 'default-select2 form-control input-sm']); ?>      
 													<div id="el-dlac_id_estado_m" class="invalid-feedback lbl-error"></div>     
@@ -322,41 +322,41 @@
 										<div class="col-md-6 "> 
 											<h5 class="mb-1 mt-3 tx-gray-700">Registro público de la propiedad</h5><hr />
 											<div class="form-group row ">
-												<label for="dlac_num_registro_publico_m" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Número de registro público*</label>
+												<label for="dlac_num_registro_publico_m" class="col-form-label text-right col-md-4"><b>Número de registro público *</b></label>
 												<div class="col-md-8">
-													<?php echo Form::text('dlac_num_registro_publico_m', null, ['id'=>'dlac_num_registro_publico_m', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+													<?php echo Form::text('dlac_num_registro_publico_m', null, ['id'=>'dlac_num_registro_publico_m', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 													<div id="el-dlac_num_registro_publico_m" class="invalid-feedback lbl-error"></div>                      
 												</div>
 											</div>
 											<div class="form-group row ">
-												<label for="dlac_seccion_m" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Sección*</label>
+												<label for="dlac_seccion_m" class="col-form-label text-right col-md-4"><b>Sección *</b></label>
 												<div class="col-md-8">
-													<?php echo Form::text('dlac_seccion_m', null, ['id'=>'dlac_seccion_m', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+													<?php echo Form::text('dlac_seccion_m', null, ['id'=>'dlac_seccion_m', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 													<div id="el-dlac_seccion_m" class="invalid-feedback lbl-error"></div>                     
 												</div>
 											</div>
 											<div class="form-group row ">
-												<label for="dlac_ciudad_m" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Ciudad*</label>
+												<label for="dlac_ciudad_m" class="col-form-label text-right col-md-4"><b>Ciudad *</b></label>
 												<div class="col-md-8">
-													<?php echo Form::text('dlac_ciudad_m', null, ['id'=>'dlac_ciudad_m', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+													<?php echo Form::text('dlac_ciudad_m', null, ['id'=>'dlac_ciudad_m', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 													<div id="el-dlac_ciudad_m" class="invalid-feedback lbl-error"></div>                      
 												</div>
 											</div>
 											<div class="form-group row ">
-												<label for="dlac_fecha_registro_publico_m" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Fecha de registro público*</label>
+												<label for="dlac_fecha_registro_publico_m" class="col-form-label text-right col-md-4"><b>Fecha de registro público *</b></label>
 												<div class="col-md-8">
 													<div class="input-group date">
-														<?php echo Form::text('dlac_fecha_registro_publico_m', null, ['id'=>'dlac_fecha_registro_publico_m', 'placeholder'=>'',  'class'=>'form-control input-sm fc-datepicker']); ?>
+														<?php echo Form::text('dlac_fecha_registro_publico_m', null, ['id'=>'dlac_fecha_registro_publico_m', 'placeholder'=>'',  'class'=>'form-control inp-udi fc-datepicker']); ?>
 
 														<div id="el-dlac_fecha_registro_publico_m" class="invalid-feedback lbl-error"></div>  
 													</div>
 												</div>
 											</div>  
 											<div class="form-group row ">
-												<label for="dlac_id_estado_registro_m" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Estado*</label>
+												<label for="dlac_id_estado_registro_m" class="col-form-label text-right col-md-4"><b>Estado *</b></label>
 												<div class="col-md-8">
 													<?php echo Form::select('dlac_id_estado_registro_m', $estados_m, null, ['id' => 'dlac_id_estado_registro_m', 'style'=>'width: 100%;', 'class' => 'default-select2 form-control input-sm']); ?>      
 													<div id="el-dlac_id_estado_registro_m" class="invalid-feedback lbl-error"></div>      
@@ -411,82 +411,82 @@
 									<div class="col-md-6 ">
 										<h5 class="mb-1 mt-3 tx-gray-700">Generales</h5><hr />
 										<div class="form-group row">
-											<label for="dlrepl_nombre" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Nombre*</label>
+											<label for="dlrepl_nombre" class="col-form-label text-right col-md-4"><b>Nombre *</b></label>
 											<div class="col-md-8">
-												<?php echo Form::text('dlrepl_nombre', null, ['id'=>'dlrepl_nombre', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>				
+												<?php echo Form::text('dlrepl_nombre', null, ['id'=>'dlrepl_nombre', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>				
 												<div id="el-dlrepl_nombre" class="invalid-feedback lbl-error"></div>
 											</div>
 										</div>
 										<div class="form-group row">
-											<label for="dlrepl_ap_paterno" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">A. paterno*</label>
+											<label for="dlrepl_ap_paterno" class="col-form-label text-right col-md-4"><b>A. paterno *</b></label>
 											<div class="col-md-8">
-												<?php echo Form::text('dlrepl_ap_paterno', null, ['id'=>'dlrepl_ap_paterno', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>				
+												<?php echo Form::text('dlrepl_ap_paterno', null, ['id'=>'dlrepl_ap_paterno', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>				
 												<div id="el-dlrepl_ap_paterno" class="invalid-feedback lbl-error"></div>
 											</div>
 										</div>
 										<div class="form-group row">
-											<label for="dlrepl_ap_materno" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">A. materno*</label>
+											<label for="dlrepl_ap_materno" class="col-form-label text-right col-md-4"><b>A. materno *</b></label>
 											<div class="col-md-8">
-												<?php echo Form::text('dlrepl_ap_materno', null, ['id'=>'dlrepl_ap_materno', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>				
+												<?php echo Form::text('dlrepl_ap_materno', null, ['id'=>'dlrepl_ap_materno', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>				
 												<div id="el-dlrepl_ap_materno" class="invalid-feedback lbl-error"></div>
 											</div>
 										</div>
 										<div class="form-group row">
-											<label for="dlrepl_curp" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Curp*</label>
+											<label for="dlrepl_curp" class="col-form-label text-right col-md-4"><b>Curp *</b></label>
 											<div class="col-md-8">
-												<?php echo Form::text('dlrepl_curp', null, ['id'=>'dlrepl_curp', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>			
+												<?php echo Form::text('dlrepl_curp', null, ['id'=>'dlrepl_curp', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>			
 												<div id="el-dlrepl_curp" class="invalid-feedback lbl-error"></div>
 											</div>
 										</div>
 										<div class="form-group row">
-											<label for="dlrepl_rfc" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">R.F.C.*</label>
+											<label for="dlrepl_rfc" class="col-form-label text-right col-md-4"><b>R.F.C. *</b></label>
 											<div class="col-md-8">
-												<?php echo Form::text('dlrepl_rfc', null, ['id'=>'dlrepl_rfc', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+												<?php echo Form::text('dlrepl_rfc', null, ['id'=>'dlrepl_rfc', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 												<div id="el-dlrepl_rfc" class="invalid-feedback lbl-error"></div>
 											</div>
 										</div>
 										<div class="form-group row">
-											<label for="dlrepl_id_nacionalidad" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Nacionalidad*</label>
+											<label for="dlrepl_id_nacionalidad" class="col-form-label text-right col-md-4"><b>Nacionalidad *</b></label>
 											<div class="col-md-8">
 												<?php echo Form::select('dlrepl_id_nacionalidad', $nacionalidades, null, ['id' => 'dlrepl_id_nacionalidad', 'style'=>'width: 100%;', 'class' => 'default-select2 form-control input-sm']); ?>			
 												<div id="el-dlrepl_id_nacionalidad" class="invalid-feedback lbl-error"></div>
 											</div>
 										</div>
 										<div class="form-group row">
-											<label for="dlrepl_telefono" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Teléfono*</label>
+											<label for="dlrepl_telefono" class="col-form-label text-right col-md-4"><b>Teléfono *</b></label>
 											<div class="col-md-8">
-												<?php echo Form::text('dlrepl_telefono', null, ['id'=>'dlrepl_telefono', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+												<?php echo Form::text('dlrepl_telefono', null, ['id'=>'dlrepl_telefono', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 												<div id="el-dlrepl_telefono" class="invalid-feedback lbl-error"></div>
 											</div>
 										</div>
 										<div class="form-group row">
-											<label for="dlrepl_correo_electronico" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Correo electrónico*</label>
+											<label for="dlrepl_correo_electronico" class="col-form-label text-right col-md-4"><b>Correo electrónico *</b></label>
 											<div class="col-md-8">
-												<?php echo Form::text('dlrepl_correo_electronico', null, ['id'=>'dlrepl_correo_electronico', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+												<?php echo Form::text('dlrepl_correo_electronico', null, ['id'=>'dlrepl_correo_electronico', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 												<div id="el-dlrepl_correo_electronico" class="invalid-feedback lbl-error"></div>
 												<small class="f-s-12 text-grey-darker">Nota: Este campo es importante por que a este correo se enviaran notificaciones del sistema. </small>				
 											</div>
 										</div>
 										<div class="form-group row">
-											<label for="dlrepl_id_tipo_identificacion" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Tipo de identificación*</label>
+											<label for="dlrepl_id_tipo_identificacion" class="col-form-label text-right col-md-4"><b>Tipo de identificación *</b></label>
 											<div class="col-md-8">
 												<?php echo Form::select('dlrepl_id_tipo_identificacion', $tipo_identificaciones, null, ['id' => 'dlrepl_id_tipo_identificacion', 'style'=>'width: 100%;', 'class' => 'default-select2 form-control input-sm']); ?>			
 												<div id="el-dlrepl_id_tipo_identificacion" class="invalid-feedback lbl-error"></div>			
 											</div>
 										</div>	
 										<div class="form-group row">
-											<label for="dlrepl_numero_identificacion" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Número de identificación*</label>
+											<label for="dlrepl_numero_identificacion" class="col-form-label text-right col-md-4"><b>Número de identificación *</b></label>
 											<div class="col-md-8">
-												<?php echo Form::text('dlrepl_numero_identificacion', null, ['id'=>'dlrepl_numero_identificacion', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+												<?php echo Form::text('dlrepl_numero_identificacion', null, ['id'=>'dlrepl_numero_identificacion', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 												<div id="el-dlrepl_numero_identificacion" class="invalid-feedback lbl-error"></div>			
 											</div>
 										</div>	
 										<div class="form-group row ">
-											<label class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Sexo*</label>
+											<label class="col-form-label text-right col-md-4"><b>Sexo *</b></label>
 											<div class="col-md-8">
 												<div class="form-check form-check-inline">
 													<input class="form-check-input" type="radio" name="dlrepl_sexo" id="dlrepl_sexo_1" value="1" checked>
@@ -499,7 +499,7 @@
 											</div>
 										</div>
 										<div class="form-group row ">
-											<label for="dlrepl_id_tipo_rep_legal" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Tipo de representante legal*</label>
+											<label for="dlrepl_id_tipo_rep_legal" class="col-form-label text-right col-md-4"><b>Tipo de representante legal *</b></label>
 											<div class="col-md-8">
 												<?php echo Form::select('dlrepl_id_tipo_rep_legal', $tipos_rep_legal, null, ['id' => 'dlrepl_id_tipo_rep_legal', 'style'=>'width: 100%;', 'class' => 'default-select2 form-control input-sm']); ?>			
 												<div id="el-dlrepl_id_tipo_rep_legal" class="invalid-feedback lbl-error"></div>
@@ -508,41 +508,41 @@
 										
 										<h5 class="mb-1 mt-3 tx-gray-700">Registro público de la propiedad</h5><hr />
 										<div class="form-group row ">
-											<label for="dlrepl_num_registro_publico" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Número de registro público*</label>
+											<label for="dlrepl_num_registro_publico" class="col-form-label text-right col-md-4"><b>Número de registro público *</b></label>
 											<div class="col-md-8">
-												<?php echo Form::text('dlrepl_num_registro_publico', null, ['id'=>'dlrepl_num_registro_publico', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+												<?php echo Form::text('dlrepl_num_registro_publico', null, ['id'=>'dlrepl_num_registro_publico', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 												<div id="el-dlrepl_num_registro_publico" class="invalid-feedback lbl-error"></div>											
 											</div>
 										</div>
 										<div class="form-group row ">
-											<label for="dlrepl_seccion" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Sección*</label>
+											<label for="dlrepl_seccion" class="col-form-label text-right col-md-4"><b>Sección *</b></label>
 											<div class="col-md-8">
-												<?php echo Form::text('dlrepl_seccion', null, ['id'=>'dlrepl_seccion', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+												<?php echo Form::text('dlrepl_seccion', null, ['id'=>'dlrepl_seccion', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 												<div id="el-dlrepl_seccion" class="invalid-feedback lbl-error"></div>											
 											</div>
 										</div>
 										<div class="form-group row ">
-											<label for="dlrepl_ciudad" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Ciudad*</label>
+											<label for="dlrepl_ciudad" class="col-form-label text-right col-md-4"><b>Ciudad *</b></label>
 											<div class="col-md-8">
-												<?php echo Form::text('dlrepl_ciudad', null, ['id'=>'dlrepl_ciudad', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+												<?php echo Form::text('dlrepl_ciudad', null, ['id'=>'dlrepl_ciudad', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 												<div id="el-dlrepl_ciudad" class="invalid-feedback lbl-error"></div>											
 											</div>
 										</div>
 										<div class="form-group row ">
-											<label for="dlrepl_fecha_registro_publico" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Fecha de registro público*</label>
+											<label for="dlrepl_fecha_registro_publico" class="col-form-label text-right col-md-4"><b>Fecha de registro público *</b></label>
 											<div class="col-md-8">							
 												<div class="input-group date">
-													<?php echo Form::text('dlrepl_fecha_registro_publico', null, ['id'=>'dlrepl_fecha_registro_publico', 'placeholder'=>'',  'class'=>'form-control input-sm fc-datepicker']); ?>
+													<?php echo Form::text('dlrepl_fecha_registro_publico', null, ['id'=>'dlrepl_fecha_registro_publico', 'placeholder'=>'',  'class'=>'form-control inp-udi fc-datepicker']); ?>
 
 													<div id="el-dlrepl_fecha_registro_publico" class="invalid-feedback lbl-error"></div>	
 												</div>																	
 											</div>
 										</div>	
 										<div class="form-group row ">
-											<label for="dlrepl_id_estado_registro" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Estado*</label>
+											<label for="dlrepl_id_estado_registro" class="col-form-label text-right col-md-4"><b>Estado *</b></label>
 											<div class="col-md-8">
 												<?php echo Form::select('dlrepl_id_estado_registro', $estados, null, ['id' => 'dlrepl_id_estado_registro', 'style'=>'width: 100%;', 'class' => 'default-select2 form-control input-sm']); ?>			
 												<div id="el-dlrepl_id_estado_registro" class="invalid-feedback lbl-error"></div>			
@@ -553,68 +553,68 @@
 									<div class="col-md-6 ">  
 										<h5 class="mb-1 mt-3 tx-gray-700">Domicilio</h5><hr />
 										<div class="form-group row ">
-											<label for="dlrepl_id_estado_particular" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Estado*</label>
+											<label for="dlrepl_id_estado_particular" class="col-form-label text-right col-md-4"><b>Estado *</b></label>
 											<div class="col-md-8">
 												<?php echo Form::select('dlrepl_id_estado_particular', $estados, null, ['id' => 'dlrepl_id_estado_particular', 'style'=>'width: 100%;', 'class' => 'default-select2 form-control input-sm', 'onchange'=>'cargar_municipios_general(this, $("#dlrepl_id_municipio_particular"));']); ?>			
 												<div id="el-dlrepl_id_estado_particular" class="invalid-feedback lbl-error"></div>			
 											</div>
 										</div>
 										<div class="form-group row ">
-											<label for="dlrepl_id_municipio_particular" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Municipio*</label>
+											<label for="dlrepl_id_municipio_particular" class="col-form-label text-right col-md-4"><b>Municipio *</b></label>
 											<div class="col-md-8">
 												<?php echo Form::select('dlrepl_id_municipio_particular', $municipios_p, null, ['id' => 'dlrepl_id_municipio_particular', 'style'=>'width: 100%;', 'class' => ' form-control input-sm']); ?>			
 												<div id="el-dlrepl_id_municipio_particular" class="invalid-feedback lbl-error"></div>			
 											</div>
 										</div>
 										<div class="form-group row ">
-											<label for="dlrepl_ciudad_particular" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Ciudad</label>
+											<label for="dlrepl_ciudad_particular" class="col-form-label text-right col-md-4"><b>Ciuda d</b></label>
 											<div class="col-md-8">
-												<?php echo Form::text('dlrepl_ciudad_particular', null, ['id'=>'dlrepl_ciudad_particular', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+												<?php echo Form::text('dlrepl_ciudad_particular', null, ['id'=>'dlrepl_ciudad_particular', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 												<div id="el-dlrepl_ciudad_particular" class="invalid-feedback lbl-error"></div>			
 											</div>
 										</div>							
 										<div class="form-group row ">
-											<label for="dlrepl_calle_particular" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Calle*</label>
+											<label for="dlrepl_calle_particular" class="col-form-label text-right col-md-4"><b>Calle *</b></label>
 											<div class="col-md-8">
-												<?php echo Form::text('dlrepl_calle_particular', null, ['id'=>'dlrepl_calle_particular', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+												<?php echo Form::text('dlrepl_calle_particular', null, ['id'=>'dlrepl_calle_particular', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 												<div id="el-dlrepl_calle_particular" class="invalid-feedback lbl-error"></div>			
 											</div>
 										</div>
 										<div class="form-group row ">
-											<label for="dlrepl_ext_particular" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-3">Núm. exterior*</label>
+											<label for="dlrepl_ext_particular" class="col-form-label text-right col-md-3"><b>Núm. exterior *</b></label>
 											<div class="col-md-3">
-												<?php echo Form::text('dlrepl_ext_particular', null, ['id'=>'dlrepl_ext_particular', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+												<?php echo Form::text('dlrepl_ext_particular', null, ['id'=>'dlrepl_ext_particular', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 												<div id="el-dlrepl_ext_particular" class="invalid-feedback lbl-error"></div>			
 											</div>
 
-											<label for="dlrepl_int_particular" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-3">Núm. interior*</label>
+											<label for="dlrepl_int_particular" class="col-form-label text-right col-md-3"><b>Núm. interior *</b></label>
 											<div class="col-md-3">
-												<?php echo Form::text('dlrepl_int_particular', null, ['id'=>'dlrepl_int_particular', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+												<?php echo Form::text('dlrepl_int_particular', null, ['id'=>'dlrepl_int_particular', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 												<div id="el-dlrepl_int_particular" class="invalid-feedback lbl-error"></div>			
 											</div>
 										</div>	
 										<div class="form-group row ">
-											<label for="dlrepl_colonia_particular" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-3">Colonia*</label>
+											<label for="dlrepl_colonia_particular" class="col-form-label text-right col-md-3"><b>Colonia *</b></label>
 											<div class="col-md-4">
-												<?php echo Form::text('dlrepl_colonia_particular', null, ['id'=>'dlrepl_colonia_particular', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+												<?php echo Form::text('dlrepl_colonia_particular', null, ['id'=>'dlrepl_colonia_particular', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 												<div id="el-dlrepl_colonia_particular" class="invalid-feedback lbl-error"></div>			
 											</div>
-											<label for="dlrepl_cp_particular" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-2">C.P.*</label>
+											<label for="dlrepl_cp_particular" class="col-form-label text-right col-md-2"><b>C.P. *</b></label>
 											<div class="col-md-3">
-												<?php echo Form::text('dlrepl_cp_particular', null, ['id'=>'dlrepl_cp_particular', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+												<?php echo Form::text('dlrepl_cp_particular', null, ['id'=>'dlrepl_cp_particular', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 												<div id="el-dlrepl_cp_particular" class="invalid-feedback lbl-error"></div>			
 											</div>
 										</div>	
 										<div class="form-group row ">
-											<label for="dlrepl_referencias_particular" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Referencias</label>
+											<label for="dlrepl_referencias_particular" class="col-form-label text-right col-md-4"><b>Referencias</b></label>
 											<div class="col-md-8">
-												<?php echo Form::text('dlrepl_referencias_particular', null, ['id'=>'dlrepl_referencias_particular', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+												<?php echo Form::text('dlrepl_referencias_particular', null, ['id'=>'dlrepl_referencias_particular', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 												<div id="el-dlrepl_referencias_particular" class="invalid-feedback lbl-error"></div>			
 											</div>
@@ -622,41 +622,41 @@
 
 										<h5 class="mb-1 mt-3 tx-gray-700">Instrumento legal</h5><hr />
 										<div class="form-group row ">
-											<label for="dlrepl_num_escritura" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Núm. de escritura*</label>
+											<label for="dlrepl_num_escritura" class="col-form-label text-right col-md-4"><b>Núm. de escritura *</b></label>
 											<div class="col-md-8">
-												<?php echo Form::text('dlrepl_num_escritura', null, ['id'=>'dlrepl_num_escritura', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+												<?php echo Form::text('dlrepl_num_escritura', null, ['id'=>'dlrepl_num_escritura', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 												<div id="el-dlrepl_num_escritura" class="invalid-feedback lbl-error"></div>											
 											</div>
 										</div>
 										<div class="form-group row ">
-											<label for="dlrepl_fecha_escritura" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Fecha de escritura*</label>
+											<label for="dlrepl_fecha_escritura" class="col-form-label text-right col-md-4"><b>Fecha de escritura *</b></label>
 											<div class="col-md-8">							
 												<div class="input-group date">
-													<?php echo Form::text('dlrepl_fecha_escritura', null, ['id'=>'dlrepl_fecha_escritura', 'placeholder'=>'',  'class'=>'form-control input-sm fc-datepicker']); ?>
+													<?php echo Form::text('dlrepl_fecha_escritura', null, ['id'=>'dlrepl_fecha_escritura', 'placeholder'=>'',  'class'=>'form-control inp-udi fc-datepicker']); ?>
 
 													<div id="el-dlrepl_fecha_escritura" class="invalid-feedback lbl-error"></div>
 												</div>									
 											</div>
 										</div>	
 										<div class="form-group row ">
-											<label for="dlrepl_notario_nombre" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Nombre del notario*</label>
+											<label for="dlrepl_notario_nombre" class="col-form-label text-right col-md-4"><b>Nombre del notario *</b></label>
 											<div class="col-md-8">
-												<?php echo Form::text('dlrepl_notario_nombre', null, ['id'=>'dlrepl_notario_nombre', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+												<?php echo Form::text('dlrepl_notario_nombre', null, ['id'=>'dlrepl_notario_nombre', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 												<div id="el-dlrepl_notario_nombre" class="invalid-feedback lbl-error"></div>											
 											</div>
 										</div>
 										<div class="form-group row ">
-											<label for="dlrepl_notario_numero" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Número de notario*</label>
+											<label for="dlrepl_notario_numero" class="col-form-label text-right col-md-4"><b>Número de notario *</b></label>
 											<div class="col-md-8">
-												<?php echo Form::text('dlrepl_notario_numero', null, ['id'=>'dlrepl_notario_numero', 'placeholder'=>'',  'class'=>'form-control input-sm ']); ?>
+												<?php echo Form::text('dlrepl_notario_numero', null, ['id'=>'dlrepl_notario_numero', 'placeholder'=>'',  'class'=>'form-control inp-udi ']); ?>
 
 												<div id="el-dlrepl_notario_numero" class="invalid-feedback lbl-error"></div>											
 											</div>
 										</div>				
 										<div class="form-group row ">
-											<label for="dlrepl_id_estado" class="col-form-label tx-12 tx-medium tx-gray-700 col-md-4">Estado*</label>
+											<label for="dlrepl_id_estado" class="col-form-label text-right col-md-4"><b>Estado *</b></label>
 											<div class="col-md-8">
 												<?php echo Form::select('dlrepl_id_estado', $estados, null, ['id' => 'dlrepl_id_estado', 'style'=>'width: 100%;', 'class' => 'default-select2 form-control input-sm']); ?>			
 												<div id="el-dlrepl_id_estado" class="invalid-feedback lbl-error"></div>			
