@@ -20,11 +20,11 @@ FilePond.create(
     document.querySelector('input')
 );
 
-
-$(document).ready(function() {
-    
-    $('#btnterminarSolventacion').attr('onclick', 'store_end()');
-});
+$(document).ready(
+    function() {
+        $('#btnterminarSolventacion').attr('onclick', 'store_end()');
+    }
+);
 
 function store_end()
  {
