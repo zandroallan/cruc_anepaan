@@ -21,27 +21,26 @@
 			<div class="card-header">
 				<div class="card-title">
 					<span class="card-icon">
-						<i class="flaticon2-chat-1 text-primary"></i>
+						<i class="flaticon2-chat-1 fa-2x text-primary"></i>
 					</span>
-					<h3 class="card-label">
+					<h3>
 						Seguimiento del tramite {!! $folio !!}
 					</h3>
 				</div>
 			</div>
 			<div class="card-body">
-				
 					@if ( !empty($datosTramite) )
 						@if ( strlen($datosTramite->folio) > 6 ) 
 							<!-- Begin: Contenido detalle -->
 							<ul class="nav nav-tabs nav-tabs-line">
 								<li class="nav-item">
-									<a class="nav-link active" data-toggle="tab" href="#tab1over">Datos generales</a>
+									<a class="nav-link active font-size-h6" data-toggle="tab" href="#tab1over">Datos generales</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" data-toggle="tab" href="#tab2rev">Expecialidades técnicas empresa</a>
+									<a class="nav-link font-size-h6" data-toggle="tab" href="#tab2rev">Expecialidades técnicas de la empresa</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" data-toggle="tab" href="#tab3rev">Expecialidades técnicas RTEC</a>
+									<a class="nav-link font-size-h6" data-toggle="tab" href="#tab3rev">Expecialidades técnicas RTEC</a>
 								</li>
 							</ul>
 							<div class="tab-content mt-5" id="myTabContent">
@@ -74,289 +73,273 @@
 												$vcp='$ '.$CapitalContable_upd->capital;
 											}
 										?>
+								
+										<div class="card">
+											<div class="card-body">
 
-
-									<div class="row">										
-										<div class="col-md-6">
-											<div class="flex-grow-1 card-spacer-x">
-												<div class="d-flex align-items-center justify-content-between mb-10">
-													<div class="d-flex align-items-center mr-2">
-														<div class="symbol symbol-50 symbol-light mr-3 flex-shrink-0">
-															<div class="symbol-label">
-																<i class="icon-xl fas fa-gavel"></i>
-															</div>
-														</div>
-														<div>
-															<a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">
-																Estatus área legal
-															</a>
-															<div class="font-size-sm text-muted font-weight-bold mt-1">
-																<span class="badge badge-{!! $datosTramite->status_legal_color !!}" style="display: inline; color: #fff;">
-																	{!! $datosTramite->status_legal !!}
-																</span> 
-															</div>
-														</div>
+												<div class="alert alert-custom alert-light-dark fade show mb-10" role="alert">
+													<div class="alert-icon">
+														<i class="flaticon-clock-2 icon-3x text-muted font-weight-bold"></i>
+													</div>
+													<div class="alert-text font-weight-bold">
+														<h6><span class="label label-dot label-dark"></span> Fecha de inicio del tramite: {!! $datosTramite->fecha_inicio !!}</h6>
+														
+														<h6><span class="label label-dot label-dark"></span>
+														Capital contable: {{ $vcp }}</h6>
 													</div>
 												</div>
-												@if ( $datosTramite->id_sujeto_tramite != 2 )
-												<div class="d-flex align-items-center justify-content-between mb-10">
-													<div class="d-flex align-items-center mr-2">
-														<div class="symbol symbol-50 symbol-light mr-3 flex-shrink-0">
-															<div class="symbol-label">
-																<i class="icon-xl fas fa-dollar-sign"></i>
+
+												<h3 class="card-title align-items-start flex-column mt-10">
+													<span class="card-label font-weight-bolder text-dark">Status del tr&aacute;mite</span>
+												</h3>
+
+												<div class="d-flex align-items-center flex-wrap mb-3">
+													<!--begin: Item-->
+													<div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+														<span class="mr-4">
+															<i class="flaticon-globe icon-3x text-muted font-weight-bold"></i>
+														</span>
+														<div class="d-flex flex-column text-dark-75">
+															<span class="font-weight-bolder font-size-h6">Area Legal</span>
+															<span class="font-weight-bolder font-size-h5">
+																<span class="label label-lg font-weight-bold label-light-{!! $datosTramite->status_legal_color !!} label-inline">
+																	<span class="label label-{!! $datosTramite->status_legal_color !!} label-dot mr-2"></span><b>{!! $datosTramite->status_legal !!}</b>
+																</span>
+															</span>
+														</div>
+													</div>
+													<!--end: Item-->
+													
+													<!--begin: Item-->
+													@if ( $datosTramite->id_sujeto_tramite != 2 )
+													<div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+														<span class="mr-4">
+															<i class="flaticon-coins icon-3x text-muted font-weight-bold"></i>
+														</span>
+														<div class="d-flex flex-column text-dark-75">
+															<span class="font-weight-bolder font-size-h6">Area Financiera</span>
+															<span class="font-weight-bolder font-size-h5">
+																<span class="label label-lg font-weight-bold label-light-{!! $datosTramite->status_financiera_color !!} label-inline">
+																	<span class="label label-{!! $datosTramite->status_financiera_color !!} label-dot mr-2"></span><b>{!! $datosTramite->status_financiera !!}</b>
+																</span>
+															</span>
+														</div>
+													</div>
+													@endif
+													<!--end: Item-->
+
+													<!--begin: Item-->
+													<div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+														<span class="mr-4">
+															<i class="flaticon2-delivery-truck icon-3x text-muted font-weight-bold"></i>
+														</span>
+														<div class="d-flex flex-column text-dark-75">
+															<span class="font-weight-bolder font-size-h6">Area T&eacute;cnica</span>
+															<span class="font-weight-bolder font-size-h5">
+																<span class="text-dark-50 font-weight-bold">
+																	<span class="label label-lg font-weight-bold label-light-{!! $datosTramite->status_tecnica_color !!} label-inline">
+																		<span class="label label-{!! $datosTramite->status_tecnica_color !!} label-dot mr-2"></span><b>{!! $datosTramite->status_tecnica !!}</b>
+																	</span>
+																</span>
+															</span>
+														</div>
+													</div>
+													<!--end: Item-->
+
+													<!--begin: Item-->
+													<div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+														<span class="mr-4">
+															<i class="flaticon2-list icon-3x text-muted font-weight-bold"></i>
+														</span>
+														<div class="d-flex flex-column text-dark-75">
+															<span class="font-weight-bolder font-size-h6">General</span>
+															<span class="font-weight-bolder font-size-h5">
+																<span class="text-dark-50 font-weight-bold">														
+																	<b>{!! $spanfolio !!}</b>
+																</span>
+															</span>
+														</div>
+													</div>
+													<!--end: Item-->											
+												</div>
+
+												<!-- observaciones -->
+												<h3 class="card-title align-items-start flex-column mt-10">
+													<span class="card-label font-weight-bolder text-dark">Desglose de las observaciones por &aacute;rea</span>
+												</h3>
+
+												@if ( !empty($observaciones['obsLegal']) || !empty($observaciones['obsFinanciera']) || !empty($observaciones['obsTecnica']))
+												<div class="accordion accordion-solid accordion-toggle-plus" id="accordionExample6">
+													@if ( !empty($observaciones['obsLegal']) && $datosTramite->id_status_area_legal >= 4 )
+													<div class="card">
+														<div class="card-header" id="headingOne6">
+															<div class="card-title" data-toggle="collapse" data-target="#collapseOne6">
+																<i class="flaticon-globe icon-3x text-muted font-weight-bold"></i>
+																Observaciones área legal
 															</div>
 														</div>
-														<div>
-															<a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">
-																Estatus área financiera
-															</a>
-															<div class="font-size-sm text-muted font-weight-bold mt-1">
-																<span class="badge badge-{!! $datosTramite->status_financiera_color !!}" style="display: inline; color: #fff;">
-																	{!! $datosTramite->status_financiera !!}
-																</span>
+														<div id="collapseOne6" class="collapse show" data-parent="#accordionExample6">
+															<div class="card-body">
+																<div class="column">
+																	<?php $contadorLeg = 0; ?>
+																	@foreach ( $observaciones['obsLegal'] as $dato )
+																	<?php $contadorLeg++; ?>
+															        <div class="belief top">
+															          <h3 style="padding-left: 5px; width: 25px;">{{$contadorLeg}}</h3>
+															          <h4>
+															          		{!! $dato['documento_padre'] !!} -
+															          		@if ( $dato['id_status'] != 9 )
+															          		<span class="label label-outline-{!! $dato['status_color'] !!} label-inline mr-2">
+															          			<span class="label label-{!! $dato['status_color'] !!} label-dot mr-2"></span>
+															          			<b>{!! $dato['status'] !!}</b>
+															          		</span>
+																			@endif
+															          </h4>
+															          <h5>{!! $dato['documento'] !!}</h5>
+															          <p class="mb-0" style="text-align: justify;">{!! $dato['observacion'] !!}</p>
+															        </div>
+															        @endforeach
+															    </div>
 															</div>
 														</div>
 													</div>
+													@endif
+													@if ( !empty($observaciones['obsFinanciera']) && $datosTramite->id_status_area_financiera >= 4 )
+													<div class="card">
+														<div class="card-header" id="headingTwo6">
+															<div class="card-title collapsed" data-toggle="collapse" data-target="#collapseTwo6">
+																<i class="flaticon-coins icon-3x text-muted font-weight-bold"></i>
+																Observaciones área financiera
+															</div>
+														</div>
+														<div id="collapseTwo6" class="collapse" data-parent="#accordionExample6">
+															<div class="card-body">
+																<?php
+																	$vflTramiteCapitalContable=\App\Http\Models\Backend\T_Tramite_Estado_Financiero::general([
+																		'id_tramite'=>$datosTramite->id
+																	])->first();
+
+																	if ( !empty($vflTramiteCapitalContable) )
+																		$vcapitalContable=json_decode($vflTramiteCapitalContable->capital_neto);
+																?>
+
+																<div class="column">
+																	<?php $contadorFin = 0; ?>
+																	@foreach ( $observaciones['obsFinanciera'] as $dato )
+																	<?php $contadorFin++; ?>
+															        <div class="belief top">
+															          <h3 style="padding-left: 5px; width: 25px;">{{$contadorFin}}</h3>
+															          <h4>
+															          		{!! $dato['documento_padre'] !!} -
+															          		@if ( $dato['id_status'] != 9 )
+															          		<span class="label label-outline-{!! $dato['status_color'] !!} label-inline mr-2">
+															          			<span class="label label-{!! $dato['status_color'] !!} label-dot mr-2"></span>
+															          			<b>{!! $dato['status'] !!}</b>
+															          		</span>
+																			@endif
+															          </h4>
+															          <h5>{!! $dato['documento'] !!}</h5>
+															          <p class="mb-0" style="text-align: justify;">{!! $dato['observacion'] !!}</p>
+															        </div>
+															        @endforeach
+															    </div>
+															</div>
+														</div>
+													</div>
+													@endif
+													@if ( !empty($observaciones['obsTecnica']) && $datosTramite->id_status_area_tecnica >= 4 )
+													<div class="card">
+														<div class="card-header" id="headingThree6">
+															<div class="card-title collapsed" data-toggle="collapse" data-target="#collapseThree6">
+																<i class="flaticon2-delivery-truck icon-3x text-muted font-weight-bold"></i>
+																Observaciones área técnica
+															</div>
+														</div>
+														<div id="collapseThree6" class="collapse" data-parent="#accordionExample6">
+															<div class="card-body">
+																<div class="column">
+																	<?php $contadorTec = 0; ?>
+																	@foreach ( $observaciones['obsTecnica'] as $dato )
+																	<?php $contadorTec++; ?>
+															        <div class="belief top">
+															          <h3 style="padding-left: 5px; width: 25px;">{{$contadorTec}}</h3>
+															          <h4>
+															          		{!! $dato['documento_padre'] !!} -
+															          		@if ( $dato['id_status'] != 9 )
+															          		<span class="label label-outline-{!! $dato['status_color'] !!} label-inline mr-2">
+															          			<span class="label label-{!! $dato['status_color'] !!} label-dot mr-2"></span>
+															          			<b>{!! $dato['status'] !!}</b>
+															          		</span>
+																			@endif
+															          </h4>
+															          <h5>{!! $dato['documento'] !!}</h5>
+															          <p class="mb-0" style="text-align: justify;">{!! $dato['observacion'] !!}</p>
+															        </div>
+															        @endforeach
+															    </div>
+															</div>
+														</div>
+													</div>
+													@endif
 												</div>
 												@endif
-												<div class="d-flex align-items-center justify-content-between">
-													<div class="d-flex align-items-center mr-2">
-														<div class="symbol symbol-50 symbol-light mr-3 flex-shrink-0">
-															<div class="symbol-label">
-																<i class="icon-xl fas fa-hard-hat"></i>
-															</div>
-														</div>
-														<div>
-															<a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">
-																Estatus área técnica
-															</a>
-															<div class="font-size-sm text-muted font-weight-bold mt-1">
-																<span class="badge badge-{!! $datosTramite->status_tecnica_color !!}" style="display: inline; color: #fff;">
-																	{!! $datosTramite->status_tecnica !!}
-																</span>
-															</div>
-														</div>
-													</div>
-												</div>
+												<!-- end observaciones -->
 											</div>
 										</div>
-										<div class="col-md-6">
-											<div class="flex-grow-1 card-spacer-x">
-												<div class="d-flex align-items-center justify-content-between mb-10">
-													<div class="d-flex align-items-center mr-2">
-														<div class="symbol symbol-50 symbol-light mr-3 flex-shrink-0">
-															<div class="symbol-label">
-																<i class="icon-xl fas fa-chart-line"></i>
-															</div>
-														</div>
-														<div>
-															<a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">
-																Estatus general del trámite
-															</a>
-															<div class="font-size-sm text-muted font-weight-bold mt-1">
-																<span class="badge badge-{!! $datosTramite->status_legal_color !!}" style="display: inline; color: #fff;">
-																	{!! $folio !!}
-																</span> 
-															</div>
-														</div>
-													</div>
-												</div>
-												<div class="d-flex align-items-center justify-content-between mb-10">
-													<div class="d-flex align-items-center mr-2">
-														<div class="symbol symbol-50 symbol-light mr-3 flex-shrink-0">
-															<div class="symbol-label">
-																<i class="icon-xl fas fa-calendar"></i>
-															</div>
-														</div>
-														<div>
-															<a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">
-																Fecha de inicio del tramite
-															</a>
-															<div class="font-size-sm text-muted font-weight-bold mt-1">
-																<span class="badge badge-{!! $datosTramite->status_financiera_color !!}" style="display: inline; color: #fff;">
-																	{!! $datosTramite->fecha_inicio !!}
-																</span>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div class="d-flex align-items-center justify-content-between">
-													<div class="d-flex align-items-center mr-2">
-														<div class="symbol symbol-50 symbol-light mr-3 flex-shrink-0">
-															<div class="symbol-label">
-																<i class="icon-xl fas fa-coins"></i>
-															</div>
-														</div>
-														<div>
-															<a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">
-																Capital contable
-															</a>
-															<div class="font-size-sm text-muted font-weight-bold mt-1">
-																<span class="badge badge-{!! $datosTramite->status_tecnica_color !!}" style="display: inline; color: #fff;">
-																	div>ACTUAL &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {!! $vcp !!}</div>
-																</span>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
+								
 									</div>
 
 
-									<hr />
 									<div class="tab-pane fade" role="tabpanel" id="tab2rev">
-										<?php
-											$vtextoEspecialidades='Sin especialidades.';
-											$vcapitalContable=json_decode($datosTramite->especialidades_tecnicas);
-											if ( !empty($vcapitalContable) ) {
-												$vtextoEspecialidades='';
-												foreach ($vcapitalContable as $key => $value) {
-													// code...
-													$vflEspecialidades=\App\Http\Models\Catalogos\C_Especialidad::findOrFail($value);
-													$vtextoEspecialidades.=$vflEspecialidades->clave .'.-'. $vflEspecialidades->nombre . '<br />';
-													unset($vflEspecialidades);
-												}
-											}
-										?>
-										<h5>Especialidades técnicas acreditadas propias</h5>
-										<p> {!! $vtextoEspecialidades !!} </p>
+										<div class="card">
+											<div class="card-body">
+												<?php
+													$vtextoEspecialidades='Sin especialidades.';
+													$vcapitalContable=json_decode($datosTramite->especialidades_tecnicas);
+												?>
+												<h5 class="mb-5">Especialidades técnicas acreditadas por la empresa</h5>
+
+												@if( !empty($vcapitalContable))
+												<ol class="lstEspc">
+													@foreach ( $vcapitalContable as $key => $value )
+														<?php $vflEspecialidades=\App\Http\Models\Catalogos\C_Especialidad::findOrFail($value); ?>
+													  	<li>												    
+													    	<p><strong class="ml-12 mr-5">{{ $vflEspecialidades->clave}}</strong>{{ $vflEspecialidades->nombre }}</p>
+													  	</li>
+													  	<?php unset($vflEspecialidades); ?>
+													@endforeach
+												</ol>
+												@endif
+											</div>
+										</div>
 									</div>
 									<div class="tab-pane fade" role="tabpanel" id="tab3rev">
-										<?php
-											$vtextoEspecialidadesRTEC ='Sin especialidades.';
-											$vflRTEC=\App\Http\Models\Backend\T_Tramite_Rep_Tecnico::general(['id_tramite'=> $datosTramite->id])->first();
-											if ( !empty($vflRTEC)) {
-												$vtextoEspecialidadesRTEC ='';
-												$vespecialidadesRTEC=json_decode($vflRTEC->especialidades);
-												foreach ($vespecialidadesRTEC as $key => $value) {
-													// code...
-													$vflEspecialidades=\App\Http\Models\Catalogos\C_Especialidad::findOrFail($value);
-													$vtextoEspecialidadesRTEC.=$vflEspecialidades->clave .'.-'. $vflEspecialidades->nombre . '<br />';
-													unset($vflEspecialidades);
-												}
-											}
-											unset($vflRTEC, $vespecialidadesRTEC);
-										?>
-										<h5>Especialidades técnicas del representante técnico (RTEC)</h5>
-										<p> {!! $vtextoEspecialidadesRTEC !!} </p>
-									</div>
-								</div>
-							</div>
-							
-							@if ( !empty($observaciones['obsLegal']) || !empty($observaciones['obsFinanciera']) || !empty($observaciones['obsTecnica']))
-							<div class="accordion accordion-solid accordion-toggle-plus" id="accordionExample6">
-								@if ( !empty($observaciones['obsLegal']) && $datosTramite->id_status_area_legal >= 4 )
-								<div class="card">
-									<div class="card-header" id="headingOne6">
-										<div class="card-title" data-toggle="collapse" data-target="#collapseOne6">
-											<i class="flaticon2-notification"></i>
-											Observaciones área legal <span class="badge badge-{!! $datosTramite->status_legal_color !!}">{!! $datosTramite->status_legal !!}</span>
-										</div>
-									</div>
-									<div id="collapseOne6" class="collapse show" data-parent="#accordionExample6">
-										<div class="card-body">
-											<ul class="list-group list-group-flush">
-											@foreach($observaciones['obsLegal'] as $dato)
-												<li class="list-group-item">															
-													<h5 class="card-title mb-1">
-														{!! $dato['documento_padre'] !!}
-														@if ( $dato['id_status'] != 9 )
-														<span class="badge badge-{!! $dato['status_color'] !!}">{!! $dato['status'] !!}</span>
-														@endif
-													</h5>
-													<h6 class="card-title mb-1">{!! $dato['documento'] !!}</h6>
-													<p class="mb-0" style="text-align: justify;">{!! $dato['observacion'] !!}</p>
-												</li>
-											@endforeach
-											</ul>
-										</div>
-									</div>
-								</div>
-								@endif
-								@if ( !empty($observaciones['obsFinanciera']) && $datosTramite->id_status_area_financiera >= 4 )
-								<div class="card">
-									<div class="card-header" id="headingTwo6">
-										<div class="card-title collapsed" data-toggle="collapse" data-target="#collapseTwo6">
-											<i class="flaticon2-notification"></i>
-											Observaciones área financiera <span class="badge badge-{!! $datosTramite->status_financiera_color !!}">{!! $datosTramite->status_financiera !!}</span>
-										</div>
-									</div>
-									<div id="collapseTwo6" class="collapse" data-parent="#accordionExample6">
-										<div class="card-body">
-											<?php
-												$vflTramiteCapitalContable=\App\Http\Models\Backend\T_Tramite_Estado_Financiero::general([
-													'id_tramite'=>$datosTramite->id
-												])->first();
+										<div class="card">
+											<div class="card-body">
+												<h5 class="mb-5">Especialidades técnicas acreditadas por el representante técnico (RTEC)</h5>
+												<?php
+													$vtextoEspecialidadesRTEC ='Sin especialidades.';
+													$vflRTEC=\App\Http\Models\Backend\T_Tramite_Rep_Tecnico::general(['id_tramite'=> $datosTramite->id])->first();
+												?>
 
-												if ( !empty($vflTramiteCapitalContable) )
-													$vcapitalContable=json_decode($vflTramiteCapitalContable->capital_neto);
-											?>
-
-											<ul class="list-group list-group-flush">
-											<?php
-											/*
-											@if ( !empty($vflTramiteCapitalContable) && $datosTramite->id_status_area_financiera == 7 )
-												<li class="list-group-item">
-													<h5 class="card-title mb-1">Capital contable</h5>
-													<h6 class="card-title mb-1">
-														ACTUAL &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge badge-success">{!! $vcapitalContable->actual !!}</span>
-													</h6>
-													<h6 class="card-title mb-1">
-														ANTERIOR <span class="badge badge-warning">{!! $vcapitalContable->anterior !!}</span>
-													</h6>
-												</li>
-											@endif
-											*/
-											?>
-											@foreach ( $observaciones['obsFinanciera'] as $dato )
-												<li class="list-group-item">
-													<h5 class="card-title mb-1">
-														{!! $dato['documento_padre'] !!}
-														@if ( $dato['id_status'] != 9 )
-														<span class="badge badge-{!! $dato['status_color'] !!}">{!! $dato['status'] !!}</span>
-														@endif
-													</h5>
-													<h6 class="card-title mb-1">{!! $dato['documento'] !!}</h6>
-													<p class="mb-0" style="text-align: justify;">{!! $dato['observacion'] !!}</p>
-												</li>
-											@endforeach
-											</ul>
+												@if( !empty($vflRTEC))
+												<ol class="lstEspc">
+													<?php $vespecialidadesRTEC=json_decode($vflRTEC->especialidades); ?>
+													@foreach ( $vespecialidadesRTEC as $key => $value )
+														<?php $vflEspecialidades=\App\Http\Models\Catalogos\C_Especialidad::findOrFail($value); ?>
+													  	<li>												    
+													    	<p><strong class="ml-12 mr-5">{{ $vflEspecialidades->clave}}</strong>{{ $vflEspecialidades->nombre }}</p>
+													  	</li>
+													  	<?php unset($vflEspecialidades); ?>
+													@endforeach
+												</ol>
+												@endif
+												<?php unset($vflRTEC, $vespecialidadesRTEC); ?>
+											</div>
 										</div>
 									</div>
 								</div>
-								@endif
-								@if ( !empty($observaciones['obsTecnica']) && $datosTramite->id_status_area_tecnica >= 4 )
-								<div class="card">
-									<div class="card-header" id="headingThree6">
-										<div class="card-title collapsed" data-toggle="collapse" data-target="#collapseThree6">
-											<i class="flaticon2-notification"></i>
-											Observaciones área técnica <span class="badge badge-{!! $datosTramite->status_tecnica_color !!}">{!! $datosTramite->status_tecnica !!}</span>
-										</div>
-									</div>
-									<div id="collapseThree6" class="collapse" data-parent="#accordionExample6">
-										<div class="card-body">
-											<ul class="list-group list-group-flush">
-											@foreach($observaciones['obsTecnica'] as $dato)
-												<li class="list-group-item">
-													<h5 class="card-title mb-1">
-														{!! $dato['documento_padre'] !!}
-														@if ( $dato['id_status'] != 9 )
-														<span class="badge badge-{!! $dato['status_color'] !!}">{!! $dato['status'] !!}</span>
-														@endif
-													</h5>
-													<h6 class="card-title mb-1">{!! $dato['documento'] !!}</h6>
-													<p class="mb-0" style="text-align: justify;">{!! $dato['observacion'] !!}</p>
-												</li>
-											@endforeach
-											</ul>
-										</div>
-									</div>
-								</div>
-								@endif
-							</div>
-							@endif
-
+							</div>	
 						<!-- End: Contenido detalle -->
 						@endif
 					@endif

@@ -33,31 +33,37 @@ function cargar_mis_observaciones(id_tramite)
                 body += '       <td>' + valor.observacion + '</td>';
                 body += '       <td class="text-center">' + valor.area + '</td>';
                 body += '       <td class="text-center">';
-                body += '           <span class="label label-' + valor.color_status + ' label-pill label-inline mr-2">' + valor.status + '</span>';
+                body += '           <span class="label label-light-' + valor.color_status + ' label-inline mr-2">';
+                body += '               <span class="label label-' + valor.color_status + ' label-dot mr-2"></span>';
+                body += '               <b>' + valor.status + '</b>';
+                body += '           </span>';
                 body += '       </td>';
                 body += '       <td class="text-center">';
-                body += '           <div class"btn-icon-list">';
+                //body += '           <div class"btn-icon-list">';
                 if ( valor.id_status_tramite >= 5 || valor.id_status_tramite == 3 ) {
-                    body += '           <a href="' + url_ir_a_observacion + '" class="btn btn-default btn-icon btn-circle">';
+                    body += '           <a href="' + url_ir_a_observacion + '" class="btn btn-icon btn-outline-default btn-icon btn-circle">';
                     body += '               <i class="fa fa-search"></i>';
                     body += '           </a>';
                 }
+
+
+
                 else if ( valor.id_status_tramite == 4 ) {
                     if (valor.solventado == 0) {
-                        body += '       <a class="btn btn-sm btn-outline-info" href="' + url_ir_a_observacion + '" title="Agregar documentos a la observación">';
+                        body += '       <a class="btn btn-icon btn-sm btn-outline-info btn-circle" href="' + url_ir_a_observacion + '" title="Agregar documentos a la observación">';
                         body += '           <i class="fa fa-plus"></i>';
                         body += '       </a>';
-                        body += '       <button class="btn btn-sm btn-outline-success" onclick="solventarObservacion(' + valor.id + ')" title="Solventar esta observación">';
+                        body += '       <button class="btn btn-icon btn-sm btn-outline-success btn-circle" onclick="solventarObservacion(' + valor.id + ')" title="Solventar esta observación">';
                         body += '           <i class="fas fa-save"></i>';
                         body += '       </button>';
                     } 
                     else {
-                        body += '       <button class="btn btn-sm btn-outline-danger" onclick="reloadObservation(' + valor.id + ', ' + id_tramite + ')" title="Desbloquear y volver a cargar solventación">';
-                        body += '           <i class="fa fa-unlock"></i> Desbloquear';
+                        body += '       <button class="btn btn-icon btn-sm btn-outline-danger btn-circle" onclick="reloadObservation(' + valor.id + ', ' + id_tramite + ')" title="Desbloquear y volver a cargar solventación">';
+                        body += '           <i class="fa fa-unlock"></i>';
                         body += '       </button>';
                     }
                 }
-                body += '           </div>';
+                //body += '           </div>';
                 body += '       </td>';
                 body += '   </tr>';
                 j++;

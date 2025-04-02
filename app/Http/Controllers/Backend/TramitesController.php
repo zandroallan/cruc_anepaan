@@ -34,15 +34,19 @@ class TramitesController extends Controller
             $idTramite=(int)$vflT_Registro->id_ultimo_tramite;
             $vflT_Tramite=T_Tramite::detalle($idTramite);
             $observaciones=T_Tramite_Observacion::observacionesAreas($idTramite);
-            $folio=$vflT_Tramite->folio .'<span style="display: inline; color: #fff;" class="badge badge-'. $vflT_Tramite->status_general_color .'">'. $vflT_Tramite->status_general .'</span>';
 
+            $folio=$vflT_Tramite->folio;
+            $spanfolio = '<span class="label label-lg font-weight-bold label-light-'. $vflT_Tramite->status_general_color .' label-inline">
+                <span class="label label-'. $vflT_Tramite->status_general_color .' label-dot mr-2"></span><b>'. $vflT_Tramite->status_general .'</b>
+            </span>';
         }
     
         return view('backend.mis-tramites-seguimiento.index', [
             'folio' => $folio,
             'datos' => $vflT_Registro,
             'datosTramite' => $vflT_Tramite,
-            'observaciones' => $observaciones
+            'observaciones' => $observaciones,
+            'spanfolio' => $spanfolio
         ]);
      }
 
