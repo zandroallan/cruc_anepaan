@@ -429,60 +429,108 @@ function mdl_documento_declaracion_anual(id_padre, txt_documento) {
 }
 
 function upload_tmp(form_name) {
-    swal({
-        title: "¡ Advertencia !",
-        text: "¿ Realmente subir el documento ?",
-        icon: "warning",
+    // swal({
+    //     title: "¡ Advertencia !",
+    //     text: "¿ Realmente subir el documento ?",
+    //     icon: "warning",
+    //     buttons: {
+    //         cancel: {
+    //             text: 'Cancelar',
+    //             value: false,
+    //             visible: true,
+    //             className: 'btn btn-default',
+    //             closeModal: true,
+    //         },
+    //         confirm: {
+    //             text: 'Confirmar',
+    //             value: true,
+    //             visible: true,
+    //             className: 'btn btn-primary',
+    //             closeModal: true
+    //         }
+    //     }
+    // }).then((result) => {
+    //     if (result) {
+    //         $("#" + form_name).submit();
+    //         clearFileInput();
+    //     }
+    // });
+    $.confirm({
+        title: '¡ Advertencia !',
+        content: '¿ Realmente deseas subir el documento ?',
+        type: 'orange',
+        typeAnimated: true,
         buttons: {
-            cancel: {
+            cancelar: {
                 text: 'Cancelar',
-                value: false,
-                visible: true,
-                className: 'btn btn-default',
-                closeModal: true,
+                btnClass: 'btn btn-default',
+                action: function() {
+                    return true;
+                }
             },
-            confirm: {
+            confirmar: {
                 text: 'Confirmar',
-                value: true,
-                visible: true,
-                className: 'btn btn-primary',
-                closeModal: true
+                btnClass: 'btn btn-primary',
+                action: function() {
+                    $("#" + form_name).submit();
+                    clearFileInput();
+                    return true;
+                }
             }
-        }
-    }).then((result) => {
-        if (result) {
-            $("#" + form_name).submit();
-            clearFileInput();
         }
     });
 }
 
 function upload_soporte(form_name)
  {
-    swal({
-        title: "¡ Advertencia !",
-        text: "¿ Realmente subir el documento ?",
-        icon: "warning",
+    // swal({
+    //     title: "¡ Advertencia !",
+    //     text: "¿ Realmente subir el documento ?",
+    //     icon: "warning",
+    //     buttons: {
+    //         cancel: {
+    //             text: 'Cancelar',
+    //             value: false,
+    //             visible: true,
+    //             className: 'btn btn-default',
+    //             closeModal: true,
+    //         },
+    //         confirm: {
+    //             text: 'Confirmar',
+    //             value: true,
+    //             visible: true,
+    //             className: 'btn btn-primary',
+    //             closeModal: true
+    //         }
+    //     }
+    // }).then((result) => {
+    //     if (result) {
+    //         $("#" + form_name).submit();
+    //         clearFileInput();
+    //     }
+    // });
+    $.confirm({
+        title: '¡ Advertencia !',
+        content: '¿ Realmente deseas subir el documento ?',
+        type: 'orange',
+        typeAnimated: true,
         buttons: {
-            cancel: {
+            cancelar: {
                 text: 'Cancelar',
-                value: false,
-                visible: true,
-                className: 'btn btn-default',
-                closeModal: true,
+                btnClass: 'btn btn-default',
+                action: function() {
+                    return true;
+                }
             },
-            confirm: {
+            confirmar: {
                 text: 'Confirmar',
-                value: true,
-                visible: true,
-                className: 'btn btn-primary',
-                closeModal: true
+                btnClass: 'btn btn-primary',
+                action: function() {
+                    $("#" + form_name).submit();
+                    clearFileInput();
+                    return true;
+                }
             }
-        }
-    }).then((result) => {
-        if (result) {
-            $("#" + form_name).submit();
-            clearFileInput();
         }
     });
  }
@@ -505,33 +553,61 @@ $('#frm-subir-adjunto-tmp').on('submit', function(e) {
         },        
         success: function(json) {
             messages_validation(json.data, false);
-            swal({
-                type: 'success',
+            // swal({
+            //     type: 'success',
+            //     title: 'Confirmación',
+            //     content: {
+            //         element: 'p',
+            //         attributes: {
+            //             innerHTML: json.msg,
+            //         },
+            //     },
+            //     showConfirmButton: false,
+            //     timer: 1500
+            // }).then(function() {
+            //     let id_sujeto = $("#ssjjtt").val();
+            //     let id_tipo_tramite = $("#id_tipo_tramite").val();
+            //     let obligado_dec_isr = $("#obligado_dec_isr").val();
+
+            //     $('.spinner_wait').hide(); 
+            //     $('.spinner_no_wait').show(); 
+
+            //     cargar_documentacion_requerida_legal(id_tipo_tramite, 2, json.data.id_registro_temp);
+            //     if (json.data.id_sujeto == 1) {
+            //         cargar_documentacion_requerida_financiera(id_tipo_tramite, 3, json.data.id_registro_temp, obligado_dec_isr);
+            //     }
+            //     cargar_documentacion_requerida_tecnica(id_tipo_tramite, 4, json.data.id_registro_temp, json.data.tec_acredita_tmp);
+                
+            //     $("#mdl_documento_1").modal("toggle");
+                
+            // });
+            $.confirm({
                 title: 'Confirmación',
-                content: {
-                    element: 'p',
-                    attributes: {
-                        innerHTML: json.msg,
-                    },
+                content: json.msg,
+                type: 'green',
+                typeAnimated: true,
+                autoClose: 'close|1500', // Autocerrarse después de 1500ms
+                buttons: {
+                    close: {
+                        isHidden: true // Botón oculto pero necesario para autoClose
+                    }
                 },
-                showConfirmButton: false,
-                timer: 1500
-            }).then(function() {
-                let id_sujeto = $("#ssjjtt").val();
-                let id_tipo_tramite = $("#id_tipo_tramite").val();
-                let obligado_dec_isr = $("#obligado_dec_isr").val();
-
-                $('.spinner_wait').hide(); 
-                $('.spinner_no_wait').show(); 
-
-                cargar_documentacion_requerida_legal(id_tipo_tramite, 2, json.data.id_registro_temp);
-                if (json.data.id_sujeto == 1) {
-                    cargar_documentacion_requerida_financiera(id_tipo_tramite, 3, json.data.id_registro_temp, obligado_dec_isr);
+                onClose: function() {
+                    let id_sujeto = $("#ssjjtt").val();
+                    let id_tipo_tramite = $("#id_tipo_tramite").val();
+                    let obligado_dec_isr = $("#obligado_dec_isr").val();
+            
+                    $('.spinner_wait').hide(); 
+                    $('.spinner_no_wait').show(); 
+            
+                    cargar_documentacion_requerida_legal(id_tipo_tramite, 2, json.data.id_registro_temp);
+                    if (json.data.id_sujeto == 1) {
+                        cargar_documentacion_requerida_financiera(id_tipo_tramite, 3, json.data.id_registro_temp, obligado_dec_isr);
+                    }
+                    cargar_documentacion_requerida_tecnica(id_tipo_tramite, 4, json.data.id_registro_temp, json.data.tec_acredita_tmp);
+                    
+                    $("#mdl_documento_1").modal("toggle");
                 }
-                cargar_documentacion_requerida_tecnica(id_tipo_tramite, 4, json.data.id_registro_temp, json.data.tec_acredita_tmp);
-                
-                $("#mdl_documento_1").modal("toggle");
-                
             });
         },
         error: function(json) {
@@ -548,22 +624,37 @@ $('#frm-subir-adjunto-tmp').on('submit', function(e) {
             if (json.status === 409) {
                 str_errors = jsonString.msg;
             }
-            swal({
-                title: "¡ Advertencia !",
-                content: {
-                    element: 'p',
-                    attributes: {
-                        innerHTML: str_errors,
-                    },
-                },
-                icon: "warning",
+            // swal({
+            //     title: "¡ Advertencia !",
+            //     content: {
+            //         element: 'p',
+            //         attributes: {
+            //             innerHTML: str_errors,
+            //         },
+            //     },
+            //     icon: "warning",
+            //     buttons: {
+            //         confirm: {
+            //             text: 'Confirmar',
+            //             value: true,
+            //             visible: true,
+            //             className: 'btn btn-primary',
+            //             closeModal: true
+            //         }
+            //     }
+            // });
+            $.confirm({
+                title: " ! Advertencia !",
+                content: str_errors,
+                type: "orange",
+                typeAnimated: true,
                 buttons: {
-                    confirm: {
-                        text: 'Confirmar',
-                        value: true,
-                        visible: true,
-                        className: 'btn btn-primary',
-                        closeModal: true
+                    confirmar: {
+                        text: "Confirmar",
+                        btnClass: "btn-primary",
+                        action: function() {
+                            return true;
+                        }
                     }
                 }
             });
@@ -588,32 +679,60 @@ $('#frm-subir-adjunto-soporte').on('submit', function(e) {
         },  
         success: function(json) {
             messages_validation_soporte(json.data, false);
-            swal({
-                type: 'success',
+            // swal({
+            //     type: 'success',
+            //     title: 'Confirmación',
+            //     content: {
+            //         element: 'p',
+            //         attributes: {
+            //             innerHTML: json.msg,
+            //         },
+            //     },
+            //     showConfirmButton: false,
+            //     timer: 1500
+            // }).then(function() {
+            //     let id_sujeto = $("#ssjjtt").val();
+            //     let id_tipo_tramite = $("#id_tipo_tramite").val();
+            //     let obligado_dec_isr = $("#obligado_dec_isr").val();
+
+            //     $('.spinner_wait').hide(); 
+            //     $('.spinner_no_wait').show(); 
+
+            //     cargar_documentacion_requerida_legal(id_tipo_tramite, 2, json.data.id_registro_temp);
+            //     if (json.data.id_sujeto == 1) {
+            //         cargar_documentacion_requerida_financiera(id_tipo_tramite, 3, json.data.id_registro_temp, obligado_dec_isr);
+            //     }
+            //     cargar_documentacion_requerida_tecnica(id_tipo_tramite, 4, json.data.id_registro_temp, json.data.tec_acredita_tmp);
+            //     $('#files-alias').val("");
+            //     $("#mdl_documento_soporte").modal("toggle");
+            // });
+            $.confirm({
                 title: 'Confirmación',
-                content: {
-                    element: 'p',
-                    attributes: {
-                        innerHTML: json.msg,
-                    },
+                content: json.msg,
+                type: 'green',
+                autoClose:'close|1500',
+                typeAnimated: true,
+                buttons: {
+                    close: {
+                        isHidden: true
+                    }
                 },
-                showConfirmButton: false,
-                timer: 1500
-            }).then(function() {
-                let id_sujeto = $("#ssjjtt").val();
-                let id_tipo_tramite = $("#id_tipo_tramite").val();
-                let obligado_dec_isr = $("#obligado_dec_isr").val();
+                onclose: function() {
+                    let id_sujeto = $("#ssjjtt").val();
+                    let id_tipo_tramite = $("#id_tipo_tramite").val();
+                    let obligado_dec_isr = $("#obligado_dec_isr").val();
 
-                $('.spinner_wait').hide(); 
-                $('.spinner_no_wait').show(); 
+                    $('.spinner_wait').hide(); 
+                    $('.spinner_no_wait').show(); 
 
-                cargar_documentacion_requerida_legal(id_tipo_tramite, 2, json.data.id_registro_temp);
-                if (json.data.id_sujeto == 1) {
-                    cargar_documentacion_requerida_financiera(id_tipo_tramite, 3, json.data.id_registro_temp, obligado_dec_isr);
+                    cargar_documentacion_requerida_legal(id_tipo_tramite, 2, json.data.id_registro_temp);
+                    if (json.data.id_sujeto == 1) {
+                        cargar_documentacion_requerida_financiera(id_tipo_tramite, 3, json.data.id_registro_temp, obligado_dec_isr);
+                    }
+                    cargar_documentacion_requerida_tecnica(id_tipo_tramite, 4, json.data.id_registro_temp, json.data.tec_acredita_tmp);
+                    $('#files-alias').val("");
+                    $("#mdl_documento_soporte").modal("toggle");
                 }
-                cargar_documentacion_requerida_tecnica(id_tipo_tramite, 4, json.data.id_registro_temp, json.data.tec_acredita_tmp);
-                $('#files-alias').val("");
-                $("#mdl_documento_soporte").modal("toggle");
             });
         },
         error: function(json) {
