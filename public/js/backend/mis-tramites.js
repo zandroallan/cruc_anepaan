@@ -38,88 +38,165 @@ function send_1(button)
  {
     if (!clicando) {     
 
-        swal({
-            title: "¡ Advertencia !",
-            text: "¿ Realmente desea guardar este registro ?",
-            icon: "warning",
+        // swal({
+        //     title: "¡ Advertencia !",
+        //     text: "¿ Realmente desea guardar este registro ?",
+        //     icon: "warning",
+        //     buttons: {
+        //         cancel: {
+        //             text: 'Cancelar',
+        //             value: false,
+        //             visible: true,
+        //             className: 'btn btn-default',
+        //             closeModal: true,
+        //         },
+        //         confirm: {
+        //             text: 'Confirmar',
+        //             value: true,
+        //             visible: true,
+        //             className: 'btn btn-primary',
+        //             closeModal: true
+        //         }
+        //     }
+        // }).then((result) => {
+        //     clicando = false;
+        //     if (result) {
+        //         $("#enviar_stt").val(0);
+        //         guardarTramite();
+        //     } else {
+        //         clicando = false;
+        //     }
+        // });
+        $.confirm({
+            title: '¡ Advertencia !',
+            content: '¿ Realmente desea guardar este registro ?',
+            type: 'orange', // Equivalente a "warning" en SweetAlert2
             buttons: {
-                cancel: {
+                cancelar: {
                     text: 'Cancelar',
-                    value: false,
-                    visible: true,
-                    className: 'btn btn-default',
-                    closeModal: true,
+                    btnClass: 'btn btn-default',
+                    action: function() {
+                        clicando = false;
+                    }
                 },
-                confirm: {
+                confirmar: {
                     text: 'Confirmar',
-                    value: true,
-                    visible: true,
-                    className: 'btn btn-primary',
-                    closeModal: true
+                    btnClass: 'btn btn-primary',
+                    action: function() {
+                        clicando = false;
+                        $("#enviar_stt").val(0);
+                        guardarTramite();
+                        return true;
+                    }
                 }
-            }
-        }).then((result) => {
-            clicando = false;
-            if (result) {
-                $("#enviar_stt").val(0);
-                guardarTramite();
-            } else {
-                clicando = false;
             }
         });
 
     } 
     else {
 
-        swal({
-            type: 'info',
-            title: 'Notificación',
-            text: "Por favor espere un momento, la información esta siendo procesada.",
-            icon: "info",
-            timer: 1500
-        });
-    }
+        // swal({
+        //     type: 'info',
+        //     title: 'Notificación',
+        //     text: "Por favor espere un momento, la información esta siendo procesada.",
+        //     icon: "info",
+        //     timer: 1500
+        // });
+        $.confirm({
+            title : 'Notificación',
+            content : 'Por favor espere un momento, la información esta siendo procesada.',
+            type : 'blue',
+            typeAnimated : true,
+            autoClose : 'close|1500',
+            buttons: {
+                close: {
+                    text: 'Cerrar',
+                    isHidden: true // Botón oculto pero necesario para autoClose
+                }
+            }
+    });
  }
 
 function send(button)
 {
+    // if (!clicando) {
+    //     swal({
+    //         title: "¡ Advertencia !",
+    //         text: "La SHyFP procederá a revisar la documentación adjunta solicitándole los documentos originales al termino para su verificación. Deberá presentar la documentación original para cotejo con los documentos digitales proporcionados en el SIRCSE, en la fecha y hora en que la Secretaría de la Honestidad y Función Pública le notifique, conforme al artículo 6 de los Lineamientos. ¿Desea enviar a tramite?",
+    //         icon: "warning",
+    //         buttons: {
+    //             cancel: {
+    //                 text: 'Cancelar',
+    //                 value: false,
+    //                 visible: true,
+    //                 className: 'btn btn-default',
+    //                 closeModal: true,
+    //             },
+    //             confirm: {
+    //                 text: 'Confirmar',
+    //                 value: true,
+    //                 visible: true,
+    //                 className: 'btn btn-primary',
+    //                 closeModal: true
+    //             }
+    //         }
+    //     }).then((result) => {
+    //         clicando = false;
+    //         if (result) {
+    //             $("#enviar_stt").val(1);
+    //             guardarTramite();
+    //         } else {
+    //             clicando = false;
+    //         }
+    //     });
+    // } else {
+    //     swal({
+    //         type: 'info',
+    //         title: 'Notificación',
+    //         text: "Por favor espere un momento, la información esta siendo procesada.",
+    //         icon: "info",
+    //         timer: 1500
+    //     });
+    // }
     if (!clicando) {
-        swal({
-            title: "¡ Advertencia !",
-            text: "La SHyFP procederá a revisar la documentación adjunta solicitándole los documentos originales al termino para su verificación. Deberá presentar la documentación original para cotejo con los documentos digitales proporcionados en el SIRCSE, en la fecha y hora en que la Secretaría de la Honestidad y Función Pública le notifique, conforme al artículo 6 de los Lineamientos. ¿Desea enviar a tramite?",
-            icon: "warning",
+        $.confirm({
+            title: '¡ Advertencia !',
+            content: 'La SAyBG procederá a revisar la documentación adjunta solicitándole los documentos originales al termino para su verificación. Deberá presentar la documentación original para cotejo con los documentos digitales proporcionados en el SIRCSE, en la fecha y hora en que la Secretaría de la Honestidad y Función Pública le notifique, conforme al artículo 6 de los Lineamientos. ¿Desea enviar a tramite?',
+            type: 'orange', // Equivalente a "warning" en SweetAlert2
             buttons: {
-                cancel: {
+                cancelar: {
                     text: 'Cancelar',
-                    value: false,
-                    visible: true,
-                    className: 'btn btn-default',
-                    closeModal: true,
+                    btnClass: 'btn btn-default',
+                    action: function() {
+                        clicando = false;
+                        return true;
+                    }
                 },
-                confirm: {
+                confirmar: {
                     text: 'Confirmar',
-                    value: true,
-                    visible: true,
-                    className: 'btn btn-primary',
-                    closeModal: true
+                    btnClass: 'btn btn-primary',
+                    action: function() {
+                        clicando = false;
+                        $("#enviar_stt").val(1);
+                        guardarTramite();
+                        return true;
+                    }
                 }
-            }
-        }).then((result) => {
-            clicando = false;
-            if (result) {
-                $("#enviar_stt").val(1);
-                guardarTramite();
-            } else {
-                clicando = false;
             }
         });
     } else {
-        swal({
-            type: 'info',
+        $.confirm({
             title: 'Notificación',
-            text: "Por favor espere un momento, la información esta siendo procesada.",
-            icon: "info",
-            timer: 1500
+            content: 'Por favor espere un momento, la información esta siendo procesada.',
+            type: 'blue', // Equivalente a "info" en SweetAlert2
+            typeAnimated: true,
+            autoClose: 'close|1500', // Autocerrarse después de 1500ms
+            buttons: {
+                close: {
+                    text: 'Cerrar',
+                    isHidden: true // Botón oculto pero necesario para autoClose
+                }
+            }
         });
     }
 }
@@ -134,22 +211,40 @@ function guardarTramite()
         data: el.serialize(),
         success: function(json) {
             messages_validation(json.data, false);
-            swal({
-                type: 'success',
+            // swal({
+            //     type: 'success',
+            //     title: 'Confirmación',
+            //     icon: 'success',
+            //     content: {
+            //         element: 'p',
+            //         attributes: {
+            //             innerHTML: json.msg,
+            //         },
+            //     },
+            //     showConfirmButton: false,
+            //     timer: 1500
+            // }).then(function() {
+            //     ciclando = false;
+            //     if (json.route_redirect != "") {
+            //         window.location = json.route_redirect;
+            //     }
+            // });
+            $.confirm({
                 title: 'Confirmación',
-                icon: 'success',
-                content: {
-                    element: 'p',
-                    attributes: {
-                        innerHTML: json.msg,
-                    },
+                content: json.msg,
+                type: 'green', // Equivalente a "success" en SweetAlert2
+                typeAnimated: true,
+                autoClose: 'close|1500', // Autocerrarse después de 1500ms
+                buttons: {
+                    close: {
+                        isHidden: true // Botón oculto pero necesario para autoClose
+                    }
                 },
-                showConfirmButton: false,
-                timer: 1500
-            }).then(function() {
-                ciclando = false;
-                if (json.route_redirect != "") {
-                    window.location = json.route_redirect;
+                onClose: function() {
+                    ciclando = false;
+                    if (json.route_redirect != "") {
+                        window.location = json.route_redirect;
+                    }
                 }
             });
         },
@@ -165,26 +260,40 @@ function guardarTramite()
                 str_errors = jsonString.msg;
             }
 
-            swal({
-                title: "¡ Advertencia !",
-                content: {
-                    element: 'p',
-                    attributes: {
-                        innerHTML: str_errors,
-                    },
-                },
-                icon: "warning",
+            // swal({
+            //     title: "¡ Advertencia !",
+            //     content: {
+            //         element: 'p',
+            //         attributes: {
+            //             innerHTML: str_errors,
+            //         },
+            //     },
+            //     icon: "warning",
+            //     buttons: {
+            //         confirm: {
+            //             text: 'Confirmar',
+            //             value: true,
+            //             visible: true,
+            //             className: 'btn btn-primary',
+            //             closeModal: true
+            //         }
+            //     }
+            // });
+            $.confirm({
+                title: '¡ Advertencia !',
+                content: str_errors,
+                type: 'orange', // Equivalente a "warning" en SweetAlert2
+                typeAnimated: true,
                 buttons: {
-                    confirm: {
+                    confirmar: {
                         text: 'Confirmar',
-                        value: true,
-                        visible: true,
-                        className: 'btn btn-primary',
-                        closeModal: true
+                        btnClass: 'btn btn-primary',
+                        action: function() {
+                            return true;
+                        }
                     }
                 }
             });
-
         }
     });
 }
@@ -338,32 +447,57 @@ function cargar_municipios_particular(estado)
 
 function eliminar_adjunto_tmp(id)
 {
-    swal({
+    // swal({
+    //     title: '¡ Advertencia !',
+    //     text: "Esta seguro de eliminar este documento adjunto ?",
+    //     icon:               "warning",
+    //     buttons: {
+    //         cancel: {
+    //             text: 'Cancelar',
+    //             value: false,
+    //             visible: true,
+    //             className: 'btn btn-default',
+    //             closeModal: true,
+    //         },
+    //         confirm: {
+    //             text: 'Confirmar',
+    //             value: true,
+    //             visible: true,
+    //             className: 'btn btn-primary',
+    //             closeModal: true
+    //         }
+    //     }
+    // }).then((result) => { 
+    //     if (result) {             
+    //         var url=$('#frm-destroy-adjunto-tmp').attr('action');
+    //         url= url.replace(/\/[^\/]*$/, '/'+id)
+    //         $('#frm-destroy-adjunto-tmp').attr('action', url).submit();
+    //     }                 
+    // });
+    $.confirm({
         title: '¡ Advertencia !',
-        text: "Esta seguro de eliminar este documento adjunto ?",
-        icon:               "warning",
+        content: "Esta seguro de eliminar este documento adjunto ?",
+        type: 'orange', // Equivalente a "warning" en SweetAlert2
+        typeAnimated: true,
         buttons: {
-            cancel: {
+            cancelar: {
                 text: 'Cancelar',
-                value: false,
-                visible: true,
-                className: 'btn btn-default',
-                closeModal: true,
+                btnClass: 'btn btn-default',
+                action: function() {
+                    return true;
+                }
             },
-            confirm: {
+            confirmar: {
                 text: 'Confirmar',
-                value: true,
-                visible: true,
-                className: 'btn btn-primary',
-                closeModal: true
+                btnClass: 'btn btn-primary',
+                action: function() {
+                    var url = $('#frm-destroy-adjunto-tmp').attr('action');
+                    url = url.replace(/\/[^\/]*$/, '/'+id);
+                    $('#frm-destroy-adjunto-tmp').attr('action', url).submit();
+                    return true;
+                }
             }
         }
-    }).then((result) => { 
-        if (result) {             
-            var url=$('#frm-destroy-adjunto-tmp').attr('action');
-            url= url.replace(/\/[^\/]*$/, '/'+id)
-            $('#frm-destroy-adjunto-tmp').attr('action', url).submit();
-        }                 
     });
 }
 
@@ -376,30 +510,56 @@ $('#frm-destroy-adjunto-tmp').on('submit', function(e) {
         url: el.attr('action'),
         data: $(this).serialize(),
         success: function(json) {
-            swal({                
-                icon: 'success',
-                title: 'Exito',
-                content: {
-                    element: 'p',
-                    attributes: {
-                        innerHTML: json.success,
-                    },
-                },                 
-                showConfirmButton: false,
-                timer: 1500
-            }).then(function() {
-                var url=$('#frm-destroy-adjunto-tmp').attr('action');
-                url= url.replace(/\/[^\/]*$/, '/0');     
-                $('#frm-destroy-adjunto-tmp').attr('action', url); 
-                let id_sujeto = $("#ssjjtt").val();
-                let id_tipo_tramite = $("#id_tipo_tramite").val(); 
-                let obligado_dec_isr= $("#obligado_dec_isr").val(); 
+            // swal({                
+            //     icon: 'success',
+            //     title: 'Exito',
+            //     content: {
+            //         element: 'p',
+            //         attributes: {
+            //             innerHTML: json.success,
+            //         },
+            //     },                 
+            //     showConfirmButton: false,
+            //     timer: 1500
+            // }).then(function() {
+            //     var url=$('#frm-destroy-adjunto-tmp').attr('action');
+            //     url= url.replace(/\/[^\/]*$/, '/0');     
+            //     $('#frm-destroy-adjunto-tmp').attr('action', url); 
+            //     let id_sujeto = $("#ssjjtt").val();
+            //     let id_tipo_tramite = $("#id_tipo_tramite").val(); 
+            //     let obligado_dec_isr= $("#obligado_dec_isr").val(); 
 
-                cargar_documentacion_requerida_legal(id_tipo_tramite, 2, json.datos.id_registro_temp);
-                if(id_sujeto==1){//solo si es contratista, supervisor lo oculta
-                  cargar_documentacion_requerida_financiera(id_tipo_tramite, 3, json.datos.id_registro_temp,obligado_dec_isr);
+            //     cargar_documentacion_requerida_legal(id_tipo_tramite, 2, json.datos.id_registro_temp);
+            //     if(id_sujeto==1){//solo si es contratista, supervisor lo oculta
+            //       cargar_documentacion_requerida_financiera(id_tipo_tramite, 3, json.datos.id_registro_temp,obligado_dec_isr);
+            //     }
+            //     cargar_documentacion_requerida_tecnica(id_tipo_tramite, 4, json.datos.id_registro_temp);                
+            // });
+            $.confirm({
+                title: 'Exito',
+                content: json.success,
+                type: 'green', // Equivalente a "success" en SweetAlert2
+                typeAnimated: true,
+                autoClose: 'close|1500', // Autocerrarse después de 1500ms
+                buttons: {
+                    close: {
+                        isHidden: true // Botón oculto pero necesario para autoClose
+                    }
+                },
+                onClose: function() {
+                    var url = $('#frm-destroy-adjunto-tmp').attr('action');
+                    url = url.replace(/\/[^\/]*$/, '/0');     
+                    $('#frm-destroy-adjunto-tmp').attr('action', url); 
+                    let id_sujeto = $("#ssjjtt").val();
+                    let id_tipo_tramite = $("#id_tipo_tramite").val(); 
+                    let obligado_dec_isr = $("#obligado_dec_isr").val(); 
+            
+                    cargar_documentacion_requerida_legal(id_tipo_tramite, 2, json.datos.id_registro_temp);
+                    if(id_sujeto == 1) { // solo si es contratista, supervisor lo oculta
+                        cargar_documentacion_requerida_financiera(id_tipo_tramite, 3, json.datos.id_registro_temp, obligado_dec_isr);
+                    }
+                    cargar_documentacion_requerida_tecnica(id_tipo_tramite, 4, json.datos.id_registro_temp);                
                 }
-                cargar_documentacion_requerida_tecnica(id_tipo_tramite, 4, json.datos.id_registro_temp);                
             });
         },
         error: function(json)
@@ -412,4 +572,5 @@ $('#frm-destroy-adjunto-tmp').on('submit', function(e) {
             }
         }           
     });
-});
+})
+}

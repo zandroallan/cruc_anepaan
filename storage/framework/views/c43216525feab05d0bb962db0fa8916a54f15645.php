@@ -27,4 +27,4 @@
         </div>
     </div>
 </div>
-<?php /**PATH C:\AppServ\www\sircse\resources\views/backend/encabezado.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\AppServ\apps\sircse\resources\views/backend/encabezado.blade.php ENDPATH**/ ?>
