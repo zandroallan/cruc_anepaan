@@ -27,6 +27,7 @@ class TramitesController extends Controller
         // code... 
         $vflT_Tramite=[];
         $observaciones=[];
+        $spanfolio='';
         $vflT_Registro=T_Registro::edit((int)Auth::User()->id_registro);
 
         $folio='<span class="badge badge-warning">Hasta el momento no existe ningún tramite en proceso.</span>';

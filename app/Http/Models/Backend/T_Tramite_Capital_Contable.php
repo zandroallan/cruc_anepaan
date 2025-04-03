@@ -13,6 +13,7 @@ class T_Tramite_Capital_Contable extends Model
     protected $table = 't_tramites_capital_contable';
     protected $fillable = [
         'id', 
+        'id_registro',
         'id_tramite', 
         'capital',
         'fecha_declaracion', 

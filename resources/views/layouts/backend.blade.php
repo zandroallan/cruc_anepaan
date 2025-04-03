@@ -8,16 +8,15 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 		<link rel="canonical" href="https://keenthemes.com/metronic" />
 
+		<!-- CSRF Token -->
+    	<meta name="csrf-token" content="{{ csrf_token() }}">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 		
 		<link rel="stylesheet" href="{{asset('public/assets/plugins/global/plugins.bundle.css')}}">
 		<link rel="stylesheet" href="{{asset('public/assets/plugins/custom/prismjs/prismjs.bundle.css')}}">
 		<link rel="stylesheet" href="{{asset('public/assets/css/style.bundle.css')}}">
-
 		<link rel="stylesheet" href="{{asset('public/css/cssHeader.css')}}">
-
 		<link rel="stylesheet" href="{{asset('public/assets/plugins/confirm/css/jquery-confirm.css')}}">
-		
 		<link rel="shortcut icon" href="{{ asset('public/assets/media/logos/favicon.ico') }}">
 
 		@yield('styles')
