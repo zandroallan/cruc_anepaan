@@ -2,18 +2,14 @@
 
 		@section('styles')	
 
-			<!-- <link href="{{ asset('public/dashlead/plugins/select2/css/select2.min.css') }}" rel="stylesheet"/> -->
 			<link href="{{ asset('public/css/tabs.css') }}" rel="stylesheet"/>
 
 		@endsection
 
 		@section('js')
 
-			<!-- <script src="{{ asset('public/dashlead/plugins/jquery-ui/ui/widgets/datepicker.js') }}"></script> -->
-			<!-- <script src="{{ asset('public/dashlead/plugins/select2/js/select2.min.js') }}"></script> -->
-			<!-- <script src="{{ asset('public/dashlead/js/select2.js') }}"></script> -->
 			<script src="{{ asset('public/js/backend/general.js') }}"></script>			
-			<script src="{{ asset('public/js/backend/mis-tramites.js') }}"></script>
+			<script src="{{ asset('public/js/backend/nuevo-tramite.js') }}"></script>
 			<!--Archivos para los documentos de las areas-->
 			<script src="{{ asset('public/js/backend/filesDoctos/jsDocumentosTools.js') }}"></script>	
 			<script src="{{ asset('public/js/backend/filesDoctos/jsDocumentosLegal.js') }}"></script>	
@@ -26,6 +22,7 @@
 			<script src="{{ asset('public/js/backend/filesForms/jsChecks.js') }}"></script>	
 			<!-- Archivos para los form area legal-->
 			<script src="{{ asset('public/js/backend/filesForms/jsLegal.js') }}"></script>
+			<script src="{{ asset('public/js/backend/filesForms/jsFinanciera.js') }}"></script>
 			<script src="{{ asset('public/js/backend/filesForms/contacto.js') }}"></script>
 			
 		@endsection
@@ -90,39 +87,37 @@
 			    }
 		    });
 
-		    if({{ $terminos }}==1) {
+		    if ( {{ $terminos }} == 1 ) {
 
-				cargar_documentacion_requerida_legal(<?php echo $id_tipo_tramite; ?>, 2, <?php echo $datos->id; ?>)
+				cargar_documentacion_requerida_legal({{ $id_tipo_tramite }}, 2, {{ $datos->id }});
+				cargar_documentacion_requerida_tecnica({{ $id_tipo_tramite }}, 4, {{ $datos->id }}, {{ $datos->tec_acredita_tmp }});
 
-				if(<?php echo $datos->id_sujeto; ?>==1){
-					cargar_documentacion_requerida_financiera(<?php echo $id_tipo_tramite; ?>, 3, <?php echo $datos->id; ?>, <?php echo $datos->obligado_dec_isr; ?>);
+				if ( {{ $datos->id_sujeto }} ==1 ) {
+					cargar_documentacion_requerida_financiera({{ $id_tipo_tramite }}, 3, {{ $datos->id }}, {{ $datos->obligado_dec_isr }});
 				}
-
-				cargar_documentacion_requerida_tecnica(<?php echo $id_tipo_tramite; ?>, 4, <?php echo $datos->id; ?>, <?php echo $datos->tec_acredita_tmp; ?>)
 
 				cargar_socios_legales({{ Auth::User()->id_registro }});
 
+				get_capital_contable();
+				get_estados_financieros();
 				get_datos_legales({{ Auth::User()->id_registro }});
 				get_acta_constitutiva({{ Auth::User()->id_registro }});
 				get_acta_constitutiva_modificacion({{ Auth::User()->id_registro }});
 				get_representante_legal({{ Auth::User()->id_registro }});
-
 				cargar_rtecs({{ Auth::User()->id_registro }});	
 
-				if({{$id_contacto}}!=0)
-				{
+				if ( {{ $id_contacto }} != 0 ) {
 					$("#btn-guardar-contacto").html('Editar contacto');
 					cargar_contacto(); 
 					$('#iconContacto').show();
 				}
-				else
-				{
+				else {
 					$('#iconContacto').hide();
 				}
 				
-				tipo_persona(<?php echo $datos->id_tipo_persona; ?>);
+				tipo_persona({{ $datos->id_tipo_persona }});
 						
-				if(<?php echo $datos->id_tipo_persona; ?> != 1){
+				if ( {{ $datos->id_tipo_persona }} != 1 ) {
 					$('#vnavSocioLegal').show();
 					$('#vtabSocioLegal').show();
 				}
@@ -130,16 +125,14 @@
 					$('#vnavSocioLegal').hide();
 					$('#vnavSocioLegal').hide();
 				}
-				
-				//cargar_socios_legales({{ $datos->id }});
 			}
 
 		@endsection
 
 		@section('content')
+
 			@include('backend.encabezado')
 			
-
 			@if($terminos == 1)
 			<div class="alert alert-custom alert-dark fade show" role="alert">
 			    <div class="alert-icon"><i class="flaticon-warning"></i></div>

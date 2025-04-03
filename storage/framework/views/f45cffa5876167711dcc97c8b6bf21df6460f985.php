@@ -1,30 +1,31 @@
-@extends('layouts.backend')
 
-@section('styles')
 
-@endsection
+<?php $__env->startSection('styles'); ?>
 
-@section('js')
-    <!-- {!! Html::script('public/template/admin/assets/js/demo/timeline.demo.js'); !!} -->
-    <!-- {!! Html::script('public/template/admin/assets/plugins/sweetalert/dist/sweetalert.min.js'); !!} -->
-    {!! Html::script('public/js/backend/notificacion-acusar.js'); !!}
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('title')
+<?php $__env->startSection('js'); ?>
+    <!-- <?php echo Html::script('public/template/admin/assets/js/demo/timeline.demo.js');; ?> -->
+    <!-- <?php echo Html::script('public/template/admin/assets/plugins/sweetalert/dist/sweetalert.min.js');; ?> -->
+    <?php echo Html::script('public/js/backend/notificacion-acusar.js');; ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('title'); ?>
 
     <h2 class="main-content-title tx-24 mg-b-5">Notificaciones</h2>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('breadcrumb')
+<?php $__env->startSection('breadcrumb'); ?>
 
-    <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">{!! html_entity_decode(link_to_route('notificaciones.observaciones', "Notificaciones", null, [])) !!}</h5> 
+    <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5"><?php echo html_entity_decode(link_to_route('notificaciones.observaciones', "Notificaciones", null, [])); ?></h5> 
     <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>
     <span class="text-muted font-weight-bold mr-4">Notificación</span>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 
     <div class="card">
@@ -42,7 +43,7 @@
                         <div class="timeline-items">
 
 
-                            @foreach($notificaciones_forzadas as $notificacion)
+                            <?php $__currentLoopData = $notificaciones_forzadas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $notificacion): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                             <div class="timeline-item">
                                 <div class="timeline-badge">
@@ -50,15 +51,17 @@
                                 </div>
                                 <div class="timeline-label">
                                     <span class="text-primary font-weight-bold">
-                                        Notificación {{ $notificacion->fecha }}
+                                        Notificación <?php echo e($notificacion->fecha); ?>
+
                                     </span>
                                 </div>
                                 <div class="timeline-content">
 
-                                    {!! $notificacion->descripcion !!}
+                                    <?php echo $notificacion->descripcion; ?>
+
 
                                     <div class="timeline-footer d-flex align-items-center flex-wrap"> 
-                                        <button class="btn btn-primary f-s-12 rounded-corner" onclick="acusar({{ $notificacion->id }})" type="button">
+                                        <button class="btn btn-primary f-s-12 rounded-corner" onclick="acusar(<?php echo e($notificacion->id); ?>)" type="button">
                                             Acusar de recibido
                                         </button>
                                     </div>
@@ -66,7 +69,7 @@
                             </div>
 
 
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                         </div>
                     </div>
@@ -123,4 +126,6 @@
     */
     ?>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\AppServ\www\sircse\resources\views/notificaciones-observaciones.blade.php ENDPATH**/ ?>

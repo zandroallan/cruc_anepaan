@@ -45,9 +45,6 @@ function cargar_mis_observaciones(id_tramite)
                     body += '               <i class="fa fa-search"></i>';
                     body += '           </a>';
                 }
-
-
-
                 else if ( valor.id_status_tramite == 4 ) {
                     if (valor.solventado == 0) {
                         body += '       <a class="btn btn-icon btn-sm btn-outline-info btn-circle" href="' + url_ir_a_observacion + '" title="Agregar documentos a la observación">';
@@ -81,9 +78,11 @@ function cargar_mis_observaciones(id_tramite)
         });
 
         //assign a new searchbox for our table
-        $('#searchBox').on('keyup', function(){
-            myTable.search(this.value).draw();
-        });
+        $('#searchBox').on('keyup', 
+            function() {
+                myTable.search(this.value).draw();
+            }
+        );
         
     }, "json");
     

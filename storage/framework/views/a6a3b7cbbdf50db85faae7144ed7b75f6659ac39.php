@@ -1,37 +1,37 @@
-@extends('layouts.backend')
 
-	@section('styles')
 
-		<!-- <link href="{{ asset('dashlead/plugins/datatable/dataTables.bootstrap4.min.css') }}" rel="stylesheet"/>
-		<link href="{{ asset('dashlead/plugins/datatable/responsivebootstrap4.min.css') }}" rel="stylesheet"/>
-		<link href="{{ asset('dashlead/plugins/datatable/fileexport/buttons.bootstrap4.min.css') }}" rel="stylesheet"/> -->
+	<?php $__env->startSection('styles'); ?>
 
-	@endsection
+		<!-- <link href="<?php echo e(asset('dashlead/plugins/datatable/dataTables.bootstrap4.min.css')); ?>" rel="stylesheet"/>
+		<link href="<?php echo e(asset('dashlead/plugins/datatable/responsivebootstrap4.min.css')); ?>" rel="stylesheet"/>
+		<link href="<?php echo e(asset('dashlead/plugins/datatable/fileexport/buttons.bootstrap4.min.css')); ?>" rel="stylesheet"/> -->
 
-	@section('buttons')
+	<?php $__env->stopSection(); ?>
 
-		<a href="{{ route($current_route.'.index') }}" class="btn ripple btn-outline-primary">
+	<?php $__env->startSection('buttons'); ?>
+
+		<a href="<?php echo e(route($current_route.'.index')); ?>" class="btn ripple btn-outline-primary">
 			Regresar
 		</a>
 
-	@endsection
+	<?php $__env->stopSection(); ?>
 
-	@section('title')
+	<?php $__env->startSection('title'); ?>
 
 		<h2 class="main-content-title tx-24 mg-b-5">Mi documentación enviada</h2>
 
-	@endsection
+	<?php $__env->stopSection(); ?>
 
-	@section('breadcrumb')
+	<?php $__env->startSection('breadcrumb'); ?>
 
-	    <li class="breadcrumb-item">{!! html_entity_decode(link_to_route($current_route.'.index', $title, null, [])) !!}</li>
+	    <li class="breadcrumb-item"><?php echo html_entity_decode(link_to_route($current_route.'.index', $title, null, [])); ?></li>
 	    <li class="breadcrumb-item active">Mi documentación enviada</li>
 
-	@endsection
+	<?php $__env->stopSection(); ?>
 
-	@section('content')
+	<?php $__env->startSection('content'); ?>
 
-		@include('backend.encabezado')
+		<?php echo $__env->make('backend.encabezado', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 		<br />
 		<div class="card custom-card overflow-hidden">
@@ -46,13 +46,14 @@
 								<div class="media-body">
 									<span>Estatus área legal</span>
 									<div>
-										<span class="badge badge-{!! $datosTramite->status_legal_color !!}" style="display: inline; color: #fff;">
-											{!! $datosTramite->status_legal !!}
+										<span class="badge badge-<?php echo $datosTramite->status_legal_color; ?>" style="display: inline; color: #fff;">
+											<?php echo $datosTramite->status_legal; ?>
+
 										</span> 
 									</div>
 								</div>
 							</div>
-							@if ( $datosTramite->id_sujeto_tramite != 2 )
+							<?php if( $datosTramite->id_sujeto_tramite != 2 ): ?>
 							<div class="media">
 								<div class="media-logo bg-light text-dark">
 									<i class="fe fe-disc"></i>
@@ -60,13 +61,14 @@
 								<div class="media-body">
 									<span>Estatus área financiera</span>
 									<div>
-										<span class="badge badge-{!! $datosTramite->status_financiera_color !!}" style="display: inline; color: #fff;">
-											{!! $datosTramite->status_financiera !!}
+										<span class="badge badge-<?php echo $datosTramite->status_financiera_color; ?>" style="display: inline; color: #fff;">
+											<?php echo $datosTramite->status_financiera; ?>
+
 										</span>
 									</div>
 								</div>
 							</div>
-							@endif
+							<?php endif; ?>
 							<div class="media">
 								<div class="media-logo bg-light text-dark">
 									<i class="fe fe-disc"></i>
@@ -74,8 +76,9 @@
 								<div class="media-body">
 									<span>Estatus área técnica</span>
 									<div>
-										<span class="badge badge-{!! $datosTramite->status_tecnica_color !!}" style="display: inline; color: #fff;">
-											{!! $datosTramite->status_tecnica !!}
+										<span class="badge badge-<?php echo $datosTramite->status_tecnica_color; ?>" style="display: inline; color: #fff;">
+											<?php echo $datosTramite->status_tecnica; ?>
+
 										</span>
 									</div>
 								</div>
@@ -90,7 +93,7 @@
 								</div>
 								<div class="media-body">
 									<span>Estatus general del trámite</span>
-									<div> {!! $folio !!} </div>
+									<div> <?php echo $folio; ?> </div>
 								</div>
 							</div>
 							<div class="media">
@@ -99,20 +102,20 @@
 								</div>
 								<div class="media-body">
 									<span>Fecha de inicio del tramite</span>
-									<div> {!! $datosTramite->fecha_inicio !!} </div>
+									<div> <?php echo $datosTramite->fecha_inicio; ?> </div>
 								</div>
 							</div>															
-							<!-- @if ( !empty($vflTramiteCapitalContable) ) -->
+							<!-- <?php if( !empty($vflTramiteCapitalContable) ): ?> -->
 							<div class="media">
 								<div class="media-logo bg-light text-dark">
 									<i class="fe fe-dollar-sign"></i>
 								</div>
 								<div class="media-body">
 									<span>Capital contable</span>																	
-									<div>ACTUAL &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {!! $vcp !!}</div>
+									<div>ACTUAL &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php echo $vcp; ?></div>
 								</div>
 							</div>
-							<!-- @endif -->
+							<!-- <?php endif; ?> -->
 						</div>
 					</div>
 				</div>
@@ -151,7 +154,7 @@
 					<div class="row">		
 						<div class="col-md-12 form-horizontal form-bordered profile-content">			
 							<div class="table-responsive">
-				                <table id="solventaciones_nDocumentos_tbl" class="table table-bordered table-checkable dataTable no-footer dtr-inline">
+				                <table id="solventaciones_nDocumentos_tbl" class="table table-hover mg-b-0">
 									<thead>
 										<tr>
 											<th width="10px">#</th>
@@ -175,20 +178,21 @@
 			</div>
 		</div>
 
-	@endsection
+	<?php $__env->stopSection(); ?>
 
-	@section('js')
+	<?php $__env->startSection('js'); ?>
 
-	    <script src="{{ asset('js/backend/mis-documentos.js') }}"></script>
+	    <script src="<?php echo e(asset('js/backend/mis-documentos.js')); ?>"></script>
 
-	@endsection
+	<?php $__env->stopSection(); ?>
 
-	@section('script')
+	<?php $__env->startSection('script'); ?>
 
-		cargar_documentacion_lega({{ $id_tipo_tramite }}, {{ $id_tramite }});
-		cargar_documentacion_financiera({{ $id_tipo_tramite }}, {{ $id_tramite }}, {{ $datos->obligado_dec_isr }});
-		cargar_documentacion_tecnica({{ $id_tipo_tramite }}, {{ $id_tramite }}, {{ $datos->tec_acredita_tmp }});
+		cargar_documentacion_lega(<?php echo e($id_tipo_tramite); ?>, <?php echo e($id_tramite); ?>);
+		cargar_documentacion_financiera(<?php echo e($id_tipo_tramite); ?>, <?php echo e($id_tramite); ?>, <?php echo e($datos->obligado_dec_isr); ?>);
+		cargar_documentacion_tecnica(<?php echo e($id_tipo_tramite); ?>, <?php echo e($id_tramite); ?>, <?php echo e($datos->tec_acredita_tmp); ?>);
 
-		cargar_solventaciones({{ $id_tramite }});
+		cargar_solventaciones(<?php echo e($id_tramite); ?>);
 
-	@endsection
+	<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\AppServ\www\sircse\resources\views/backend/mis-tramites/mis-documentos.blade.php ENDPATH**/ ?>

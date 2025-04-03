@@ -32,7 +32,8 @@ function cargar_socios_legales(id_tramite) {
     }, "json");
 }
 
-function get_socio_legal(id) {
+function get_socio_legal(id) 
+{
     let url = project_name + "/mis-tramites/get/socio-legal/" + id;
     $.get(url, function(data, textStatus) {
 
@@ -68,7 +69,8 @@ function get_socio_legal(id) {
     }, "json");
 }
 
-function modal_socio_legal(id) {
+function modal_socio_legal(id) 
+{
     get_socio_legal(id);
     $("#mdl_dlscs").modal();
 }

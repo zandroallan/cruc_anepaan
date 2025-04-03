@@ -1,6 +1,6 @@
 <div id="documentacion_areas_spinner">
 
-<h4 class="m-t-10">Documentación para la Constancia de <span class="text-primary">{!! $lbl_tramite_siguiente !!}</span> en el Registro de {{$lbl_contratista_supervisor}}.</h4>
+<h4 class="m-t-10">Documentación para la Constancia de <span class="text-primary"><?php echo $lbl_tramite_siguiente; ?></span> en el Registro de <?php echo e($lbl_contratista_supervisor); ?>.</h4>
 
 
 <div class="alert alert-custom alert-light-dark fade show mb-10" role="alert">
@@ -33,48 +33,50 @@
     <div id="doctos-legal" class="col-md-12"></div>
 </div>
 
-@if($datos->id_sujeto==1)
+<?php if($datos->id_sujeto==1): ?>
 <h5 class="mb-1 mt-3">Documentación financiera</h5><hr />
 <div class="row p-3">
 	<div class="col-md-12">
 		<div id="doctos-financiera"></div>
 	</div>
 </div>
-@endif
+<?php endif; ?>
 
 <h5 class="mb-1 mt-3">Documentación técnica</h5><hr />
 
-@if($id_tipo_tramite==1)
+<?php if($id_tipo_tramite==1): ?>
 <div style="display:none" class="col-md-12">
 	<div class="form-group row align-items-center">
 		<label class="col-md-2 col-form-label">Quien acredita las especialidades?</label>
 		<div class="col-md-10">
 			<div class="form-check form-check-inline">
-				<input class="form-check-input" type="radio" name="tec_acredita_tmp" id="tec_acredita_tmp_1" onclick="tec_acredita(<?php echo $id_tipo_tramite; ?>,<?php echo $datos->id; ?>,this.value);" value="1" {{ $chk_tec_acredita_tmp_1 }}>
+				<input class="form-check-input" type="radio" name="tec_acredita_tmp" id="tec_acredita_tmp_1" onclick="tec_acredita(<?php echo $id_tipo_tramite; ?>,<?php echo $datos->id; ?>,this.value);" value="1" <?php echo e($chk_tec_acredita_tmp_1); ?>>
 				<label class="form-check-label" for="tec_acredita_tmp_1">Empresa contratista</label>
 			</div>
 			<div class="form-check form-check-inline">
-				<input class="form-check-input" type="radio" name="tec_acredita_tmp" id="tec_acredita_tmp_2" onclick="tec_acredita(<?php echo $id_tipo_tramite; ?>, <?php echo $datos->id; ?>,this.value);" value="2" {{ $chk_tec_acredita_tmp_2 }}>
+				<input class="form-check-input" type="radio" name="tec_acredita_tmp" id="tec_acredita_tmp_2" onclick="tec_acredita(<?php echo $id_tipo_tramite; ?>, <?php echo $datos->id; ?>,this.value);" value="2" <?php echo e($chk_tec_acredita_tmp_2); ?>>
 				<label class="form-check-label" for="tec_acredita_tmp_2">Representante Técnico de Empresas Constructoras</label>
 			</div>
 		</div>
 	</div>
 </div>
-@endif
+<?php endif; ?>
 
-@if($id_tipo_tramite!=1)
+<?php if($id_tipo_tramite!=1): ?>
 <div class="col-md-12">
 	<p><b>(OP)</b>: En caso de pretender acreditar especialidades adicionales la empresa contratista o el representante técnico.</p>
 </div>
-@endif
+<?php endif; ?>
 <div class="row m-b-10">
     <div id="doctos-tecnica" class="col-md-12"></div>
 </div>
 
 
 
-{!! Form::open(['route' => ['tramites-adjuntos.eliminar', 0], 'id'=>'frm-destroy-adjunto-tmp', 'name'=>'frm-destroy-adjunto-tmp','method' => 'DELETE'], ['role' => 'form']) !!}
-{!! Form::close() !!}
+<?php echo Form::open(['route' => ['tramites-adjuntos.eliminar', 0], 'id'=>'frm-destroy-adjunto-tmp', 'name'=>'frm-destroy-adjunto-tmp','method' => 'DELETE'], ['role' => 'form']); ?>
+
+<?php echo Form::close(); ?>
+
 
 <!-- Inicio modal Subir unico documento -->
 <div class="modal fade" id="mdl_documento_1">
@@ -85,9 +87,12 @@
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 			</div>
 
-            {!! Form::open(['route' => 'mis-tramites.store-document-tmp', 'method' => 'POST' , 'files' => true, 'id' => 'frm-subir-adjunto-tmp', 'enctype'=>'multipart/form-data', 'accept-charset'=>'UTF-8'], ['role' => 'form']) !!}
-                {!! Form::hidden('id_registro', $datos->id,['id'=>'id', 'class'=>'form-control gui-input']) !!}
-                {!! Form::hidden('id_documento', 0,['id'=>'id_documento', 'class'=>'form-control gui-input']) !!}
+            <?php echo Form::open(['route' => 'mis-tramites.store-document-tmp', 'method' => 'POST' , 'files' => true, 'id' => 'frm-subir-adjunto-tmp', 'enctype'=>'multipart/form-data', 'accept-charset'=>'UTF-8'], ['role' => 'form']); ?>
+
+                <?php echo Form::hidden('id_registro', $datos->id,['id'=>'id', 'class'=>'form-control gui-input']); ?>
+
+                <?php echo Form::hidden('id_documento', 0,['id'=>'id_documento', 'class'=>'form-control gui-input']); ?>
+
 			<div class="modal-body">
                 <h4 id="mdl_lbl_documento"></h4><br>
 
@@ -110,7 +115,8 @@
 				<a href="javascript:;" class="btn btn-white" data-dismiss="modal">Cerrar</a>
 			</div>
 
-			{!! Form::close() !!}
+			<?php echo Form::close(); ?>
+
 		</div>
 	</div>
 </div>
@@ -125,15 +131,18 @@
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 			</div>
 
-            {!! Form::open(['route' => 'mis-tramites.store-document-tmp', 'method' => 'POST' , 'files' => true, 'id' => 'frm-subir-adjunto-tmp-dec-anual', 'enctype'=>'multipart/form-data', 'accept-charset'=>'UTF-8'], ['role' => 'form']) !!}
-                {!! Form::hidden('id_registro', $datos->id,['id'=>'id', 'class'=>'form-control gui-input']) !!}
+            <?php echo Form::open(['route' => 'mis-tramites.store-document-tmp', 'method' => 'POST' , 'files' => true, 'id' => 'frm-subir-adjunto-tmp-dec-anual', 'enctype'=>'multipart/form-data', 'accept-charset'=>'UTF-8'], ['role' => 'form']); ?>
+
+                <?php echo Form::hidden('id_registro', $datos->id,['id'=>'id', 'class'=>'form-control gui-input']); ?>
+
 			<div class="modal-body">
                 <h4 id="mdl_lbl_documento_declaracion_anual"></h4><br>
 
 				<div class="form-group row m-b-15">
 					<label class="col-form-label col-md-3">Documento*</label>
                     <div class="col-md-9">
-                        {!! Form::select('id_documento', [], null, ['id' => 'id_documento_dec_anual', 'style'=>'width: 100%;', 'class' => 'default-select2 form-control']) !!}
+                        <?php echo Form::select('id_documento', [], null, ['id' => 'id_documento_dec_anual', 'style'=>'width: 100%;', 'class' => 'default-select2 form-control']); ?>
+
                     </div>
 				</div>
 
@@ -161,7 +170,8 @@
 
 				<a href="javascript:;" class="btn btn-white" data-dismiss="modal">Cerrar</a>
 			</div>
-			{!! Form::close() !!}
+			<?php echo Form::close(); ?>
+
 		</div>
 	</div>
 </div>
@@ -176,9 +186,12 @@
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 			</div>
 
-            {!! Form::open(['route' => 'mis-tramites.store-document-tmp', 'method' => 'POST' , 'files' => true, 'id' => 'frm-subir-adjunto-tmp', 'enctype'=>'multipart/form-data', 'accept-charset'=>'UTF-8'], ['role' => 'form']) !!}
-                {!! Form::hidden('id_registro', $datos->id,['id'=>'id', 'class'=>'form-control gui-input']) !!}
-                {!! Form::hidden('id_documento', 0,['id'=>'id_documento', 'class'=>'form-control gui-input']) !!}
+            <?php echo Form::open(['route' => 'mis-tramites.store-document-tmp', 'method' => 'POST' , 'files' => true, 'id' => 'frm-subir-adjunto-tmp', 'enctype'=>'multipart/form-data', 'accept-charset'=>'UTF-8'], ['role' => 'form']); ?>
+
+                <?php echo Form::hidden('id_registro', $datos->id,['id'=>'id', 'class'=>'form-control gui-input']); ?>
+
+                <?php echo Form::hidden('id_documento', 0,['id'=>'id_documento', 'class'=>'form-control gui-input']); ?>
+
 			<div class="modal-body">
                 <h4 id="mdl_lbl_documento"></h4><br>
 
@@ -205,7 +218,8 @@
 				
 				<a href="javascript:;" class="btn btn-white" data-dismiss="modal">Cerrar</a>
 			</div>
-			{!! Form::close() !!}
+			<?php echo Form::close(); ?>
+
 		</div>
 	</div>
 </div>
@@ -222,16 +236,20 @@
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 			</div>
 
-            {!! Form::open(['route' => 'mis-tramites.store-document-soporte', 'method' => 'POST' , 'files' => true, 'id' => 'frm-subir-adjunto-soporte', 'enctype'=>'multipart/form-data', 'accept-charset'=>'UTF-8'], ['role' => 'form']) !!}
-                {!! Form::hidden('id_registro', $datos->id,['id'=>'id', 'class'=>'form-control gui-input']) !!}
-                {!! Form::hidden('id_documento_soporte', null,['id'=>'id_documento_soporte', 'class'=>'form-control gui-input']) !!}
+            <?php echo Form::open(['route' => 'mis-tramites.store-document-soporte', 'method' => 'POST' , 'files' => true, 'id' => 'frm-subir-adjunto-soporte', 'enctype'=>'multipart/form-data', 'accept-charset'=>'UTF-8'], ['role' => 'form']); ?>
+
+                <?php echo Form::hidden('id_registro', $datos->id,['id'=>'id', 'class'=>'form-control gui-input']); ?>
+
+                <?php echo Form::hidden('id_documento_soporte', null,['id'=>'id_documento_soporte', 'class'=>'form-control gui-input']); ?>
+
 			<div class="modal-body">
 					<h4 id="mdl_lbl_documento_soporte"></h4><br>
 
 					<div class="form-group row m-b-15" id="div_alias" name="div_alias">
 						<label for="alias" class="col-form-label col-md-3">Nombre de la cuenta*</label>
 						<div class="col-md-9">
-							{!! Form::text('files-alias', null, ['id'=>'files-alias', 'placeholder'=>'',  'class'=>'form-control m-b-5']) !!}
+							<?php echo Form::text('files-alias', null, ['id'=>'files-alias', 'placeholder'=>'',  'class'=>'form-control m-b-5']); ?>
+
 							<div id="el-files-alias" class="invalid-feedback lbl-error"></div>
 						</div>
 					</div>
@@ -252,10 +270,11 @@
 				
 				<a href="javascript:;" class="btn btn-white" data-dismiss="modal">Cerrar</a>
 			</div>
-			{!! Form::close() !!}
+			<?php echo Form::close(); ?>
+
 		</div>
 	</div>
 </div>
 <!-- Fin modal documentos del trámite -->
 
-</div>
+</div><?php /**PATH C:\AppServ\www\sircse\resources\views/backend/mis-tramites/tabs-documentacion.blade.php ENDPATH**/ ?>

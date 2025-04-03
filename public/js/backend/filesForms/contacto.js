@@ -1,5 +1,5 @@
 function AddContacto()
-{
+ {
     var el = $('#frmContacto');   
     var str_errors;
     $.ajax({
@@ -10,6 +10,7 @@ function AddContacto()
                       
             $('#hdIdContacto').val(json.data.id);          
             messages_validation(json.data, false);
+            
             swal({
                 type: 'success',
                 title: 'Confirmación',
@@ -25,6 +26,7 @@ function AddContacto()
             }).then(function(json) {               
                 cargar_contacto();              
             });
+
         },
         error: function(json) {
             var jsonString = json.responseJSON;
@@ -53,43 +55,38 @@ function AddContacto()
             });
         }
     });
-}
+ }
 
-function messages_validation(fields, show){
-
-    if(show==true){
+function messages_validation(fields, show)
+ {
+    if ( show == true ) {
         $.each(fields, function(key, value) {
             $('#el-'+key).html(value);            
             $('#'+key).addClass('is-invalid');
         });
-    }else{        
+    }
+    else {
         $('.lbl-error').html("");
         $('.lbl-error').removeClass('is-invalid');
-        $('.form-control').removeClass('is-invalid');
-        
+        $('.form-control').removeClass('is-invalid');      
     }
-
 }
 
 function cargar_contacto()
-{
+ {
     $.ajax({
         type: "GET",
         url:  vuri +'/mis-tramites/contacto/get-contacto',              
         success: function(json) {  
-             $('#iconContacto').show();
-             
-             $('#nombre_contacto').val(json.contacto.nombre);
-             $('#ap_paterno_contacto').val(json.contacto.ap_paterno);
-             $('#ap_materno_contacto').val(json.contacto.ap_materno);
-             $('#cargo_contacto').val(json.contacto.cargo);
-             $('#clave_atencion_contacto').val(json.contacto.clave_atencion); 
-
-           
+            $('#iconContacto').show();
+            $('#nombre_contacto').val(json.contacto.nombre);
+            $('#ap_paterno_contacto').val(json.contacto.ap_paterno);
+            $('#ap_materno_contacto').val(json.contacto.ap_materno);
+            $('#cargo_contacto').val(json.contacto.cargo);
+            $('#clave_atencion_contacto').val(json.contacto.clave_atencion); 
             $("#btn-guardar-contacto").html('Editar contacto');                  
         },        
-        error: function(json)
-        {
+        error: function(json) {
         }           
     });
-}
+ }

@@ -1,9 +1,9 @@
 
-<!-- @if( $id_tipo_tramite != 1 )
+<!-- <?php if( $id_tipo_tramite != 1 ): ?>
 <button type="button" class="btn ripple btn-outline-info" id="btnRecuperarRTEC" onclick="RecuperarRespresentantes()">
     <i class="fas fa-history"></i> Recuperar
 </button>
-@endif -->           
+<?php endif; ?> -->           
       
 
             <div class="row">
@@ -15,7 +15,7 @@
             </div>
 
             <form id='dtrtec_frm_destroy' name='dtcnt_frm_destroy'>
-                @csrf
+                <?php echo csrf_field(); ?>
             </form>
 
             <table id="dtrtec_tbl" class="table table-bordered table-checkable dataTable no-footer dtr-inline">
@@ -34,5 +34,5 @@
             </table>
               
 
-            @include('backend.mis-tramites.mdl_rep_tec')
-            @include('backend.mis-tramites.mdl_esp_rtec')
+            <?php echo $__env->make('backend.mis-tramites.mdl_rep_tec', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+            <?php echo $__env->make('backend.mis-tramites.mdl_esp_rtec', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\AppServ\www\sircse\resources\views/backend/mis-tramites/tabs-tecnica.blade.php ENDPATH**/ ?>

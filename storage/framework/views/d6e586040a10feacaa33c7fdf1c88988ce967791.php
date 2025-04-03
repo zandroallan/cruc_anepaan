@@ -28,19 +28,20 @@
 						<h4 class="modal-title" >Informaci&oacute;n del Socio legal</h4><br /><br />
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 					</div>
-					{!! Form::open([
+					<?php echo Form::open([
 						'route' => $current_route.'.store-socios-legales',
 						'method' => 'POST',
 						'files' => true,
 						'id' => 'dlscs_frm',
 						'enctype'=>'multipart/form-data',
 						'accept-charset'=>'UTF-8'],
-						['role' => 'form']) 
-					!!} 
+						['role' => 'form']); ?> 
 
 					<div class="modal-body">
-						{!! Form::hidden('dlscs_id', 0,['id'=>'dlscs_id', 'class'=>'form-control gui-input']) !!}
-						{!! Form::hidden('dlscs_id_tramite', $datos->id,['id'=>'dlscs_id_tramite', 'class'=>'form-control gui-input']) !!}
+						<?php echo Form::hidden('dlscs_id', 0,['id'=>'dlscs_id', 'class'=>'form-control gui-input']); ?>
+
+						<?php echo Form::hidden('dlscs_id_tramite', $datos->id,['id'=>'dlscs_id_tramite', 'class'=>'form-control gui-input']); ?>
+
 						
 
 						<ul class="nav nav-success nav-pills" role="tablist">
@@ -69,55 +70,65 @@
 								<div class="form-group row">
 								   	<div class="col-lg-6">
 								    	<label><b>Nombre:</b></label>
-								    	{!! Form::text('dlscs_nombre', null, ['id'=>'dlscs_nombre', 'class'=>'form-control inp-udi']) !!}
+								    	<?php echo Form::text('dlscs_nombre', null, ['id'=>'dlscs_nombre', 'class'=>'form-control inp-udi']); ?>
+
 								    </div>
 								    <div class="col-lg-6">
 								    	<label><b>Paterno:</b></label>
-								    	{!! Form::text('dlscs_ap_paterno', null, ['id'=>'dlscs_ap_paterno', 'class'=>'form-control inp-udi']) !!}
+								    	<?php echo Form::text('dlscs_ap_paterno', null, ['id'=>'dlscs_ap_paterno', 'class'=>'form-control inp-udi']); ?>
+
 								    </div>
 								</div>
 
 								<div class="form-group row">
 								   	<div class="col-lg-6">
 								    	<label><b>Materno:</b></label>
-								    	{!! Form::text('dlscs_ap_materno', null, ['id'=>'dlscs_ap_materno','class'=>'form-control inp-udi']) !!}
+								    	<?php echo Form::text('dlscs_ap_materno', null, ['id'=>'dlscs_ap_materno','class'=>'form-control inp-udi']); ?>
+
 								    </div>
 								    <div class="col-lg-6">
 								    	<label><b>CURP:</b></label>
-								    	{!! Form::text('dlscs_curp', null, ['id'=>'dlscs_curp', 'class'=>'form-control inp-udi']) !!}
+								    	<?php echo Form::text('dlscs_curp', null, ['id'=>'dlscs_curp', 'class'=>'form-control inp-udi']); ?>
+
 								    </div>
 								</div>
 
 								<div class="form-group row">
 								   	<div class="col-lg-6">
 								    	<label><b>RFC:</b></label>
-								    	{!! Form::text('dlscs_rfc', null, ['id'=>'dlscs_rfc', 'class'=>'form-control inp-udi']) !!}
+								    	<?php echo Form::text('dlscs_rfc', null, ['id'=>'dlscs_rfc', 'class'=>'form-control inp-udi']); ?>
+
 								    </div>
 								    <div class="col-lg-6">
 								    	<label><b>Nacionalidad:</b></label>
-								    	{!! Form::select('dlscs_id_nacionalidad', $nacionalidades, null, ['id' => 'dlscs_id_nacionalidad', 'style'=>'width: 100%;', 'class' => 'form-control inp-udi']) !!}
+								    	<?php echo Form::select('dlscs_id_nacionalidad', $nacionalidades, null, ['id' => 'dlscs_id_nacionalidad', 'style'=>'width: 100%;', 'class' => 'form-control inp-udi']); ?>
+
 								    </div>
 								</div>
 
 								<div class="form-group row">
 								   	<div class="col-lg-6">
 								    	<label><b>Teléfono:</b></label>
-								    	{!! Form::text('dlscs_telefono', null, ['id'=>'dlscs_telefono', 'class'=>'form-control inp-udi']) !!}
+								    	<?php echo Form::text('dlscs_telefono', null, ['id'=>'dlscs_telefono', 'class'=>'form-control inp-udi']); ?>
+
 								    </div>
 								    <div class="col-lg-6">
 								    	<label><b>Correo electrónico:</b></label>
-								    	{!! Form::text('dlscs_correo_electronico', null, ['id'=>'dlscs_correo_electronico', 'class'=>'form-control inp-udi']) !!}
+								    	<?php echo Form::text('dlscs_correo_electronico', null, ['id'=>'dlscs_correo_electronico', 'class'=>'form-control inp-udi']); ?>
+
 								    </div>
 								</div>
 
 								<div class="form-group row">
 								   	<div class="col-lg-6">
 								    	<label><b>Tipo de identificación:</b></label>
-								    	{!! Form::select('dlscs_id_tipo_identificacion', $tipo_identificaciones, null, ['id' => 'dlscs_id_tipo_identificacion', 'style'=>'width: 100%;', 'class' => 'form-control inp-udi']) !!}
+								    	<?php echo Form::select('dlscs_id_tipo_identificacion', $tipo_identificaciones, null, ['id' => 'dlscs_id_tipo_identificacion', 'style'=>'width: 100%;', 'class' => 'form-control inp-udi']); ?>
+
 								    </div>
 								    <div class="col-lg-6">
 								    	<label><b>Número de identificación:</b></label>
-								    	{!! Form::text('dlscs_numero_identificacion', null, ['id'=>'dlscs_numero_identificacion', 'class'=>'form-control inp-udi']) !!}
+								    	<?php echo Form::text('dlscs_numero_identificacion', null, ['id'=>'dlscs_numero_identificacion', 'class'=>'form-control inp-udi']); ?>
+
 								    </div>
 								</div>
 
@@ -148,51 +159,53 @@
 								<div class="form-group row">
 								   	<div class="col-lg-6">
 								    	<label><b>Estado:</b></label>
-								    	{!! Form::select('dlscs_id_estado_particular', $estados, null, ['id' => 'dlscs_id_estado_particular', 'style'=>'width: 100%;', 'class' => 'form-control inp-udi', 'onchange'=>'cargar_municipios_general(this, $("#dlscs_id_municipio_particular"));']) !!}	
+								    	<?php echo Form::select('dlscs_id_estado_particular', $estados, null, ['id' => 'dlscs_id_estado_particular', 'style'=>'width: 100%;', 'class' => 'form-control inp-udi', 'onchange'=>'cargar_municipios_general(this, $("#dlscs_id_municipio_particular"));']); ?>	
 								    </div>
 								    <div class="col-lg-6">
 								    	<label><b>Municipio:</b></label>
-								    	{!! Form::select('dlscs_id_municipio_particular', $municipios_p, null, ['id' => 'dlscs_id_municipio_particular', 'style'=>'width: 100%;', 'class' => 'form-control inp-udi']) !!}		
+								    	<?php echo Form::select('dlscs_id_municipio_particular', $municipios_p, null, ['id' => 'dlscs_id_municipio_particular', 'style'=>'width: 100%;', 'class' => 'form-control inp-udi']); ?>		
 								    </div>
 								</div>
 
 								<div class="form-group row">
 								   	<div class="col-lg-6">
 								    	<label><b>Ciudad:</b></label>
-								    	{!! Form::text('dlscs_ciudad_particular', null, ['id'=>'dlscs_ciudad_particular', 'class'=>'form-control inp-udi']) !!}	
+								    	<?php echo Form::text('dlscs_ciudad_particular', null, ['id'=>'dlscs_ciudad_particular', 'class'=>'form-control inp-udi']); ?>	
 								    </div>
 								    <div class="col-lg-6">
 								    	<label><b>Calle:</b></label>
-								    	{!! Form::text('dlscs_calle_particular', null, ['id'=>'dlscs_calle_particular', 'class'=>'form-control inp-udi']) !!}		
+								    	<?php echo Form::text('dlscs_calle_particular', null, ['id'=>'dlscs_calle_particular', 'class'=>'form-control inp-udi']); ?>		
 								    </div>
 								</div>
 
 								<div class="form-group row">
 								   	<div class="col-lg-6">
 								    	<label><b>Núm. exterior:</b></label>
-								    	{!! Form::text('dlscs_ext_particular', null, ['id'=>'dlscs_ext_particular', 'class'=>'form-control inp-udi']) !!}	
+								    	<?php echo Form::text('dlscs_ext_particular', null, ['id'=>'dlscs_ext_particular', 'class'=>'form-control inp-udi']); ?>	
 								    </div>
 								    <div class="col-lg-6">
 								    	<label><b>Núm. interior:</b></label>
-								    	{!! Form::text('dlscs_int_particular', null, ['id'=>'dlscs_int_particular', 'class'=>'form-control inp-udi']) !!}
+								    	<?php echo Form::text('dlscs_int_particular', null, ['id'=>'dlscs_int_particular', 'class'=>'form-control inp-udi']); ?>
+
 								    </div>
 								</div>
 
 								<div class="form-group row">
 								   	<div class="col-lg-6">
 								    	<label><b>Colonia:</b></label>
-								    	{!! Form::text('dlscs_colonia_particular', null, ['id'=>'dlscs_colonia_particular', 'class'=>'form-control inp-udi']) !!}	
+								    	<?php echo Form::text('dlscs_colonia_particular', null, ['id'=>'dlscs_colonia_particular', 'class'=>'form-control inp-udi']); ?>	
 								    </div>
 								    <div class="col-lg-6">
 								    	<label><b>CP:</b></label>
-								    	{!! Form::text('dlscs_cp_particular', null, ['id'=>'dlscs_cp_particular', 'class'=>'form-control inp-udi']) !!}
+								    	<?php echo Form::text('dlscs_cp_particular', null, ['id'=>'dlscs_cp_particular', 'class'=>'form-control inp-udi']); ?>
+
 								    </div>
 								</div>
 
 								<div class="form-group row">
 								   	<div class="col-lg-6">
 								    	<label><b>Referencias:</b></label>
-								    	{!! Form::text('dlscs_referencias_particular', null, ['id'=>'dlscs_referencias_particular', 'class'=>'form-control inp-udi']) !!}	
+								    	<?php echo Form::text('dlscs_referencias_particular', null, ['id'=>'dlscs_referencias_particular', 'class'=>'form-control inp-udi']); ?>	
 								    </div>
 								</div>
 
@@ -209,9 +222,9 @@
 	                    </button>                    
 	                </div>
 
-					{!! Form::close() !!}	
+					<?php echo Form::close(); ?>	
 				</div>
 			</div>
 		</div>
 
-		<!-- Fin Modal Socios Legales --> 
+		<!-- Fin Modal Socios Legales --> <?php /**PATH C:\AppServ\www\sircse\resources\views/backend/mis-tramites/form-socios.blade.php ENDPATH**/ ?>

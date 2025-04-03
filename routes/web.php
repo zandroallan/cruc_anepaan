@@ -195,10 +195,28 @@ Route::group(['middleware' => ['auth']], function () {
 		//carga los documentos del area financiera, solo descarga de documentos despues de enviar el tramite
 		Route::get('listas/documentacion-descarga/{id_tipo_tramite}/tramite/{id_tramite}/area-financiera/{obligado_dec_isr}', ['as'=>'listas.documentacion.descarga.areas.financiera','uses' =>'CombosController@lista_documentacion_requerida_financiera_descarga'])->where('id_tipo_tramite', '[0-9]+');
 
+
+
 		# Rutas Nuevas SAGA
-		Route::get('cambiar/observacion/{id_observacion}/tramite', 'Backend\MisObservacionesController@volverCargarObservacion');
+		Route::get('cambiar/observacion/{id_observacion}/tramite', 
+			'Backend\MisObservacionesController@volverCargarObservacion');
 
 		Route::get('tramites/seguimientos', ['as'=>'tramites.seguimientos', 'uses' =>'Backend\TramitesController@tramitesSeguimientos']);
+
+
+
+		# Rutas nuevas SAGA - Modificaciones del 2025
+		// Route::post('tramites-area-financiera/recuperar-contador-publico', 
+			// 'Backend\FinancieraController@recuperar_contador_publico');
+			
+		Route::get('financiero/capital/contable', 'Backend\FinancieraController@api_capital_contable');
+
+		Route::get('financiero/estados/financieros', 'Backend\FinancieraController@api_estados_financieros');
+
+		Route::post('capital/contable/store', 
+			'Backend\FinancieraController@store_capital_contable');
+
+
 	});
 });
 
