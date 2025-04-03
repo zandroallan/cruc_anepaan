@@ -460,6 +460,7 @@ function upload_tmp(form_name) {
         content: '¿ Realmente deseas subir el documento ?',
         type: 'orange',
         typeAnimated: true,
+        icon : 'fa fa-warning',
         buttons: {
             cancelar: {
                 text: 'Cancelar',
@@ -514,6 +515,7 @@ function upload_soporte(form_name)
         content: '¿ Realmente deseas subir el documento ?',
         type: 'orange',
         typeAnimated: true,
+        icon : 'fa fa-warning',
         buttons: {
             cancelar: {
                 text: 'Cancelar',
@@ -586,10 +588,11 @@ $('#frm-subir-adjunto-tmp').on('submit', function(e) {
                 content: json.msg,
                 type: 'green',
                 typeAnimated: true,
-                autoClose: 'close|1500', // Autocerrarse después de 1500ms
+                autoClose: 'close|1500',
+                icon : 'fa fa-check',
                 buttons: {
                     close: {
-                        isHidden: true // Botón oculto pero necesario para autoClose
+                        isHidden: true
                     }
                 },
                 onClose: function() {
@@ -648,6 +651,7 @@ $('#frm-subir-adjunto-tmp').on('submit', function(e) {
                 content: str_errors,
                 type: "orange",
                 typeAnimated: true,
+                icon : 'fa fa-warning',
                 buttons: {
                     confirmar: {
                         text: "Confirmar",
@@ -712,6 +716,7 @@ $('#frm-subir-adjunto-soporte').on('submit', function(e) {
                 type: 'green',
                 autoClose:'close|1500',
                 typeAnimated: true,
+                icon : 'fa fa-check',
                 buttons: {
                     close: {
                         isHidden: true
@@ -748,25 +753,41 @@ $('#frm-subir-adjunto-soporte').on('submit', function(e) {
             if (json.status === 409) {
                 str_errors = jsonString.msg;
             }
-            swal({
-                title: "¡ Advertencia !",
-                content: {
-                    element: 'p',
-                    attributes: {
-                        innerHTML: str_errors,
-                    },
-                },
-                icon: "warning",
+            // swal({
+            //     title: "¡ Advertencia !",
+            //     content: {
+            //         element: 'p',
+            //         attributes: {
+            //             innerHTML: str_errors,
+            //         },
+            //     },
+            //     icon: "warning",
+            //     buttons: {
+            //         confirm: {
+            //             text: 'Confirmar',
+            //             value: true,
+            //             visible: true,
+            //             className: 'btn btn-primary',
+            //             closeModal: true
+            //         }
+            //     }
+            // });
+            $.confirm({
+                title: '¡ Advertencia !',
+                content: str_errors,
+                type: 'orange',
+                icon : 'fa fa-warning',
+                typeAnimated: true,
                 buttons: {
-                    confirm: {
+                    confirmar: {
                         text: 'Confirmar',
-                        value: true,
-                        visible: true,
-                        className: 'btn btn-primary',
-                        closeModal: true
+                        btnClass: 'btn-primary',
+                        action: function() {
+                            return true;
+                        }
                     }
                 }
-            });
+            })
         }
     });
 });
@@ -788,28 +809,53 @@ $('#frm-subir-adjunto-tmp-dec-anual').on('submit', function(e) {
         },  
         success: function(json) {
             messages_validation(json.data, false);
-            swal({
-                type: 'success',
-                title: 'Confirmación',
-                content: {
-                    element: 'p',
-                    attributes: {
-                        innerHTML: json.msg,
-                    },
-                },
-                showConfirmButton: false,
-                timer: 1500
-            }).then(function() {
-                let id_sujeto = $("#ssjjtt").val();
-                let id_tipo_tramite = $("#id_tipo_tramite").val();
-                let obligado_dec_isr = $("#obligado_dec_isr").val();
-                $('.spinner_wait').hide(); 
-                $('.spinner_no_wait').show(); 
+            // swal({
+            //     type: 'success',
+            //     title: 'Confirmación',
+            //     content: {
+            //         element: 'p',
+            //         attributes: {
+            //             innerHTML: json.msg,
+            //         },
+            //     },
+            //     showConfirmButton: false,
+            //     timer: 1500
+            // }).then(function() {
+            //     let id_sujeto = $("#ssjjtt").val();
+            //     let id_tipo_tramite = $("#id_tipo_tramite").val();
+            //     let obligado_dec_isr = $("#obligado_dec_isr").val();
+            //     $('.spinner_wait').hide(); 
+            //     $('.spinner_no_wait').show(); 
                 
-                if (json.data.id_sujeto == 1) {
-                    cargar_documentacion_requerida_financiera(id_tipo_tramite, 3, json.data.id_registro_temp, obligado_dec_isr);
+            //     if (json.data.id_sujeto == 1) {
+            //         cargar_documentacion_requerida_financiera(id_tipo_tramite, 3, json.data.id_registro_temp, obligado_dec_isr);
+            //     }
+            //     $("#mdl_documento_declaracion_anual").modal("toggle");
+            // });
+            $.confirm({
+                title: 'Confirmación',
+                content: json.msg,
+                type: 'green',
+                autoClose:'close|1500',
+                typeAnimated: true,
+                icon : 'fa fa-check',
+                buttons: {
+                    close: {
+                        isHidden: true
+                    }
+                },
+                onclose: function() {
+                    let id_sujeto = $("#ssjjtt").val();
+                    let id_tipo_tramite = $("#id_tipo_tramite").val();
+                    let obligado_dec_isr = $("#obligado_dec_isr").val();
+                    $('.spinner_wait').hide(); 
+                    $('.spinner_no_wait').show(); 
+                    
+                    if (json.data.id_sujeto == 1) {
+                        cargar_documentacion_requerida_financiera(id_tipo_tramite, 3, json.data.id_registro_temp, obligado_dec_isr);
+                    }
+                    $("#mdl_documento_declaracion_anual").modal("toggle");
                 }
-                $("#mdl_documento_declaracion_anual").modal("toggle");
             });
         },
         error: function(json) {
@@ -825,22 +871,38 @@ $('#frm-subir-adjunto-tmp-dec-anual').on('submit', function(e) {
             if (json.status === 409) {
                 str_errors = jsonString.msg;
             }
-            swal({
-                title: "¡ Advertencia !",
-                content: {
-                    element: 'p',
-                    attributes: {
-                        innerHTML: str_errors,
-                    },
-                },
-                icon: "warning",
+            // swal({
+            //     title: "¡ Advertencia !",
+            //     content: {
+            //         element: 'p',
+            //         attributes: {
+            //             innerHTML: str_errors,
+            //         },
+            //     },
+            //     icon: "warning",
+            //     buttons: {
+            //         confirm: {
+            //             text: 'Confirmar',
+            //             value: true,
+            //             visible: true,
+            //             className: 'btn btn-primary',
+            //             closeModal: true
+            //         }
+            //     }
+            // });
+            $.confirm({
+                title: '¡ Advertencia !',
+                content: str_errors,
+                type: 'orange',
+                icon : 'fa fa-warning',
+                typeAnimated: true,
                 buttons: {
-                    confirm: {
+                    confirmar: {
                         text: 'Confirmar',
-                        value: true,
-                        visible: true,
-                        className: 'btn btn-primary',
-                        closeModal: true
+                        btnClass: 'btn-primary',
+                        action: function() {
+                            return true;
+                        }
                     }
                 }
             });
