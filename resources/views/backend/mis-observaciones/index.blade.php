@@ -102,7 +102,7 @@
 		@include('backend.encabezado')
 		@if($en_tiempo!=1)	
 
-			<div class="alert alert-custom alert-light-dark fade show mb-10" role="alert">
+			<div class="alert alert-custom alert-light-dark fade show mb-2" role="alert">
 				<div class="alert-icon">
 					<span class="svg-icon svg-icon-3x svg-icon-dark">
 						<!--begin::Svg Icon | path:assets/media/svg/icons/Code/Info-circle.svg-->
