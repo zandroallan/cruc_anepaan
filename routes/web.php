@@ -198,6 +198,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 		# Rutas Nuevas SAGA
+
 		Route::get('cambiar/observacion/{id_observacion}/tramite', 
 			'Backend\MisObservacionesController@volverCargarObservacion');
 
@@ -205,9 +206,8 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 
+
 		# Rutas nuevas SAGA - Modificaciones del 2025
-		// Route::post('tramites-area-financiera/recuperar-contador-publico', 
-			// 'Backend\FinancieraController@recuperar_contador_publico');
 			
 		Route::get('financiero/capital/contable', 'Backend\FinancieraController@api_capital_contable');
 
@@ -216,6 +216,8 @@ Route::group(['middleware' => ['auth']], function () {
 		Route::post('capital/contable/store', 
 			'Backend\FinancieraController@store_capital_contable');
 
+		Route::post('estados/financieros/store', 
+			'Backend\FinancieraController@store_estados_financieros');
 
 	});
 });

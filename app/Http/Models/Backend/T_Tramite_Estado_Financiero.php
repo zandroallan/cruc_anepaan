@@ -12,6 +12,7 @@ class T_Tramite_Estado_Financiero extends Model
     protected $table    = 't_tramites_estado_financiero';
     protected $fillable = [
         'id',
+        'id_registro',
         'id_tramite',
         'periodo',
         'utilidad_perdida',
@@ -36,7 +37,6 @@ class T_Tramite_Estado_Financiero extends Model
                 $sql->where('id_tramite', $filtro);
             });
         }
-
         if (array_key_exists('id', $data)) {
             $filtro = $data["id"];
             $result = $result->where(function ($sql) use ($filtro) {

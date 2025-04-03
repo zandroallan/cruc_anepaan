@@ -1,25 +1,11 @@
 <?php
 namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Http\Models\Backend\T_Registro;
 use App\Http\Models\Backend\T_Tramite_Capital_Contable;
 use App\Http\Models\Backend\T_Tramite_Estado_Financiero;
-
-
-
-// use App\Http\Requests\Backend\AgregarEspecialidadRTEC;
-// use App\Http\Models\Backend\T_Registro;
-// use App\Http\Requests\Backend\T_Tramite_Tecnica_Representante_Tecnico;
-// use App\Http\Models\Backend\T_Tramite_Rep_Tecnico;
-// use App\Http\Models\Catalogos\C_Especialidad;
-// use App\Http\Models\Backend\D_Personal;
-// use App\Http\Models\Backend\D_Domicilio;
-// use App\Http\Models\Catalogos\C_Colegio;
-// use App\Http\Models\Catalogos\C_Tipo_Colegio;
-// use App\Http\Classes\FormatDate;
-// use App\Http\Classes\Validations;
-// use Carbon\Carbon;
 use Auth;
 use DB;
 
@@ -44,10 +30,9 @@ class FinancieraController extends Controller
         ];
 
         try {
-            $_DATA_MDL_Registro=T_Registro::find(Auth::User()->id_registro);
-            if ( isset($_DATA_MDL_Registro->id_ultimo_tramite) ) {
-                $_DATA_MDL_Tramite_Capital_Contable=T_Tramite_Capital_Contable::where('id_tramite', $_DATA_MDL_Registro->id_ultimo_tramite)->first();
-
+            $_DATA_MDL_Tramite_Capital_Contable=T_Tramite_Capital_Contable::where('id_registro', Auth::User()->id_registro)->first();
+            
+            if ( isset($_DATA_MDL_Tramite_Capital_Contable) ) {
                 $vrespuesta=[
                     'codigo'    => 1,
                     'icono'     => 'success',
@@ -82,15 +67,22 @@ class FinancieraController extends Controller
         ];
 
         try {
-            $_DATA_MDL_Registro=T_Registro::find(Auth::User()->id_registro);
-            if ( isset($_DATA_MDL_Registro->id_ultimo_tramite) ) {
-                $_DATA_MDL_Tramite_Estado_Financiero=T_Tramite_Estado_Financiero::where('id_tramite', $_DATA_MDL_Registro->id_ultimo_tramite)->first();
+            $_DATA_MDL_Tramite_Estado_Financiero=T_Tramite_Estado_Financiero::where('id_registro', Auth::User()->id_registro)->first();
+
+            if ( isset($_DATA_MDL_Tramite_Estado_Financiero) ) {
+                $array_response['id']=$_DATA_MDL_Tramite_Estado_Financiero->id;
+                $array_response['utilidad_perdida']=json_decode($_DATA_MDL_Tramite_Estado_Financiero->utilidad_perdida);
+                $array_response['balance_gral']=json_decode($_DATA_MDL_Tramite_Estado_Financiero->balance_gral);
+                $array_response['razon_liquidez']=json_decode($_DATA_MDL_Tramite_Estado_Financiero->razon_liquidez);
+                $array_response['razon_endeudamiento']=json_decode($_DATA_MDL_Tramite_Estado_Financiero->razon_endeudamiento);
+                $array_response['razon_rentabilidad']=json_decode($_DATA_MDL_Tramite_Estado_Financiero->razon_rentabilidad);
+                $array_response['capital_neto']=json_decode($_DATA_MDL_Tramite_Estado_Financiero->capital_neto);
 
                 $vrespuesta=[
                     'codigo'    => 1,
                     'icono'     => 'success',
                     'mensaje'   => 'Exito',
-                    'data'      => $_DATA_MDL_Tramite_Estado_Financiero
+                    'data'      => $array_response
                 ];
             }
         }
@@ -112,58 +104,134 @@ class FinancieraController extends Controller
         // Modificación: 02 de Abril de 2024
         // Descripción: Guardas los registros del capital contable.
 
-        $vcodigoRespuesta = 0;
-        $vrespuestaHTTP   = 201;
-        $vrutaRedireccion = '';
-        $msg              = 'No se pudido mandar la solventacion';
+        $vrespuestaHTTP=201;
+        $vrespuesta=[
+            'codigo'=> 0,
+            'icono'=> 'warning',
+            'mensaje'=> 'El registro no se ha podido registrar, intente de nuevo.'
+        ];
+
+        $validator=Validator::make($request->all(), [
+            'id_capital_contable' => 'required',
+            'capital' => 'required',
+            'fecha_elaboracion' => 'required',
+            'fecha_declaracion' => 'required',
+            'observaciones' => 'required'
+        ]);
+
+        if ( $validator->fails() ) {
+            return response()->json([
+                'codigo'=>0,
+                'icono'=>'warning',
+                'mensaje'=> 'Agradecemos que complete todos los campos del formulario.'], 201);
+        }
 
         try {
-            // DB::beginTransaction();
+            DB::beginTransaction();
+            $_Input_Request=$request->all();
+            $_Input_Request['id_registro']=Auth::User()->id_registro;
 
-
-            $id_tramite = $request->input('hdIdTramiteCapital');
-            $tramite=T_Tramite::find($id_tramite);
-
-            $array= [];
-            $array['id_cs']= $tramite->id_cs;
-            $array['id_tramite']= $id_tramite;
-
-            $tramite_anterior=T_Tramite::tramite_anterior($array)->first();
-            if(isset($tramite_anterior->id)) {
-                $datos_capital = T_Tramite_Capital_Contable::edit($tramite_anterior->id);  
-
-                //se procede a guardar el dato    
-                $status= 1; $code= 201;
-                $p_capital['id_tramite']= $id_tramite; 
-                $p_capital['capital']= $datos_capital->capital;
-                $p_capital['fecha_declaracion']= $datos_capital->fecha_declaracion;
-                $p_capital['fecha_elaboracion']= $datos_capital->fecha_elaboracion;
-                $p_capital['observaciones']= $datos_capital->observaciones;
-
-                $t_capital= new T_Tramite_Capital_Contable;
-               
-                        DB::beginTransaction();                
-                            $t_capital->fill($p_capital)->save();
-                        DB::commit();                
-                                  
-                        $msg= "La información fue recuperada satisfactoriamente";                    
-                        $route_redirect= "";
-
-                        $data= $t_capital;
+            $_MDL_Tramite_Capital_Contable=new T_Tramite_Capital_Contable;
+            $vrespuesta['mensaje']='Los datos han sido <b>REGISTRADOS</b> exitosamente.';
+            if ( $_Input_Request['id_capital_contable'] != 0 ) {
+                $_MDL_Tramite_Capital_Contable=T_Tramite_Capital_Contable::find((int)$_Input_Request['id_capital_contable']);
+                $vrespuesta['mensaje']='Los datos han sido <b>ACTUALIZADOS</b> exitosamente.';
             }
+            
+            $_MDL_Tramite_Capital_Contable->fill($_Input_Request)->save();
 
-            // DB::commit();
+            $vrespuesta['codigo']=1;
+            $vrespuesta['icono']='success';
+            DB::commit();
         }
         catch (Exception $e) {
             $vrespuestaHTTP = 500;
+            $vrespuesta=[
+                'codigo'=> -1,
+                'icono'=> 'error',
+                'mensaje'=> 'Hubo un error al registrar el RTEC. Intenta nuevamente. '. $vexception->getMessage()
+            ];
             DB::rollback();
         }
 
-        return response()->json(
-            [
-                'code'            => $vcodigoRespuesta,
-                'msg'             => $msg,
-                'rutaRedireccion' => $vrutaRedireccion
-            ], $vrespuestaHTTP);
+        return response()->json($vrespuesta, $vrespuestaHTTP);
+     }
+
+
+    public function store_estados_financieros(Request $request)
+     {
+        // Autor: Sandro Alan Gomez Aceituno
+        // Modificación: 02 de Abril de 2024
+        // Descripción: Guardas los registros del capital contable.
+
+        $vrespuestaHTTP=201;
+        $vrespuesta=[
+            'codigo'=> 0,
+            'icono'=> 'warning',
+            'mensaje'=> 'El registro no se ha podido registrar, intente de nuevo.'
+        ];
+
+        $validator=Validator::make($request->all(), [
+            'id_estado_financiero' => 'required',
+            'utilidad_perdida' => 'required',
+            'balance_gral' => 'required',
+            'razon_liquidez' => 'required',
+            'razon_endeudamiento' => 'required',
+            'razon_rentabilidad' => 'required',
+            'capital_neto' => 'required'
+        ]);
+
+        if ( $validator->fails() ) {
+            return response()->json([
+                'codigo'=>0,
+                'icono'=>'warning',
+                'mensaje'=> 'Agradecemos que complete todos los campos del formulario.'], 201);
+        }
+
+        try {
+            DB::beginTransaction();
+            $_Input_Request=$request->all();
+
+            $_array_periodo=['actual'=>date('Y'), 'anterior'=> 0];
+            $_array_utilidad_perdida=['actual'=>$request->utilidad_perdida, 'anterior'=> 0];
+            $_array_balance_gral=['actual'=>$request->balance_gral, 'anterior'=> 0];
+            $_array_razon_liquidez=['actual'=>$request->razon_liquidez, 'anterior'=> 0];
+            $_array_razon_endeudamiento=['actual'=>$request->razon_endeudamiento, 'anterior'=> 0];
+            $_array_razon_rentabilidad=['actual'=>$request->razon_rentabilidad, 'anterior'=> 0];
+            $_array_capital_neto=['actual'=>$request->capital_neto, 'anterior'=> 0];
+
+            $_Input_Request['id_registro']=Auth::User()->id_registro;
+            $_Input_Request['periodo']=json_encode($_array_periodo);
+            $_Input_Request['utilidad_perdida']=json_encode($_array_utilidad_perdida);
+            $_Input_Request['balance_gral']=json_encode($_array_balance_gral);
+            $_Input_Request['razon_liquidez']=json_encode($_array_razon_liquidez);
+            $_Input_Request['razon_endeudamiento']=json_encode($_array_razon_endeudamiento);
+            $_Input_Request['razon_rentabilidad']=json_encode($_array_razon_rentabilidad);
+            $_Input_Request['capital_neto']=json_encode($_array_capital_neto);
+
+            $_MDL_Tramite_Estado_Financiero=new T_Tramite_Estado_Financiero;
+            $vrespuesta['mensaje']='Los datos han sido <b>REGISTRADOS</b> exitosamente.';
+            if ( $_Input_Request['id_estado_financiero'] != 0 ) {
+                $_MDL_Tramite_Estado_Financiero=T_Tramite_Estado_Financiero::find((int)$_Input_Request['id_estado_financiero']);
+                $vrespuesta['mensaje']='Los datos han sido <b>ACTUALIZADOS</b> exitosamente.';
+            }
+
+            $_MDL_Tramite_Estado_Financiero->fill($_Input_Request)->save();
+
+            $vrespuesta['codigo']=1;
+            $vrespuesta['icono']='success';
+            DB::commit();
+        }
+        catch (Exception $e) {
+            $vrespuestaHTTP = 500;
+            $vrespuesta=[
+                'codigo'=> -1,
+                'icono'=> 'error',
+                'mensaje'=> 'Hubo un error al registrar el RTEC. Intenta nuevamente. '. $vexception->getMessage()
+            ];
+            DB::rollback();
+        }
+
+        return response()->json($vrespuesta, $vrespuestaHTTP);
      }
  }
