@@ -1,44 +1,45 @@
-@extends('layouts.backend')
 
-	@section('styles')
 
-	@endsection
+	<?php $__env->startSection('styles'); ?>
 
-	@section('js')
+	<?php $__env->stopSection(); ?>
 
-	    <script src="{{ asset('public/js/backend/descargas.js') }}"></script>
+	<?php $__env->startSection('js'); ?>
+
+	    <script src="<?php echo e(asset('public/js/backend/descargas.js')); ?>"></script>
 	    
-	@endsection
+	<?php $__env->stopSection(); ?>
 
-	@section('buttons')	
+	<?php $__env->startSection('buttons'); ?>	
 
-	@endsection
+	<?php $__env->stopSection(); ?>
 
 
-	@section('title')
+	<?php $__env->startSection('title'); ?>
 
 		<h2 class="main-content-title tx-24 mg-b-5">Formatos</h2>
 
-	@endsection
+	<?php $__env->stopSection(); ?>
 
-	@section('breadcrumb')
+	<?php $__env->startSection('breadcrumb'); ?>
 
 		<h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">
-			{!! html_entity_decode(link_to_route($current_route.'.index', $title, null, [])) !!}
+			<?php echo html_entity_decode(link_to_route($current_route.'.index', $title, null, [])); ?>
+
 		</h5>	
 		<div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>
 		<span class="text-muted font-weight-bold mr-4">Formatos</span>
 
-	@endsection
+	<?php $__env->stopSection(); ?>
 
-	@section('script')
+	<?php $__env->startSection('script'); ?>
 
 		$('._formatos').addClass('menu-item-active');
 		cargarTabla();
 		
-	@endsection
+	<?php $__env->stopSection(); ?>
 
-	@section('content')
+	<?php $__env->startSection('content'); ?>
 
 		<style>
 			.bg-gray{
@@ -84,4 +85,5 @@
 			</div>
 		</div>
 
-	@endsection
+	<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\AppServ\www\sircse\resources\views/backend/descargas/index.blade.php ENDPATH**/ ?>
