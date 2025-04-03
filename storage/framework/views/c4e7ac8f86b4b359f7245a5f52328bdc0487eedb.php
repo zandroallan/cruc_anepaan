@@ -1,11 +1,11 @@
 		<div class="row">
             <div class="col-md-12 form-group text-right">
-				<a href="#" class="btn btn-outline-info btn-sm" data-effect="effect-scale" onclick="modal_socio_legal(0)">
+				<a href="#" class="btn ripple btn-outline-success" data-effect="effect-scale" onclick="modal_socio_legal(0)">
 					<i class="fa fa-save"></i> Agregar socio legal
 				</a> 
 			</div>
         </div>
-		<table id="scs_tbl" class="table">
+		<table id="scs_tbl" class="table table-bordered table-checkable dataTable no-footer dtr-inline">
 			<thead id="hdSocio" class="thead-dark">
 				<tr>
 					<th scope="col">#</th>

@@ -315,7 +315,7 @@
 		    <div class="form-group row">
 		    	<label class="col-lg-3 col-form-label text-right"><b>CP:</b></label>
 		    	<div class="col-lg-6">
-		     		<?php echo Form::text('cp', null, ['id'=>'cp', 'class'=>'form-control inp-udi']); ?>		
+		     		<?php echo Form::text('cp_fiscal', null, ['id'=>'cp_fiscal', 'class'=>'form-control inp-udi']); ?>		
 		    	</div>
 		    </div>
 

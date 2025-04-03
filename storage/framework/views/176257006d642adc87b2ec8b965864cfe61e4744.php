@@ -2,18 +2,14 @@
 
 		<?php $__env->startSection('styles'); ?>	
 
-			<!-- <link href="<?php echo e(asset('public/dashlead/plugins/select2/css/select2.min.css')); ?>" rel="stylesheet"/> -->
 			<link href="<?php echo e(asset('public/css/tabs.css')); ?>" rel="stylesheet"/>
 
 		<?php $__env->stopSection(); ?>
 
 		<?php $__env->startSection('js'); ?>
 
-			<!-- <script src="<?php echo e(asset('public/dashlead/plugins/jquery-ui/ui/widgets/datepicker.js')); ?>"></script> -->
-			<!-- <script src="<?php echo e(asset('public/dashlead/plugins/select2/js/select2.min.js')); ?>"></script> -->
-			<!-- <script src="<?php echo e(asset('public/dashlead/js/select2.js')); ?>"></script> -->
 			<script src="<?php echo e(asset('public/js/backend/general.js')); ?>"></script>			
-			<script src="<?php echo e(asset('public/js/backend/mis-tramites.js')); ?>"></script>
+			<script src="<?php echo e(asset('public/js/backend/nuevo-tramite.js')); ?>"></script>
 			<!--Archivos para los documentos de las areas-->
 			<script src="<?php echo e(asset('public/js/backend/filesDoctos/jsDocumentosTools.js')); ?>"></script>	
 			<script src="<?php echo e(asset('public/js/backend/filesDoctos/jsDocumentosLegal.js')); ?>"></script>	
@@ -26,6 +22,7 @@
 			<script src="<?php echo e(asset('public/js/backend/filesForms/jsChecks.js')); ?>"></script>	
 			<!-- Archivos para los form area legal-->
 			<script src="<?php echo e(asset('public/js/backend/filesForms/jsLegal.js')); ?>"></script>
+			<script src="<?php echo e(asset('public/js/backend/filesForms/jsFinanciera.js')); ?>"></script>
 			<script src="<?php echo e(asset('public/js/backend/filesForms/contacto.js')); ?>"></script>
 			
 		<?php $__env->stopSection(); ?>
@@ -90,39 +87,37 @@
 			    }
 		    });
 
-		    if(<?php echo e($terminos); ?>==1) {
+		    if ( <?php echo e($terminos); ?> == 1 ) {
 
-				cargar_documentacion_requerida_legal(<?php echo $id_tipo_tramite; ?>, 2, <?php echo $datos->id; ?>)
+				cargar_documentacion_requerida_legal(<?php echo e($id_tipo_tramite); ?>, 2, <?php echo e($datos->id); ?>);
+				cargar_documentacion_requerida_tecnica(<?php echo e($id_tipo_tramite); ?>, 4, <?php echo e($datos->id); ?>, <?php echo e($datos->tec_acredita_tmp); ?>);
 
-				if(<?php echo $datos->id_sujeto; ?>==1){
-					cargar_documentacion_requerida_financiera(<?php echo $id_tipo_tramite; ?>, 3, <?php echo $datos->id; ?>, <?php echo $datos->obligado_dec_isr; ?>);
+				if ( <?php echo e($datos->id_sujeto); ?> ==1 ) {
+					cargar_documentacion_requerida_financiera(<?php echo e($id_tipo_tramite); ?>, 3, <?php echo e($datos->id); ?>, <?php echo e($datos->obligado_dec_isr); ?>);
 				}
-
-				cargar_documentacion_requerida_tecnica(<?php echo $id_tipo_tramite; ?>, 4, <?php echo $datos->id; ?>, <?php echo $datos->tec_acredita_tmp; ?>)
 
 				cargar_socios_legales(<?php echo e(Auth::User()->id_registro); ?>);
 
+				get_capital_contable();
+				get_estados_financieros();
 				get_datos_legales(<?php echo e(Auth::User()->id_registro); ?>);
 				get_acta_constitutiva(<?php echo e(Auth::User()->id_registro); ?>);
 				get_acta_constitutiva_modificacion(<?php echo e(Auth::User()->id_registro); ?>);
 				get_representante_legal(<?php echo e(Auth::User()->id_registro); ?>);
-
 				cargar_rtecs(<?php echo e(Auth::User()->id_registro); ?>);	
 
-				if(<?php echo e($id_contacto); ?>!=0)
-				{
+				if ( <?php echo e($id_contacto); ?> != 0 ) {
 					$("#btn-guardar-contacto").html('Editar contacto');
 					cargar_contacto(); 
 					$('#iconContacto').show();
 				}
-				else
-				{
+				else {
 					$('#iconContacto').hide();
 				}
 				
-				tipo_persona(<?php echo $datos->id_tipo_persona; ?>);
+				tipo_persona(<?php echo e($datos->id_tipo_persona); ?>);
 						
-				if(<?php echo $datos->id_tipo_persona; ?> != 1){
+				if ( <?php echo e($datos->id_tipo_persona); ?> != 1 ) {
 					$('#vnavSocioLegal').show();
 					$('#vtabSocioLegal').show();
 				}
@@ -130,16 +125,14 @@
 					$('#vnavSocioLegal').hide();
 					$('#vnavSocioLegal').hide();
 				}
-				
-				//cargar_socios_legales(<?php echo e($datos->id); ?>);
 			}
 
 		<?php $__env->stopSection(); ?>
 
 		<?php $__env->startSection('content'); ?>
+
 			<?php echo $__env->make('backend.encabezado', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 			
-
 			<?php if($terminos == 1): ?>
 			<div class="alert alert-custom alert-dark fade show" role="alert">
 			    <div class="alert-icon"><i class="flaticon-warning"></i></div>

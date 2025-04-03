@@ -3,7 +3,6 @@
 <h4 class="m-t-10">Documentación para la Constancia de <span class="text-primary"><?php echo $lbl_tramite_siguiente; ?></span> en el Registro de <?php echo e($lbl_contratista_supervisor); ?>.</h4>
 
 
-
 <div class="alert alert-custom alert-light-dark fade show mb-10" role="alert">
 	<div class="alert-icon">
 		<span class="svg-icon svg-icon-3x svg-icon-dark">
@@ -26,7 +25,6 @@
 		</h6>
 	</div>
 </div>
-
 
 
 

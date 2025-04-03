@@ -72,7 +72,8 @@ function send_1(button)
         $.confirm({
             title: '¡ Advertencia !',
             content: '¿ Realmente desea guardar este registro ?',
-            type: 'orange', // Equivalente a "warning" en SweetAlert2
+            type: 'orange',
+            icon: 'fa fa-warning',
             buttons: {
                 cancelar: {
                     text: 'Cancelar',
@@ -108,6 +109,7 @@ function send_1(button)
             content : 'Por favor espere un momento, la información esta siendo procesada.',
             type : 'blue',
             typeAnimated : true,
+            icon: 'fa fa-spinner fa-spin',
             autoClose : 'close|1500',
             buttons: {
                 close: {
@@ -164,8 +166,9 @@ function send(button)
     if (!clicando) {
         $.confirm({
             title: '¡ Advertencia !',
-            content: 'La SAyBG procederá a revisar la documentación adjunta solicitándole los documentos originales al termino para su verificación. Deberá presentar la documentación original para cotejo con los documentos digitales proporcionados en el SIRCSE, en la fecha y hora en que la Secretaría de la Honestidad y Función Pública le notifique, conforme al artículo 6 de los Lineamientos. ¿Desea enviar a tramite?',
-            type: 'orange', // Equivalente a "warning" en SweetAlert2
+            content: 'La SAyBG procederá a revisar la documentación adjunta solicitándole los documentos originales al termino para su verificación. Deberá presentar la documentación original para cotejo con los documentos digitales proporcionados en el SIRCSE, en la fecha y hora en que la Secretaría Anticorrupción y Buen Gobierno le notifique, conforme al artículo 6 de los Lineamientos. ¿Desea enviar a tramite?',
+            type: 'orange',
+            icon: 'fa fa-warning',
             buttons: {
                 cancelar: {
                     text: 'Cancelar',
@@ -192,13 +195,14 @@ function send(button)
         $.confirm({
             title: 'Notificación',
             content: 'Por favor espere un momento, la información esta siendo procesada.',
-            type: 'blue', // Equivalente a "info" en SweetAlert2
+            type: 'blue',
             typeAnimated: true,
-            autoClose: 'close|1500', // Autocerrarse después de 1500ms
+            con: 'fa fa-spinner fa-spin',
+            autoClose: 'close|1500',
             buttons: {
                 close: {
                     text: 'Cerrar',
-                    isHidden: true // Botón oculto pero necesario para autoClose
+                    isHidden: true
                 }
             }
         });
@@ -237,12 +241,13 @@ function guardarTramite()
             $.confirm({
                 title: 'Confirmación',
                 content: json.msg,
-                type: 'green', // Equivalente a "success" en SweetAlert2
+                type: 'green',
                 typeAnimated: true,
-                autoClose: 'close|1500', // Autocerrarse después de 1500ms
+                icon: 'fa fa-check',
+                autoClose: 'close|1500',
                 buttons: {
                     close: {
-                        isHidden: true // Botón oculto pero necesario para autoClose
+                        isHidden: true
                     }
                 },
                 onClose: function() {
@@ -287,8 +292,9 @@ function guardarTramite()
             $.confirm({
                 title: '¡ Advertencia !',
                 content: str_errors,
-                type: 'orange', // Equivalente a "warning" en SweetAlert2
+                type: 'orange',
                 typeAnimated: true,
+                icon: 'fa fa-warning',
                 buttons: {
                     confirmar: {
                         text: 'Confirmar',
@@ -401,7 +407,8 @@ function eliminar_adjunto_tmp(id)
     $.confirm({
         title: '¡ Advertencia !',
         content: "Esta seguro de eliminar este documento adjunto ?",
-        type: 'orange', // Equivalente a "warning" en SweetAlert2
+        type: 'orange',
+        icon: 'fa fa-warning',
         typeAnimated: true,
         buttons: {
             cancelar: {
@@ -463,12 +470,13 @@ $('#frm-destroy-adjunto-tmp').on('submit', function(e) {
             $.confirm({
                 title: 'Exito',
                 content: json.success,
-                type: 'green', // Equivalente a "success" en SweetAlert2
+                type: 'green',
+                icon: 'fa fa-check',
                 typeAnimated: true,
-                autoClose: 'close|1500', // Autocerrarse después de 1500ms
+                autoClose: 'close|1500',
                 buttons: {
                     close: {
-                        isHidden: true // Botón oculto pero necesario para autoClose
+                        isHidden: true
                     }
                 },
                 onClose: function() {

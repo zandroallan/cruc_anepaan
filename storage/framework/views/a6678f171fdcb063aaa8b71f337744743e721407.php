@@ -1,5 +1,12 @@
-<h5 class="mb-1 mt-3 tx-gray-700">Capital contable</h5><hr />
+<div class="row">
+    <div class="col-md-12 form-group text-right">
+        <a href="#" class="btn ripple btn-outline-success btn-store-financiera">
+            <i class="fa fa-save"></i> Guardar capital
+        </a> 
+    </div>
+</div>              
 
+<h5 class="mb-1 mt-3 tx-gray-700">Capital contable</h5><hr />
 <div class="form-group row">
    	<div class="col-lg-4">
     	<label><b>Capital contable</b></label>
@@ -17,7 +24,6 @@
 
     </div>
 </div>
-
 <div class="form-group row">
    	<div class="col-lg-12">
     	<label><b>Observaciones</b></label>
@@ -28,7 +34,6 @@
 
 
 <h5 class="mb-1 mt-3 tx-gray-700 pt-5">Estado financiero del año inmediato anterior</h5><hr />
-
 <div class="form-group row">
    	<div class="col-lg-4">
     	<label><b>Utilidad o pérdida del ejercicio</b></label>
@@ -46,7 +51,6 @@
 
     </div>
 </div>
-
 <div class="form-group row">
    	<div class="col-lg-4">
     	<label><b>Razón de endeudamiento</b></label>

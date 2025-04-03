@@ -6,10 +6,9 @@
 <?php endif; ?> -->           
       
 
-
             <div class="row">
                 <div class="col-md-12 form-group text-right">
-                    <a href="#" class="btn btn-outline-info btn-sm" data-effect="effect-scale" onclick="modal_rtec(0)">
+                    <a href="#" class="btn ripple btn-outline-success" data-effect="effect-scale" onclick="modal_rtec(0)">
                         <i class="fa fa-save"></i> Agregar RTEC
                     </a> 
                 </div>
@@ -19,7 +18,7 @@
                 <?php echo csrf_field(); ?>
             </form>
 
-            <table id="dtrtec_tbl" class="table">
+            <table id="dtrtec_tbl" class="table table-bordered table-checkable dataTable no-footer dtr-inline">
                 <thead id="hdRTEC" class="thead-dark">
                     <tr>
                         <th scope="col">Nombre</th>
@@ -34,8 +33,6 @@
                 </tbody>
             </table>
               
-
-
 
             <?php echo $__env->make('backend.mis-tramites.mdl_rep_tec', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             <?php echo $__env->make('backend.mis-tramites.mdl_esp_rtec', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\AppServ\apps\sircse\resources\views/backend/mis-tramites/tabs-tecnica.blade.php ENDPATH**/ ?>
