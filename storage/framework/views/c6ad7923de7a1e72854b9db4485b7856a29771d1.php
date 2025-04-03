@@ -102,7 +102,7 @@
 		<?php echo $__env->make('backend.encabezado', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 		<?php if($en_tiempo!=1): ?>	
 
-			<div class="alert alert-custom alert-light-dark fade show mb-10" role="alert">
+			<div class="alert alert-custom alert-light-dark fade show mb-2" role="alert">
 				<div class="alert-icon">
 					<span class="svg-icon svg-icon-3x svg-icon-dark">
 						<!--begin::Svg Icon | path:assets/media/svg/icons/Code/Info-circle.svg-->
@@ -266,4 +266,4 @@
 
 	<?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\AppServ\apps\sircse\resources\views/backend/mis-observaciones/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\AppServ\www\sircse\resources\views/backend/mis-observaciones/index.blade.php ENDPATH**/ ?>

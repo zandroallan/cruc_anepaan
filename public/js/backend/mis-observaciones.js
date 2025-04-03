@@ -92,76 +92,67 @@ function solventarObservacion(idTramiteObservacion)
  {
     $.confirm({
         title: '¡ Advertencia !',
-        content: '¿Realmente desea solventar esta observación?',
-        type: 'orange',
-        theme: 'material',
+        content: '¿ Realmente desea  solventar la solventacion ?',
+        type: 'orange', // Equivalente a "warning" en SweetAlert2
         buttons: {
-            Aceptar: function() {
-                $.ajax({
-                    type: "POST",
-                    url: project_name + "/tramites/solventaciones/terminar-documento-observacion",
-                    data: {
-                        _token: $('input[name="_token"]').val(),
-                        id_observacion: idTramiteObservacion
-                    },             
-                    success: function(vjsonRespuesta) {
-                        swal({
-                            type: 'success',
-                            title: 'Solventación de observación!',
-                            content: {
-                                element: 'p',
-                                attributes: {
-                                    innerHTML: vjsonRespuesta.msg,
-                                },
-                            },
-                            showConfirmButton: false,
-                            timer: 3000
-                        }).then(function() {
-                            if( vjsonRespuesta.rutaRedireccion != "" )
-                                window.location=vjsonRespuesta.rutaRedireccion;
-                        });                       
-                    },
-                    error: function(json) {
-
-                    }
-                }); 
+            cancelar: {
+                text: 'Cancelar',
+                btnClass: 'btn btn-default',
+                action: function() {
+                    clicando = false;
+                }
             },
-            Cancelar: function() {
-                $.alert({
-                    title: 'Mensaje!',
-                    content: '¡El usuario ha cancelado la acción!',
-                    type: 'orange'
-                });
+            confirmar: {
+                text: 'Confirmar',
+                btnClass: 'btn btn-primary',
+                action: function() {
+                    solventar(idTramiteObservacion);
+                }
             }
         }
-    });
-
-    // swal({
-    //     title: "¡ Advertencia !",
-    //     text: "¿ Realmente desea solventar esta observación?",
-    //     icon: "warning",
-    //     buttons: {
-    //         cancel: {
-    //             text: 'Cancelar',
-    //             value: false,
-    //             visible: true,
-    //             className: 'btn btn-default',
-    //             closeModal: true,
-    //         },
-    //         confirm: {
-    //             text: 'Confirmar',
-    //             value: true,
-    //             visible: true,
-    //             className: 'btn btn-primary',
-    //             closeModal: true
-    //         }
-    //     }
-    // }).then((result) => {
-    //     if (result) { 
-
-    //     }           
-    // });                 
+    });                 
  }
+
+
+function solventar(idTramiteObservacion)
+{
+    $.ajax({
+        type: "POST",
+        url: project_name + "/tramites/solventaciones/terminar-documento-observacion",
+        data: {
+            _token: $('input[name="_token"]').val(),
+            id_observacion: idTramiteObservacion
+        },             
+        success: function(vjsonRespuesta) {
+            $.confirm({   
+                icon: 'fa fa-info-circle',
+                title: 'Notificacion !',
+                content: vjsonRespuesta.msg,
+                type: 'green',       
+                typeAnimated: true,
+                animation: 'zoom',
+                closeAnimation: 'scale',
+                autoClose: 'confirmar|1000',
+                buttons: {
+                    confirmar: {
+                        isHidden: true,                
+                        action: function () {
+                            if( vjsonRespuesta.rutaRedireccion != "" )
+                                window.location=vjsonRespuesta.rutaRedireccion;
+                        }
+                    },
+                    cancelar: { 
+                        isHidden: true,                
+                        action: function () {}
+                    },
+                }
+            });                        
+        },
+        error: function(json) {
+
+        }
+    }); 
+}
 
 function reloadObservation(idTramiteObservacion, idTramite)
  {
