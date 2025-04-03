@@ -8,25 +8,25 @@ function modal_rtec(id) {
 function getRepresentanteTecnico(id) {
     let url = project_name + "/tramites/get/representante-tecnico/" + id;
 
-    $.get(url, function(data, textStatus) {
-    
-        let id_estado=0;
-        let id_municipio=0;
-        let carga_est_mun=false;
+    $.get(url, function (data, textStatus) {
 
-        $.each(data, function(key, valor) {
+        let id_estado = 0;
+        let id_municipio = 0;
+        let carga_est_mun = false;
 
-            if(key =="id_estado_particular")
-                id_estado = valor;                 
-            
-            if(key =="id_municipio_particular")
+        $.each(data, function (key, valor) {
+
+            if (key == "id_estado_particular")
+                id_estado = valor;
+
+            if (key == "id_municipio_particular")
                 id_municipio = valor;
 
-            if(id_estado!=0 && id_municipio!=0 && carga_est_mun==false){
-                cargar_municipios_edit(id_estado, "dtrtec_id_municipio_particular", id_municipio); 
-                carga_est_mun=true;
+            if (id_estado != 0 && id_municipio != 0 && carga_est_mun == false) {
+                cargar_municipios_edit(id_estado, "dtrtec_id_municipio_particular", id_municipio);
+                carga_est_mun = true;
             }
-            
+
             if (key == "id_profesion" || key == "id_colegio" || key == "id_tipo_constancia") {
                 $("#dtrtec_" + key).val(valor).trigger('change');
             } else {
@@ -44,34 +44,34 @@ function addRepresentanteTecnico() {
         type: "POST",
         url: project_name + '/tramites/store/representante-tecnico',
         data: el.serialize(),
-        success: function(json) {
+        success: function (json) {
             messages_validation(json.data, false);
 
-             $.confirm({   
+            $.confirm({
                 icon: 'fa fa-info-circle',
                 title: 'Notificacion !',
                 content: json.msg,
-                type: 'green',       
+                type: 'green',
                 typeAnimated: true,
                 animation: 'zoom',
                 closeAnimation: 'scale',
                 autoClose: 'confirmar|1000',
                 buttons: {
                     confirmar: {
-                        isHidden: true,                
+                        isHidden: true,
                         action: function () {
                             $("#mdl_dtrtec").modal("toggle");
                             cargar_rtecs(_id_registro_tmp);
                         }
                     },
-                    cancelar: { 
-                        isHidden: true,                
-                        action: function () {}
+                    cancelar: {
+                        isHidden: true,
+                        action: function () { }
                     },
                 }
-            }); 
+            });
         },
-        error: function(json) {
+        error: function (json) {
             var jsonString = json.responseJSON;
             if (json.status === 422) {
                 messages_validation(null, false);
@@ -81,22 +81,35 @@ function addRepresentanteTecnico() {
             if (json.status === 409) {
                 str_errors = jsonString.msg;
             }
-            swal({
-                title: "¡ Advertencia !",
-                content: {
-                    element: 'p',
-                    attributes: {
-                        innerHTML: str_errors,
-                    },
-                },
-                icon: "warning",
+            // swal({
+            //     title: "¡ Advertencia !",
+            //     content: {
+            //         element: 'p',
+            //         attributes: {
+            //             innerHTML: str_errors,
+            //         },
+            //     },
+            //     icon: "warning",
+            //     buttons: {
+            //         confirm: {
+            //             text: 'Confirmar',
+            //             value: true,
+            //             visible: true,
+            //             className: 'btn btn-primary',
+            //             closeModal: true
+            //         }
+            //     }
+            // });
+            $.confirm({
+                title: '¡ Advertencia !',
+                content: str_errors,
+                icon: 'fa fa-warning',
+                type: 'orange',
+                typeAnimated: true,
                 buttons: {
-                    confirm: {
+                    confirmar: {
                         text: 'Confirmar',
-                        value: true,
-                        visible: true,
-                        className: 'btn btn-primary',
-                        closeModal: true
+                        btnClass: 'btn-primary',
                     }
                 }
             });
@@ -105,36 +118,36 @@ function addRepresentanteTecnico() {
 }
 
 function cargar_rtecs(id_registro_tmp) {
-   
+
     _id_registro_tmp = id_registro_tmp;
     let _vuri = project_name + "/tramites/listas/representante-tecnico/" + id_registro_tmp;
-    $.get(_vuri, function(data, textStatus) {
+    $.get(_vuri, function (data, textStatus) {
         if (data.length > 0) {
             oculta_boton_Representante(1);
             $('#iconTecnica').show();
-            $('#hdRTEC').addClass("head-color"); 
-            $('#hdRTEC').removeClass("head-dark"); 
+            $('#hdRTEC').addClass("head-color");
+            $('#hdRTEC').removeClass("head-dark");
         }
-        else{
+        else {
             $('#iconTecnica').hide();
-            $('#hdRTEC').removeClass("head-color");                    
+            $('#hdRTEC').removeClass("head-color");
             $('#hdRTEC').addClass("head-dark");
         }
-        
+
         let vhtml = "";
         let j = 1;
         let k = 1;
-        $.each(data, function(i, valor) {
+        $.each(data, function (i, valor) {
             let tipo_constancia = "Ajena";
             if (valor.id_tipo_constancia == 1) tipo_constancia = "Propia";
             vhtml += '<tr>';
-            vhtml += '  <td>' + valor.nombre + " " + valor.ap_paterno + " " + valor.ap_materno +'<br /><b>'+ valor.profesion +'</b></td>';
+            vhtml += '  <td>' + valor.nombre + " " + valor.ap_paterno + " " + valor.ap_materno + '<br /><b>' + valor.profesion + '</b></td>';
             vhtml += '  <td class="text-center">';
-            vhtml +=        valor.curp;
+            vhtml += valor.curp;
             vhtml += '  </td>';
             vhtml += '  <td>' + valor.colegio + '</td>';
             vhtml += '  <td>';
-            vhtml += '      <b>'+ tipo_constancia +'</b><br />' + valor.num_constancia;
+            vhtml += '      <b>' + tipo_constancia + '</b><br />' + valor.num_constancia;
             vhtml += '  </td>';
             vhtml += '  <td class="text-center">' + valor.cedula + '</td>';
             vhtml += '  <td class="text-center">';
@@ -144,8 +157,8 @@ function cargar_rtecs(id_registro_tmp) {
             vhtml += '</tr>';
             let _vuriII = project_name + "/tramites/get/especialidades-tecnicas-rtec/" + valor.id;
             let string = "";
-            $.get(_vuriII, function(data, textStatus) {
-                $.each(data, function(i, valor) {
+            $.get(_vuriII, function (data, textStatus) {
+                $.each(data, function (i, valor) {
                     const {
                         id,
                         clave,
@@ -169,60 +182,60 @@ function oculta_boton_Representante(valor) {
 
 function destroyRTEC(id) {
 
-    $.confirm({   
+    $.confirm({
         icon: 'fa fa-warning',
         title: 'Confirmar !',
         content: 'Esta seguro de eliminar el representante tecnico ?',
-        type: 'dark',       
+        type: 'dark',
         typeAnimated: true,
         confirmButton: 'Yes i agree',
-        cancelButton: 'NO never !',             
+        cancelButton: 'NO never !',
         buttons: {
             confirmar: function () {
                 eliminaRtec(id);
             },
             cancelar: function () {
-                
-            }           
-        },      
+
+            }
+        },
         animation: 'zoom',
-        closeAnimation: 'scale'     
-    }); 
+        closeAnimation: 'scale'
+    });
 }
 
 
-function eliminaRtec()
-{
+function eliminaRtec() {
     $.ajax({
         type: "DELETE",
         url: project_name + '/tramites/eliminar/representante-tecnico/' + id,
         data: $('#dtrtec_frm_destroy').serialize(),
-        success: function(json) {
+        success: function (json) {
 
-            $.confirm({   
+            $.confirm({
                 icon: 'fa fa-info-circle',
                 title: 'Notificacion !',
                 content: 'Representante tecnico eliminado correctamente',
-                type: 'green',       
+                type: 'green',
                 typeAnimated: true,
                 animation: 'zoom',
                 closeAnimation: 'scale',
                 autoClose: 'confirmar|1000',
                 buttons: {
                     confirmar: {
-                        isHidden: true,                
+                        isHidden: true,
                         action: function () {
                             cargar_rtecs(_id_registro_tmp);
                         }
                     },
-                    cancelar: { 
-                        isHidden: true,                
-                        action: function () {}
+                    cancelar: {
+                        isHidden: true,
+                        action: function () { }
                     },
                 }
             });
         },
-        error: function(json) {
+        error: function (json) {
+            console.log(json.responseJSON);
             if (json.status === 422) {
                 var jsonString = json.responseJSON;
                 var errors = jsonString.errors;
@@ -244,11 +257,11 @@ function modal_rtec_esp(id) {
 function get_especialidades_tecnicas_rtec(id_t_rep_tec) {
     $("#dtsp_id_tramite_esp").val(id_t_rep_tec);
     let url = project_name + "/tramites/get/especialidades-tecnicas-rtec/" + id_t_rep_tec;
-    $.get(url, function(data, textStatus) {
+    $.get(url, function (data, textStatus) {
         let string1 = "";
         let string2 = "";
         let string3 = "";
-        $.each(data, function(i, valor) {
+        $.each(data, function (i, valor) {
             const {
                 id,
                 clave,
@@ -276,9 +289,9 @@ function get_especialidades_tecnicas_rtec(id_t_rep_tec) {
 function cargar_especialidades_colegio(id_valor, combo) {
     let id_rtec = id_valor;
     let url = project_name + "/combos/colegios/especialidades/" + id_rtec;
-    $.get(url, function(data, textStatus) {
+    $.get(url, function (data, textStatus) {
         combo.empty();
-        $.each(data, function(i, valor) {
+        $.each(data, function (i, valor) {
             combo.append("<option value='" + i + "'>" + valor + "</option>");
         });
     }, "json");
@@ -291,7 +304,7 @@ function AddEspRtec() {
         type: "POST",
         url: project_name + '/tramites/store/especialidades-rtec',
         data: el.serialize(),
-        success: function(json) {
+        success: function (json) {
             messages_validation(json.data, false);
             swal({
                 type: 'success',
@@ -304,12 +317,12 @@ function AddEspRtec() {
                 },
                 showConfirmButton: false,
                 timer: 1500
-            }).then(function() {
+            }).then(function () {
                 get_especialidades_tecnicas_rtec(json.data.id);
                 cargar_rtecs(_id_registro_tmp);
             });
         },
-        error: function(json) {
+        error: function (json) {
             var jsonString = json.responseJSON;
             if (json.status === 422) {
                 messages_validation(null, false);
@@ -319,32 +332,44 @@ function AddEspRtec() {
             if (json.status === 409) {
                 str_errors = jsonString.msg;
             }
-            swal({
-                title: "¡ Advertencia !",
-                content: {
-                    element: 'p',
-                    attributes: {
-                        innerHTML: str_errors,
-                    },
-                },
-                icon: "warning",
-                buttons: {
-                    confirm: {
+            // swal({
+            //     title: "¡ Advertencia !",
+            //     content: {
+            //         element: 'p',
+            //         attributes: {
+            //             innerHTML: str_errors,
+            //         },
+            //     },
+            //     icon: "warning",
+            //     buttons: {
+            //         confirm: {
+            //             text: 'Confirmar',
+            //             value: true,
+            //             visible: true,
+            //             className: 'btn btn-primary',
+            //             closeModal: true
+            //         }
+            //     }
+            // });
+            $.confirm({
+                title: '¡ Advertencia !',
+                content: str_errors,
+                icon: 'fa fa-warning',
+                type: 'orange',
+                buttons:{
+                    confirmar:{
                         text: 'Confirmar',
-                        value: true,
-                        visible: true,
-                        className: 'btn btn-primary',
-                        closeModal: true
+                        btnClass: 'btn-primary',
                     }
                 }
-            });
+            })
         }
     });
 }
 
 function eliminar_especialidad_tecnica_rtec(id, id_t_rep_tec) {
     let url = project_name + "/tramites/" + id_t_rep_tec + "/eliminar/especialidades-tecnicas-rtec/" + id;
-    $.get(url, function(data, textStatus) {
+    $.get(url, function (data, textStatus) {
         get_especialidades_tecnicas_rtec(id_t_rep_tec);
         cargar_rtecs($("#dtsp_id_tramite_rtec").val());
     }, "json");
