@@ -57,12 +57,25 @@ function store_end()
                 data: $('#myformdocumento').serialize(),             
                 success: function(vjsonRespuesta) {
                     if( vjsonRespuesta.code == 1 ) {
-                        swal({
-                            type: 'success',
-                            title: 'Datos Guardados !',
-                            html: vjsonRespuesta.msg,
-                            showConfirmButton: false,
-                            timer: 2000
+                        // swal({
+                        //     type: 'success',
+                        //     title: 'Datos Guardados !',
+                        //     html: vjsonRespuesta.msg,
+                        //     showConfirmButton: false,
+                        //     timer: 2000
+                        // });
+                        $.confirm({
+                                title: 'Datos Guardados !',
+                                content: vjsonRespuesta.msg,
+                                type: 'green',
+                                typeAnimated: 'true',
+                                icon: 'fa fa-check',
+                                autoClose: 'close|2000',
+                                buttons: {
+                                    close: {
+                                        isHidden: true,
+                                    },
+                                },
                         });
                         
                         if( vjsonRespuesta.rutaRedireccion != "" )
@@ -138,47 +151,91 @@ function cargar_solventaciones(id_tramites_documentacion)
 
 function eliminar_solventacion(id_tramite_documentacion)
  {
-    swal({
-        title: "¡ Advertencia !",
-        text: "¿ Realmente desea eliminar esta solventacion ?",
-        icon: "warning",
+    // swal({
+    //     title: "¡ Advertencia !",
+    //     text: "¿ Realmente desea eliminar esta solventacion ?",
+    //     icon: "warning",
+    //     buttons: {
+    //         cancel: {
+    //             text: 'Cancelar',
+    //             value: false,
+    //             visible: true,
+    //             className: 'btn btn-default',
+    //             closeModal: true,
+    //         },
+    //         confirm: {
+    //             text: 'Confirmar',
+    //             value: true,
+    //             visible: true,
+    //             className: 'btn btn-primary',
+    //             closeModal: true
+    //         }
+    //     }
+    // }).then((result) => {
+    //     if (result) { 
+            
+    //         $.ajax({
+    //             type: "GET",
+    //             url: project_name + '/tramites/eliminar/' + id_tramite_documentacion + '/solventacion',        
+    //             success: function(vjsonRespuesta) {
+    //                 cargar_solventaciones(_id_tramites_documentacion)
+    //                 swal({
+    //                     type: 'success',
+    //                     title: 'Eliminar !',
+    //                     html: 'Solventacion eliminada correctamten',
+    //                     showConfirmButton: false,
+    //                     timer: 2000
+    //                 });                        
+                   
+    //             },
+    //             error: function(json) { }
+    //         });
+    //     }     
+    // });
+    $.confirm({
+        title: '¡ Advertencia !',
+        content: '¿ Realmente desea eliminar esta solventacion ?',
+        type: 'orange',
+        typeAnimated: true,
+        icon: 'fa fa-warning',
         buttons: {
-            cancel: {
+            cancelar: {
                 text: 'Cancelar',
-                value: false,
-                visible: true,
-                className: 'btn btn-default',
-                closeModal: true,
+                btnClass: 'btn btn-default',
+                action: function() {
+                    return true;
+                }
             },
-            confirm: {
+            confirmar: {
                 text: 'Confirmar',
-                value: true,
-                visible: true,
-                className: 'btn btn-primary',
-                closeModal: true
+                btnClass: 'btn btn-primary',
+                action: function() {
+                    $.ajax({
+                        type: "GET",
+                        url: project_name + '/tramites/eliminar/' + id_tramite_documentacion + '/solventacion',        
+                        success: function(vjsonRespuesta) {
+                            cargar_solventaciones(_id_tramites_documentacion);
+                            $.confirm({
+                                title: 'Eliminar !',
+                                content: 'Solventacion eliminada correctamten',
+                                type: 'green',
+                                typeAnimated: true,
+                                icon: 'fa fa-check',
+                                autoClose: 'close|2000',
+                                buttons: {
+                                    close: {
+                                        isHidden: true
+                                    }
+                                }
+                            });
+                        },
+                        error: function(json) { }
+                    });
+                    return true;
+                }
             }
         }
-    }).then((result) => {
-        if (result) { 
-            
-            $.ajax({
-                type: "GET",
-                url: project_name + '/tramites/eliminar/' + id_tramite_documentacion + '/solventacion',        
-                success: function(vjsonRespuesta) {
-                    cargar_solventaciones(_id_tramites_documentacion)
-                    swal({
-                        type: 'success',
-                        title: 'Eliminar !',
-                        html: 'Solventacion eliminada correctamten',
-                        showConfirmButton: false,
-                        timer: 2000
-                    });                        
-                   
-                },
-                error: function(json) { }
-            });
-        }     
-    });               
+    });    
  }
 
 function cargarInputs(id_documento, tipo=0, alias=0)
@@ -233,17 +290,30 @@ function cargarInputs(id_documento, tipo=0, alias=0)
             else {
                 $( this ).val('');
 
-                swal({                
-                    icon: 'warning',
+                // swal({                
+                //     icon: 'warning',
+                //     title: 'Subir Documento',
+                //     content: {
+                //         element: 'p',
+                //         attributes: {
+                //             innerHTML: 'Extensión no permitida',
+                //         },
+                //     },                 
+                //     showConfirmButton: false,
+                //     timer: 1500
+                // });
+                $.confirm({
                     title: 'Subir Documento',
-                    content: {
-                        element: 'p',
-                        attributes: {
-                            innerHTML: 'Extensión no permitida',
-                        },
-                    },                 
-                    showConfirmButton: false,
-                    timer: 1500
+                    content: 'Extensión no permitida',
+                    type: 'orange',
+                    typeAnimated: true,
+                    icon: 'fa fa-warning',
+                    autoClose: 'close|1500',
+                    buttons: {
+                        close: {
+                            isHidden: true
+                        }
+                    }
                 });
 
             }

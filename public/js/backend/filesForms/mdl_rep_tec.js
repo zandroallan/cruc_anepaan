@@ -306,20 +306,37 @@ function AddEspRtec() {
         data: el.serialize(),
         success: function (json) {
             messages_validation(json.data, false);
-            swal({
-                type: 'success',
+            // swal({
+            //     type: 'success',
+            //     title: 'Confirmación',
+            //     content: {
+            //         element: 'p',
+            //         attributes: {
+            //             innerHTML: json.msg,
+            //         },
+            //     },
+            //     showConfirmButton: false,
+            //     timer: 1500
+            // }).then(function () {
+            //     get_especialidades_tecnicas_rtec(json.data.id);
+            //     cargar_rtecs(_id_registro_tmp);
+            // });
+            $.confirm({
                 title: 'Confirmación',
-                content: {
-                    element: 'p',
-                    attributes: {
-                        innerHTML: json.msg,
-                    },
+                content: json.msg,
+                type: 'green',
+                typeAnimated: true,
+                autoClose: 'close|1500',
+                icon: 'fa fa-check',
+                buttons: {
+                    close: {
+                        isHidden: true
+                    }
                 },
-                showConfirmButton: false,
-                timer: 1500
-            }).then(function () {
-                get_especialidades_tecnicas_rtec(json.data.id);
-                cargar_rtecs(_id_registro_tmp);
+                onClose: function() {
+                    get_especialidades_tecnicas_rtec(json.data.id);
+                    cargar_rtecs(_id_registro_tmp);
+                }
             });
         },
         error: function (json) {

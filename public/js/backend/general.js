@@ -3,56 +3,114 @@ var clicando = false;
 
 function save(button) {
     if (!clicando) {
-        swal({
+        // swal({
+        //     title: "¡ Advertencia !",
+        //     text: "¿ Realmente desea guardar este registro ?",
+        //     icon: "warning",
+        //     buttons: {
+        //         cancel: {
+        //             text: 'Cancelar',
+        //             value: false,
+        //             visible: true,
+        //             className: 'btn btn-default',
+        //             closeModal: true,
+        //         },
+        //         confirm: {
+        //             text: 'Confirmar',
+        //             value: true,
+        //             visible: true,
+        //             className: 'btn btn-primary',
+        //             closeModal: true
+        //         }
+        //     }
+        // }).then((result) => {
+        //     if (result) {
+        //         clicando = true;
+        //         $("#frm-1").submit();
+        //     } else {
+        //         clicando = false;
+        //     }
+        // });
+        $.confirm({
             title: "¡ Advertencia !",
-            text: "¿ Realmente desea guardar este registro ?",
-            icon: "warning",
+            content: "¿ Realmente desea guardar este registro ?",
+            type: 'orange',
+            typeAnimated: 'true',
+            icon: 'fa fa-warning',
             buttons: {
-                cancel: {
-                    text: 'Cancelar',
-                    value: false,
-                    visible: true,
-                    className: 'btn btn-default',
-                    closeModal: true,
-                },
-                confirm: {
+                confirmar: {
                     text: 'Confirmar',
-                    value: true,
-                    visible: true,
-                    className: 'btn btn-primary',
-                    closeModal: true
+                    btnClass: 'btn btn-primary',
+                    action: function() {
+                        clicando = true;
+                        $("#frm-1").submit();
+                    }
+                },
+                cancelar: {
+                    text: 'Cancelar',
+                    btnClass: 'btn btn-default',
+                    action: function() {
+                        clicando = false;
+                    }
                 }
-            }
-        }).then((result) => {
-            if (result) {
-                clicando = true;
-                $("#frm-1").submit();
-            } else {
-                clicando = false;
             }
         });
     } else {
-        swal({
-            type: 'info',
+        // swal({
+        //     type: 'info',
+        //     title: 'Notificación',
+        //     text: "Por favor espere un momento, la información esta siendo procesada.",
+        //     icon: "info",
+        //     timer: 1500
+        // });
+        $.confirm({
             title: 'Notificación',
-            text: "Por favor espere un momento, la información esta siendo procesada.",
-            icon: "info",
-            timer: 1500
+            content: "Por favor espere un momento, la información esta siendo procesada.",
+            type: 'blue',
+            typeAnimated: 'true',
+            icon: 'fa fa-info',
+            autoClose: 'close|1500',
+            buttons: {
+                close: {
+                    isHidden: true,
+                },
+            },
         });
     }
 }
 $("#b-check-1").click(function() {
     buttonpressed = $(this).attr('name');
-    swal({
+    // swal({
+    //     title: "¡ Advertencia !",
+    //     text: "¿ Realmente desea enviar a revisión este registro ?",
+    //     type: "warning",
+    //     showCancelButton: true,
+    //     confirmButtonColor: "#31708f",
+    //     confirmButtonText: "Confirmar",
+    //     cancelButtonText: "Cancelar"
+    // }).then((result) => {
+    //     if (result.value) {}
+    // });
+    $.confirm({
         title: "¡ Advertencia !",
-        text: "¿ Realmente desea enviar a revisión este registro ?",
-        type: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#31708f",
-        confirmButtonText: "Confirmar",
-        cancelButtonText: "Cancelar"
-    }).then((result) => {
-        if (result.value) {}
+        content: "¿ Realmente desea enviar a revisión este registro ?",
+        type: 'orange',
+        typeAnimated: 'true',
+        icon: 'fa fa-warning',
+        buttons: {
+            confirmar: {
+                text: 'Confirmar',
+                btnClass: 'btn btn-primary',
+                action: function() {
+                }
+            },
+            cancelar: {
+                text: 'Cancelar',
+                btnClass: 'btn btn-default',
+                action: function() {
+                }
+            }
+        }
     });
 });
 $('#frm-1').on('submit', function(e) {

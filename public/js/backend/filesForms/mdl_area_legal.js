@@ -11,20 +11,37 @@ $('#dlg_frm').on('submit', function(e) {
         contentType: false,
         success: function(json) {
             messages_validation(json.data, false);
-            swal({
-                type: 'success',
+            // swal({
+            //     type: 'success',
+            //     title: 'Confirmación',
+            //     content: {
+            //         element: 'p',
+            //         attributes: {
+            //             innerHTML: json.msg,
+            //         },
+            //     },
+            //     showConfirmButton: false,
+            //     timer: 1500
+            // }).then(function() {
+            //     get_datos_legales(json.data.id_registro_tmp);
+            //     $("#mdl_dlg").modal("toggle");
+            // });
+            $.confirm({
                 title: 'Confirmación',
-                content: {
-                    element: 'p',
-                    attributes: {
-                        innerHTML: json.msg,
+                content: json.msg,
+                type: 'green',
+                typeAnimated: 'true',
+                icon: 'fa fa-check',
+                autoClose: 'close|1500',
+                buttons: {
+                    close: {
+                        isHidden: true,
                     },
                 },
-                showConfirmButton: false,
-                timer: 1500
-            }).then(function() {
-                get_datos_legales(json.data.id_registro_tmp);
-                $("#mdl_dlg").modal("toggle");
+                onclose: function (json){
+                    get_datos_legales(json.data.id_registro_tmp);
+                    $("#mdl_dlg").modal("toggle");
+                }
             });
         },
         error: function(json) {
@@ -37,24 +54,40 @@ $('#dlg_frm').on('submit', function(e) {
             if (json.status === 409) {
                 str_errors = jsonString.msg;
             }
-            swal({
-                title: "¡ Advertencia !",
-                content: {
-                    element: 'p',
-                    attributes: {
-                        innerHTML: str_errors,
+            // swal({
+            //     title: "¡ Advertencia !",
+            //     content: {
+            //         element: 'p',
+            //         attributes: {
+            //             innerHTML: str_errors,
+            //         },
+            //     },
+            //     icon: "warning",
+            //     buttons: {
+            //         confirm: {
+            //             text: 'Confirmar',
+            //             value: true,
+            //             visible: true,
+            //             className: 'btn btn-primary',
+            //             closeModal: true
+            //         }
+            //     }
+            // });
+            $.confirm({
+                title: '¡ Advertencia !',
+                content: str_errors,
+                type: 'orange',
+                typeAnimated: 'true',
+                icon: 'fa fa-warning',
+                buttons: {
+                    confirmar: {
+                        text: 'Confirmar',
+                        btnClass: 'btn-primary',
+                        action: function() {
+                           return true;
+                        }
                     },
                 },
-                icon: "warning",
-                buttons: {
-                    confirm: {
-                        text: 'Confirmar',
-                        value: true,
-                        visible: true,
-                        className: 'btn btn-primary',
-                        closeModal: true
-                    }
-                }
             });
         }
     });
@@ -69,21 +102,39 @@ function AddActaConstitutiva() {
         data: el.serialize(),
         success: function(json) {
             messages_validation(json.data, false);
-            swal({
-                type: 'success',
+            // swal({
+            //     type: 'success',
+            //     title: 'Confirmación',
+            //     content: {
+            //         element: 'p',
+            //         attributes: {
+            //             innerHTML: json.msg,
+            //         },
+            //     },
+            //     showConfirmButton: false,
+            //     timer: 1500
+            // }).then(function() {
+            //     get_acta_constitutiva(id_tramite_global);
+            //     get_acta_constitutiva_modificacion(id_tramite_global);
+            //     //oculta_boton_acta_constitutiva(1);
+            // });
+            $.confirm({
                 title: 'Confirmación',
-                content: {
-                    element: 'p',
-                    attributes: {
-                        innerHTML: json.msg,
+                content: json.msg,
+                type: 'green',
+                typeAnimated: 'true',
+                icon: 'fa fa-check',
+                autoClose: 'close|1500',
+                buttons: {
+                    close: {
+                        isHidden: true,
                     },
                 },
-                showConfirmButton: false,
-                timer: 1500
-            }).then(function() {
-                get_acta_constitutiva(id_tramite_global);
-                get_acta_constitutiva_modificacion(id_tramite_global);
-                //oculta_boton_acta_constitutiva(1);
+                onclose: function (){
+                    get_acta_constitutiva(id_tramite_global);
+                    get_acta_constitutiva_modificacion(id_tramite_global);
+                    //oculta_boton_acta_constitutiva(1);
+                }
             });
         },
         error: function(json) {
@@ -96,24 +147,40 @@ function AddActaConstitutiva() {
             if (json.status === 409) {
                 str_errors = jsonString.msg;
             }
-            swal({
-                title: "¡ Advertencia !",
-                content: {
-                    element: 'p',
-                    attributes: {
-                        innerHTML: str_errors,
+            // swal({
+            //     title: "¡ Advertencia !",
+            //     content: {
+            //         element: 'p',
+            //         attributes: {
+            //             innerHTML: str_errors,
+            //         },
+            //     },
+            //     icon: "warning",
+            //     buttons: {
+            //         confirm: {
+            //             text: 'Confirmar',
+            //             value: true,
+            //             visible: true,
+            //             className: 'btn btn-primary',
+            //             closeModal: true
+            //         }
+            //     }
+            // });
+            $.confirm({
+                title: '¡ Advertencia !',
+                content: str_errors,
+                type: 'orange',
+                typeAnimated: 'true',
+                icon: 'fa fa-warning',
+                buttons: {
+                    confirmar: {
+                        text: 'Confirmar',
+                        btnClass: 'btn-primary',
+                        action: function() {
+                           return true;
+                        }
                     },
                 },
-                icon: "warning",
-                buttons: {
-                    confirm: {
-                        text: 'Confirmar',
-                        value: true,
-                        visible: true,
-                        className: 'btn btn-primary',
-                        closeModal: true
-                    }
-                }
             });
         }
     });
@@ -130,21 +197,38 @@ $('#dlrepl_frm').on('submit', function(e) {
         contentType: false,
         success: function(json) {
             messages_validation(json.data, false);
-            swal({
-                type: 'success',
+            // swal({
+            //     type: 'success',
+            //     title: 'Confirmación',
+            //     content: {
+            //         element: 'p',
+            //         attributes: {
+            //             innerHTML: json.msg,
+            //         },
+            //     },
+            //     showConfirmButton: false,
+            //     timer: 1500
+            // }).then(function() {
+            //     //get_representante_legal(json.data.id_tramite);
+            //     get_representante_legal(id_tramite_global);
+            //     $("#mdl_dlrepl").modal("toggle");
+            // });
+            $.confirm({
                 title: 'Confirmación',
-                content: {
-                    element: 'p',
-                    attributes: {
-                        innerHTML: json.msg,
+                content: json.msg,
+                type: 'green',
+                typeAnimated: 'true',
+                icon: 'fa fa-check',
+                autoClose: 'close|1500',
+                buttons: {
+                    close: {
+                        isHidden: true,
                     },
                 },
-                showConfirmButton: false,
-                timer: 1500
-            }).then(function() {
-                //get_representante_legal(json.data.id_tramite);
-                get_representante_legal(id_tramite_global);
-                $("#mdl_dlrepl").modal("toggle");
+                onclose: function (){
+                    get_representante_legal(id_tramite_global);
+                    $("#mdl_dlrepl").modal("toggle");
+                }
             });
         },
         error: function(json) {
@@ -157,24 +241,40 @@ $('#dlrepl_frm').on('submit', function(e) {
             if (json.status === 409) {
                 str_errors = jsonString.msg;
             }
-            swal({
-                title: "¡ Advertencia !",
-                content: {
-                    element: 'p',
-                    attributes: {
-                        innerHTML: str_errors,
+            // swal({
+            //     title: "¡ Advertencia !",
+            //     content: {
+            //         element: 'p',
+            //         attributes: {
+            //             innerHTML: str_errors,
+            //         },
+            //     },
+            //     icon: "warning",
+            //     buttons: {
+            //         confirm: {
+            //             text: 'Confirmar',
+            //             value: true,
+            //             visible: true,
+            //             className: 'btn btn-primary',
+            //             closeModal: true
+            //         }
+            //     }
+            // });
+            $.confirm({
+                title: '¡ Advertencia !',
+                content: str_errors,
+                type: 'orange',
+                typeAnimated: 'true',
+                icon: 'fa fa-warning',
+                buttons: {
+                    confirmar: {
+                        text: 'Confirmar',
+                        btnClass: 'btn-primary',
+                        action: function() {
+                           return true;
+                        }
                     },
                 },
-                icon: "warning",
-                buttons: {
-                    confirm: {
-                        text: 'Confirmar',
-                        value: true,
-                        visible: true,
-                        className: 'btn btn-primary',
-                        closeModal: true
-                    }
-                }
             });
         }
     });
@@ -189,20 +289,37 @@ function AddSocioLegal() {
         data: el.serialize(),
         success: function(json) {
             messages_validation(json.data, false);
-            swal({
-                type: 'success',
+            // swal({
+            //     type: 'success',
+            //     title: 'Confirmación',
+            //     content: {
+            //         element: 'p',
+            //         attributes: {
+            //             innerHTML: json.msg,
+            //         },
+            //     },
+            //     showConfirmButton: false,
+            //     timer: 1500
+            // }).then(function() {
+            //     cargar_socios_legales(id_tramite_global);
+            //     $("#mdl_dlscs").modal("toggle");
+            // });
+            $.confirm({
                 title: 'Confirmación',
-                content: {
-                    element: 'p',
-                    attributes: {
-                        innerHTML: json.msg,
+                content: json.msg,
+                type: 'green',
+                typeAnimated: 'true',
+                icon: 'fa fa-check',
+                autoClose: 'close|1500',
+                buttons: {
+                    close: {
+                        isHidden: true,
                     },
                 },
-                showConfirmButton: false,
-                timer: 1500
-            }).then(function() {
-                cargar_socios_legales(id_tramite_global);
-                $("#mdl_dlscs").modal("toggle");
+                onclose: function (){
+                    cargar_socios_legales(id_tramite_global);
+                    $("#mdl_dlscs").modal("toggle");
+                }
             });
         },
         error: function(json) {
@@ -215,24 +332,40 @@ function AddSocioLegal() {
             if (json.status === 409) {
                 str_errors = jsonString.msg;
             }
-            swal({
-                title: "¡ Advertencia !",
-                content: {
-                    element: 'p',
-                    attributes: {
-                        innerHTML: str_errors,
+            // swal({
+            //     title: "¡ Advertencia !",
+            //     content: {
+            //         element: 'p',
+            //         attributes: {
+            //             innerHTML: str_errors,
+            //         },
+            //     },
+            //     icon: "warning",
+            //     buttons: {
+            //         confirm: {
+            //             text: 'Confirmar',
+            //             value: true,
+            //             visible: true,
+            //             className: 'btn btn-primary',
+            //             closeModal: true
+            //         }
+            //     }
+            // });
+            $.confirm({
+                title: '¡ Advertencia !',
+                content: str_errors,
+                type: 'orange',
+                typeAnimated: 'true',
+                icon: 'fa fa-warning',
+                buttons: {
+                    confirmar: {
+                        text: 'Confirmar',
+                        btnClass: 'btn-primary',
+                        action: function() {
+                           return true;
+                        }
                     },
                 },
-                icon: "warning",
-                buttons: {
-                    confirm: {
-                        text: 'Confirmar',
-                        value: true,
-                        visible: true,
-                        className: 'btn btn-primary',
-                        closeModal: true
-                    }
-                }
             });
         }
     });

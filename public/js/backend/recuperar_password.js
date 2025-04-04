@@ -7,20 +7,39 @@ function recuperarPass() {
         data: el.serialize(),
         success: function(json) {
             messages_validation(json.data, false);
-            swal({
-                type: 'success',
+            // swal({
+            //     type: 'success',
+            //     title: 'Confirmación',
+            //     content: {
+            //         element: 'p',
+            //         attributes: {
+            //             innerHTML: json.msg,
+            //         },
+            //     },
+            //     showConfirmButton: false,
+            //     timer: 1500
+            // }).then(function() {
+            //     if (json.route_redirect != "") {
+            //         window.location = json.route_redirect;
+            //     }
+            // });
+            $.confirm({
                 title: 'Confirmación',
-                content: {
-                    element: 'p',
-                    attributes: {
-                        innerHTML: json.msg,
-                    },
+                content: json.msg,
+                type: 'green',
+                typeAnimated: true,
+                icon: 'fa fa-check',
+                closeIcon: true,
+                autoClose: 'close|1500',
+                buttons: {
+                    close: {
+                        isHidden: true
+                    }
                 },
-                showConfirmButton: false,
-                timer: 1500
-            }).then(function() {
-                if (json.route_redirect != "") {
-                    window.location = json.route_redirect;
+                onClose: function() {
+                    if (json.route_redirect != "") {
+                        window.location = json.route_redirect;
+                    }
                 }
             });
         },
@@ -34,22 +53,38 @@ function recuperarPass() {
             if (json.status === 409) {
                 str_errors = jsonString.msg;
             }
-            swal({
-                title: "¡ Advertencia !",
-                content: {
-                    element: 'p',
-                    attributes: {
-                        innerHTML: str_errors,
-                    },
-                },
-                icon: "warning",
+            // swal({
+            //     title: "¡ Advertencia !",
+            //     content: {
+            //         element: 'p',
+            //         attributes: {
+            //             innerHTML: str_errors,
+            //         },
+            //     },
+            //     icon: "warning",
+            //     buttons: {
+            //         confirm: {
+            //             text: 'Confirmar',
+            //             value: true,
+            //             visible: true,
+            //             className: 'btn btn-primary',
+            //             closeModal: true
+            //         }
+            //     }
+            // });
+            $.confirm({
+                title: '¡ Advertencia !',
+                content: str_errors,
+                type: 'orange',
+                typeAnimated: true,
+                icon: 'fa fa-warning',
                 buttons: {
-                    confirm: {
+                    confirmar: {
                         text: 'Confirmar',
-                        value: true,
-                        visible: true,
-                        className: 'btn btn-primary',
-                        closeModal: true
+                        btnClass: 'btn btn-primary',
+                        action: function() {
+                            return true;
+                        }
                     }
                 }
             });
