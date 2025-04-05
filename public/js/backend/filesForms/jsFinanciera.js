@@ -58,7 +58,10 @@ function store_capital_contable()
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },            
                     success: function(vresponse) {
-                        get_capital_contable();
+                        if ( vresponse.codigo == 1 ) {
+                            get_capital_contable();
+                        }
+                        
                         $.alert({
                             title: 'Mensaje!',
                             content: vresponse.mensaje,
@@ -99,7 +102,10 @@ function store_estados_financiero()
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },            
                     success: function(vresponse) {
-                        get_estados_financieros();
+                        if ( vresponse.codigo == 1 ) {
+                            get_estados_financieros();
+                        }
+                        
                         $.alert({
                             title: 'Mensaje!',
                             content: vresponse.mensaje,

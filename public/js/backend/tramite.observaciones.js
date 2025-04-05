@@ -1,25 +1,5 @@
 var _id_tramites_documentacion=0;
 
-FilePond.registerPlugin(
-    
-    // encodes the file as base64 data
-  FilePondPluginFileEncode,
-    
-    // validates the size of the file
-    FilePondPluginFileValidateSize,
-    
-    // corrects mobile image orientation
-    FilePondPluginImageExifOrientation,
-    
-    // previews dropped images
-  FilePondPluginImagePreview
-);
-
-// Select the file input and use create() to turn it into a pond
-FilePond.create(
-    document.querySelector('input')
-);
-
 $(document).ready(
     function() {
         $('#btnterminarSolventacion').attr('onclick', 'store_end()');
@@ -28,68 +8,61 @@ $(document).ready(
 
 function store_end()
  {
-    swal({
-        title: "¡ Advertencia !",
-        text: "¿ Realmente desea enviar las solventaciones ?",
-        icon: "warning",
+
+    $.confirm({
+        title: '¡ Advertencia !',
+        content: '¿ Realmente desea  enviar la solventacion ?',
+        type: 'orange', // Equivalente a "warning" en SweetAlert2
         buttons: {
-            cancel: {
+            cancelar: {
                 text: 'Cancelar',
-                value: false,
-                visible: true,
-                className: 'btn btn-default',
-                closeModal: true,
+                btnClass: 'btn btn-default',
+                action: function() {
+                    clicando = false;
+                }
             },
-            confirm: {
+            confirmar: {
                 text: 'Confirmar',
-                value: true,
-                visible: true,
-                className: 'btn btn-primary',
-                closeModal: true
+                btnClass: 'btn btn-primary',
+                action: function() {
+                    send();
+                }
             }
         }
-    }).then((result) => {
-        if (result) { 
-
-            $.ajax({
-                type: "POST",
-                url: project_name + "/tramites/solventaciones/terminar-documento-observacion",
-                data: $('#myformdocumento').serialize(),             
-                success: function(vjsonRespuesta) {
-                    if( vjsonRespuesta.code == 1 ) {
-                        // swal({
-                        //     type: 'success',
-                        //     title: 'Datos Guardados !',
-                        //     html: vjsonRespuesta.msg,
-                        //     showConfirmButton: false,
-                        //     timer: 2000
-                        // });
-                        $.confirm({
-                                title: 'Datos Guardados !',
-                                content: vjsonRespuesta.msg,
-                                type: 'green',
-                                typeAnimated: 'true',
-                                icon: 'fa fa-check',
-                                autoClose: 'close|2000',
-                                buttons: {
-                                    close: {
-                                        isHidden: true,
-                                    },
-                                },
-                        });
-                        
-                        if( vjsonRespuesta.rutaRedireccion != "" )
-                            window.location=vjsonRespuesta.rutaRedireccion;
-                    }
-                },
-                error: function(json) {
-
-                }
-            });  
-            
-        }           
-    });                 
+    });
  }
+
+function send()
+{
+    $.ajax({
+        type: "POST",
+        url: project_name + "/tramites/solventaciones/terminar-documento-observacion",
+        data: $('#myformdocumento').serialize(),             
+        success: function(vjsonRespuesta) {
+            if( vjsonRespuesta.code == 1 ) {            
+                $.confirm({
+                    title : 'Notificación',
+                    content : vjsonRespuesta.msg,
+                    type : 'green',
+                    typeAnimated : true,
+                    autoClose : 'close|1500',
+                    buttons: {
+                        close: {
+                            text: 'Cerrar',
+                            isHidden: true // Botón oculto pero necesario para autoClose
+                        }
+                    }
+                }); 
+                
+                if( vjsonRespuesta.rutaRedireccion != "" )
+                    window.location=vjsonRespuesta.rutaRedireccion;
+            }
+        },
+        error: function(json) {
+
+        }
+    }); 
+}
 
 function cargar_solventaciones(id_tramites_documentacion) 
  {
@@ -113,7 +86,7 @@ function cargar_solventaciones(id_tramites_documentacion)
             let vhtmlDownload ='', vhtmlDelete ='';
             if ( valor.desglose == null ) {
                 let download_url = project_name + "/tramites-adjuntos/" + valor.id_tramite_documentacion + "/descargar";                
-                vhtmlDownload+='  <a href="' + download_url + '" class="btn btn-default btn-icon btn-circle" target="_blank">';
+                vhtmlDownload+='  <a href="' + download_url + '" class="btn btn-icon btn-outline-dark btn-circle btn-sm mr-2" target="_blank">';
                 vhtmlDownload+='      <i class="fa fa-download"></i>';
                 vhtmlDownload+='  </a>';
             } 
@@ -121,15 +94,15 @@ function cargar_solventaciones(id_tramites_documentacion)
                 var vdocumentosArray = JSON.parse(valor.desglose);
                 $.each(vdocumentosArray, function(l, varrayTramitesDocumentacion) {
                     var vlinkDescargaDocumentoTramiteNombre = project_name + '/tramites-adjuntos/' + valor.id_tramite_documentacion + '/descargar-by-name/' + varrayTramitesDocumentacion;
-                    vhtmlDownload+=' <a href="' + vlinkDescargaDocumentoTramiteNombre + '" class="btn btn-default btn-icon btn-circle" target="_blank">';
+                    vhtmlDownload+=' <a href="' + vlinkDescargaDocumentoTramiteNombre + '" class="btn btn-icon btn-outline-dark btn-circle btn-sm mr-2" target="_blank">';
                     vhtmlDownload+='     <i class="fa fa-download"></i>';
                     vhtmlDownload+=' </a>';                    
                 });
             }
 
             if ( valor.id_status_tramite == 4 ) {
-                vhtmlDelete+=' <button onclick="eliminar_solventacion('+ valor.id_tramite_documentacion +')" class="btn btn-icon btn-circle">';
-                vhtmlDelete+='     <i class="fa fa-trash text-danger"></i>';
+                vhtmlDelete+=' <button onclick="eliminar_solventacion('+ valor.id_tramite_documentacion +')" class="btn btn-icon btn-outline-danger btn-circle btn-sm mr-2">';
+                vhtmlDelete+='     <i class="fa fa-trash"></i>';
                 vhtmlDelete+=' </button>';
             }
 
@@ -151,92 +124,56 @@ function cargar_solventaciones(id_tramites_documentacion)
 
 function eliminar_solventacion(id_tramite_documentacion)
  {
-    // swal({
-    //     title: "¡ Advertencia !",
-    //     text: "¿ Realmente desea eliminar esta solventacion ?",
-    //     icon: "warning",
-    //     buttons: {
-    //         cancel: {
-    //             text: 'Cancelar',
-    //             value: false,
-    //             visible: true,
-    //             className: 'btn btn-default',
-    //             closeModal: true,
-    //         },
-    //         confirm: {
-    //             text: 'Confirmar',
-    //             value: true,
-    //             visible: true,
-    //             className: 'btn btn-primary',
-    //             closeModal: true
-    //         }
-    //     }
-    // }).then((result) => {
-    //     if (result) { 
-            
-    //         $.ajax({
-    //             type: "GET",
-    //             url: project_name + '/tramites/eliminar/' + id_tramite_documentacion + '/solventacion',        
-    //             success: function(vjsonRespuesta) {
-    //                 cargar_solventaciones(_id_tramites_documentacion)
-    //                 swal({
-    //                     type: 'success',
-    //                     title: 'Eliminar !',
-    //                     html: 'Solventacion eliminada correctamten',
-    //                     showConfirmButton: false,
-    //                     timer: 2000
-    //                 });                        
-                   
-    //             },
-    //             error: function(json) { }
-    //         });
-    //     }     
-    // });
     $.confirm({
         title: '¡ Advertencia !',
-        content: '¿ Realmente desea eliminar esta solventacion ?',
-        type: 'orange',
-        typeAnimated: true,
-        icon: 'fa fa-warning',
+        content: '¿ Realmente desea  eliminar esta solventacion ?',
+        type: 'orange', // Equivalente a "warning" en SweetAlert2
         buttons: {
             cancelar: {
                 text: 'Cancelar',
                 btnClass: 'btn btn-default',
                 action: function() {
-                    return true;
+                    clicando = false;
                 }
             },
             confirmar: {
                 text: 'Confirmar',
                 btnClass: 'btn btn-primary',
                 action: function() {
-                    $.ajax({
-                        type: "GET",
-                        url: project_name + '/tramites/eliminar/' + id_tramite_documentacion + '/solventacion',        
-                        success: function(vjsonRespuesta) {
-                            cargar_solventaciones(_id_tramites_documentacion);
-                            $.confirm({
-                                title: 'Eliminar !',
-                                content: 'Solventacion eliminada correctamten',
-                                type: 'green',
-                                typeAnimated: true,
-                                icon: 'fa fa-check',
-                                autoClose: 'close|2000',
-                                buttons: {
-                                    close: {
-                                        isHidden: true
-                                    }
-                                }
-                            });
-                        },
-                        error: function(json) { }
-                    });
-                    return true;
+                    destroySolventacion(id_tramite_documentacion);
                 }
             }
         }
-    });    
+    });                
  }
+
+
+function destroySolventacion(id_tramite_documentacion)
+{
+    $.ajax({
+        type: "GET",
+        url: project_name + '/tramites/eliminar/' + id_tramite_documentacion + '/solventacion',        
+        success: function(vjsonRespuesta) {
+            cargar_solventaciones(_id_tramites_documentacion)                                
+            $.confirm({
+                title : 'Notificación',
+                content : 'Solventacion eliminada correctamente.',
+                type : 'blue',
+                typeAnimated : true,
+                autoClose : 'close|1500',
+                buttons: {
+                    close: {
+                        text: 'Cerrar',
+                        isHidden: true // Botón oculto pero necesario para autoClose
+                    }
+                }
+            });                    
+           
+        },
+        error: function(json) { }
+    });
+}
+
 
 function cargarInputs(id_documento, tipo=0, alias=0)
  { 
@@ -244,10 +181,10 @@ function cargarInputs(id_documento, tipo=0, alias=0)
     let varrayDocumento= verificacionDocumentos(id_documento, tipo);
     
     if( id_documento == 266){
-        vhtml+='    <div class="form-group row m-b-15">';
+        vhtml+='    <div class="form-group row m-b-10">';
         vhtml+='        <label for="alias" class="col-form-label col-md-3" style="font-size: 12px">Nombre Cuenta</label>';
         vhtml+='        <div class="col-md-9">';
-        vhtml+='            <input type="text" id="alias" name="alias" class="form-control filepond">';
+        vhtml+='            <input type="text" id="alias" name="alias" class="form-control">';
         vhtml+='        </div>';
         vhtml+='    </div>';
     }
@@ -258,10 +195,10 @@ function cargarInputs(id_documento, tipo=0, alias=0)
         for(let key in varrayDocumento) {
             var vtextoArray = varrayDocumento[key];
 
-            vhtml+='    <div class="form-group row m-b-15">';
-            vhtml+='        <label for="file_documento-'+ key +'" class="col-form-label col-md-3" style="font-size: 12px">'+ vtextoArray +'</label>';
+            vhtml+='    <div class="form-group row m-b-10">';
+            vhtml+='        <label for="file_documento-'+ key +'" class="col-form-label col-md-3 text-right" style="font-size: 12px"><b>'+ vtextoArray +'</b></label>';
             vhtml+='        <div class="col-md-9">';
-            vhtml+='            <input type="file" id="file_documento-'+ key +'" name="file_documento['+ key +']" class="form-control filepond">';
+            vhtml+='            <input type="file" id="file_documento-'+ key +'" name="file_documento['+ key +']" class="input-file">';
             vhtml+='        </div>';
             vhtml+='    </div>';
         }
@@ -270,13 +207,13 @@ function cargarInputs(id_documento, tipo=0, alias=0)
         $('#inputShowButton').val(1);
         $('#btnterminarSolventacion').hide();
 
-        vhtml+='    <div class="form-group row m-b-15">';
-        vhtml+='        <label for="id_documento" class="col-form-label col-md-3" style="font-size: 15px">Solventacion *</label>';
+        vhtml+='    <div class="form-group row m-b-10">';
+        vhtml+='        <label for="id_documento" class="col-form-label col-md-3 text-right" style="font-size: 15px"><b>Solventacion *</b></label>';
         vhtml+='        <div class="col-md-9">';
-        vhtml+='            <input type="file" id="file_documento" name="file_documento" class="form-control filepond">';
+        vhtml+='            <input type="file" id="file_documento" name="file_documento" class="input-file">';
         vhtml+='            <div id="el-archivosubido" class="invalid-feedback lbl-error"></div>';
         vhtml+='        </div>';
-        vhtml+='    </div>';
+        vhtml+='    </div>';        
     }
     
     $("#vcargarInputsArray").html(vhtml);
