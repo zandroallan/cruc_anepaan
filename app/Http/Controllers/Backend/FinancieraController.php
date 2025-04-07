@@ -3,9 +3,11 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use App\Http\Models\Backend\D_Personal;
 use App\Http\Models\Backend\T_Registro;
 use App\Http\Models\Backend\T_Tramite_Capital_Contable;
 use App\Http\Models\Backend\T_Tramite_Estado_Financiero;
+use App\Http\Models\Backend\T_Tramite_Contador;
 use Auth;
 use DB;
 
@@ -14,6 +16,114 @@ class FinancieraController extends Controller
     public function __construct() 
      {
         $this->middleware('auth');     
+     }
+
+    public function api_contadores_publicos(Request $request)
+     {
+        // Autor: Sandro Alan Gomez Aceituno
+        // Modificación: 02 de Abril de 2024
+        // Descripción: Optiene el capital contable del tramite inmediato interior.
+
+        $vstatus=200;
+        $vrespuesta=[
+            'codigo'    => 0,
+            'icono'     => 'warning',
+            'mensaje'   => 'No se encontraron datos que mostrar'
+        ];
+
+        try {
+            switch ($request->input('method')) {
+                case 'show':
+                    $filtro=$request->all();
+                    $filtro['id_registro_tmp']=Auth::User()->id_registro;
+                    $_DATA_MDL_Personal=T_Tramite_Contador::queryToDB($filtro)->first();                    
+                  break;
+                case 'get':
+
+                    $_DATA_MDL_Personal=D_Personal::queryToDB_CPC([])->get();
+                  break;
+                default:
+                    $vrespuesta['mensaje']='Metodo de petición, no definido.';
+                  break;
+            }
+            
+            if ( isset($_DATA_MDL_Personal) ) {
+                $vrespuesta=[
+                    'codigo'    => 1,
+                    'icono'     => 'success',
+                    'mensaje'   => 'Exito',
+                    'data'      => $_DATA_MDL_Personal
+                ];
+            }
+        }
+        catch (Exception $e) {
+            DB::rollback();
+            $vrespuesta=[
+                'codigo'=> -1,
+                'icono'=> 'error',
+                'mensaje'=> $vexception->getMessage()
+            ];
+        }
+        return response()->json($vrespuesta, $vstatus);
+     }
+
+    public function store_contadores_publicos(Request $request)
+     {
+        // Autor: Sandro Alan Gomez Aceituno
+        // Modificación: 02 de Abril de 2024
+        // Descripción: Guarda el contador público certificado en la tabla t_tramites_contadores.
+
+        $vrespuestaHTTP=201;
+        $vrespuesta=[
+            'codigo'=> 0,
+            'icono'=> 'warning',
+            'mensaje'=> 'El registro no se ha podido registrar, intente de nuevo.'
+        ];
+
+        $validator=Validator::make($request->all(), [
+            'id_contador' => 'required'
+        ]);
+
+        if ( $validator->fails() ) {
+            return response()->json([
+                'codigo'=>0,
+                'icono'=>'warning',
+                'mensaje'=> 'Agradecemos que complete todos los campos del formulario.'], 201);
+        }
+
+        try {
+            DB::beginTransaction();
+            $_Input_Request=$request->all();
+            $_Input_Request['id_registro_tmp']=Auth::User()->id_registro;
+            $_Input_Request['id_d_personal']=$request['id_contador'];
+
+            $_MDL_Tramite_Contador=new T_Tramite_Contador;
+            $vrespuesta['mensaje']='Los datos han sido <b>REGISTRADOS</b> exitosamente.';
+
+            if ( $_Input_Request['id_registro_tmp'] != 0 ) {
+                $_MDL_Tramite_Contador=T_Tramite_Contador::where('id_registro_tmp', Auth::User()->id_registro)->first();
+
+                $vrespuesta['mensaje']='Los datos han sido <b>ACTUALIZADOS</b> exitosamente.';
+            }
+            
+            $_MDL_Tramite_Contador->fill($_Input_Request)->save();
+
+            $vrespuesta['codigo']=1;
+            $vrespuesta['icono']='success';
+            // $vrespuesta['mensaje']='El contador ha sido agrego satisfactoriamente.';
+            DB::commit();
+        }
+        catch (Exception $e) {
+            $vrespuestaHTTP = 500;
+            $vrespuesta=[
+                'codigo'=> -1,
+                'icono'=> 'error',
+                'mensaje'=> 'Hubo un error al registrar el RTEC. Intenta nuevamente. '. $vexception->getMessage()
+            ];
+            DB::rollback();
+        }
+
+        return response()->json($vrespuesta, $vrespuestaHTTP);
      }
 
     public function api_capital_contable(Request $request)

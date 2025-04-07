@@ -14,6 +14,7 @@ class D_Personal extends Model
     protected $fillable = [
         'id', 
         'id_d_domicilio', 
+        'colegios',
         'nombre', 
         'ap_paterno', 
         'ap_materno', 
@@ -32,6 +33,19 @@ class D_Personal extends Model
         //'id',
     ];
 
- 
+    public static function queryToDB_CPC($data = [])
+     {
+        $query = D_Personal::select('d_personales.*');
+
+        if (!empty($data['curp'])) {
+            $query->where('d_personales.curp', $data['curp']);
+        }
+        if (!empty($data['id_registro_tmp'])) {
+            $query->where('d_personales.id_registro_tmp', $data['id_registro_tmp']);
+        }
+
+        $query->where('d_personales.colegios', 1);
+        return $query->orderByDesc('d_personales.id');
+     }
 
 }

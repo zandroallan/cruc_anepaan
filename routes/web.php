@@ -103,7 +103,7 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('/notificaciones/observaciones', 'HomeController@notificaciones_forzadas')->name('notificaciones.observaciones');
 	Route::get('/notificaciones/observaciones/acusar/{id_notificacion}', 'Backend\NotificacionesController@acusar')->name('notificaciones.observaciones.acusar');
 
-	Route::middleware(['notificacionesforzadas'])->group(function() {
+	Route::middleware([/*'notificacionesforzadas'*/])->group(function() {
 
 		Route::get('tramites/cancelados/{id}/anexo', ['as'=>'tramites.cancelados.anexo','uses' =>'Backend\TramitesController@downloadAdjuntoCancelado'])->where('id', '[0-9]+');
  
@@ -208,16 +208,20 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 		# Rutas nuevas SAGA - Modificaciones del 2025
+
+		Route::get('contadores/publicos/certificados', 'Backend\FinancieraController@api_contadores_publicos');
+
+		Route::post('contadores/publicos/certificados/store', 'Backend\FinancieraController@store_contadores_publicos');
 			
-		Route::get('financiero/capital/contable', 'Backend\FinancieraController@api_capital_contable');
+		// Route::get('financiero/capital/contable', 'Backend\FinancieraController@api_capital_contable');
 
-		Route::get('financiero/estados/financieros', 'Backend\FinancieraController@api_estados_financieros');
+		// Route::get('financiero/estados/financieros', 'Backend\FinancieraController@api_estados_financieros');
 
-		Route::post('capital/contable/store', 
-			'Backend\FinancieraController@store_capital_contable');
+		// Route::post('capital/contable/store', 
+		// 	'Backend\FinancieraController@store_capital_contable');
 
-		Route::post('estados/financieros/store', 
-			'Backend\FinancieraController@store_estados_financieros');
+		// Route::post('estados/financieros/store', 
+		// 	'Backend\FinancieraController@store_estados_financieros');
 
 	});
 });

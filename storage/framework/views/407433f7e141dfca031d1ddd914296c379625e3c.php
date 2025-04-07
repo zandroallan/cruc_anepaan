@@ -38,46 +38,6 @@
 
 		<?php echo $__env->make('backend.encabezado', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-		<style>
-			.input-file {
-			    background-color: #D1D3E0;
-			    border: 1px solid #181824;
-			    border-radius: 6px;
-			    height: 40px;
-			    width: 100%;
-			    color: #111833;
-			    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Sombra más intensa y grande */
-			    transition: all 0.3s ease-in-out; /* Suaviza las transiciones */
-			}
-
-			.input-file::file-selector-button {
-			    font-size: 14px;			    
-			    border: 1px solid #181824;
-			    border-radius-left-top: 6px;
-			    border-radius-left-bottom: 6px;
-			    color: white;
-			    background-color: #181824;	
-			    border: 1px solid #181824;
-			    height: 40px;
-			    cursor: pointer;
-			    transition: all .25s ease-in;
-			    width: 150px;
-			    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más notoria para el botón */
-			}
-
-			.input-file::file-selector-button:hover {
-			    background-color: #1F1E2E;
-			    color: #fff;
-			    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más destacada en hover */
-			    transition: all .25s ease-in;
-			}
-
-			.input-file:hover {
-			    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Sombra más fuerte al pasar el ratón */
-			}
-
-		</style>
-
 		<div class="alert alert-custom alert-light-dark fade show mb-2" role="alert">
 				<div class="alert-icon">
 					<span class="svg-icon svg-icon-primary svg-icon-3x">
