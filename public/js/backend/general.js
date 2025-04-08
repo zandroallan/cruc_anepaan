@@ -69,7 +69,7 @@ function save(button) {
             type: 'blue',
             typeAnimated: 'true',
             icon: 'fa fa-info',
-            autoClose: 'close|1500',
+            autoClose: 'close|1000',
             buttons: {
                 close: {
                     isHidden: true,
@@ -148,7 +148,7 @@ $('#frm-1').on('submit', function (e) {
                 typeAnimated: 'true',
                 icon: 'fa fa-check',
                 content: json.msg,
-                autoClose: 'close|1500',
+                autoClose: 'close|1000',
                 buttons: {
                     close: {
                         isHidden: true,
@@ -285,7 +285,7 @@ $('#myform').on('submit', function (e) {
                 type: 'green',
                 typeAnimated: 'true',
                 icon: 'fa fa-check',
-                autoClose: 'close|1500',
+                autoClose: 'close|1000',
                 buttons: {
                     close: {
                         isHidden: true,
@@ -365,7 +365,7 @@ $('#myformdelete').on('submit', function (e) {
                 type: 'green',
                 content: json.success,
                 icon: 'fa fa-check',
-                autoClose: 'close|1500',
+                autoClose: 'close|1000',
                 buttons: {
                     close: {
                         isHidden: true
@@ -416,7 +416,7 @@ $('#myformdeletei').on('submit', function (e) {
                 title: 'Exito',
                 type: 'green',
                 content: json.success,
-                autoClose: 'close|1500',
+                autoClose: 'close|1000',
                 icon: 'fa fa-check',
                 buttons: {
                     close: {

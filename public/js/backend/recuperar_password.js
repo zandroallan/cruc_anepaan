@@ -30,7 +30,7 @@ function recuperarPass() {
                 typeAnimated: true,
                 icon: 'fa fa-check',
                 closeIcon: true,
-                autoClose: 'close|1500',
+                autoClose: 'close|1000',
                 buttons: {
                     close: {
                         isHidden: true

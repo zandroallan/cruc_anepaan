@@ -1,42 +1,40 @@
 var dt_defaultt;
 
-function aceptar_terminos() 
- {
+function aceptar_terminos() {
     $.ajax({
         type: "GET",
         url: vuri + '/mis-tramites/condiciones/aceptar',
-        success: function(json) {
+        success: function (json) {
 
-            $.confirm({   
+            $.confirm({
                 icon: 'fa fa-info-circle',
                 title: 'Notificacion !',
                 content: json.msg,
-                type: 'green',       
+                type: 'green',
                 typeAnimated: true,
                 animation: 'zoom',
                 closeAnimation: 'scale',
                 autoClose: 'confirmar|1000',
                 buttons: {
                     confirmar: {
-                        isHidden: true,                
+                        isHidden: true,
                         action: function () {
                             window.location = vuri + '/mis-tramites/tramite/nuevo';
                         }
                     },
-                    cancelar: { 
-                        isHidden: true,                
-                        action: function () {}
+                    cancelar: {
+                        isHidden: true,
+                        action: function () { }
                     },
                 }
-            }); 
+            });
         },
-        error: function(json) {}
+        error: function (json) { }
     });
- }
+}
 
 
-function send_1(button)
- {
+function send_1(button) {
     if (!clicando) {
 
         // swal({
@@ -78,14 +76,14 @@ function send_1(button)
                 cancelar: {
                     text: 'Cancelar',
                     btnClass: 'btn btn-default',
-                    action: function() {
+                    action: function () {
                         clicando = false;
                     }
                 },
                 confirmar: {
                     text: 'Confirmar',
                     btnClass: 'btn btn-primary',
-                    action: function() {
+                    action: function () {
                         clicando = false;
                         $("#enviar_stt").val(0);
                         guardarTramite();
@@ -95,7 +93,7 @@ function send_1(button)
             }
         });
 
-    } 
+    }
     else {
         // swal({
         //     type: 'info',
@@ -105,16 +103,16 @@ function send_1(button)
         //     timer: 1500
         // });
         $.confirm({
-            title : 'Notificación',
-            content : 'Por favor espere un momento, la información esta siendo procesada.',
-            type : 'blue',
-            typeAnimated : true,
+            title: 'Notificación',
+            content: 'Por favor espere un momento, la información esta siendo procesada.',
+            type: 'blue',
+            typeAnimated: true,
             icon: 'fa fa-spinner fa-spin',
-            autoClose : 'close|1500',
+            autoClose: 'close|1000',
             buttons: {
                 close: {
                     text: 'Cerrar',
-                    isHidden: true // Botón oculto pero necesario para autoClose
+                    isHidden: true
                 }
             }
         });
@@ -122,8 +120,7 @@ function send_1(button)
 }
 
 
-function send(button)
-{
+function send(button) {
     // if (!clicando) {
     //     swal({
     //         title: "¡ Advertencia !",
@@ -173,7 +170,7 @@ function send(button)
                 cancelar: {
                     text: 'Cancelar',
                     btnClass: 'btn btn-default',
-                    action: function() {
+                    action: function () {
                         clicando = false;
                         return true;
                     }
@@ -181,7 +178,7 @@ function send(button)
                 confirmar: {
                     text: 'Confirmar',
                     btnClass: 'btn btn-primary',
-                    action: function() {
+                    action: function () {
                         clicando = false;
                         $("#enviar_stt").val(1);
                         guardarTramite();
@@ -190,7 +187,7 @@ function send(button)
                 }
             }
         });
-    } 
+    }
     else {
         $.confirm({
             title: 'Notificación',
@@ -198,7 +195,7 @@ function send(button)
             type: 'blue',
             typeAnimated: true,
             con: 'fa fa-spinner fa-spin',
-            autoClose: 'close|1500',
+            autoClose: 'close|1000',
             buttons: {
                 close: {
                     text: 'Cerrar',
@@ -210,15 +207,14 @@ function send(button)
 }
 
 
-function guardarTramite() 
-{
+function guardarTramite() {
     var el = $('#frm-1');
     var str_errors;
     $.ajax({
         type: "POST",
         url: vuri + '/mis-tramites',
         data: el.serialize(),
-        success: function(json) {
+        success: function (json) {
             messages_validation(json.data, false);
             // swal({
             //     type: 'success',
@@ -244,13 +240,13 @@ function guardarTramite()
                 type: 'green',
                 typeAnimated: true,
                 icon: 'fa fa-check',
-                autoClose: 'close|1500',
+                autoClose: 'close|1000',
                 buttons: {
                     close: {
                         isHidden: true
                     }
                 },
-                onClose: function() {
+                onClose: function () {
                     ciclando = false;
                     if (json.route_redirect != "") {
                         window.location = json.route_redirect;
@@ -258,7 +254,7 @@ function guardarTramite()
                 }
             });
         },
-        error: function(json) {
+        error: function (json) {
             ciclando = false;
             var jsonString = json.responseJSON;
             if (json.status === 422) {
@@ -299,7 +295,7 @@ function guardarTramite()
                     confirmar: {
                         text: 'Confirmar',
                         btnClass: 'btn btn-primary',
-                        action: function() {
+                        action: function () {
                             return true;
                         }
                     }
@@ -319,12 +315,11 @@ function guardarTramite()
 
 
 
-function modal_contacto(id_tramite)
- {
+function modal_contacto(id_tramite) {
     $.ajax({
         type: "GET",
         url: vuri + '/mis-tramites/' + id_tramite + '/contacto/get-contacto-tramite',
-        success: function(json) {
+        success: function (json) {
             limpiarModal();
             if (json.contacto != null) {
                 $('#txtNombre').val(json.contacto.nombre);
@@ -334,24 +329,22 @@ function modal_contacto(id_tramite)
                 $('#txtClave').val(json.contacto.clave_atencion);
             }
         },
-        error: function(json) {}
+        error: function (json) { }
     });
     $("#modal-message-contacto").modal();
- }
+}
 
 
-function limpiarModal() 
- {
+function limpiarModal() {
     $('#txtNombre').val('');
     $('#txtPaterno').val('');
     $('#txtMaterno').val('');
     $('#txtCargo').val('');
     $('#txtClave').val('');
- }
+}
 
 
-function cargar_municipios_fiscal(estado)
-{
+function cargar_municipios_fiscal(estado) {
     let id_estado = estado.value;
     let url = project_name + "/combos/municipios/" + id_estado;
     $.get(url, function (data, textStatus) {
@@ -362,8 +355,7 @@ function cargar_municipios_fiscal(estado)
     }, "json");
 }
 
-function cargar_municipios_particular(estado)
-{
+function cargar_municipios_particular(estado) {
     let id_estado = estado.value;
     let url = project_name + "/combos/municipios/" + id_estado;
     $.get(url, function (data, textStatus) {
@@ -374,8 +366,7 @@ function cargar_municipios_particular(estado)
     }, "json");
 }
 
-function eliminar_adjunto_tmp(id)
-{
+function eliminar_adjunto_tmp(id) {
     // swal({
     //     title: '¡ Advertencia !',
     //     text: "Esta seguro de eliminar este documento adjunto ?",
@@ -414,16 +405,16 @@ function eliminar_adjunto_tmp(id)
             cancelar: {
                 text: 'Cancelar',
                 btnClass: 'btn btn-default',
-                action: function() {
+                action: function () {
                     return true;
                 }
             },
             confirmar: {
                 text: 'Confirmar',
                 btnClass: 'btn btn-primary',
-                action: function() {
+                action: function () {
                     var url = $('#frm-destroy-adjunto-tmp').attr('action');
-                    url = url.replace(/\/[^\/]*$/, '/'+id);
+                    url = url.replace(/\/[^\/]*$/, '/' + id);
                     $('#frm-destroy-adjunto-tmp').attr('action', url).submit();
                     return true;
                 }
@@ -433,14 +424,14 @@ function eliminar_adjunto_tmp(id)
 }
 
 
-$('#frm-destroy-adjunto-tmp').on('submit', function(e) {
+$('#frm-destroy-adjunto-tmp').on('submit', function (e) {
     var el = $('#frm-destroy-adjunto-tmp');
-    e.preventDefault(); 
+    e.preventDefault();
     $.ajax({
         type: "DELETE",
         url: el.attr('action'),
         data: $(this).serialize(),
-        success: function(json) {
+        success: function (json) {
             // swal({                
             //     icon: 'success',
             //     title: 'Exito',
@@ -473,37 +464,36 @@ $('#frm-destroy-adjunto-tmp').on('submit', function(e) {
                 type: 'green',
                 icon: 'fa fa-check',
                 typeAnimated: true,
-                autoClose: 'close|1500',
+                autoClose: 'close|1000',
                 buttons: {
                     close: {
                         isHidden: true
                     }
                 },
-                onClose: function() {
+                onClose: function () {
                     var url = $('#frm-destroy-adjunto-tmp').attr('action');
-                    url = url.replace(/\/[^\/]*$/, '/0');     
-                    $('#frm-destroy-adjunto-tmp').attr('action', url); 
+                    url = url.replace(/\/[^\/]*$/, '/0');
+                    $('#frm-destroy-adjunto-tmp').attr('action', url);
                     let id_sujeto = $("#ssjjtt").val();
-                    let id_tipo_tramite = $("#id_tipo_tramite").val(); 
-                    let obligado_dec_isr = $("#obligado_dec_isr").val(); 
-            
+                    let id_tipo_tramite = $("#id_tipo_tramite").val();
+                    let obligado_dec_isr = $("#obligado_dec_isr").val();
+
                     cargar_documentacion_requerida_legal(id_tipo_tramite, 2, json.datos.id_registro_temp);
-                    if(id_sujeto == 1) { // solo si es contratista, supervisor lo oculta
+                    if (id_sujeto == 1) { // solo si es contratista, supervisor lo oculta
                         cargar_documentacion_requerida_financiera(id_tipo_tramite, 3, json.datos.id_registro_temp, obligado_dec_isr);
                     }
-                    cargar_documentacion_requerida_tecnica(id_tipo_tramite, 4, json.datos.id_registro_temp);                
+                    cargar_documentacion_requerida_tecnica(id_tipo_tramite, 4, json.datos.id_registro_temp);
                 }
             });
         },
-        error: function(json)
-        {
-            if(json.status === 422) {                   
-                var jsonString= json.responseJSON;
+        error: function (json) {
+            if (json.status === 422) {
+                var jsonString = json.responseJSON;
                 var errors = jsonString.errors;
             } else {
                 alert('Ha ocurrido un error inesperado, contacte a su administrador.');
             }
-        }           
+        }
     });
 })
 

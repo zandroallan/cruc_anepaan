@@ -326,14 +326,14 @@ function AddEspRtec() {
                 content: json.msg,
                 type: 'green',
                 typeAnimated: true,
-                autoClose: 'close|1500',
+                autoClose: 'close|1000',
                 icon: 'fa fa-check',
                 buttons: {
                     close: {
                         isHidden: true
                     }
                 },
-                onClose: function() {
+                onClose: function () {
                     get_especialidades_tecnicas_rtec(json.data.id);
                     cargar_rtecs(_id_registro_tmp);
                 }
@@ -373,8 +373,8 @@ function AddEspRtec() {
                 content: str_errors,
                 icon: 'fa fa-warning',
                 type: 'orange',
-                buttons:{
-                    confirmar:{
+                buttons: {
+                    confirmar: {
                         text: 'Confirmar',
                         btnClass: 'btn-primary',
                     }

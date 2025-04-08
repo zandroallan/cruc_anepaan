@@ -30,13 +30,13 @@ function AddContacto() {
                 type: 'green',
                 typeAnimated: 'true',
                 icon: 'fa fa-check',
-                autoClose: 'close|1500',
+                autoClose: 'close|1000',
                 buttons: {
                     close: {
                         isHidden: true,
                     },
                 },
-                onclose: function (json){
+                onclose: function (json) {
                     cargar_contacto();
                 }
             });
@@ -74,13 +74,13 @@ function AddContacto() {
                 typeAnimated: 'true',
                 icon: 'fa fa-warning',
                 buttons: {
-                   confirmar: {
+                    confirmar: {
                         text: 'Confirmar',
                         btnClass: 'btn btn-primary',
                         action: function () {
-                           return true;
+                            return true;
                         },
-                   }
+                    }
                 },
             });
         },
@@ -113,6 +113,6 @@ function cargar_contacto() {
             $("#clave_atencion_contacto").val(json.contacto.clave_atencion);
             $("#btn-guardar-contacto").html("Editar contacto");
         },
-        error: function (json) {},
+        error: function (json) { },
     });
 }

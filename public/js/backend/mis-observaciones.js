@@ -1,31 +1,32 @@
+const { type } = require("jquery");
+
 var dt_defaultt;
 
-function cargar_mis_observaciones(id_tramite)
- {    
+function cargar_mis_observaciones(id_tramite) {
     let url = project_name + "/mis-observaciones/expediente/" + id_tramite;
     $("#mis-observaciones tbody").empty();
-    $.get(url, function(data, textStatus) {
+    $.get(url, function (data, textStatus) {
         let body = "";
         let j = 1;
-        if ( id_tramite != 0 ) {
-            $.each(data, function(i, valor) {
+        if (id_tramite != 0) {
+            $.each(data, function (i, valor) {
                 let url_ir_a_observacion = project_name + "/detalle/tramite/observacion/" + valor.id;
                 let url_volver_solventar = project_name + "/cambiar/observacion/tramite/" + valor.id;
-                
+
                 let vdocumentoPadreHijo = '';
                 if (valor.padre == null || valor.padre == '') {
                     vdocumentoPadreHijo = valor.documento;
-                } 
+                }
                 else {
                     vdocumentoPadreHijo = '<strong>' + valor.padre + '</strong> - ' + valor.documento;
                 }
 
-                let solventado='<i class="far fa-times-circle text-danger fa-2x"></i>';
-                if ( valor.solventado == 1 ) solventado='<i class="far fa-check-circle text-success fa-2x"></i>';
-                
+                let solventado = '<i class="far fa-times-circle text-danger fa-2x"></i>';
+                if (valor.solventado == 1) solventado = '<i class="far fa-check-circle text-success fa-2x"></i>';
+
                 body += '   <tr>';
                 // body += '       <td>' + j + '</td>';
-                body += '       <td>'+ solventado +'</td>';
+                body += '       <td>' + solventado + '</td>';
                 body += '       <td>';
                 body += '           <b>' + valor.folio + '</b>';
                 body += '       </td>';
@@ -40,12 +41,12 @@ function cargar_mis_observaciones(id_tramite)
                 body += '       </td>';
                 body += '       <td class="text-center">';
                 //body += '           <div class"btn-icon-list">';
-                if ( valor.id_status_tramite >= 5 || valor.id_status_tramite == 3 ) {
+                if (valor.id_status_tramite >= 5 || valor.id_status_tramite == 3) {
                     body += '           <a href="' + url_ir_a_observacion + '" class="btn btn-icon btn-outline-default btn-icon btn-circle">';
                     body += '               <i class="fa fa-search"></i>';
                     body += '           </a>';
                 }
-                else if ( valor.id_status_tramite == 4 ) {
+                else if (valor.id_status_tramite == 4) {
                     if (valor.solventado == 0) {
                         body += '       <a class="btn btn-icon btn-sm btn-outline-info btn-circle" href="' + url_ir_a_observacion + '" title="Agregar documentos a la observación">';
                         body += '           <i class="fa fa-plus"></i>';
@@ -53,7 +54,7 @@ function cargar_mis_observaciones(id_tramite)
                         body += '       <button class="btn btn-icon btn-sm btn-outline-success btn-circle" onclick="solventarObservacion(' + valor.id + ')" title="Solventar esta observación">';
                         body += '           <i class="fas fa-save"></i>';
                         body += '       </button>';
-                    } 
+                    }
                     else {
                         body += '       <button class="btn btn-icon btn-sm btn-outline-danger btn-circle" onclick="reloadObservation(' + valor.id + ', ' + id_tramite + ')" title="Desbloquear y volver a cargar solventación">';
                         body += '           <i class="fa fa-unlock"></i>';
@@ -67,106 +68,103 @@ function cargar_mis_observaciones(id_tramite)
             });
         }
         $("#mis-observaciones tbody").append(body);
-        
-        var myTable=$('#mis-observaciones').DataTable({
+
+        var myTable = $('#mis-observaciones').DataTable({
             language: {
                 searchPlaceholder: 'Buscar...',
                 sSearch: '',
                 lengthMenu: '_MENU_ Registros/pagina',
-            },            
+            },
             lengthChange: false
         });
 
         //assign a new searchbox for our table
-        $('#searchBox').on('keyup', 
-            function() {
+        $('#searchBox').on('keyup',
+            function () {
                 myTable.search(this.value).draw();
             }
         );
-        
-    }, "json");
-    
- }
 
-function solventarObservacion(idTramiteObservacion)
- {
+    }, "json");
+
+}
+
+function solventarObservacion(idTramiteObservacion) {
     $.confirm({
         title: '¡ Advertencia !',
-        content: '¿ Realmente desea  solventar la solventacion ?',
-        type: 'orange', // Equivalente a "warning" en SweetAlert2
+        content: '¿ Realmente desea solventar la observación ?',
+        type: 'orange',
         buttons: {
             cancelar: {
                 text: 'Cancelar',
                 btnClass: 'btn btn-default',
-                action: function() {
+                action: function () {
                     clicando = false;
                 }
             },
             confirmar: {
                 text: 'Confirmar',
                 btnClass: 'btn btn-primary',
-                action: function() {
+                action: function () {
                     solventar(idTramiteObservacion);
                 }
             }
         }
-    });                 
- }
+    });
+}
 
 
-function solventar(idTramiteObservacion)
-{
+function solventar(idTramiteObservacion) {
     $.ajax({
         type: "POST",
         url: project_name + "/tramites/solventaciones/terminar-documento-observacion",
         data: {
             _token: $('input[name="_token"]').val(),
             id_observacion: idTramiteObservacion
-        },             
-        success: function(vjsonRespuesta) {
-            $.confirm({   
+        },
+        success: function (vjsonRespuesta) {
+            $.confirm({
                 icon: 'fa fa-info-circle',
                 title: 'Notificacion !',
                 content: vjsonRespuesta.msg,
-                type: 'green',       
+                type: 'green',
                 typeAnimated: true,
                 animation: 'zoom',
                 closeAnimation: 'scale',
                 autoClose: 'confirmar|1000',
                 buttons: {
                     confirmar: {
-                        isHidden: true,                
+                        isHidden: true,
                         action: function () {
-                            if( vjsonRespuesta.rutaRedireccion != "" )
-                                window.location=vjsonRespuesta.rutaRedireccion;
+                            if (vjsonRespuesta.rutaRedireccion != "")
+                                window.location = vjsonRespuesta.rutaRedireccion;
                         }
                     },
-                    cancelar: { 
-                        isHidden: true,                
-                        action: function () {}
+                    cancelar: {
+                        isHidden: true,
+                        action: function () { }
                     },
                 }
-            });                        
+            });
         },
-        error: function(json) {
+        error: function (json) {
 
         }
-    }); 
+    });
 }
 
-function reloadObservation(idTramiteObservacion, idTramite)
- {
+function reloadObservation(idTramiteObservacion, idTramite) {
     $.confirm({
         title: '¡ Advertencia !',
         content: '¿Realmente desea poner en OBSERVADO y volver a cargar archivos a la observacion.?',
         type: 'orange',
         theme: 'material',
         buttons: {
-            Aceptar: function() {
+            Aceptar: function () {
                 $.ajax({
                     type: "GET",
                     url: project_name + "/cambiar/observacion/" + idTramiteObservacion + "/tramite",
-                    success: function(vrespuesta) {
+                    success: function (vrespuesta) {
 
                         $.alert({
                             title: 'Mensaje!',
@@ -190,11 +188,24 @@ function reloadObservation(idTramiteObservacion, idTramite)
                         // }).then(function() {
                         //     cargar_mis_observaciones(idTramite);
                         // });
+                        $.alert({
+                            type: 'green',
+                            title: 'Confirmación',
+                            content: vrespuesta.message,
+                            autoClose: 'close|1000',
+                            typeAnimated: 'true',
+                            icon: 'fa fa-check',
+                            buttons: {
+                                close: {
+                                    isHidden: true,
+                                },
+                            },
+                        })
                     },
-                    error: function(json) {}
+                    error: function (json) { }
                 });
             },
-            Cancelar: function() {
+            Cancelar: function () {
                 $.alert({
                     title: 'Mensaje!',
                     content: '¡El usuario ha cancelado la acción!',
@@ -225,20 +236,19 @@ function reloadObservation(idTramiteObservacion, idTramite)
     //     }
     // }).then((result) => {
     //     if (result) {
-           
+
     //     }
     // });
- }
+}
 
-function enviar_solventacion(id_tramite)
- {
+function enviar_solventacion(id_tramite) {
     let url = project_name + "/tramites/" + id_tramite + "/enviar-solventacion-observacion";
     $.ajax({
         type: "GET",
         url: url,
-        success: function(json) {
+        success: function (json) {
             window.location.reload();
         },
-        error: function(json) {}
+        error: function (json) { }
     });
- }
+}
