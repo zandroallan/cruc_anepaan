@@ -6,15 +6,23 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Sanctum\HasApiTokens;
+// use App\Traits\LockableTrait;
+
+
 class User extends Authenticatable
 {
-    use Notifiable;
-    use SoftDeletes;
+    use Notifiable, SoftDeletes, HasApiTokens, Notifiable;
+
     protected $dates = ['deleted_at'];
     protected $table = 'users';
 
     protected $fillable = [
-        'id_registro', 'name', 'nickname', 'email', 'password'
+        'id_registro', 
+        'name', 
+        'nickname', 
+        'email', 
+        'password'
     ];
 
     protected $hidden = [

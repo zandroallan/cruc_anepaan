@@ -45,7 +45,9 @@ class T_Tramite_Documentacion extends Model
         $result=$result->where('t_tramites_documentacion.id_tramite', $id_tramite);
         $result=$result->where('t_tramites_documentacion.id_documentacion', $id_documento);
         $result=$result->where('t_tramites_documentacion.id_status', 2);
-        $result=$result->whereNull('t_tramites_documentacion.id_registro_temp')->withTrashed()->first();
+        $result=$result->whereNull('t_tramites_documentacion.id_registro_temp');
+        $result=$result->whereNull('t_tramites_documentacion.deleted_at')->first();
+        // $result=$result->whereNull('t_tramites_documentacion.id_registro_temp')->withTrashed()->first();
         return $result;
      }
 
@@ -61,7 +63,9 @@ class T_Tramite_Documentacion extends Model
         $result=$result->where('t_tramites_documentacion.id_tramite', $id_tramite);
         $result=$result->where('t_tramites_documentacion.id_documentacion', $id_documento);
         $result=$result->where('t_tramites_documentacion.id_status', 2);
-        $result=$result->whereNull('t_tramites_documentacion.id_registro_temp')->withTrashed()->get();
+        $result=$result->whereNull('t_tramites_documentacion.id_registro_temp');
+        $result=$result->whereNull('t_tramites_documentacion.deleted_at')->get(); // new
+        // $result=$result->whereNull('t_tramites_documentacion.id_registro_temp')->withTrashed()->get();
         return $result;
     }
     # End code 2024-SAGA
@@ -122,7 +126,12 @@ class T_Tramite_Documentacion extends Model
 
     public static function documentacion_adjunta($id_tramite)
     {
-        $result           = T_Tramite_Documentacion::select('*')->where('id_tramite', $id_tramite)->orderBy('id_documentacion', 'asc')->get();
+        $result = T_Tramite_Documentacion::select('*')
+            ->where('id_tramite', $id_tramite)
+            ->whereNull('deleted_at')
+            ->orderBy('id_documentacion', 'asc')
+            ->get();
+
         $ar_doctos        = [];
         $array            = [];
         $array_legal      = [];
@@ -146,7 +155,12 @@ class T_Tramite_Documentacion extends Model
 
     public static function documentacion_adjunta_tmp($id_registro)
     {
-        $result           = T_Tramite_Documentacion::select('*')->where('id_registro_temp', $id_registro)->orderBy('id_documentacion', 'asc')->get();
+        $result           = T_Tramite_Documentacion::select('*')
+        ->where('id_registro_temp', $id_registro)
+        ->whereNull('deleted_at')
+        ->orderBy('id_documentacion', 'asc')
+        ->get();
+
         $ar_doctos        = [];
         $array            = [];
         $array_legal      = [];
@@ -170,7 +184,13 @@ class T_Tramite_Documentacion extends Model
 
     public static function documentacion_temporal_array($id_registro)
     {
-        $result = T_Tramite_Documentacion::select('id_documentacion')->where('id_registro_temp', $id_registro)->whereNull('id_tramite')->orderBy('id_documentacion', 'asc')->get();
+        $result = T_Tramite_Documentacion::select('id_documentacion')
+            ->where('id_registro_temp', $id_registro)
+            ->whereNull('id_tramite')
+            ->whereNull('deleted_at')
+            ->orderBy('id_documentacion', 'asc')
+            ->get();
+
         $array  = [];
         foreach ($result as $value) {
             array_push($array, $value->id_documentacion);
@@ -180,20 +200,35 @@ class T_Tramite_Documentacion extends Model
 
     public static function documentacion_temporal($id_registro)
     {
-        $result = T_Tramite_Documentacion::select('*')->where('id_registro_temp', $id_registro)->whereNull('id_tramite')->orderBy('id_documentacion', 'asc')->get();
+        $result = T_Tramite_Documentacion::select('*')
+            ->where('id_registro_temp', $id_registro)
+            ->whereNull('id_tramite')
+            ->whereNull('deleted_at')
+            ->orderBy('id_documentacion', 'asc')
+            ->get();
     }
 
     public static function documentacion_requerida_tmp($id_registro, $id_documento)
     {
 
-        $result = T_Tramite_Documentacion::select('*')->where('id_registro_temp', $id_registro)->where('id_documentacion', $id_documento)->whereNull('id_tramite')->first();
+        $result = T_Tramite_Documentacion::select('*')
+            ->where('id_registro_temp', $id_registro)
+            ->where('id_documentacion', $id_documento)
+            ->whereNull('id_tramite')
+            ->whereNull('deleted_at')
+            ->first();
 
         return $result;
     }
 
     public static function documentacion_requerida_opcional_tmp($id_registro, $id_documento)
     {
-        $result = T_Tramite_Documentacion::select('*')->where('id_registro_temp', $id_registro)->where('id_documentacion', $id_documento)->whereNull('id_tramite')->get();
+        $result = T_Tramite_Documentacion::select('*')
+            ->where('id_registro_temp', $id_registro)
+            ->where('id_documentacion', $id_documento)
+            ->whereNull('id_tramite')
+            ->whereNull('deleted_at')
+            ->get();
 
         return $result;
     }
@@ -201,13 +236,25 @@ class T_Tramite_Documentacion extends Model
     //Nuevo
     public static function documentacion_descarga_tmp($id_tramite, $id_documento)
     {
-        $result = T_Tramite_Documentacion::select('*')->where('id_tramite', $id_tramite)->where('id_documentacion', $id_documento)->whereNull('id_tramite')->first();
+        $result = T_Tramite_Documentacion::select('*')
+            ->where('id_tramite', $id_tramite)
+            ->where('id_documentacion', $id_documento)
+            ->whereNull('id_tramite')
+            ->whereNull('deleted_at')
+            ->first();
+
         return $result;
     }
 
     public static function documentacion_descarga_opcional_tmp($id_tramite, $id_documento)
     {
-        $result = T_Tramite_Documentacion::select('*')->where('id_tramite', $id_tramite)->where('id_documentacion', $id_documento)->whereNull('id_tramite')->get();
+        $result = T_Tramite_Documentacion::select('*')
+            ->where('id_tramite', $id_tramite)
+            ->where('id_documentacion', $id_documento)
+            ->whereNull('id_tramite')
+            ->whereNull('deleted_at')
+            ->get();
+
         return $result;
     }
 }

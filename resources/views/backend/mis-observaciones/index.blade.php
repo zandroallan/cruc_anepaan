@@ -2,17 +2,17 @@
 
 	@section('styles')
 
-		<link href="{{ asset('public/dashlead/plugins/datatable/dataTables.bootstrap4.min.css') }}" rel="stylesheet"/>
-		<link href="{{ asset('public/dashlead/plugins/datatable/responsivebootstrap4.min.css') }}" rel="stylesheet"/>
-		<link href="{{ asset('public/dashlead/plugins/datatable/fileexport/buttons.bootstrap4.min.css') }}" rel="stylesheet"/>
+		<!-- <link href="{{ asset('public/dashlead/plugins/datatable/dataTables.bootstrap4.min.css') }}" rel="stylesheet"/> -->
+		<!-- <link href="{{ asset('public/dashlead/plugins/datatable/responsivebootstrap4.min.css') }}" rel="stylesheet"/> -->
+		<!-- <link href="{{ asset('public/dashlead/plugins/datatable/fileexport/buttons.bootstrap4.min.css') }}" rel="stylesheet"/> -->
 
 	@endsection
 
 	@section('js')
 
-		<script src="{{ asset('public/dashlead/plugins/datatable/jquery.dataTables.min.js') }}"></script>
-	    <script src="{{ asset('public/dashlead/plugins/datatable/dataTables.bootstrap4.min.js') }}"></script>
-	    <script src="{{ asset('public/dashlead/plugins/datatable/dataTables.responsive.min.js') }}"></script>
+		<!-- <script src="{{ asset('public/dashlead/plugins/datatable/jquery.dataTables.min.js') }}"></script> -->
+	    <!-- <script src="{{ asset('public/dashlead/plugins/datatable/dataTables.bootstrap4.min.js') }}"></script> -->
+	    <!-- <script src="{{ asset('public/dashlead/plugins/datatable/dataTables.responsive.min.js') }}"></script> -->
 	    <script src="{{ asset('public/js/backend/general.js') }}"></script>
 	    <script src="{{ asset('public/js/backend/mis-observaciones.js') }}"></script>
 
@@ -57,14 +57,16 @@
 	@section('script')
 		
 
-		console.log('Ultimo tramite'+ {{ $datos->id_ultimo_tramite }});
+		
+
 		$('._observaciones').addClass('menu-item-active');
 		cargar_mis_observaciones({{ $datos->id_ultimo_tramite }});	
 
 		var avisoEnvioSolventacion ="Los Archivos han sido cargados, a continuación proceda a enviar las solventaciones,";
 			avisoEnvioSolventacion+="para la revisión de las áreas de la Coordinacion de Verificación de la Supervisión Externa de la Obra Pública Estatal.";
 
-		@if( $en_tiempo!=1 && $datos->id_ultimo_tramite != 0)
+
+		@if ( $en_tiempo != 1 && $datos->id_ultimo_tramite != 0 )
 			@if( $si_o_no==1 )
 				@if( $yano==0 )
 

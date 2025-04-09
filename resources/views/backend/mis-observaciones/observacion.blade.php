@@ -99,8 +99,8 @@
 				@endif
 
 				<div class="table-responsive">
-					<table id="solventaciones_tbl" class="table table-hover">
-						<thead style="background-color: #333333 !important;">
+					<table id="solventaciones_tbl" class="table table-bordered table-checkable dataTable no-footer dtr-inline">
+						<thead class="thead-dark head-dark">
 							<tr>
 								<th style="padding: 15px; color: #fff;">#</th>
 								<th style="padding: 15px; color: #fff;">Area</th>

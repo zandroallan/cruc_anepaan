@@ -11,8 +11,8 @@ function get_contadores_certificados()
             method: 'get'
         },
         success: function(vresponse) {
-            let html ='-- Seleccionar --';
-                html+='<option value=''>-- Seleccionar --</option>';
+            let html ='';
+                html+='<option value="">-- Seleccionar --</option>';
             $.each(vresponse.data, 
                 function (i, valor) {
                     html+='<option value='+ valor.id +'>';
@@ -81,6 +81,10 @@ function get_contador_tramite()
         },
         success: function(vresponse) {
             var vhtml ='';
+            if (vresponse.codigo == 0) {
+
+            }
+            else {
                 vhtml+='<table class="table table-bordered table-checkable dataTable no-footer dtr-inline">';
                 vhtml+='    <thead class="thead-dark">';
                 vhtml+='        <tr>';
@@ -101,7 +105,8 @@ function get_contador_tramite()
             // }
                 vhtml+='    </tbody>';
                 vhtml+='</table>';
-
+            }
+                
             $('._tbl_response_cpc').html(vhtml);
             // alert('oik');
         },

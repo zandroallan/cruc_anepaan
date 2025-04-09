@@ -1,30 +1,39 @@
 <?php
 namespace App\Http\Controllers\Backend;
-
+use Illuminate\Http\Request;
 use App\Http\Classes\FormatDate;
 use App\Http\Classes\Herramientas;
 use App\Http\Classes\TipoTramite;
 use App\Http\Classes\Validations;
 use App\Http\Controllers\Controller;
+use App\Http\Models\Backend\D_Personal;
+use App\Http\Models\Backend\D_Domicilio;
 use App\Http\Models\Backend\T_Contacto;
 use App\Http\Models\Backend\T_Registro;
 use App\Http\Models\Backend\T_Tramite;
+use App\Http\Models\Backend\T_Pagos;
+use App\Http\Models\Backend\T_Tramite_Documentacion;
+use App\Http\Models\Backend\T_Tramite_Contador;
 use App\Http\Models\Backend\T_Tramite_Acta_Instrumento;
 use App\Http\Models\Backend\T_Tramite_Dato_Legal;
+use App\Http\Models\Backend\T_Tramite_Socio_Legal;
 use App\Http\Models\Backend\T_Tramite_Rep_Legal;
 use App\Http\Models\Backend\T_Tramite_Rep_Tecnico;
 use App\Http\Models\Catalogos\C_Colegio;
+use App\Http\Models\Catalogos\C_Municipio;
+use App\Http\Models\Catalogos\C_Nacionalidad;
+use App\Http\Models\Catalogos\C_Tipo_Identificacion;
 use App\Http\Models\Catalogos\C_Especialidad;
 use App\Http\Models\Catalogos\C_Estado;
 use App\Http\Models\Catalogos\C_Inhabiles;
 use App\Http\Models\Catalogos\C_Profesion;
 use App\Http\Models\Catalogos\C_Tipo_Rep_Legal;
+use App\Http\Models\Catalogos\C_Tipo_Tramite;
 use App\Http\Requests\Backend\ContactoRequest;
+use Storage;
 use Auth;
 use DB;
 use File;
-use Illuminate\Http\Request;
-use Storage;
 
 class MisTramitesController extends Controller
 {
@@ -145,16 +154,16 @@ class MisTramitesController extends Controller
             return redirect()->route($this->route . '.show', $datos->id);
         }
 
-        $estados      = \App\Http\Models\Catalogos\C_Estado::lists();
-        $municipios_f = \App\Http\Models\Catalogos\C_Municipio::lists(['id_estado' => $datos->id_estado_fiscal]);
+        $estados      = C_Estado::lists();
+        $municipios_f = C_Municipio::lists(['id_estado' => $datos->id_estado_fiscal]);
         if ($datos->id_tipo_persona == 1) {
-            $municipios_p = \App\Http\Models\Catalogos\C_Municipio::lists(['id_estado' => $datos->id_estado_particular]);
+            $municipios_p = C_Municipio::lists(['id_estado' => $datos->id_estado_particular]);
         } else {
             $municipios_p = [0 => "Seleccionar"];
         }
 
-        $nacionalidades        = \App\Http\Models\Catalogos\C_Nacionalidad::lists();
-        $tipo_identificaciones = \App\Http\Models\Catalogos\C_Tipo_Identificacion::lists();
+        $nacionalidades        = C_Nacionalidad::lists();
+        $tipo_identificaciones = C_Tipo_Identificacion::lists();
         $default_nacionalidad  = $datos->id_nacionalidad;
 
         $chk_id_sujeto_1        = "";
@@ -421,44 +430,44 @@ class MisTramitesController extends Controller
                         DB::beginTransaction();
                         if ( $id == 0 ) {
                             $d_registro         = new T_Registro;
-                            $d_domicilio_fiscal = new \App\Http\Models\Backend\D_Domicilio;
-                            $t_tramite          = new \App\Http\Models\Backend\T_Tramite;
+                            $d_domicilio_fiscal = new D_Domicilio;
+                            $t_tramite          = new T_Tramite;
                             if ( $id_tipo_persona == 1 ) {
-                                $d_personal             = new \App\Http\Models\Backend\D_Personal;
-                                $d_domicilio_particular = new \App\Http\Models\Backend\D_Domicilio;
+                                $d_personal             = new D_Personal;
+                                $d_domicilio_particular = new D_Domicilio;
                             }
                         }
                         else {
                             $d_registro = T_Registro::find($id);
                             if ($id_tipo_tramite != 0) {
-                                $t_tramite = new \App\Http\Models\Backend\T_Tramite;
+                                $t_tramite = new T_Tramite;
                                 if ($d_registro->id_d_domicilio_fiscal == null) {
-                                    $d_domicilio_fiscal = new \App\Http\Models\Backend\D_Domicilio;
+                                    $d_domicilio_fiscal = new D_Domicilio;
                                 } 
                                 else {
-                                    $d_domicilio_fiscal = \App\Http\Models\Backend\D_Domicilio::find($d_registro->id_d_domicilio_fiscal);
+                                    $d_domicilio_fiscal = D_Domicilio::find($d_registro->id_d_domicilio_fiscal);
                                 }
                                 if ($id_tipo_persona == 1) {
                                     if ($d_registro->id_d_personal == null) {
-                                        $d_personal             = new \App\Http\Models\Backend\D_Personal;
-                                        $d_domicilio_particular = new \App\Http\Models\Backend\D_Domicilio;
+                                        $d_personal             = new D_Personal;
+                                        $d_domicilio_particular = new D_Domicilio;
                                     }
                                     else {
-                                        $d_personal = \App\Http\Models\Backend\D_Personal::find($d_registro->id_d_personal);
+                                        $d_personal = D_Personal::find($d_registro->id_d_personal);
                                         if ($d_personal->id_d_domicilio == null) {
-                                            $d_domicilio_particular = new \App\Http\Models\Backend\D_Domicilio;
+                                            $d_domicilio_particular = new D_Domicilio;
                                         } 
                                         else {
-                                            $d_domicilio_particular = \App\Http\Models\Backend\D_Domicilio::find($d_personal->id_d_domicilio);
+                                            $d_domicilio_particular = D_Domicilio::find($d_personal->id_d_domicilio);
                                         }
                                     }
                                 }
                             }
                             else {
-                                $d_domicilio_fiscal = \App\Http\Models\Backend\D_Domicilio::find($post['id_domicilio_fiscal']);
+                                $d_domicilio_fiscal = D_Domicilio::find($post['id_domicilio_fiscal']);
                                 if ($id_tipo_persona == 1) {
-                                    $d_personal             = \App\Http\Models\Backend\D_Personal::find($post['id_d_personal']);
-                                    $d_domicilio_particular = \App\Http\Models\Backend\D_Domicilio::find($post['id_domicilio_particular']);
+                                    $d_personal             = D_Personal::find($post['id_d_personal']);
+                                    $d_domicilio_particular = D_Domicilio::find($post['id_domicilio_particular']);
                                 }
                             }
                         }
@@ -492,7 +501,7 @@ class MisTramitesController extends Controller
                                 } 
                                 else {
                                     //busca socios legales
-                                    $busca_socios_legales = \App\Http\Models\Backend\T_Tramite_Socio_Legal::general(['id_registro_temp' => $id])->get();
+                                    $busca_socios_legales = T_Tramite_Socio_Legal::general(['id_registro_temp' => $id])->get();
 
                                     if (count($busca_socios_legales) == 0 && $id_tipo_persona == 2) {
                                         $status_mensaje = 1;
@@ -505,13 +514,13 @@ class MisTramitesController extends Controller
                                         //enviar tramite
                                         $id_sujeto                        = $d_registro->id_sujeto;
                                         ($id_sujeto == 1) ? $clave_sujeto = "C" : $clave_sujeto = "S";
-                                        $total_tramites                   = (\App\Http\Models\Backend\T_Tramite::total_anio(date('Y'), $id_sujeto)) + 1;
+                                        $total_tramites                   = (T_Tramite::total_anio(date('Y'), $id_sujeto)) + 1;
 
 
                                         // Modificacion de folio
                                         $p_tramite['folio']      = str_pad($total_tramites, 4, "0", STR_PAD_LEFT) . '-' . $clave_sujeto . '-' . date('Y');
-                                        $documentacion_recibida  = \App\Http\Models\Backend\T_Tramite_Documentacion::documentacion_temporal_array($id);
-                                        $documentacion_requerida = \App\Http\Models\Catalogos\C_Tipo_Tramite::documentacion_requerida($id_tipo_tramite, $id_sujeto);
+                                        $documentacion_recibida  = T_Tramite_Documentacion::documentacion_temporal_array($id);
+                                        $documentacion_requerida = C_Tipo_Tramite::documentacion_requerida($id_tipo_tramite, $id_sujeto);
                                         $documentacion_pendiente = array_diff($documentacion_requerida, $documentacion_recibida);
 
                                         $p_tramite['id_cs']                       = $d_registro->id;
@@ -554,6 +563,12 @@ class MisTramitesController extends Controller
                                         # Sandro Alan Gomez Aceituno
                                         # Asignar los representantes tecnicos con sus id´s de tramite
                                         # Begin T_Tramite_Rep_Tecnico
+
+                                        $_MDL_Tramite_Contador=T_Tramite_Contador::where('id_registro_tmp', Auth::User()->id_registro)->first();
+                                        $_MDL_Tramite_Contador->fill(['id_registro_tmp'=>null, 'id_tramite'=> $t_tramite->id])->save();
+
+
+
                                         $datosRepTecnico = T_Tramite_Rep_Tecnico::getRepTecnicoTMP(['id_registro_tmp' => Auth::user()->id_registro])->get();
                                         if (count($datosRepTecnico) > 0) {
                                             foreach ($datosRepTecnico as $key => $value) {
@@ -572,7 +587,7 @@ class MisTramitesController extends Controller
                                         $datosDatoLegal = T_Tramite_Dato_Legal::general(['id_registro_tmp' => Auth::user()->id_registro])->first();
                                         if (isset($datosDatoLegal)) {
                                             $vflDatoLegal['id_tramite']      = $t_tramite->id;
-                                            $vflDatoLegal['id_registro_tmp'] = null;
+                                             $vflDatoLegal['id_registro_tmp'] = null;
                                             $vdatoDatoLegal                  = T_Tramite_Dato_Legal::findOrFail($datosDatoLegal->id);
                                             $vdatoDatoLegal->fill($vflDatoLegal)->save();
                                             unset($vflDatoLegal, $vdatoDatoLegal, $datosDatoLegal);
@@ -609,7 +624,7 @@ class MisTramitesController extends Controller
                                             #End T_Tramite_Rep_Legal
                                         }
 
-                                        $t_pago                   = new \App\Http\Models\Backend\T_Pagos;
+                                        $t_pago                   = new T_Pagos;
                                         $p_pago['id_tramite']     = $t_tramite->id;
                                         $p_pago['folio_hacienda'] = $d_registro->folio_pago_temp;
                                         $p_pago['fecha_pago']     = $d_registro->fecha_pago_temp;
@@ -634,11 +649,11 @@ class MisTramitesController extends Controller
                                         $t_contacto_t->fill($post_contacto_t)->save();
 
                                         //Actualizar documentacion
-                                        $documentacion_subida = \App\Http\Models\Backend\T_Tramite_Documentacion::general(['id_registro_temp' => $id])->get();
+                                        $documentacion_subida = T_Tramite_Documentacion::general(['id_registro_temp' => $id])->get();
                                         $folder               = '/expedientes/' . date('Y') . '/' . $d_registro2->rfc . '/' . $t_tramite->folio;
 
                                         foreach ($documentacion_subida as $doc_subida) {
-                                            $t_tramites_documentacion                    = \App\Http\Models\Backend\T_Tramite_Documentacion::find($doc_subida->id);
+                                            $t_tramites_documentacion                    = T_Tramite_Documentacion::find($doc_subida->id);
                                             $p_tramite_documentacion['id_tramite']       = $t_tramite->id;
                                             $p_tramite_documentacion['path']             = $folder;
                                             $p_tramite_documentacion['id_registro_temp'] = null;
@@ -646,10 +661,10 @@ class MisTramitesController extends Controller
                                         }
 
                                         //Actualizar socios legales
-                                        $socios_legales_agregados = \App\Http\Models\Backend\T_Tramite_Socio_Legal::general(['id_registro_temp' => $id])->get();
+                                        $socios_legales_agregados = T_Tramite_Socio_Legal::general(['id_registro_temp' => $id])->get();
 
                                         foreach ($socios_legales_agregados as $socio) {
-                                            $t_tramites_socios_legales                     = \App\Http\Models\Backend\T_Tramite_Socio_Legal::find($socio->id);
+                                            $t_tramites_socios_legales                     = T_Tramite_Socio_Legal::find($socio->id);
                                             $p_tramites_socios_legales['id_tramite']       = $t_tramite->id;
                                             $p_tramites_socios_legales['id_registro_temp'] = null;
                                             $t_tramites_socios_legales->fill($p_tramites_socios_legales)->save();
@@ -707,7 +722,7 @@ class MisTramitesController extends Controller
                     catch (\Exception $e) {
                         $status         = 3;
                         $code           = 409;
-                        $msg            = "No pudimos procesar la solicitud de su navegador porque hay peticiones simultaneas al recurso correspondiente, intente de nuevo.";// . $e->getMessage();
+                        $msg            = "No pudimos procesar la solicitud de su navegador porque hay peticiones simultaneas al recurso correspondiente, intente de nuevo.". $e->getMessage();
                         $route_redirect = "";
                         $data           = [];
                         DB::rollback();
@@ -832,7 +847,7 @@ class MisTramitesController extends Controller
         $id_registro    = $post["id_registro"];
         $id_documento   = $post["id_documento"];
 
-        $t_registro = \App\Http\Models\Backend\T_Registro::find($id_registro);
+        $t_registro = T_Registro::find($id_registro);
         $folder     = '/expedientes/' . date('Y') . '/' . $t_registro->rfc . '/tmp';
 
         $path = substr(Storage::disk('sircs')->getAdapter()->getPathPrefix(), 0, -1) . $folder;
@@ -840,7 +855,7 @@ class MisTramitesController extends Controller
         if (!$validation->getStatusB()) {
             try {
                 DB::beginTransaction();
-                $t_tramite_documentacion = new \App\Http\Models\Backend\T_Tramite_Documentacion;
+                $t_tramite_documentacion = new T_Tramite_Documentacion;
 
                 if ($request->hasFile('archivosubido')) {
                     if ($request->file('archivosubido')->isValid()) {
@@ -904,10 +919,10 @@ class MisTramitesController extends Controller
             try {
 
                 DB::beginTransaction();
-                $t_tramite_documentacion = new \App\Http\Models\Backend\T_Tramite_Documentacion;
+                $t_tramite_documentacion = new T_Tramite_Documentacion;
                 $prefijo                 = $id_documento . '_' . time();
 
-                $t_registro = \App\Http\Models\Backend\T_Registro::find($id_registro);
+                $t_registro = T_Registro::find($id_registro);
 
                 $folder   = '/expedientes/' . date('Y') . '/' . $t_registro->rfc . '/tmp';
                 $path     = substr(Storage::disk('sircs')->getAdapter()->getPathPrefix(), 0, -1) . $folder;
@@ -974,7 +989,7 @@ class MisTramitesController extends Controller
 
     public function mis_observaciones($id_tramite)
     {
-        $resultados = \App\Http\Models\Backend\T_Tramite_Observacion::general(['id_tramite' => $id_tramite, 'id_c_tramites_seguimiento' => 2])->get();
+        $resultados = T_Tramite_Observacion::general(['id_tramite' => $id_tramite, 'id_c_tramites_seguimiento' => 2])->get();
         return $resultados;
     }
 
@@ -982,7 +997,7 @@ class MisTramitesController extends Controller
     //lista todos los socios en la tabla
     public function resultados_socios_legales($id_tramite)
     {
-        $resultados = \App\Http\Models\Backend\T_Tramite_Socio_Legal::general(['id_registro_temp' => $id_tramite])->get();
+        $resultados = T_Tramite_Socio_Legal::general(['id_registro_temp' => $id_tramite])->get();
 
         return $resultados;
     }
@@ -990,7 +1005,7 @@ class MisTramitesController extends Controller
     public function destroy_socios_legales($id)
     {
 
-        $d_registro = \App\Http\Models\Backend\T_Tramite_Socio_Legal::find($id);
+        $d_registro = T_Tramite_Socio_Legal::find($id);
 
         $id_tramite = $d_registro->id_registro_temp;
         try {
@@ -1010,7 +1025,7 @@ class MisTramitesController extends Controller
     public function get_socio_legal($id)
     {
         //
-        $t_tramites_socios_legales = \App\Http\Models\Backend\T_Tramite_Socio_Legal::edit($id);
+        $t_tramites_socios_legales = T_Tramite_Socio_Legal::edit($id);
 
         if (!$t_tramites_socios_legales) {
 
@@ -1088,13 +1103,13 @@ class MisTramitesController extends Controller
             try {
                 DB::beginTransaction();
                 if ($id == 0) {
-                    $t_socio_legal          = new \App\Http\Models\Backend\T_Tramite_Socio_Legal;
-                    $d_personal             = new \App\Http\Models\Backend\D_Personal;
-                    $d_domicilio_particular = new \App\Http\Models\Backend\D_Domicilio;
+                    $t_socio_legal          = new T_Tramite_Socio_Legal;
+                    $d_personal             = new D_Personal;
+                    $d_domicilio_particular = new D_Domicilio;
                 } else {
-                    $t_socio_legal          = \App\Http\Models\Backend\T_Tramite_Socio_Legal::find($id);
-                    $d_personal             = \App\Http\Models\Backend\D_Personal::find($t_socio_legal->id_d_personal);
-                    $d_domicilio_particular = \App\Http\Models\Backend\D_Domicilio::find($d_personal->id_d_domicilio);
+                    $t_socio_legal          = T_Tramite_Socio_Legal::find($id);
+                    $d_personal             = D_Personal::find($t_socio_legal->id_d_personal);
+                    $d_domicilio_particular = D_Domicilio::find($d_personal->id_d_domicilio);
                 }
                 //Domicilio particular
                 $d_domicilio_particular->fill($p_domicilio_particular)->save();

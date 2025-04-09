@@ -13,7 +13,10 @@ class C_Documentacion extends Model
     protected $dates    = ['deleted_at'];
     protected $table    = 'c_documentacion';
     protected $fillable = [
-        'id', 'id_sujeto', 'id_area', 'nombre',
+        'id', 
+        'id_sujeto', 
+        'id_area', 
+        'nombre',
         'id_padre',
         'tiene_hijos',
         'tiene_opcionales',
@@ -142,8 +145,7 @@ class C_Documentacion extends Model
 
     public static function documentos_obligatorios($id_tipo_tramite, $id_sujeto, $id_tipo_persona = 0, $id_area_especifica = 0, $obligado_dec_isr = 0)
     {
-        $result = C_Documentacion::select('id');
-        $result = $result->where("obligatorio", 1);
+        $result = C_Documentacion::select('id')->where("obligatorio", 1)->whereNull('deleted_at');
 
         if ($id_sujeto != 0) {
             if ($id_area_especifica == 4) {
@@ -202,7 +204,7 @@ class C_Documentacion extends Model
     public static function documentos_requeridos($id_tipo_tramite, $id_sujeto, $id_tipo_persona = 0, $id_area_especifica = 0, $id_padre = 0, $obligado_dec_isr = 0)
     {
 
-        $result = C_Documentacion::select('*');
+        $result = C_Documentacion::select('*')->whereNull('deleted_at');
 
         if ($id_sujeto != 0) {
             if ($id_area_especifica == 4) {

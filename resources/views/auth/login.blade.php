@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style type="text/css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
         body {
             color: #000;
             overflow-x: hidden;
@@ -24,45 +26,24 @@
         }
 
         .logo {
-            width: 200px;
-            height: 100px;
+            width: 100%;
+            max-width: 200px;
             margin-top: 20px;
             margin-left: 35px;
         }
 
         .image {
-            width: 360px;
-            height: 280px;
+            width: 100%;
+            max-width: 360px;
+            height: auto;
         }
 
         .border-line {
             border-right: 1px solid #EEEEEE;
         }
 
-        .facebook {
+        .facebook, .twitter, .linkedin {
             background-color: #3b5998;
-            color: #fff;
-            font-size: 18px;
-            padding-top: 5px;
-            border-radius: 50%;
-            width: 35px;
-            height: 35px;
-            cursor: pointer;
-        }
-
-        .twitter {
-            background-color: #1DA1F2;
-            color: #fff;
-            font-size: 18px;
-            padding-top: 5px;
-            border-radius: 50%;
-            width: 35px;
-            height: 35px;
-            cursor: pointer;
-        }
-
-        .linkedin {
-            background-color: #2867B2;
             color: #fff;
             font-size: 18px;
             padding-top: 5px;
@@ -91,21 +72,11 @@
         ::placeholder {
             color: #BDBDBD;
             opacity: 1;
-            font-weight: 300
-        }
-
-        :-ms-input-placeholder {
-            color: #BDBDBD;
-            font-weight: 300
-        }
-
-        ::-ms-input-placeholder {
-            color: #BDBDBD;
-            font-weight: 300
+            font-weight: 300;
         }
 
         input, textarea {
-            padding: 10px 12px 10px 12px;
+            padding: 10px 12px;
             border: 1px solid lightgrey;
             border-radius: 2px;
             margin-bottom: 5px;
@@ -118,16 +89,12 @@
         }
 
         input:focus, textarea:focus {
-            -moz-box-shadow: none !important;
-            -webkit-box-shadow: none !important;
             box-shadow: none !important;
             border: 1px solid #304FFE;
             outline-width: 0;
         }
 
         button:focus {
-            -moz-box-shadow: none !important;
-            -webkit-box-shadow: none !important;
             box-shadow: none !important;
             outline-width: 0;
         }
@@ -139,7 +106,8 @@
 
         .btn-blue {
             background-color: #181824;
-            width: 150px;
+            width: 100%;
+            max-width: 150px;
             color: #fff;
             border-radius: 2px;
         }
@@ -157,11 +125,13 @@
         @media screen and (max-width: 991px) {
             .logo {
                 margin-left: 0px;
+                width: 100%;
+                max-width: 150px;
             }
 
             .image {
-                width: 300px;
-                height: 220px;
+                width: 100%;
+                height: auto;
             }
 
             .border-line {
@@ -172,6 +142,34 @@
                 border-top: 1px solid #EEEEEE !important;
                 margin: 0px 15px;
             }
+
+            .card1 {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .row {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .logo {
+                max-width: 120px;
+            }
+
+            .image {
+                max-width: 280px;
+            }
+
+            .card2 {
+                margin: 0px 10px;
+            }
+
+            .btn-blue {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
@@ -181,11 +179,11 @@
             <div class="row d-flex">
                 <div class="col-lg-6">
                     <div class="card1 pb-5 p-5">
-                        <div class="row">
-                            <img alt="Logo" src="{{asset('public/img2/saybg.png')}}" width="80%" />
+                        <div class="row justify-content-center">
+                            <img alt="Logo" src="{{asset('public/img2/saybg.png')}}" class="logo" />
                         </div>
                         <div class="row px-3 justify-content-center mt-4 mb-5 border-line">
-                            <img alt="Logo" src="{{asset('public/img2/contratista.jpg')}}" width="80%" />
+                            <img alt="Logo" src="{{asset('public/img2/contratista.jpg')}}" class="image" />
                         </div>
                     </div>
                 </div>

@@ -447,8 +447,8 @@
 		@yield('js')
       
         <script type="text/javascript">
-            var project_name= "/sircse";
-            var vuri = window.location.origin + '/sircse';
+            var project_name= "/cruc_anepaan";
+            var vuri = window.location.origin + '/cruc_anepaan';
 
             $(document).ready(
             	function () {

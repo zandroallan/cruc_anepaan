@@ -68,21 +68,21 @@ function cargar_mis_observaciones(id_tramite)
         }
         $("#mis-observaciones tbody").append(body);
         
-        var myTable=$('#mis-observaciones').DataTable({
-            language: {
-                searchPlaceholder: 'Buscar...',
-                sSearch: '',
-                lengthMenu: '_MENU_ Registros/pagina',
-            },            
-            lengthChange: false
-        });
+        // var myTable=$('#mis-observaciones').DataTable({
+        //     language: {
+        //         searchPlaceholder: 'Buscar...',
+        //         sSearch: '',
+        //         lengthMenu: '_MENU_ Registros/pagina',
+        //     },            
+        //     lengthChange: false
+        // });
 
-        //assign a new searchbox for our table
-        $('#searchBox').on('keyup', 
-            function() {
-                myTable.search(this.value).draw();
-            }
-        );
+        // //assign a new searchbox for our table
+        // $('#searchBox').on('keyup', 
+        //     function() {
+        //         myTable.search(this.value).draw();
+        //     }
+        // );
         
     }, "json");
     
