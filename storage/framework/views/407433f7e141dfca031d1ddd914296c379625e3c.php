@@ -1,39 +1,42 @@
-@extends('layouts.backend')
 
-	@section('styles')        
+
+	<?php $__env->startSection('styles'); ?>        
 	         
-	@endsection
+	<?php $__env->stopSection(); ?>
 
-	@section('js')
+	<?php $__env->startSection('js'); ?>
 			
-		{!! Html::script('public/js/backend/general.js'); !!}
-		{!! Html::script('public/js/backend/mis-observaciones.js'); !!}
-		{!! Html::script('public/js/backend/tramite.observaciones.js'); !!}
+		<?php echo Html::script('public/js/backend/general.js');; ?>
 
-	@endsection
+		<?php echo Html::script('public/js/backend/mis-observaciones.js');; ?>
 
-	@section('title')
+		<?php echo Html::script('public/js/backend/tramite.observaciones.js');; ?>
+
+
+	<?php $__env->stopSection(); ?>
+
+	<?php $__env->startSection('title'); ?>
 
 		<h2 class="main-content-title tx-24 mg-b-5">Observacion</h2>
 
-	@endsection
+	<?php $__env->stopSection(); ?>
 
-	@section('breadcrumb')
+	<?php $__env->startSection('breadcrumb'); ?>
 
-	    <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">{!! html_entity_decode(link_to_route($current_route.'.index', $title, null, [])) !!}</h5>	
+	    <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5"><?php echo html_entity_decode(link_to_route($current_route.'.index', $title, null, [])); ?></h5>	
 		<div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>
 		<span class="text-muted font-weight-bold mr-4">Observaciones</span>
 		
-	@endsection
+	<?php $__env->stopSection(); ?>
 
-	@section('script')
-		cargarInputs({{ $observacion->id_documentacion }});
-		cargar_solventaciones( {{ $observacion->id }});
-	@endsection
+	<?php $__env->startSection('script'); ?>
+		cargarInputs(<?php echo e($observacion->id_documentacion); ?>);
+		cargar_solventaciones( <?php echo e($observacion->id); ?>);
+	<?php $__env->stopSection(); ?>
 
-	@section('content')
+	<?php $__env->startSection('content'); ?>
 
-		@include('backend.encabezado')
+		<?php echo $__env->make('backend.encabezado', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 		<style>
 			.input-file {
@@ -99,20 +102,23 @@
 			            }
 					?>
 					<p>
-						<b>{!! $vdocumentoPadreHijo !!}</b>
+						<b><?php echo $vdocumentoPadreHijo; ?></b>
 					</p>
-					{{ $observacion->observacion }}
+					<?php echo e($observacion->observacion); ?>
+
 				</div>
 			</div>
 
 		<div class="card">
 			<div class="card-body">
-				@if ( $observacion->id_status_tramite == 4)
+				<?php if( $observacion->id_status_tramite == 4): ?>
 			    <!-- Cargar documentos  -->
-			    {!! Form::open(['route' => 'tramites.subir-documento-observacion', 'id'=>'myformdocumento','class'=>'form-horizontal myformdocumento', 'method' => 'post' , 'files' => true, 'enctype'=>'multipart/form-data']) !!}
-					{!! Form::hidden('id_observacion', $observacion->id,['id'=>'id_observacion']) !!}               
-					{!! Form::hidden('id_tramite', $observacion->id_tramite,['id'=>'id_tramite']) !!}               
-					{!! Form::hidden('id_documentacion', $observacion->id_documentacion,['id'=>'id_documentacion']) !!}
+			    <?php echo Form::open(['route' => 'tramites.subir-documento-observacion', 'id'=>'myformdocumento','class'=>'form-horizontal myformdocumento', 'method' => 'post' , 'files' => true, 'enctype'=>'multipart/form-data']); ?>
+
+					<?php echo Form::hidden('id_observacion', $observacion->id,['id'=>'id_observacion']); ?>               
+					<?php echo Form::hidden('id_tramite', $observacion->id_tramite,['id'=>'id_tramite']); ?>               
+					<?php echo Form::hidden('id_documentacion', $observacion->id_documentacion,['id'=>'id_documentacion']); ?>
+
 					
 						<div class="card custom-card" >
 							<div class="card-body">
@@ -134,13 +140,14 @@
 								</div>
 							</div>
 						</div>						    
-			    {!! Form::close() !!}
+			    <?php echo Form::close(); ?>
+
 				<!-- Fin Cargar documentos  -->
-				@endif
+				<?php endif; ?>
 
 				<div class="table-responsive">
-					<table id="solventaciones_tbl" class="table table-bordered table-checkable dataTable no-footer dtr-inline">
-						<thead class="thead-dark head-dark">
+					<table id="solventaciones_tbl" class="table table-hover">
+						<thead style="background-color: #333333 !important;">
 							<tr>
 								<th style="padding: 15px; color: #fff;">#</th>
 								<th style="padding: 15px; color: #fff;">Area</th>
@@ -155,4 +162,6 @@
 				</div>
 			</div>
 		</div>
-	@endsection
+	<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\AppServ\www\sircse\resources\views/backend/mis-observaciones/observacion.blade.php ENDPATH**/ ?>

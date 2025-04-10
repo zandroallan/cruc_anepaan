@@ -4,7 +4,7 @@ function get_contadores_certificados()
  {
     $('.btn_store_cpc').attr('onclick', 'store_contador_publico()');
 
-	$.ajax({
+    $.ajax({
         type: "GET",
         url: vuri + '/contadores/publicos/certificados',
         data: {
@@ -139,7 +139,7 @@ function get_contador_tramite()
 //  {
 //     $('.btn-store-estados-financieros').attr('onclick', 'store_estados_financiero()');
 
-// 	$.ajax({
+//  $.ajax({
 //         type: "GET",
 //         url: vuri + '/financiero/estados/financieros',
 //         success: function(vresponse) {

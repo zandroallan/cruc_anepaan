@@ -98,11 +98,8 @@
 
 				cargar_socios_legales({{ Auth::User()->id_registro }});
 
-				// get_capital_contable();
-				// get_estados_financieros();
-				get_contadores_certificados();
-				get_contador_tramite();
-
+				get_capital_contable();
+				get_estados_financieros();
 				get_datos_legales({{ Auth::User()->id_registro }});
 				get_acta_constitutiva({{ Auth::User()->id_registro }});
 				get_acta_constitutiva_modificacion({{ Auth::User()->id_registro }});
