@@ -204,7 +204,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary font-weight-bold" onclick="recuperarPass()" id="btnAceptPass" style="background-color: #1d1d1b; border-color: #1d1d1b;">Obtener</button>
+                        <button type="button" class="btn btn-primary font-weight-bold" onclick="recuperarPass()" id="btnAceptPass" style="background-color: #1d1d1b; border-color: #1d1d1b;">Recuperar contraseña</button>
                     </div>
                 </div>
             </div>

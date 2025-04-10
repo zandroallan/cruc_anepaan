@@ -147,7 +147,7 @@
 				  	<p class="text-justify">La Secretaría tendrá por recibida una solicitud y comenzará a correr el plazo de treinta días naturales, para que otorgue o niegue la constancia de inscripción, modificación o actualización en el registro de Contratistas o de Supervisores Externos, cuando el solicitante solvente las observaciones o presente la documentación completa con todos los requisitos.</p>
 				  	<hr>
 				  	<p class="mb-0 text-justify">Todos los seguimientos al trámite se le notificarán a su cuenta en el Portal del contratista y a este correo electrónico.</p>
-				</div>				
+				</div>
 			@endif	
 
 
