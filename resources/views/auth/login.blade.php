@@ -72,6 +72,32 @@
             .img {
               filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.7)); 
             }
+
+            .marca-agua {
+                position: relative;
+                background-color: rgba(0, 0, 0, 0); /* si quieres fondo transparente o ajustarlo */
+                width: 100%;
+                padding: 20px;
+            }
+
+            .marca-agua::before {
+                content: "";
+                position: absolute;
+                top: 0; left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: url('{{ asset('public/img2/jaguar.png') }}');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+                opacity: 0.1; /* Aquí controlas qué tan visible es la marca de agua */
+                z-index: 0;
+            }
+
+            .marca-agua > * {
+                position: relative;
+                z-index: 1;
+            }
         </style>
     </head>
 
@@ -112,7 +138,7 @@
                                 <div class="form-group">
                                     <div class="d-flex justify-content-between mt-n5">
                                         <label class="font-size-h6 font-weight-bolder text-dark pt-5">Ingresar contraseña</label>
-                                        <a href="#" class="colorinpt font-size-h6 font-weight-bolder text-hover-primary pt-5">Olvidaste tu contraseña ?</a>
+                                        <a href="#" class="colorinpt font-size-h6 font-weight-bolder text-hover-primary pt-5"  data-toggle="modal" data-target="#mdlrecuperar">Olvidaste tu contraseña ?</a>
                                     </div>
                                     <input class="form-control img input-password h-auto py-7 px-6 rounded-lg border-0 myshadow sizeinput" type="password" id="password" name="password" autocomplete="off" />
                                 </div>
@@ -140,6 +166,51 @@
             <!--end::Login-->
         </div>
         <!--end::Main-->
+
+        <!-- Modal-->
+        <div class="modal fade" id="mdlrecuperar" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: black;">
+                        <h5 class="modal-title text-white">Recuperar contraseña</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i aria-hidden="true" class="ki ki-close"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body bgi-no-repeat marca-agua">
+                        <form id="frmRecuperarPass" name="frmRecuperarPass" class="frmRecuperarPass">
+                        @csrf 
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="text-justify font-size-h6 font-weight-bolder text-dark"><b><span style="color: #b11f29;">Nota:</span></b> Los datos requeridos son obligatorios porque a traves de ellos se realizara la busqueda en el padron, de no ser asi se omitira. </p>
+                                </div>
+                            </div>
+
+                            <!--begin::Form group-->
+                            <div class="form-group">
+                                <label class="font-size-h6 font-weight-bolder text-dark">RFC</label>
+                                <input class="form-control img h-auto py-2 px-6 rounded-lg border-0 myshadow sizeinput" type="text" name="txtRfc" id="txtRfc" autocomplete="off" />
+                            </div>
+                            <!--end::Form group-->
+
+                            <!--begin::Form group-->
+                            <div class="form-group">
+                                <label class="font-size-h6 font-weight-bolder text-dark">Correo electrónico</label>
+                                <input class="form-control img h-auto py-2 px-6 rounded-lg border-0 myshadow sizeinput" type="text" name="txtCorreo" id="txtCorreo" autocomplete="off" />
+                                <code class="font-size-h6 font-weight-bolder" style="color: #b11f29;"><b>Poner la direccion completa del correo.</b></code>
+                            </div>
+                            <!--end::Form group-->
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary font-weight-bold" onclick="recuperarPass()" id="btnAceptPass" style="background-color: #1d1d1b; border-color: #1d1d1b;">Obtener</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <script>var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";</script>
         <!--begin::Global Config(global config for global JS scripts)-->
         <script>var KTAppSettings = { "breakpoints": { "sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1200 }, "colors": { "theme": { "base": { "white": "#ffffff", "primary": "#0BB783", "secondary": "#E5EAEE", "success": "#1BC5BD", "info": "#8950FC", "warning": "#FFA800", "danger": "#F64E60", "light": "#F3F6F9", "dark": "#212121" }, "light": { "white": "#ffffff", "primary": "#D7F9EF", "secondary": "#ECF0F3", "success": "#C9F7F5", "info": "#EEE5FF", "warning": "#FFF4DE", "danger": "#FFE2E5", "light": "#F3F6F9", "dark": "#D6D6E0" }, "inverse": { "white": "#ffffff", "primary": "#ffffff", "secondary": "#212121", "success": "#ffffff", "info": "#ffffff", "warning": "#ffffff", "danger": "#ffffff", "light": "#464E5F", "dark": "#ffffff" } }, "gray": { "gray-100": "#F3F6F9", "gray-200": "#ECF0F3", "gray-300": "#E5EAEE", "gray-400": "#D6D6E0", "gray-500": "#B5B5C3", "gray-600": "#80808F", "gray-700": "#464E5F", "gray-800": "#1B283F", "gray-900": "#212121" } }, "font-family": "Poppins" };</script>
@@ -147,10 +218,17 @@
         <script src="{{asset('public/assets/plugins/global/plugins.bundle.js')}}"></script>
         <script src="{{asset('public/assets/plugins/custom/prismjs/prismjs.bundle.js')}}"></script>
         <script src="{{asset('public/assets/js/scripts.bundle.js')}}"></script>
+        <script src="{{asset('public/js/backend/recuperar_password.js')}}"></script>
 
+        <script type="text/javascript">
+            var vuri = window.location.origin + '/cruc_anepaan';
 
-        <!-- <script src="assets/js/pages/custom/login/login-3.js"></script> -->
-
+            $(document).ready(
+                function () {
+                    @yield('script')
+                }
+            );
+        </script>
     </body>
     <!--end::Body-->
 </html>
