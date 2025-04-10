@@ -146,11 +146,11 @@
 @media (min-width: 992px) {
   .login.login-3 .login-aside {
     width: 100%;
-    max-width: 600px;
+    max-width: 650px;
   }
   .login.login-3 .login-aside .aside-img {
     min-height: 550px !important;
-    background-size: 630px;
+    background-size: 600px;
   }
   .login.login-3 .login-content .top-signup {
     max-width: 650px;
