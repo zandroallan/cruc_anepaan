@@ -11,7 +11,7 @@ function cargarTabla(){
             var vrespuesta=vresponse;
             var vhtml ='';
                 vhtml+='<table class="table table-bordered table-checkable dataTable no-footer dtr-inline">';
-                vhtml+='    <thead style="background-color: #333333 !important;">';
+                vhtml+='    <thead class="thead-dark head-dark">';
                 vhtml+='        <tr>';
                 vhtml+='            <th style="color: #fff; padding: 15px 15px;" class="text-center">#</th>';
                 vhtml+='            <th style="color: #fff; padding: 15px 15px;">Clave</th>';
@@ -28,13 +28,16 @@ function cargarTabla(){
                 vhtml+='            <td>' + vrespuesta[vi].nombre + '</td>';               
                 vhtml+='            <td class="text-center">' + vrespuesta[vi].tipo + '</td>';               
                 vhtml+='            <td class="text-center">';
-                vhtml+='                <a href="'+ vuri + '/descargas-formatos/'+ vrespuesta[vi].id +'/bajar" title="Editar"><i class="fa fa-download"></i></a>';                
+                vhtml+='                <a href="'+ vuri + '/descargas-formatos/'+ vrespuesta[vi].id +'/bajar" title="' + vrespuesta[vi].nombre + '">';
+                vhtml+='                    <i class="fa fa-download"></i>';
+                vhtml+='                </a>';                
                 vhtml+='            </td>';
                 vhtml+='        </tr>';
             }
                 vhtml+='    </tbody>';
-                vhtml+='</table>';    
-            $('#dvFormatos').html(vhtml);
+                vhtml+='</table>';   
+
+            $('._response').html(vhtml);
             
         },
         error: function(vjqXHR, vtextStatus, verrorThrown){ }

@@ -94,16 +94,20 @@ class FinancieraController extends Controller
         try {
             DB::beginTransaction();
             $_Input_Request=$request->all();
+            $_MDL_Tramite_Contador=T_Tramite_Contador::where('id_registro_tmp', Auth::User()->id_registro)->first();
+
             $_Input_Request['id_registro_tmp']=Auth::User()->id_registro;
             $_Input_Request['id_d_personal']=$request['id_contador'];
 
-            $_MDL_Tramite_Contador=new T_Tramite_Contador;
-            $vrespuesta['mensaje']='Los datos han sido <b>REGISTRADOS</b> exitosamente.';
 
-            if ( $_Input_Request['id_registro_tmp'] != 0 ) {
+            if ($_MDL_Tramite_Contador) {
+                unset($_MDL_Tramite_Contador);
                 $_MDL_Tramite_Contador=T_Tramite_Contador::where('id_registro_tmp', Auth::User()->id_registro)->first();
-
                 $vrespuesta['mensaje']='Los datos han sido <b>ACTUALIZADOS</b> exitosamente.';
+            }
+            else {
+                 $_MDL_Tramite_Contador=new T_Tramite_Contador;
+                $vrespuesta['mensaje']='Los datos han sido <b>REGISTRADOS</b> exitosamente.';
             }
             
             $_MDL_Tramite_Contador->fill($_Input_Request)->save();

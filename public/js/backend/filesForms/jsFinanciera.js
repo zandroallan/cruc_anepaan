@@ -4,15 +4,15 @@ function get_contadores_certificados()
  {
     $('.btn_store_cpc').attr('onclick', 'store_contador_publico()');
 
-	$.ajax({
+    $.ajax({
         type: "GET",
         url: vuri + '/contadores/publicos/certificados',
         data: {
             method: 'get'
         },
         success: function(vresponse) {
-            let html ='-- Seleccionar --';
-                html+='<option value=''>-- Seleccionar --</option>';
+            let html ='';
+                html+='<option value="">-- Seleccionar --</option>';
             $.each(vresponse.data, 
                 function (i, valor) {
                     html+='<option value='+ valor.id +'>';
@@ -81,6 +81,10 @@ function get_contador_tramite()
         },
         success: function(vresponse) {
             var vhtml ='';
+            if (vresponse.codigo == 0) {
+
+            }
+            else {
                 vhtml+='<table class="table table-bordered table-checkable dataTable no-footer dtr-inline">';
                 vhtml+='    <thead class="thead-dark">';
                 vhtml+='        <tr>';
@@ -101,7 +105,8 @@ function get_contador_tramite()
             // }
                 vhtml+='    </tbody>';
                 vhtml+='</table>';
-
+            }
+                
             $('._tbl_response_cpc').html(vhtml);
             // alert('oik');
         },
@@ -134,7 +139,7 @@ function get_contador_tramite()
 //  {
 //     $('.btn-store-estados-financieros').attr('onclick', 'store_estados_financiero()');
 
-// 	$.ajax({
+//  $.ajax({
 //         type: "GET",
 //         url: vuri + '/financiero/estados/financieros',
 //         success: function(vresponse) {

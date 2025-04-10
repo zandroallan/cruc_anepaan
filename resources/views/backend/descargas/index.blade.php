@@ -76,9 +76,7 @@
 							</div>
 						</div>
 
-						<div class="table-responsive">					
-							<div id="dvFormatos" name="dvFormatos"></div>						
-						</div>
+						<div class="table-responsive _response"></div>
 					</div>
 				</div>
 			</div>

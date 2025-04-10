@@ -2,17 +2,17 @@
 
 	@section('styles')
 
-		<link href="{{ asset('public/dashlead/plugins/datatable/dataTables.bootstrap4.min.css') }}" rel="stylesheet"/>
-		<link href="{{ asset('public/dashlead/plugins/datatable/responsivebootstrap4.min.css') }}" rel="stylesheet"/>
-		<link href="{{ asset('public/dashlead/plugins/datatable/fileexport/buttons.bootstrap4.min.css') }}" rel="stylesheet"/>
+		<!-- <link href="{{ asset('public/dashlead/plugins/datatable/dataTables.bootstrap4.min.css') }}" rel="stylesheet"/> -->
+		<!-- <link href="{{ asset('public/dashlead/plugins/datatable/responsivebootstrap4.min.css') }}" rel="stylesheet"/> -->
+		<!-- <link href="{{ asset('public/dashlead/plugins/datatable/fileexport/buttons.bootstrap4.min.css') }}" rel="stylesheet"/> -->
 
 	@endsection
 
 	@section('js')
 
-		<script src="{{ asset('public/dashlead/plugins/datatable/jquery.dataTables.min.js') }}"></script>
-	    <script src="{{ asset('public/dashlead/plugins/datatable/dataTables.bootstrap4.min.js') }}"></script>
-	    <script src="{{ asset('public/dashlead/plugins/datatable/dataTables.responsive.min.js') }}"></script>
+		<!-- <script src="{{ asset('public/dashlead/plugins/datatable/jquery.dataTables.min.js') }}"></script> -->
+	    <!-- <script src="{{ asset('public/dashlead/plugins/datatable/dataTables.bootstrap4.min.js') }}"></script> -->
+	    <!-- <script src="{{ asset('public/dashlead/plugins/datatable/dataTables.responsive.min.js') }}"></script> -->
 	    <script src="{{ asset('public/js/backend/general.js') }}"></script>
 	    <script src="{{ asset('public/js/backend/mis-observaciones.js') }}"></script>
 
@@ -57,14 +57,16 @@
 	@section('script')
 		
 
-		console.log('Ultimo tramite'+ {{ $datos->id_ultimo_tramite }});
+		
+
 		$('._observaciones').addClass('menu-item-active');
 		cargar_mis_observaciones({{ $datos->id_ultimo_tramite }});	
 
 		var avisoEnvioSolventacion ="Los Archivos han sido cargados, a continuación proceda a enviar las solventaciones,";
 			avisoEnvioSolventacion+="para la revisión de las áreas de la Coordinacion de Verificación de la Supervisión Externa de la Obra Pública Estatal.";
 
-		@if( $en_tiempo!=1 && $datos->id_ultimo_tramite != 0)
+
+		@if ( $en_tiempo != 1 && $datos->id_ultimo_tramite != 0 )
 			@if( $si_o_no==1 )
 				@if( $yano==0 )
 
@@ -145,7 +147,7 @@
 				  	<p class="text-justify">La Secretaría tendrá por recibida una solicitud y comenzará a correr el plazo de treinta días naturales, para que otorgue o niegue la constancia de inscripción, modificación o actualización en el registro de Contratistas o de Supervisores Externos, cuando el solicitante solvente las observaciones o presente la documentación completa con todos los requisitos.</p>
 				  	<hr>
 				  	<p class="mb-0 text-justify">Todos los seguimientos al trámite se le notificarán a su cuenta en el Portal del contratista y a este correo electrónico.</p>
-				</div>				
+				</div>
 			@endif	
 
 

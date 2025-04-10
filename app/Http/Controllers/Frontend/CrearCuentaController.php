@@ -40,7 +40,6 @@ class CrearCuentaController extends Controller
         $validation = new Validations;
         $status= 1; $code= 201;
         $post= $request->all();
-
         
         $id_tipo_persona= $post['id_tipo_persona'];       
         
@@ -117,7 +116,7 @@ class CrearCuentaController extends Controller
                         $vdatos['password']= $claro;
                     
                         $datos_correo=array();
-                        $datos_correo['asunto']= 'Portal del contratista SHYFP: Registro de cuenta de usuario';
+                        $datos_correo['asunto']= 'Portal del contratista SAyBG: Registro de cuenta de usuario';
                         $datos_correo['cuerpo']= CorreoPlantillas::creacion_cuenta($vdatos);
                         $datos_correo['correo_destinatario']=[$p_registro['email']];
                         $datos_correo['nombre_destinatario']= $p_registro['razon_social_o_nombre'];        

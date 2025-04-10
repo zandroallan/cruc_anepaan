@@ -54,9 +54,6 @@
 /**/
 
 
-
-
-
 h1 {
   padding: 50px 0;
   font-weight: 400;
@@ -82,7 +79,7 @@ section {
   border-top: 1px solid #ddd;
 }
 
-input[type="radio"] {
+input {
   display: none;
 }
 
@@ -218,8 +215,3 @@ input:checked + .tablabel {
 .mi-lista li {
   padding-left: .5em; /* Ajuste el padding aquí para dar más espacio */
 }
-
-
-/* Input file */
-  
-/**/

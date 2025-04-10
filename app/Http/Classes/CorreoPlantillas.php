@@ -55,7 +55,7 @@ class CorreoPlantillas
                                                     <p>
                                                         <strong>Atentamente</strong>.<br />
                                                         Coordinación de Verificación de la Supervisión Externa de la Obra Pública Estatal<br />
-                                                        Secretaría de la Honestidad y Función Pública
+                                                        Secretaría Anticorrupción y Buen Gobierno
                                                     </p>
                                                 </div>
                                                 <div style="text-align:justify">
@@ -80,7 +80,7 @@ class CorreoPlantillas
                                                         Aviso de privacidad
                                                     </p><br /><br />
                                                     <p>
-                                                        Los datos recabados en este formato, serán protegidos, incorporados y tratados en los términos establecidos en la Ley de Protección de Datos Personales en Posesión de Sujetos Obligados del Estado de Chiapas (LPDPPSOCHIS), así como en los Lineamientos Generales para la Custodia y Protección de Datos Personales e Información Reservada y Confidencial en posesión de los Sujetos Obligados del Estado de Chiapas y demas normatividad aplicable. Para mayor información puede consultar nuestro aviso de privacidad en la página: https://www.shyfpchiapas.gob.mx/
+                                                        Los datos recabados en este formato, serán protegidos, incorporados y tratados en los términos establecidos en la Ley de Protección de Datos Personales en Posesión de Sujetos Obligados del Estado de Chiapas (LPDPPSOCHIS), así como en los Lineamientos Generales para la Custodia y Protección de Datos Personales e Información Reservada y Confidencial en posesión de los Sujetos Obligados del Estado de Chiapas y demas normatividad aplicable. Para mayor información puede consultar nuestro aviso de privacidad en la página: https://www.anticorrupcionybg.gob.mx/
                                                     </p>
                                                 </div>
                                             </td>
@@ -102,7 +102,7 @@ class CorreoPlantillas
                                                         <tr>
                                                             <td>
                                                                 <strong>No se pueden enviar respuestas a esta dirección de correo electrónico</strong>.<br />
-                                                                © Secretaría de la Honestidad y Función Pública., Blvd. Los Castillos No. 410, Fracc. Montes Azules Tuxtla Gutiérrez; Chiapas, CP 29056 Conmutador: (961) 61 8 75 30
+                                                                © Secretaría Anticorrupción y Buen Gobierno., Blvd. Los Castillos No. 410, Fracc. Montes Azules Tuxtla Gutiérrez; Chiapas, CP 29056 Conmutador: (961) 61 8 75 30
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -162,8 +162,7 @@ class CorreoPlantillas
                                                     
                                                      <p class="text-justify">Sistema de Registro de Contratistas y Supervisores Externos
                                                      Usted tiene una cita, el día <b>'. $datos->fecha .'</b> a las <b>'. $datos->hora .'</b>, en la
-                                                     Mesa <b>'. $datos->mesa .'</b>. En las oficinas de la Secretaría de la Honestidad y
-                                                     Función Pública, ubicadas en: Boulevard Los Castillos #410, planta baja,
+                                                     Mesa <b>'. $datos->mesa .'</b>. En las oficinas de la Secretaría Anticorrupción y Buen Gobierno, ubicadas en: Boulevard Los Castillos #410, planta baja,
                                                      Fraccionamiento Montes Azules.</p>
                                                     
                                                      <p class="text-justify">Para la expedición y obtención de su Constancia por Actualización de
@@ -192,14 +191,14 @@ class CorreoPlantillas
                                                      22022.- Área Legal</p>
                                                     
                                                      <p class="text-justify"> Coordinación de Verificación de la Supervisión Externa de la Obra
-                                                     Pública Estatal, de la Secretaría de la Honestidad y Función Pública.</p>
+                                                     Pública Estatal, de la Secretaría Anticorrupción y Buen Gobierno.</p>
 
                                                 </div>
                                                 <div style="text-align:justify">
                                                     <p>
                                                         <strong>Atentamente</strong>.<br />
                                                         Coordinación de Verificación de la Supervisión Externa de la Obra Pública Estatal<br />
-                                                        Secretaría de la Honestidad y Función Pública
+                                                        Secretaría Anticorrupción y Buen Gobierno
                                                     </p>
                                                 </div>
                                                 <div style="text-align:justify">
@@ -236,7 +235,7 @@ class CorreoPlantillas
                                                         <tr>
                                                             <td>
                                                                 <strong>No se pueden enviar respuestas a esta dirección de correo electrónico</strong>.<br />
-                                                                © Secretaría de la Honestidad y Función Pública., Blvd. Los Castillos No. 410, Fracc. Montes Azules Tuxtla Gutiérrez; Chiapas, CP 29056 Conmutador: (961) 61 8 75 30
+                                                                © Secretaría Anticorrupción y Buen Gobierno., Blvd. Los Castillos No. 410, Fracc. Montes Azules Tuxtla Gutiérrez; Chiapas, CP 29056 Conmutador: (961) 61 8 75 30
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -300,7 +299,7 @@ class CorreoPlantillas
                                                     <p>
                                                         <strong>Atentamente</strong>.<br />
                                                         Coordinación de Verificación de la Supervisión Externa de la Obra Pública Estatal<br />
-                                                        Secretaría de la Honestidad y Función Pública
+                                                        Secretaría Anticorrupción y Buen Gobierno
                                                     </p>
                                                 </div>
                                                 <div style="text-align:justify">
@@ -340,7 +339,7 @@ class CorreoPlantillas
                                                         <tr>
                                                             <td>
                                                                 <strong>No se pueden enviar respuestas a esta dirección de correo electrónico</strong>.<br />
-                                                                © Secretaría de la Honestidad y Función Pública., Blvd. Los Castillos No. 410, Fracc. Montes Azules Tuxtla Gutiérrez; Chiapas, CP 29056 Conmutador: (961) 61 8 75 30
+                                                                © Secretaría Anticorrupción y Buen Gobierno., Blvd. Los Castillos No. 410, Fracc. Montes Azules Tuxtla Gutiérrez; Chiapas, CP 29056 Conmutador: (961) 61 8 75 30
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -411,14 +410,14 @@ class CorreoPlantillas
                                                 </div>
                                                 <div style="text-align:justify">
                                                     <p>
-                                                        <strong>Advertencia: </strong> El uso de la cuenta, así como el accesar al Sistema de Registro de Contrastas y Supervisores Externos, por medio del usuario y contraseña es responsabilidad de la persona a la que le fue otorgada; se recomienda cambiar su contraseña periodicamente para aumentar la seguridad de su cuenta, ni compartir con terceros.<br><br>Link para ingresar al sistema: https://apps.shyfpchiapas.gob.mx/sircse
+                                                        <strong>Advertencia: </strong> El uso de la cuenta, así como el accesar al Sistema de Registro de Contrastas y Supervisores Externos, por medio del usuario y contraseña es responsabilidad de la persona a la que le fue otorgada; se recomienda cambiar su contraseña periodicamente para aumentar la seguridad de su cuenta, ni compartir con terceros.<br><br>Link para ingresar al sistema: https://apps.anticorrupcionybg.gob.mx/cruc_anepaan
                                                     </p>
                                                 </div>                                                
                                                 <div style="text-align:justify">
                                                     <p>
                                                         <strong>Atentamente</strong>.<br />
                                                         Coordinación de Verificación de la Supervisión Externa de la Obra Pública Estatal<br />
-                                                        Secretaría de la Honestidad y Función Pública
+                                                        Secretaría Anticorrupción y Buen Gobierno
                                                     </p>
                                                 </div>
                                                 <div style="text-align:justify">
@@ -458,7 +457,7 @@ class CorreoPlantillas
                                                         <tr>
                                                             <td>
                                                                 <strong>No se pueden enviar respuestas a esta dirección de correo electrónico</strong>.<br />
-                                                                © Secretaría de la Honestidad y Función Pública., Blvd. Los Castillos No. 410, Fracc. Montes Azules Tuxtla Gutiérrez; Chiapas, CP 29056 Conmutador: (961) 61 8 75 30
+                                                                © Secretaría Anticorrupción y Buen Gobierno., Blvd. Los Castillos No. 410, Fracc. Montes Azules Tuxtla Gutiérrez; Chiapas, CP 29056 Conmutador: (961) 61 8 75 30
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -527,7 +526,7 @@ class CorreoPlantillas
                                                     <p>
                                                         <strong>Atentamente</strong>.<br />
                                                         Coordinación de Verificación de la Supervisión Externa de la Obra Pública Estatal<br />
-                                                        Secretaría de la Honestidad y Función Pública
+                                                        Secretaría Anticorrupción y Buen Gobierno
                                                     </p>
                                                 </div>
                                                 <div style="text-align:justify">
@@ -567,7 +566,7 @@ class CorreoPlantillas
                                                         <tr>
                                                             <td>
                                                                 <strong>No se pueden enviar respuestas a esta dirección de correo electrónico</strong>.<br />
-                                                                © Secretaría de la Honestidad y Función Pública., Blvd. Los Castillos No. 410, Fracc. Montes Azules Tuxtla Gutiérrez; Chiapas, CP 29056 Conmutador: (961) 61 8 75 30
+                                                                © Secretaría Anticorrupción y Buen Gobierno., Blvd. Los Castillos No. 410, Fracc. Montes Azules Tuxtla Gutiérrez; Chiapas, CP 29056 Conmutador: (961) 61 8 75 30
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -627,7 +626,7 @@ class CorreoPlantillas
                                                         Me permito comunicarle, que existió saturación de ingresos de solicitudes en el sistema, dentro de los primeros minutos de la fecha antes referida. Como consecuencia, el SIRCSE, no asignó de manera cronológica los folios correspondientes; por tal motivo, con el objetivo de brindar un mejor servicio y control de las solicitudes, se efectuó el reordenamiento correspondiente, otorgándole a su registro el presente número correcto y definitivo mediante el cual podrá usted darle seguimiento.
                                                     </p>
                                                     <p style="text-align:justify">
-                                                        Artículo 30, fracción IX, del Reglamento Interior de la Secretaría de la Honestidad y Función Pública, y artículo 2, de los Lineamientos para el Trámite y Expedición de Constancias de Registro de Contratistas y de Supervisores Externos.
+                                                        Artículo 30, fracción IX, del Reglamento Interior de la Secretaría Anticorrupción y Buen Gobierno, y artículo 2, de los Lineamientos para el Trámite y Expedición de Constancias de Registro de Contratistas y de Supervisores Externos.
                                                     </p>
                                                     <p style="text-align:justify">
                                                         Su solicitud de trámite de <b>'. $vdatos['tipo_tramite'] .'</b> se le reasigno un nuevo folio el cual es  <b>'. $vdatos['folio'] .'</b> que inicio con fecha  <b>'. $vdatos['fecha_inicio'] .'</b>.
@@ -645,7 +644,7 @@ class CorreoPlantillas
                                                     <p>
                                                         <strong>Atentamente</strong>.<br />
                                                         Coordinación de Verificación de la Supervisión Externa de la Obra Pública Estatal<br />
-                                                        Secretaría de la Honestidad y Función Pública
+                                                        Secretaría Anticorrupción y Buen Gobierno
                                                     </p>
                                                 </div>
                                                 <div style="text-align:justify">
@@ -685,7 +684,7 @@ class CorreoPlantillas
                                                         <tr>
                                                             <td>
                                                                 <strong>No se pueden enviar respuestas a esta dirección de correo electrónico</strong>.<br />
-                                                                © Secretaría de la Honestidad y Función Pública., Blvd. Los Castillos No. 410, Fracc. Montes Azules Tuxtla Gutiérrez; Chiapas, CP 29056 Conmutador: (961) 61 8 75 30
+                                                                © Secretaría Anticorrupción y Buen Gobierno., Blvd. Los Castillos No. 410, Fracc. Montes Azules Tuxtla Gutiérrez; Chiapas, CP 29056 Conmutador: (961) 61 8 75 30
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -756,14 +755,14 @@ class CorreoPlantillas
                                                 </div>
                                                 <div style="text-align:justify">
                                                     <p>
-                                                        <strong>Advertencia: </strong> El uso de la cuenta, así como el accesar al Sistema de Registro de Contrastas y Supervisores Externos, por medio del usuario y contraseña es responsabilidad de la persona a la que le fue otorgada; se recomienda cambiar su contraseña periodicamente para aumentar la seguridad de su cuenta, ni compartir con terceros.<br><br>Link para ingresar al sistema: https://apps.shyfpchiapas.gob.mx/sircse
+                                                        <strong>Advertencia: </strong> El uso de la cuenta, así como el accesar al Sistema de Registro de Contrastas y Supervisores Externos, por medio del usuario y contraseña es responsabilidad de la persona a la que le fue otorgada; se recomienda cambiar su contraseña periodicamente para aumentar la seguridad de su cuenta, ni compartir con terceros.<br><br>Link para ingresar al sistema: https://apps.anticorrupcionybg.gob.mx/cruc_anepaan
                                                     </p>
                                                 </div>                                                
                                                 <div style="text-align:justify">
                                                     <p>
                                                         <strong>Atentamente</strong>.<br />
                                                         Coordinación de Verificación de la Supervisión Externa de la Obra Pública Estatal<br />
-                                                        Secretaría de la Honestidad y Función Pública
+                                                        Secretaría Anticorrupción y Buen Gobierno
                                                     </p>
                                                 </div>
                                                 <div style="text-align:justify">
@@ -803,7 +802,7 @@ class CorreoPlantillas
                                                         <tr>
                                                             <td>
                                                                 <strong>No se pueden enviar respuestas a esta dirección de correo electrónico</strong>.<br />
-                                                                © Secretaría de la Honestidad y Función Pública., Blvd. Los Castillos No. 410, Fracc. Montes Azules Tuxtla Gutiérrez; Chiapas, CP 29056 Conmutador: (961) 61 8 75 30
+                                                                © Secretaría Anticorrupción y Buen Gobierno., Blvd. Los Castillos No. 410, Fracc. Montes Azules Tuxtla Gutiérrez; Chiapas, CP 29056 Conmutador: (961) 61 8 75 30
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -905,7 +904,7 @@ class CorreoPlantillas
                                                 <div style="text-align:justify">
                                                     <p>
                                                         <strong>Atentamente</strong>.<br />
-                                                        Coordinación de Verificación de la Supervisión Externa de la Obra Pública Estatal, de la Secretaría de la Honestidad y Función Pública.<br />
+                                                        Coordinación de Verificación de la Supervisión Externa de la Obra Pública Estatal, de la Secretaría Anticorrupción y Buen Gobierno.<br />
                                                         Cita en Boulevard Los Castillos 410, Fraccionamiento Montes Azules, Tuxtla Gutiérrez, Chiapas. C.P. 29056.<br />
                                                         Teléfono 961 61 8 75 30.<br />
                                                         Extensión 22022.- Área Legal<br />
@@ -947,7 +946,7 @@ class CorreoPlantillas
                                                         <tr>
                                                             <td>
                                                                 <strong>No se pueden enviar respuestas a esta dirección de correo electrónico</strong>.<br />
-                                                                © Secretaría de la Honestidad y Función Pública., Blvd. Los Castillos No. 410, Fracc. Montes Azules Tuxtla Gutiérrez; Chiapas, CP 29056 Conmutador: (961) 61 8 75 30
+                                                                © Secretaría Anticorrupción y Buen Gobierno., Blvd. Los Castillos No. 410, Fracc. Montes Azules Tuxtla Gutiérrez; Chiapas, CP 29056 Conmutador: (961) 61 8 75 30
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -1016,7 +1015,7 @@ class CorreoPlantillas
                                                     <p>
                                                         <strong>Atentamente</strong>.<br />
                                                         Coordinación de Verificación de la Supervisión Externa de la Obra Pública Estatal<br />
-                                                        Secretaría de la Honestidad y Función Pública
+                                                        Secretaría Anticorrupción y Buen Gobierno
                                                     </p>
                                                 </div>
                                                 <div style="text-align:justify">
@@ -1053,7 +1052,7 @@ class CorreoPlantillas
                                                         <tr>
                                                             <td>
                                                                 <strong>No se pueden enviar respuestas a esta dirección de correo electrónico</strong>.<br />
-                                                                © Secretaría de la Honestidad y Función Pública., Blvd. Los Castillos No. 410, Fracc. Montes Azules Tuxtla Gutiérrez; Chiapas, CP 29056 Conmutador: (961) 61 8 75 30
+                                                                © Secretaría Anticorrupción y Buen Gobierno., Blvd. Los Castillos No. 410, Fracc. Montes Azules Tuxtla Gutiérrez; Chiapas, CP 29056 Conmutador: (961) 61 8 75 30
                                                             </td>
                                                         </tr>
                                                     </tbody>

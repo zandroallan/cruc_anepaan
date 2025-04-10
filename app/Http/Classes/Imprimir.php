@@ -8,8 +8,8 @@ class Imprimir{
 
     public function __construct()
     {
-        $this->left_logo= public_path()."/img/logo-shyfp.jpg";
-        $this->right_logo= public_path()."/img/declarachiapas.png";
+        $this->left_logo= public_path()."/public/img/logo-shyfp.jpg";
+        $this->right_logo= public_path()."/public/img/declarachiapas.png";
     }
 
     public function getEncabezado(){
@@ -23,7 +23,7 @@ class Imprimir{
     public function acuse_observaciones($contenido, $mode, $folio)
     {
         $mpdf = new \Mpdf\Mpdf([     
-            'tempDir' => public_path()."/pdf/tmp",     
+            'tempDir' => public_path()."/public/pdf/tmp",     
             'margin_left' => 20,
             'margin_right' => 15,
             'margin_top' => 35,
@@ -35,7 +35,7 @@ class Imprimir{
 
         $html= $contenido;
 
-        $stylesheet = file_get_contents(public_path()."/css/print.css");                
+        $stylesheet = file_get_contents(public_path()."/public/css/print.css");                
         $mpdf->SetProtection(array('print'));
         $mpdf->SetTitle("SIRCS. - Acuse de Envio de Observaciones");
         $mpdf->SetAuthor("Coordinación de Verificación de la Supervisión Externa de la Obra Pública Estatal");
@@ -53,7 +53,7 @@ class Imprimir{
 	
 	public function observaciones($contenido, $mode, $folio) {
         $mpdf = new \Mpdf\Mpdf([
-            'tempDir' => public_path()."/pdf/tmp",
+            'tempDir' => public_path()."/public/pdf/tmp",
             'margin_left' => 20,
             'margin_right' => 15,
             'margin_top' => 30,
@@ -65,7 +65,7 @@ class Imprimir{
 
         $html= $contenido;
 
-        $stylesheet = file_get_contents(public_path()."/css/print.css");                
+        $stylesheet = file_get_contents(public_path()."/public/css/print.css");                
         $mpdf->SetProtection(array('print'));
         $mpdf->SetTitle("SIRCS. - Bitacora revision");
         $mpdf->SetAuthor("Coordinación de Verificación de la Supervisión Externa de la Obra Pública Estatal");
@@ -128,7 +128,7 @@ class Imprimir{
 
     public function tramite_acuse_recepcion($contenido, $mode) {
         $mpdf = new \Mpdf\Mpdf([
-            'tempDir' => public_path()."/pdf/tmp",
+            'tempDir' => public_path()."/public/pdf/tmp",
             'margin_left' => 20,
             'margin_right' => 15,
             'margin_top' => 30,
@@ -140,7 +140,7 @@ class Imprimir{
 
         $html= $contenido;
 
-        $stylesheet = file_get_contents(public_path()."/css/print.css");                
+        $stylesheet = file_get_contents(public_path()."/public/css/print.css");                
         $mpdf->SetProtection(array('print'));
         $mpdf->SetTitle("SIRCS. - Acuse de recepción de documentos");
         $mpdf->SetAuthor("Coordinación de Verificación de la Supervisión Externa de la Obra Pública Estatal");
