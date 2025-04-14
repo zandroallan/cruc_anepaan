@@ -17,7 +17,7 @@ class ApiController extends BaseController
      {
         $vstatus=200;
         $vrespuesta=array();
-        $vrespuesta=['codigo' => 1, 'mensaje' => 'Exito'];
+        $vrespuesta=['codigo' => 0, 'mensaje' => 'No se encontraron resultados para el RFC ingresado. Verifique que sea correcto e intente nuevamente.'];
 
         $validator = Validator::make($request->all(), [
             'rfc' => [
@@ -37,9 +37,11 @@ class ApiController extends BaseController
         }
 
         try {
-           
-            $vrespuesta['id_user']=auth('sanctum')->user()->id;
-            $vrespuesta['data']=T_Registro::general(['rfc'=> $request->rfc])->first();
+            $_MDL_DATA_Registro=T_Registro::padronShowApi(['rfc'=> $request->rfc])->first();
+            if ( $_MDL_DATA_Registro ) {
+                $vrespuesta['id_user']=auth('sanctum')->user()->id;
+                $vrespuesta=['codigo' => 1, 'mensaje' => 'Exito', 'data' =>$_MDL_DATA_Registro];
+            }
 
         }
         catch( Exception $vexception ) {
