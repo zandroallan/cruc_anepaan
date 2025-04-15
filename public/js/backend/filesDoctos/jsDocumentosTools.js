@@ -357,7 +357,7 @@ function fill_soporte(id_documento, tipo = 0) {
             array = {
                 "cedula": "Cedula Profesional*",
                 "curp": "CURP*",
-                "ife_ine": "IFE o INE*",
+                "ife_ine": "INE*",
                 "curriculum_rtec": "Currículum Vitae del Representante Técnico"
             };
             break;

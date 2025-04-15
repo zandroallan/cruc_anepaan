@@ -35,11 +35,11 @@
 	<input id="tab4" type="radio" name="tabs">
 	<label class="tablabel label4" for="tab4">Legal</label>
 
-	<input id="tab5" type="radio" name="tabs">
-	<label class="tablabel label5" for="tab5">Tecnica</label>
-
 	<input id="tab6" type="radio" name="tabs">
 	<label class="tablabel label6" for="tab6">Financiera</label>
+
+	<input id="tab5" type="radio" name="tabs">
+	<label class="tablabel label5" for="tab5">Tecnica</label>
 
 	<input id="tab7" type="radio" name="tabs">
 	<label class="tablabel label7" for="tab7">Contacto</label>
@@ -72,18 +72,18 @@
 		@include('backend.mis-tramites.tabs-legal')
 	</section>
 
-	<section id="content5">
-		<div class="card">
-			<div class="card-body">
-				@include('backend.mis-tramites.tabs-tecnica')
-			</div>
-		</div>
-	</section>
-
 	<section id="content6">
 		<div class="card">
 			<div class="card-body">
 				@include('backend.mis-tramites.tabs-financiera')
+			</div>
+		</div>
+	</section>
+
+	<section id="content5">
+		<div class="card">
+			<div class="card-body">
+				@include('backend.mis-tramites.tabs-tecnica')
 			</div>
 		</div>
 	</section>

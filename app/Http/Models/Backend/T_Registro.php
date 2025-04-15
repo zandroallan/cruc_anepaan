@@ -73,10 +73,9 @@ class T_Registro extends Model
         }
 
         return $result;              
-    }   
-
-    public static function buscar_datos_registro($data)
-    {
+    } 
+    
+    public static function buscar_datos_registro($data){
         $result = T_Registro::select('id', 'rfc', 'email', 'razon_social_o_nombre');
 
         if(array_key_exists('correo', $data)){
@@ -113,8 +112,7 @@ class T_Registro extends Model
         return $result;               
     }
 
-    public static function general($data=[])
-    {
+    public static function general($data=[]){
         $result = T_Registro::select('t_registro.id', 't_registro.id_sujeto', 't_registro.razon_social_o_nombre as razon_social', 't_registro.id_tipo_persona', 't_registro.rfc', 't_registro.created_at as fecha_registro', DB::raw('YEAR(t_registro.created_at) as anio'), 't.fecha_inicio', 't.fecha_fin', 'tt.nombre as tipo_tramite', 's.nombre as status', 's.color as status_color', 't.folio' 
         );
         $result= $result->leftJoin('t_tramites as t', 't.id', '=', 't_registro.id_ultimo_tramite');
@@ -132,8 +130,8 @@ class T_Registro extends Model
         if(array_key_exists('i_search', $data)){
             $filtro= $data["i_search"];
             $result= $result->where( function($sql) use ($filtro){
-                $sql->where('t_registro.razon_social_o_nombre','like', '%'.$filtro.'%')->orWhere('t_registro.rfc','like', '%'.$filtro.'%');
-            });
+                    $sql->where('t_registro.razon_social_o_nombre','like', '%'.$filtro.'%')->orWhere('t_registro.rfc','like', '%'.$filtro.'%');
+                });
         }
 
         if(array_key_exists('rfc', $data)){
@@ -160,8 +158,7 @@ class T_Registro extends Model
         return $result;
     }
 
-    public static function edit($id)
-    {
+    public static function edit($id){
         $result = T_Registro::select('t_registro.*','t_registro.id_sujeto', 't_registro.id_tipo_persona', 't_registro.id_d_personal', 't_registro.rfc', 'p.curp', 't_registro.id_d_domicilio_fiscal', 't_registro.razon_social_o_nombre', 't_registro.telefono', 't_registro.email as correo', 'p.nombre', 'p.ap_paterno', 'ap_materno', 'p.id_nacionalidad', 'p.sexo', 'p.id_tipo_identificacion', 'p.numero_identificacion', 'df.id as id_domicilio_fiscal', 'mf.id_estado as id_estado_fiscal', 'mf.nombre as municipio_fiscal', 'ef.nombre as estado_fiscal', 'df.id_municipio as id_municipio_fiscal', 'df.ciudad as ciudad_fiscal', 'df.calle as calle_fiscal', 'df.num_exterior as ext_fiscal', 'df.num_interior as int_fiscal', 'df.colonia as colonia_fiscal', 'df.codigo_postal as cp_fiscal', 'df.referencias as referencias_fiscal', 'dp.id as id_domicilio_particular', 'mp.id_estado as id_estado_particular', 'dp.id_municipio as id_municipio_particular', 'dp.ciudad as ciudad_particular', 'dp.calle as calle_particular', 'dp.num_exterior  as ext_particular', 'dp.num_interior  as int_particular', 'dp.colonia as colonia_particular', 'dp.codigo_postal as cp_particular', 'dp.referencias as referencias_particular');
 
         $result= $result->leftJoin('d_personales as p', 'p.id', '=', 't_registro.id_d_personal');
@@ -176,8 +173,7 @@ class T_Registro extends Model
         return $result->first();        
     }
 
-    public static function get_ultimo_tramite($rfc)
-    {
+    public static function get_ultimo_tramite($rfc){
         $result = T_Registro::select('t_registro.id_ultimo_tramite', 't.id_tipo_tramite', 't.id_status', 't.id_status_area_tecnica', 't.id_status_area_legal', 't.id_status_area_financiera', DB::raw('YEAR(t.created_at) as anio'), 'tt.nombre as tipo_de_tramite');
         $result= $result->join('t_tramites as t', 't.id', '=', 't_registro.id_ultimo_tramite');
         $result= $result->join('c_tipos_tramite as tt', 'tt.id', '=', 't.id_tipo_tramite');
@@ -186,8 +182,7 @@ class T_Registro extends Model
 
     }
 	
-	public static function get_ultimo_tramite_($data=[])
-    {
+	public static function get_ultimo_tramite_($data=[]){
         $result = T_Registro::select('t_registro.id_ultimo_tramite', 't.id_tipo_tramite', 't.id_status', 't.id_status_area_tecnica', 't.id_status_area_legal', 't.id_status_area_financiera', DB::raw('YEAR(t.created_at) as anio'), 'tt.nombre as tipo_de_tramite');
         $result= $result->join('t_tramites as t', 't.id', '=', 't_registro.id_ultimo_tramite');
         $result= $result->join('c_tipos_tramite as tt', 'tt.id', '=', 't.id_tipo_tramite');
@@ -210,11 +205,11 @@ class T_Registro extends Model
         return $result->first();  
     }
 
-    public static function certificado($id, $tipo)
-    {
-         if($tipo==1) {
+    public static function certificado($id, $tipo){
+         if($tipo==1)
+         {
 
-            $query= T_Registro::select('t_registro.id', 't_tramites.id as wert', 't_registro.id_sujeto','t_registro.id_tipo_persona', 't_registro.id_ultimo_tramite','t_registro.rfc', 'd_personales.id_d_domicilio', 'd_personales.nombre'
+        $query= T_Registro::select('t_registro.id', 't_tramites.id as wert', 't_registro.id_sujeto','t_registro.id_tipo_persona', 't_registro.id_ultimo_tramite','t_registro.rfc', 'd_personales.id_d_domicilio', 'd_personales.nombre'
                 , 't_registro.rfc', 't_registro.razon_social_o_nombre','t_tramites.especialidades_tecnicas','t_tramites_capital_contable.capital','t_tramites_capital_contable.fecha_declaracion', 't_tramites_capital_contable.fecha_elaboracion'
                 , 'd_personales.ap_paterno', 'd_personales.ap_materno', 'd_personales.curp', 'd_personales.id_nacionalidad'
                 , 'd_personales.sexo'

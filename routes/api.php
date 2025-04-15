@@ -27,13 +27,13 @@ Route::post('logout', 'Api\LoginSanctumController@logout');
 
 
 Route::get('unauthorized',function(Request $r){
-    $response = [
+	$response = [
             'success' => false,
             'code'    => "C003",
             'message' => "Unauthorized",
             'data'    => [
-                            'error' => "No existe ningun token"
-                        ]
+            				'error' => "No existe ningun token"
+            			]
         ];
 
     return response()->json($response, 404);
