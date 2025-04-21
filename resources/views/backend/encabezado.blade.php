@@ -20,7 +20,7 @@
                     <a href="#">@if($datos->id_sujeto==1) CONTRATISTA @else SUPERVISOR @endif</a> <span class="mx-3">|</span>
                     <a href="#">Persona @if($datos->id_tipo_persona==1) física @else moral @endif</a> <span class="mx-3">|</span>
                     <a href="#">R.F.C. {{ $datos->rfc }}</a> <span class="mx-3">|</span>
-                    <a href="#">Telefono {{ $datos->telefono }}</a> <span class="mx-3">|</span>
+                    <a href="#">Teléfono {{ $datos->telefono }}</a> <span class="mx-3">|</span>
                     <a href="#">Correo {{ $datos->email }}</a>
                 </div> 
             </div>

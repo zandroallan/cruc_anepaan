@@ -375,7 +375,8 @@ function fill_soporte(id_documento, tipo = 0) {
     return array;
 }
 
-function mdl_documento_soporte(id_documento, txt_documento, tipo = 0, alias = 0) {
+function mdl_documento_soporte(id_documento, txt_documento, tipo = 0, alias = 0)
+{
     $("#id_documento_soporte").val(id_documento);
     $("#mdl_lbl_documento_soporte").html(txt_documento);
     if (alias != 0) {

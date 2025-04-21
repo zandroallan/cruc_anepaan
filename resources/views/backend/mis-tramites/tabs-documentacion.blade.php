@@ -20,8 +20,9 @@
 	</div>
 	<div class="alert-text font-weight-bold">
 		<h6>
-			<span class="label label-dot label-dark"></span>
-			Los documentos presentados deben ser legibles para evitar ser observados, el tamaño maximo de <b>cada archivo no debe sobrepasar los 40mb</b>. Los archivos deben ser subidos en formato <b>PDF</b>.
+			<!-- <span class="label label-dot label-dark"></span> -->
+			Los documentos presentados deben ser legibles y escaneados del original para evitar ser observados, el tamaño maximo de <b>cada archivo no debe sobrepasar los 40mb</b>. 
+			Los archivos deben ser subidos en formato <b>(.pdf)</b>.
 		</h6>
 	</div>
 </div>

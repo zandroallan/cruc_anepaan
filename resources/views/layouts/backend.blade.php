@@ -3,7 +3,7 @@
 	<!--begin::Head-->
 	<head><base href="">
 		<meta charset="utf-8" />
-		<title>Sircse | Web</title>
+		<title>Cruc Anepaan | Web</title>
 		<meta name="description" content="Updates and statistics" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 		<link rel="canonical" href="https://keenthemes.com/metronic" />
@@ -272,7 +272,7 @@
 					                        <li class="menu-item _avance_tramite">
 					                            <a class="menu-link" href="{{ Route('tramites.seguimientos')}}">
 					                            	<span class="menu-text">
-					                            		<i class="fa fa-rch"></i> Avance Trámite
+					                            		<i class="fa fa-rch"></i> Avance del trámite
 						                            </span>
 					                            </a>
 					                        </li>                        
@@ -296,7 +296,7 @@
 					                        <li class="menu-item">
 					                            <a class="menu-link" href="#mdlAtencion" data-toggle="modal">
 					                            	<span class="menu-text">
-						                            	<i class="fe fe-phone-call"></i> Atencion telefonica
+						                            	<i class="fe fe-phone-call"></i> Atención teléfonica
 						                            </span>
 					                            </a>               
 					                        </li>

@@ -197,7 +197,12 @@
                         @csrf 
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p class="text-justify font-size-h6 font-weight-bolder text-dark"><b><span style="color: #b11f29;">Nota:</span></b> Los datos requeridos son obligatorios porque a traves de ellos se realizara la busqueda en el padron, de no ser asi se omitira. </p>
+                                    <p class="text-justify font-size-h6 font-weight-bolder text-dark">
+                                        <b>
+                                            <span style="color: #b11f29;">Nota:</span>
+                                            
+                                        </b> 
+                                        Los datos requeridos son obligatorios porque a través de ellos se realizará la búsqueda en el padrón, de no ser así se omitirá. </p>
                                 </div>
                             </div>
 
@@ -212,7 +217,7 @@
                             <div class="form-group">
                                 <label class="font-size-h6 font-weight-bolder text-dark">Correo electrónico</label>
                                 <input class="form-control img h-auto py-2 px-6 rounded-lg border-0 myshadow sizeinput" type="text" name="txtCorreo" id="txtCorreo" autocomplete="off" />
-                                <code class="font-size-h6 font-weight-bolder" style="color: #b11f29;"><b>Poner la direccion completa del correo.</b></code>
+                                <code class="font-size-h6 font-weight-bolder" style="color: #b11f29;"><b>Agregar la dirección completa del correo.</b></code>
                             </div>
                             <!--end::Form group-->
                         </form>

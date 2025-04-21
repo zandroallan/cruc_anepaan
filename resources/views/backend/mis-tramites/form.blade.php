@@ -15,10 +15,10 @@
 	</div>
 	<div class="alert-text font-weight-bold">
 		<h6><span class="label label-dot label-dark"></span>
-		El folio de pago requerido es obligatorio, porque es mediante el cual su tramite se llevara a cabo.</h6>
+		El folio de pago requerido es obligatorio, porque es mediante el cual su trámite se llevará a cabo.</h6>
 		
 		<h6><span class="label label-dot label-dark"></span>
-		El correo electrónico es importante por que es a través del cual se enviaran notificaciones del sistema</h6>
+		El correo electrónico es importante por que es a través del cual se enviarán notificaciones del sistema.</h6>
 	</div>
 </div>
 
@@ -30,10 +30,29 @@
 	<input type="hidden" name="id_tipo_persona" value="2">
 @endif
 
+			<div class="form-group row">
+		    	<div class="col-lg-6">
+					<label class="col-form-label">
+						<b>Número de Folio del recibo oficial electrónico de pago de derechos *:</b>
+					</label>
+		     		{!! Form::text('folio_pago_temp', null, ['id'=>'folio_pago_temp', 'class'=>'form-control inp-udi input-sm']) !!}
+		    	</div>
+		    	<div class="col-lg-6">
+					<label class="col-form-label">
+						<b>Fecha del recibo oficial electrónico de pago de derechos *:</b>
+					</label>
+		     		{!! Form::text('fecha_pago_temp', null, ['id'=>'fecha_pago_temp', 'class'=>'form-control  fc-datepicker inp-udi']) !!}
+		    	</div>
+		    </div>
+			<hr />
+
+
 
 <div class="row">
 	<div class="col-md-6">
 		<div class="mb-15">
+			
+
 		    <div class="form-group row">
 		    	<label class="col-lg-3 col-form-label text-right"><b>RFC:</b></label>
 		    	<div class="col-lg-6">
@@ -42,12 +61,7 @@
 		    	</div>
 		    </div>
 		
-		    <div class="form-group row">
-		    	<label class="col-lg-3 col-form-label text-right"><b>Folio de pago *:</b></label>
-		    	<div class="col-lg-6">
-		     		{!! Form::text('folio_pago_temp', null, ['id'=>'folio_pago_temp', 'class'=>'form-control inp-udi input-sm']) !!}
-		    	</div>
-		    </div>
+		    
 
 		    <div class="form-group row">
 		    	<label class="col-lg-3 col-form-label text-right"><b>Tel&eacute;fono *:</b></label>
@@ -125,13 +139,6 @@
 
 		    	</div>
 		    </div>
-
-			<div class="form-group row">
-		    	<label class="col-lg-3 col-form-label text-right"><b>Fecha de pago*:</b></label>
-		    	<div class="col-lg-6">
-		     		{!! Form::text('fecha_pago_temp', null, ['id'=>'fecha_pago_temp', 'class'=>'form-control  fc-datepicker inp-udi']) !!}
-		    	</div>
-			</div>
 
 			<div class="form-group row">
 		    	<label class="col-lg-3 col-form-label text-right"><b>Correo *:</b></label>
