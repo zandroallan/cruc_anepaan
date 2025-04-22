@@ -67,7 +67,7 @@ class TecnicaController extends Controller
             $t_tramites_rtec=(object)$t_tramites_rtec;
         }
         else {
-            $t_tramites_rtec["fecha_cedula"]=FormatDate::formatDates($t_tramites_rtec["fecha_cedula"], 1);
+            $t_tramites_rtec["fecha_cedula"]=$t_tramites_rtec["fecha_cedula"];
         }
         $t_tramites_rtec= $t_tramites_rtec;
         return response()->json($t_tramites_rtec);
@@ -106,8 +106,8 @@ class TecnicaController extends Controller
         
         $p_rep_tecnico['cedula']=$post['dtrtec_cedula'];        
         //formateo de fecha recibida    
-        $date =  Carbon::createFromFormat('d/m/Y', $post['dtrtec_fecha_cedula']);
-        $p_rep_tecnico['fecha_cedula']=$date;
+        //$date =  Carbon::createFromFormat('d/m/Y', $post['dtrtec_fecha_cedula']);
+        $p_rep_tecnico['fecha_cedula']=$post['dtrtec_fecha_cedula'];
         $p_rep_tecnico['reposicion']=$post['dtrtec_reposicion'];      
 
         $validation->repTecnicoNuevo([
@@ -182,12 +182,12 @@ class TecnicaController extends Controller
      }
 
     public function destroyRTEC($id)
-     {        
-        $d_registro= T_Tramite_Rep_Tecnico::find($id);
-        $id_tramite= $d_registro->id_tramite;
+     {
+        $_MDL_Tramite_Rep_Tecnico= T_Tramite_Rep_Tecnico::find($id);
+        $id_tramite= $_MDL_Tramite_Rep_Tecnico->id_tramite;
         try {  
             DB::beginTransaction();
-            $d_registro->delete();                        
+            $_MDL_Tramite_Rep_Tecnico->delete();                        
             DB::commit();
         }
         catch (\Exception $e) {            
@@ -196,7 +196,7 @@ class TecnicaController extends Controller
             $message= ['errors'=>$error, 'id_tramite'=>$id_tramite];
             return response()->json($message, 409);
         }
-        $message= ['success'=>'Los datos han sido <b>eliminados</b>.','id_tramite'=>$id_tramite];
+        $message= ['success'=>'Los datos han sido <b>eliminados</b>.', 'id_tramite'=>$id_tramite];
         return response()->json($message, 201);
      }
 

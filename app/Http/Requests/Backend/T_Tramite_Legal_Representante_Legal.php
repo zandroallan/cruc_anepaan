@@ -44,14 +44,14 @@ class T_Tramite_Legal_Representante_Legal extends FormRequest
             'dlrepl_cp_particular' =>'required',            
 
             'dlrepl_num_escritura' =>'required',
-            'dlrepl_fecha_escritura' =>'required|date_format:d/m/Y',
+            'dlrepl_fecha_escritura' =>'required|date_format:Y-m-d',
             'dlrepl_notario_nombre' =>'required',
             'dlrepl_notario_numero' =>'required',
             'dlrepl_id_estado' =>'required|not_zero',
             'dlrepl_num_registro_publico' =>'required',
             'dlrepl_seccion' =>'required',
             'dlrepl_ciudad' =>'required',
-            'dlrepl_fecha_registro_publico' =>'required|date_format:d/m/Y',
+            'dlrepl_fecha_registro_publico' =>'required|date_format:Y-m-d',
             'dlrepl_id_estado_registro' =>'required|not_zero'
         ];
         return $rules;

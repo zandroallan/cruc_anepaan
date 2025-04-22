@@ -28,10 +28,12 @@
 	    
 	<input id="tab2" type="radio" name="tabs">
 	<label class="tablabel label2" for="tab2">Documentaci&oacute;n</label>
-	    
+	
+	@if ( $datos->id_tipo_persona != 1 )
 	<input id="tab3" type="radio" name="tabs">
 	<label class="tablabel label3" for="tab3">Socios legales</label>
-	    
+	@endif
+
 	<input id="tab4" type="radio" name="tabs">
 	<label class="tablabel label4" for="tab4">Legal</label>
 
@@ -60,6 +62,7 @@
 		</div>
 	</section>
 
+	@if ( $datos->id_tipo_persona != 1 )
 	<section id="content3">
 		<div class="card">
 			<div class="card-body">
@@ -67,6 +70,7 @@
 			</div>
 		</div>
 	</section>
+	@endif
 
 	<section id="content4">
 		@include('backend.mis-tramites.tabs-legal')

@@ -19,7 +19,8 @@ class T_Contacto extends Model
         'ap_paterno', 
         'ap_materno', 
         'cargo', 
-        'clave_atencion'
+        'clave_atencion',
+        'telefono'
     ];
 
     protected $hidden = [

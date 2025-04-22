@@ -73,11 +73,11 @@
 		@endsection
 
 		@section('script')
-			$('.fc-datepicker').datepicker({
+			/*$('.fc-datepicker').datepicker({
 				dateFormat: 'dd/mm/yy',
 				showOtherMonths: true,
 				selectOtherMonths: true
-			});
+			});*/
 
 			id_tramite_global = {{ Auth::User()->id_registro }};		
 
