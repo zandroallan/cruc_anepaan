@@ -26,15 +26,15 @@ class T_Tramite_Legal_Generales extends FormRequest
         $rules=[
             'dlg_imss' =>'required', 
             'dlg_boleta_pago' =>'required',
-            'dlg_fecha_pago' =>'required|date_format:d/m/Y',
-            'dlg_fecha_inicio' =>'required|date_format:d/m/Y',
-            'dlg_fecha_inscripcion' =>'required|date_format:d/m/Y',
+            'dlg_fecha_pago' =>'required|date_format:Y-m-d',
+            'dlg_fecha_inicio' =>'required|date_format:Y-m-d',
+            'dlg_fecha_inscripcion' =>'required|date_format:Y-m-d',
             'dlg_actividad' =>'required',
             //'dlg_rec' =>'required|date_format:d/m/Y',
             'dlg_num_constancia' =>'required',
             'dlg_num_control' =>'required',
-            'dlg_vigencia_de' =>'required|date_format:d/m/Y',
-            'dlg_vigencia_al' =>'required|date_format:d/m/Y'
+            'dlg_vigencia_de' =>'required|date_format:Y-m-d',
+            'dlg_vigencia_al' =>'required|date_format:Y-m-d'
         ];
         return $rules;
     }

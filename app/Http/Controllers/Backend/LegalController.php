@@ -53,15 +53,15 @@ class LegalController extends Controller
 
         $p_dlg['imss']= $post['dlg_imss'];
         $p_dlg['boleta_pago']= $post['dlg_boleta_pago'];
-        $p_dlg['fecha_pago']= FormatDate::formatDates($post['dlg_fecha_pago']);
-        $p_dlg['fecha_inicio']= FormatDate::formatDates($post['dlg_fecha_inicio']);
-        $p_dlg['fecha_inscripcion']= FormatDate::formatDates($post['dlg_fecha_inscripcion']);
+        $p_dlg['fecha_pago']= $post['dlg_fecha_pago'];
+        $p_dlg['fecha_inicio']= $post['dlg_fecha_inicio'];
+        $p_dlg['fecha_inscripcion']= $post['dlg_fecha_inscripcion'];
         $p_dlg['actividad']= $post['dlg_actividad'];
-        $p_dlg['rec']= FormatDate::formatDates($post['dlg_rec']);
+        $p_dlg['rec']= $post['dlg_rec'];
         $p_dlg['num_constancia']= $post['dlg_num_constancia'];     
         $p_dlg['num_control']= $post['dlg_num_control']; 
-        $p_dlg['vigencia_de']= FormatDate::formatDates($post['dlg_vigencia_de']); 
-        $p_dlg['vigencia_al']= FormatDate::formatDates($post['dlg_vigencia_al']);  
+        $p_dlg['vigencia_de']= $post['dlg_vigencia_de']; 
+        $p_dlg['vigencia_al']= $post['dlg_vigencia_al'];  
 
         $validation->datosLegalesNuevo(['id'=> $id, 'id_registro_tmp'=>$p_dlg['id_registro_tmp']], $id);
         if(!$validation->getStatusB()) { 
@@ -109,14 +109,14 @@ class LegalController extends Controller
         $p_dlg['id_registro_tmp']=Auth::user()->id_registro;
         $p_dlg['id_tipo_acta_instrumento']= 1;
         $p_dlg['num_escritura']= $post['dlac_num_escritura'];
-        $p_dlg['fecha_escritura']= FormatDate::formatDates($post['dlac_fecha_escritura']);
+        $p_dlg['fecha_escritura']= $post['dlac_fecha_escritura'];
         $p_dlg['notario_nombre']= $post['dlac_notario_nombre'];
         $p_dlg['notario_numero']= $post['dlac_notario_numero'];
         $p_dlg['id_estado']= $post['dlac_id_estado'];
         $p_dlg['num_registro_publico']= $post['dlac_num_registro_publico'];
         $p_dlg['seccion']= $post['dlac_seccion'];
         $p_dlg['ciudad']= $post['dlac_ciudad'];
-        $p_dlg['fecha_registro_publico']= FormatDate::formatDates($post['dlac_fecha_registro_publico']); 
+        $p_dlg['fecha_registro_publico']= $post['dlac_fecha_registro_publico']; 
         $p_dlg['id_estado_registro']= $post['dlac_id_estado_registro'];
 
         //modificacion al acta
@@ -125,14 +125,14 @@ class LegalController extends Controller
         $p_modif_acta['id_registro_tmp']= Auth::user()->id_registro;
         $p_modif_acta['id_tipo_acta_instrumento']= 1;
         $p_modif_acta['num_escritura']= $post['dlac_num_escritura_m'];
-        $p_modif_acta['fecha_escritura']= FormatDate::formatDates($post['dlac_fecha_escritura_m']);
+        $p_modif_acta['fecha_escritura']= $post['dlac_fecha_escritura_m'];
         $p_modif_acta['notario_nombre']= $post['dlac_notario_nombre_m'];
         $p_modif_acta['notario_numero']= $post['dlac_notario_numero_m'];
         $p_modif_acta['id_estado']= $post['dlac_id_estado_m'];
         $p_modif_acta['num_registro_publico']= $post['dlac_num_registro_publico_m'];
         $p_modif_acta['seccion']= $post['dlac_seccion_m'];
         $p_modif_acta['ciudad']= $post['dlac_ciudad_m'];
-        $p_modif_acta['fecha_registro_publico']= FormatDate::formatDates($post['dlac_fecha_registro_publico_m']); 
+        $p_modif_acta['fecha_registro_publico']= $post['dlac_fecha_registro_publico_m']; 
         $p_modif_acta['id_estado_registro']= $post['dlac_id_estado_registro_m'];  
 
         $validation->actaConstitutivaNuevo(['id'=> $id, 'id_registro_tmp'=>$p_dlg['id_registro_tmp'], 'id_tipo_acta_instrumento'=>$p_dlg['id_tipo_acta_instrumento']]);
@@ -202,14 +202,14 @@ class LegalController extends Controller
         $p_instrumento['id_tramite']=0; 
         $p_instrumento['id_tipo_acta_instrumento']= 2;
         $p_instrumento['num_escritura']= $post['dlrepl_num_escritura'];
-        $p_instrumento['fecha_escritura']= FormatDate::formatDates($post['dlrepl_fecha_escritura']);
+        $p_instrumento['fecha_escritura']= $post['dlrepl_fecha_escritura'];
         $p_instrumento['notario_nombre']= $post['dlrepl_notario_nombre'];
         $p_instrumento['notario_numero']= $post['dlrepl_notario_numero'];
         $p_instrumento['id_estado']= $post['dlrepl_id_estado'];
         $p_instrumento['num_registro_publico']= $post['dlrepl_num_registro_publico'];
         $p_instrumento['seccion']= $post['dlrepl_seccion'];
         $p_instrumento['ciudad']= $post['dlrepl_ciudad'];
-        $p_instrumento['fecha_registro_publico']= FormatDate::formatDates($post['dlrepl_fecha_registro_publico']); 
+        $p_instrumento['fecha_registro_publico']= $post['dlrepl_fecha_registro_publico']; 
         $p_instrumento['id_estado_registro']= $post['dlrepl_id_estado_registro'];  
 
         //Datos representante legal
@@ -292,12 +292,18 @@ class LegalController extends Controller
             $t_tramites_datos_legales= (object)$t_tramites_datos_legales;
         }
         else {
-            $t_tramites_datos_legales["fecha_pago"]= FormatDate::formatDates($t_tramites_datos_legales["fecha_pago"], 1);
-            $t_tramites_datos_legales["fecha_inicio"]= FormatDate::formatDates($t_tramites_datos_legales["fecha_inicio"], 1);
-            $t_tramites_datos_legales["fecha_inscripcion"]= FormatDate::formatDates($t_tramites_datos_legales["fecha_inscripcion"], 1);   
-            $t_tramites_datos_legales["rec"]= FormatDate::formatDates($t_tramites_datos_legales["rec"], 1);  
-            $t_tramites_datos_legales["vigencia_de"]= FormatDate::formatDates($t_tramites_datos_legales["vigencia_de"], 1);
-            $t_tramites_datos_legales["vigencia_al"]= FormatDate::formatDates($t_tramites_datos_legales["vigencia_al"], 1);              
+            //$t_tramites_datos_legales["fecha_pago"]= FormatDate::formatDates($t_tramites_datos_legales["fecha_pago"], 1);
+            //$t_tramites_datos_legales["fecha_inicio"]= FormatDate::formatDates($t_tramites_datos_legales["fecha_inicio"], 1);
+            //$t_tramites_datos_legales["fecha_inscripcion"]= FormatDate::formatDates($t_tramites_datos_legales["fecha_inscripcion"], 1);   
+            //$t_tramites_datos_legales["rec"]= FormatDate::formatDates($t_tramites_datos_legales["rec"], 1);              
+            //$t_tramites_datos_legales["vigencia_de"]= FormatDate::formatDates($t_tramites_datos_legales["vigencia_de"], 1);
+            //$t_tramites_datos_legales["vigencia_al"]= FormatDate::formatDates($t_tramites_datos_legales["vigencia_al"], 1);              
+            $t_tramites_datos_legales["fecha_pago"]= $t_tramites_datos_legales["fecha_pago"];
+            $t_tramites_datos_legales["fecha_inicio"]= $t_tramites_datos_legales["fecha_inicio"];
+            $t_tramites_datos_legales["fecha_inscripcion"]= $t_tramites_datos_legales["fecha_inscripcion"];            
+            $t_tramites_datos_legales["rec"]= $t_tramites_datos_legales["rec"]; 
+            $t_tramites_datos_legales["vigencia_de"]= $t_tramites_datos_legales["vigencia_de"];
+            $t_tramites_datos_legales["vigencia_al"]= $t_tramites_datos_legales["vigencia_al"];
         }
 
         $t_tramites_datos_legales= $t_tramites_datos_legales;
@@ -325,8 +331,8 @@ class LegalController extends Controller
             $t_tramites_actas_instrumentos=(object)$t_tramites_actas_instrumentos;
         } 
         else {
-            $t_tramites_actas_instrumentos["fecha_escritura"]= FormatDate::formatDates($t_tramites_actas_instrumentos["fecha_escritura"], 1);
-            $t_tramites_actas_instrumentos["fecha_registro_publico"]= FormatDate::formatDates($t_tramites_actas_instrumentos["fecha_registro_publico"], 1);
+            $t_tramites_actas_instrumentos["fecha_escritura"]= $t_tramites_actas_instrumentos["fecha_escritura"];
+            $t_tramites_actas_instrumentos["fecha_registro_publico"]= $t_tramites_actas_instrumentos["fecha_registro_publico"];
         }
         $t_tramites_actas_instrumentos= $t_tramites_actas_instrumentos;
         return response()->json($t_tramites_actas_instrumentos);
@@ -352,8 +358,8 @@ class LegalController extends Controller
             $t_tramites_actas_instrumentos= (object)$t_tramites_actas_instrumentos;
         } 
         else {
-            $t_tramites_actas_instrumentos["fecha_escritura"]= FormatDate::formatDates($t_tramites_actas_instrumentos["fecha_escritura"],1);
-            $t_tramites_actas_instrumentos["fecha_registro_publico"]= FormatDate::formatDates($t_tramites_actas_instrumentos["fecha_registro_publico"],1);             
+            $t_tramites_actas_instrumentos["fecha_escritura"]= $t_tramites_actas_instrumentos["fecha_escritura"];
+            $t_tramites_actas_instrumentos["fecha_registro_publico"]= $t_tramites_actas_instrumentos["fecha_registro_publico"];
         }
         $t_tramites_actas_instrumentos= $t_tramites_actas_instrumentos;
         return response()->json($t_tramites_actas_instrumentos);
@@ -383,8 +389,8 @@ class LegalController extends Controller
             $t_tramites_rep_legales= (object)$t_tramites_rep_legales;
         } 
         else {
-            $t_tramites_rep_legales["fecha_escritura"]= FormatDate::formatDates($t_tramites_rep_legales["fecha_escritura"],1);
-            $t_tramites_rep_legales["fecha_registro_publico"]= FormatDate::formatDates($t_tramites_rep_legales["fecha_registro_publico"],1);             
+            $t_tramites_rep_legales["fecha_escritura"]= $t_tramites_rep_legales["fecha_escritura"];
+            $t_tramites_rep_legales["fecha_registro_publico"]= $t_tramites_rep_legales["fecha_registro_publico"];             
         }
         $t_tramites_rep_legales= $t_tramites_rep_legales;
         return response()->json($t_tramites_rep_legales);

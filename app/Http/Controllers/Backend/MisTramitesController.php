@@ -125,7 +125,7 @@ class MisTramitesController extends Controller
         $datos = T_Registro::edit($id);
         $curp_ = $datos->curp;
 
-        $datos->fecha_pago_temp = FormatDate::dia_mes_anio($datos->fecha_pago_temp, 1);
+        //$datos->fecha_pago_temp = FormatDate::dia_mes_anio($datos->fecha_pago_temp, 1);
         $ultimo_tramite         = T_registro::get_ultimo_tramite_(['id' => $datos->id, 'id_sujeto_tramite' => $datos->id_sujeto]);
         $clsTipoTramite         = new TipoTramite;
         $tramite_siguiente      = $clsTipoTramite->getNewTramite($ultimo_tramite);
@@ -379,7 +379,7 @@ class MisTramitesController extends Controller
                 $p_registro['telefono']        = $post['telefono'];
                 $p_registro['email']           = $post['correo'];
                 $p_registro['folio_pago_temp'] = $post['folio_pago_temp'];
-                $p_registro['fecha_pago_temp'] = FormatDate::formatDates($post['fecha_pago_temp']);
+                $p_registro['fecha_pago_temp'] = $post['fecha_pago_temp'];
 
                 //Datos para D_Domicilio fiscal
                 $p_domicilio_fiscal['id_tipo_domicilio'] = 2;
@@ -1161,6 +1161,7 @@ class MisTramitesController extends Controller
         $contacto['ap_paterno']       = $post['ap_paterno_contacto'];
         $contacto['ap_materno']       = $post['ap_materno_contacto'];
         $contacto['cargo']            = $post['cargo_contacto'];
+        $contacto['telefono']         = $post['telefono_contacto'];
 
         if ($id_contacto == 0) {
             $t_contacto = new T_Contacto;

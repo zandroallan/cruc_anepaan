@@ -67,7 +67,7 @@ class TecnicaController extends Controller
             $t_tramites_rtec=(object)$t_tramites_rtec;
         }
         else {
-            $t_tramites_rtec["fecha_cedula"]=FormatDate::formatDates($t_tramites_rtec["fecha_cedula"], 1);
+            $t_tramites_rtec["fecha_cedula"]=$t_tramites_rtec["fecha_cedula"];
         }
         $t_tramites_rtec= $t_tramites_rtec;
         return response()->json($t_tramites_rtec);
@@ -106,8 +106,8 @@ class TecnicaController extends Controller
         
         $p_rep_tecnico['cedula']=$post['dtrtec_cedula'];        
         //formateo de fecha recibida    
-        $date =  Carbon::createFromFormat('d/m/Y', $post['dtrtec_fecha_cedula']);
-        $p_rep_tecnico['fecha_cedula']=$date;
+        //$date =  Carbon::createFromFormat('d/m/Y', $post['dtrtec_fecha_cedula']);
+        $p_rep_tecnico['fecha_cedula']=$post['dtrtec_fecha_cedula'];
         $p_rep_tecnico['reposicion']=$post['dtrtec_reposicion'];      
 
         $validation->repTecnicoNuevo([
