@@ -106,10 +106,14 @@
 
 			<div class="modal-footer">
 				<div class="spinner_no_wait">
-                	<button type="button" class="btn btn-primary" onclick="upload_tmp('frm-subir-adjunto-tmp')"><i class="fa fa-search fa-upload"></i> Subir</button>
+                	<button type="button" class="btn btn-primary" onclick="upload_tmp('frm-subir-adjunto-tmp')">
+						<i class="fa fa-search fa-upload"></i> Subir
+					</button>
 				</div>
 				<div class="spinner_wait"  style="display:none">
-					<button class="btn ripple btn-secondary" disabled type="button"><span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Subiendo, por favor espere...</button>
+					<button class="btn ripple btn-secondary" disabled type="button">
+						<span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Subiendo, por favor espere...
+					</button>
 				</div>
 				<a href="javascript:;" class="btn btn-white" data-dismiss="modal">Cerrar</a>
 			</div>
@@ -199,7 +203,6 @@
 				<div class="spinner_no_wait">
 					<button type="button" class="btn btn-primary" onclick="upload_tmp('frm-subir-adjunto-tmp')"><i class="fa fa-search fa-upload"></i> Subir</button>
 				</div>
-
 				<div class="spinner_wait"  style="display:none">
 					<button class="btn ripple btn-secondary" disabled type="button"><span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Subiendo, por favor espere...</button>
 				</div>
@@ -217,7 +220,7 @@
 <div class="modal fade" id="mdl_documento_soporte">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
-			<div class="modal-header">
+			<div class="modal-header" style="color: #1f5c01; background-color: #ced7df; border-color: #ced7df;">
 				<h4 class="modal-title">Subir documento 3</h4>
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 			</div>
@@ -227,7 +230,6 @@
                 {!! Form::hidden('id_documento_soporte', null,['id'=>'id_documento_soporte', 'class'=>'form-control gui-input']) !!}
 			<div class="modal-body">
 					<h4 id="mdl_lbl_documento_soporte"></h4><br>
-
 					<div class="form-group row m-b-15" id="div_alias" name="div_alias">
 						<label for="alias" class="col-form-label col-md-3">Nombre de la cuenta*</label>
 						<div class="col-md-9">
@@ -240,12 +242,15 @@
 			</div>
 			<div class="modal-footer">
 				<div class="spinner_no_wait">
-					<button type="button" class="btn btn-primary" onclick="upload_soporte('frm-subir-adjunto-soporte')"><i class="fa fa-search fa-upload"></i> Subir</button>
+					<button type="button" class="btn btn-primary" onclick="upload_soporte('frm-subir-adjunto-soporte')">
+						<i class="fa fa-search fa-upload"></i> Subir
+					</button>
 				</div>
 				<div class="spinner_wait"  style="display:none">
-					<button class="btn ripple btn-secondary" disabled type="button"><span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Subiendo, por favor espere...</button>
+					<button class="btn ripple btn-secondary" disabled type="button">
+						<span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Subiendo, por favor espere...
+					</button>
 				</div>
-				
 				<a href="javascript:;" class="btn btn-white" data-dismiss="modal">Cerrar</a>
 			</div>
 			{!! Form::close() !!}

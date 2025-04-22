@@ -182,12 +182,12 @@ class TecnicaController extends Controller
      }
 
     public function destroyRTEC($id)
-     {        
-        $d_registro= T_Tramite_Rep_Tecnico::find($id);
-        $id_tramite= $d_registro->id_tramite;
+     {
+        $_MDL_Tramite_Rep_Tecnico= T_Tramite_Rep_Tecnico::find($id);
+        $id_tramite= $_MDL_Tramite_Rep_Tecnico->id_tramite;
         try {  
             DB::beginTransaction();
-            $d_registro->delete();                        
+            $_MDL_Tramite_Rep_Tecnico->delete();                        
             DB::commit();
         }
         catch (\Exception $e) {            
@@ -196,7 +196,7 @@ class TecnicaController extends Controller
             $message= ['errors'=>$error, 'id_tramite'=>$id_tramite];
             return response()->json($message, 409);
         }
-        $message= ['success'=>'Los datos han sido <b>eliminados</b>.','id_tramite'=>$id_tramite];
+        $message= ['success'=>'Los datos han sido <b>eliminados</b>.', 'id_tramite'=>$id_tramite];
         return response()->json($message, 201);
      }
 
