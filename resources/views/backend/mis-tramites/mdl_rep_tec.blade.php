@@ -80,7 +80,7 @@
 
                             <div class="form-group row">
                                 <div class="col-lg-12">
-                                    <small>Nota:  El campo  CURP es importante pues sirve para validar si el RTEC ya uso su constancia en el año. </small>
+                                    <small>Nota:  El campo CURP es importante pues sirve para validar si el RTEC ya representó a una persona en el año. </small>
 
                                 </div>                                
                             </div>

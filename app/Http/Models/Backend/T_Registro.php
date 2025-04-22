@@ -38,7 +38,7 @@ class T_Registro extends Model
     {
         $result = T_Registro::select(
             't_registro.id',
-            DB::raw("CASE 
+            DB::raw("CASE
                 WHEN t_registro.id_tipo_persona = 1 THEN 'Fisica'
                 WHEN t_registro.id_tipo_persona = 2 THEN 'Moral'
                 END as tipo_persona"
@@ -48,9 +48,9 @@ class T_Registro extends Model
                 WHEN t_registro.id_sujeto = 2 THEN 'Supervisor'
                 END as sujeto"
             ),
-            't_registro.razon_social_o_nombre', 
-            't_registro.rfc', 
-            't_registro.telefono', 
+            't_registro.razon_social_o_nombre',
+            't_registro.rfc',
+            't_registro.telefono',
             't_registro.email',
             'd_domicilios.calle',
             'd_domicilios.num_exterior',
@@ -73,8 +73,8 @@ class T_Registro extends Model
         }
 
         return $result;              
-    }  
-
+    } 
+    
     public static function buscar_datos_registro($data){
         $result = T_Registro::select('id', 'rfc', 'email', 'razon_social_o_nombre');
 

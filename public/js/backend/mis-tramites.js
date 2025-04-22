@@ -13,7 +13,7 @@ function index(id_cs)
                 vhtml+='            <th>#</th>';
                 vhtml+='            <th>FOLIO</th>';
                 // vhtml+='            <th>Sujeto</th>';
-                vhtml+='            <th>TIPO DE TRAMITE</th>';
+                vhtml+='            <th>TIPO DE TRÁMITE</th>';
                 vhtml+='            <th>ESTATUS</th>';
                 vhtml+='            <th>INICIO</th>';
                 vhtml+='            <th>FIN</th>';

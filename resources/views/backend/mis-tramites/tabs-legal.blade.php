@@ -61,9 +61,9 @@
 												</div>
 											</div>
 										</div>					
-										<h5 class="mb-1 mt-3 tx-gray-700">Datos del RFC</h5><hr />
+										<h5 class="mb-1 mt-3 tx-gray-700">Datos de la constancia de situación fiscal (RFC)</h5><hr />
 										<div class="form-group row">
-											<label for="dlg_fecha_inicio" class="col-form-label text-right col-md-6"><b>Fecha de inicio *</b></label>
+											<label for="dlg_fecha_inicio" class="col-form-label text-right col-md-6"><b>Fecha de inicio de operaciones *</b></label>
 											<div class="col-md-6">							
 												<div class="input-group date">
 													{!! Form::text('dlg_fecha_inicio', null, ['id'=>'dlg_fecha_inicio', 'placeholder'=>'',  'class'=>'form-control inp-udi fc-datepicker']) !!}
@@ -72,7 +72,7 @@
 											</div>
 										</div>
 										<div class="form-group row">
-											<label for="dlg_fecha_inscripcion" class="col-form-label text-right col-md-6"><b>Fecha de inscripción *</b></label>
+											<label for="dlg_fecha_inscripcion" class="col-form-label text-right col-md-6"><b>Fecha de último cambio de estado *</b></label>
 											<div class="col-md-6">							
 												<div class="input-group date">
 													{!! Form::text('dlg_fecha_inscripcion', null, ['id'=>'dlg_fecha_inscripcion', 'placeholder'=>'',  'class'=>'form-control inp-udi fc-datepicker']) !!}
@@ -81,7 +81,7 @@
 											</div>
 										</div>
 										<div class="form-group row">
-											<label for="dlg_actividad" class="col-form-label text-right col-md-6"><b>Actividad preponderante *</b></label>
+											<label for="dlg_actividad" class="col-form-label text-right col-md-6"><b>Actividad económica preponderante *</b></label>
 											<div class="col-md-6">
 												{!! Form::text('dlg_actividad', null, ['id'=>'dlg_actividad', 'placeholder'=>'',  'class'=>'form-control inp-udi ']) !!}
 												<div id="el-dlg_actividad" class="invalid-feedback lbl-error"></div>											
@@ -90,7 +90,7 @@
 									</div>
 									<div class="col-md-6">  
 										<div class="form-group row ">
-											<label for="dlg_rec" class="col-form-label text-right col-md-6"><b>Fecha de registro estatal de contribuyentes *</b></label>
+											<label for="dlg_rec" class="col-form-label text-right col-md-6"><b>Fecha de inicio de obligaciones del registro estatal de contribuyentes FR-1 *</b></label>
 											<div class="col-md-6">							
 												<div class="input-group date">
 													{!! Form::text('dlg_rec', null, ['id'=>'dlg_rec', 'placeholder'=>'',  'class'=>'form-control inp-udi fc-datepicker']) !!}
@@ -98,6 +98,8 @@
 												<div id="el-dlg_rec" class="invalid-feedback lbl-error"></div>											
 											</div>
 										</div>	
+
+										<h5 class="mb-1 mt-3 tx-gray-700">Datos de la constancia de no adeudos fiscales</h5><hr />
 										<div class="form-group row ">
 											<label for="dlg_num_constancia" class="col-form-label text-right col-md-6"><b>Núm. de constancia de no adeudos fiscales *</b></label>
 											<div class="col-md-6">

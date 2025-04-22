@@ -91,15 +91,17 @@
 
 				cargar_documentacion_requerida_legal({{ $id_tipo_tramite }}, 2, {{ $datos->id }});
 				cargar_documentacion_requerida_tecnica({{ $id_tipo_tramite }}, 4, {{ $datos->id }}, {{ $datos->tec_acredita_tmp }});
-
 				if ( {{ $datos->id_sujeto }} ==1 ) {
 					cargar_documentacion_requerida_financiera({{ $id_tipo_tramite }}, 3, {{ $datos->id }}, {{ $datos->obligado_dec_isr }});
 				}
 
 				cargar_socios_legales({{ Auth::User()->id_registro }});
 
-				get_capital_contable();
-				get_estados_financieros();
+				// get_capital_contable();
+				// get_estados_financieros();
+				get_contadores_certificados();
+				get_contador_tramite();
+
 				get_datos_legales({{ Auth::User()->id_registro }});
 				get_acta_constitutiva({{ Auth::User()->id_registro }});
 				get_acta_constitutiva_modificacion({{ Auth::User()->id_registro }});

@@ -14,6 +14,7 @@ class D_Personal extends Model
     protected $fillable = [
         'id', 
         'id_d_domicilio', 
+        'colegios',
         'nombre', 
         'ap_paterno', 
         'ap_materno', 

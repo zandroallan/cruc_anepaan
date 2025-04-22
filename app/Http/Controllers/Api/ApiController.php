@@ -3,7 +3,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Controllers\API\BaseController as BaseController;
+use App\Http\Controllers\Api\BaseController as BaseController;
 use App\Http\Models\Backend\T_Registro;
 
 class ApiController extends BaseController
@@ -13,11 +13,11 @@ class ApiController extends BaseController
 
      }
 
-    public function test(Request $request)
+     public function test(Request $request)
      {
         $vstatus=200;
         $vrespuesta=array();
-        $vrespuesta=['codigo' => 1, 'mensaje' => 'Exito'];
+        $vrespuesta=['codigo' => 0, 'mensaje' => 'No se encontraron resultados para el RFC ingresado. Verifique que sea correcto e intente nuevamente.'];
 
         $validator = Validator::make($request->all(), [
             'rfc' => [
@@ -35,12 +35,12 @@ class ApiController extends BaseController
                 'mensaje'=> $validator->errors()
             ], 201);
         }
-
         try {
-           
-            $vrespuesta['id_user']=auth('sanctum')->user()->id;
-            $vrespuesta['data']=T_Registro::general(['rfc'=> $request->rfc])->first();
-
+            $_MDL_DATA_Registro=T_Registro::padronShowApi(['rfc'=> $request->rfc])->first();
+            if ( $_MDL_DATA_Registro ) {
+                $vrespuesta['id_user']=auth('sanctum')->user()->id;
+                $vrespuesta=['codigo' => 1, 'mensaje' => 'Exito', 'data' =>$_MDL_DATA_Registro];
+            }
         }
         catch( Exception $vexception ) {
             $vrespuesta=['codigo' => -1, 'mensaje' => $vexception->getMessage()];
@@ -48,5 +48,4 @@ class ApiController extends BaseController
         }
         return response()->json($vrespuesta, $vstatus);
      }
-
  }

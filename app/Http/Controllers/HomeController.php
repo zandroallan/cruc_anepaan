@@ -197,7 +197,7 @@ class HomeController extends Controller
 
 
                 $datos_correo = array();
-                $datos_correo['asunto'] = 'Portal del contratista SHYFP: Reasignación de folio';
+                $datos_correo['asunto'] = 'Portal del contratista SAyBG: Reasignación de folio';
                 $datos_correo['cuerpo'] = CorreoPlantillas::reasignacion_folio($vdatos);
                 $datos_correo['correo_destinatario'] = [$datosTramite->email];
                 // $datos_correo['correo_destinatario'] = ['zandroallan@gmail.com'];
@@ -248,7 +248,7 @@ class HomeController extends Controller
                     $vdatos['tipo_tramite']= $tipo_tramite;
 
                     $datos_correo=array();
-                    $datos_correo['asunto']= 'Contratista/Supervisor SHYFP: Cita para entrega de certificado';
+                    $datos_correo['asunto']= 'Contratista/Supervisor SAyBG: Cita para entrega de certificado';
                     $datos_correo['cuerpo']= CorreoPlantillas::tramite_finalizado($vdatos);
                     $datos_correo['correo_destinatario']=[$datos->email];
                     $datos_correo['nombre_destinatario']= $vdatos['name'];
@@ -534,7 +534,7 @@ class HomeController extends Controller
                     # Begin: Envio de Correo Electrónico.
                                  
                     $datosEnviarCorreo=array();
-                    $datosEnviarCorreo['asunto']= 'Portal del contratista SHYFP: Recordatorio Folio '. $datos->folio;
+                    $datosEnviarCorreo['asunto']= 'Portal del contratista SAyBG: Recordatorio Folio '. $datos->folio;
                     $datosEnviarCorreo['cuerpo']= CorreoPlantillas::notificacionCron($datos, $tipoTramite);
                     $datosEnviarCorreo['correo_destinatario']=$datos->email; //[$p_registro['email']];
                     $datosEnviarCorreo['nombre_destinatario']=$datos->razon_social_o_nombre;  

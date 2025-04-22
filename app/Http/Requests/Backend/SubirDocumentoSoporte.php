@@ -143,6 +143,18 @@ class SubirDocumentoSoporte extends FormRequest
                     'files.factura_pago'   => 'required|file|mimes:pdf,xml|max:40960',
                 ];
                 break;
+            case 245:
+                $rules = [
+                    'id_documento_soporte'      => 'required|not_zero',
+                    'files.constancia_registro' => 'required|file|mimes:pdf|max:40960',
+                ];
+                break;
+            case 246:
+                $rules = [
+                    'id_documento_soporte'  => 'required|not_zero',
+                    'files.constancia_rtec' => 'required|file|mimes:pdf|max:40960',
+                ];
+                break;
 
             case 251:
                 $rules = [

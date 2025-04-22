@@ -98,6 +98,30 @@
                 position: relative;
                 z-index: 1;
             }
+
+            .fondo-contenedor {
+    position: relative;
+    background-color: #E2E2E2;
+}
+
+.fondo-contenedor::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('{{ asset('public/img2/fondo.jpg') }}');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+.fondo-contenedor > * {
+    position: relative;
+    z-index: 1;
+}
         </style>
     </head>
 
@@ -105,18 +129,9 @@
         <!--begin::Main-->
         <div class="d-flex flex-column flex-root">
             <!--begin::Login-->
-            <div class="login login-3 wizard d-flex flex-column flex-lg-row flex-column-fluid">
-                <!--begin::Aside-->
-                <div class="login-aside d-flex flex-column flex-row-auto"  style="background-color: #E2E2E2">                    
-                    <!--begin::Aside Bottom-->
-                    <div class="aside-img d-flex flex-row-fluid bgi-no-repeat bgi-position-x-center">
-                        <img src="{{ asset('public/img2/rtec.png') }}">
-                    </div>
-                    <!--end::Aside Bottom-->
-                </div>
-                <!--begin::Aside-->
+            <div class="login login-3 wizard d-flex flex-column flex-lg-row flex-column-fluid" >           
                 <!--begin::Content-->
-                <div class="login-content flex-row-fluid d-flex flex-column p-10" style="background-color: #E2E2E2">                 
+                <div class="login-content flex-row-fluid d-flex flex-column p-10 fondo-contenedor" style="background-color: #E2E2E2;">
                     <!--begin::Wrapper-->
                     <div class="d-flex flex-row-fluid flex-center">
                         <!--begin::Signin-->
@@ -182,7 +197,12 @@
                         @csrf 
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p class="text-justify font-size-h6 font-weight-bolder text-dark"><b><span style="color: #b11f29;">Nota:</span></b> Los datos requeridos son obligatorios porque a traves de ellos se realizara la busqueda en el padron, de no ser asi se omitira. </p>
+                                    <p class="text-justify font-size-h6 font-weight-bolder text-dark">
+                                        <b>
+                                            <span style="color: #b11f29;">Nota:</span>
+                                            
+                                        </b> 
+                                        Los datos requeridos son obligatorios porque a través de ellos se realizará la búsqueda en el padrón, de no ser así se omitirá. </p>
                                 </div>
                             </div>
 
@@ -197,14 +217,14 @@
                             <div class="form-group">
                                 <label class="font-size-h6 font-weight-bolder text-dark">Correo electrónico</label>
                                 <input class="form-control img h-auto py-2 px-6 rounded-lg border-0 myshadow sizeinput" type="text" name="txtCorreo" id="txtCorreo" autocomplete="off" />
-                                <code class="font-size-h6 font-weight-bolder" style="color: #b11f29;"><b>Poner la direccion completa del correo.</b></code>
+                                <code class="font-size-h6 font-weight-bolder" style="color: #b11f29;"><b>Agregar la dirección completa del correo.</b></code>
                             </div>
                             <!--end::Form group-->
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary font-weight-bold" onclick="recuperarPass()" id="btnAceptPass" style="background-color: #1d1d1b; border-color: #1d1d1b;">Recuperar contraseña</button>
+                        <button type="button" class="btn btn-primary font-weight-bold" onclick="recuperarPass()" id="btnAceptPass" style="background-color: #1d1d1b; border-color: #1d1d1b;">Recuperar</button>
                     </div>
                 </div>
             </div>

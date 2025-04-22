@@ -81,7 +81,6 @@
 
 		@if($tramite_siguiente!=1 && $tramite_siguiente!=2 && $tramite_siguiente!=3)
 			@if($tramite_siguiente==88)
-
 				<div class="alert alert-dark mb-0" role="alert">
 				  	<h4 class="alert-heading text-danger"><b>Usted tiene un <strong>"{{ $lbl_tramite_siguiente }}"</strong>.</b></h4>
 				  	<p class="text-justify">La Secretaría procederá al análisis de la documentación proporcionada, en caso de que no cumpla con los requisitos aplicables o se le requiera alguna aclaración. La Secretaría prevendrá por una sola vez, para que subsane la omisión u observaciones dentro del término de <b>cinco días hábiles</b>, contados a partir de que haya surtido efectos la notificación; transcurrido el plazo sin que el solicitante desahogue la prevención, se desechará el trámite de la solicitud, pudiendo el interesado solicitar nuevamente el trámite correspondiente.</p>

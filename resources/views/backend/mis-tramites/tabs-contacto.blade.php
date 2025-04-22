@@ -56,6 +56,12 @@
 						    	{!! Form::text('cargo_contacto', null, ['id'=>'cargo_contacto', 'class'=>'form-control inp-udi m-b-5']) !!}
 						    </div>
 					    </div>
+						<div class="form-group row">
+					    	<label  class="col-2 col-form-label"><b>Teléfono</b></label>
+						    <div class="col-10">
+						    	{!! Form::text('telefono_contacto', null, ['id'=>'telefono_contacto', 'class'=>'form-control inp-udi m-b-5']) !!}
+						    </div>
+					    </div>
 					</form>
 					<div class="text-right form-group">
 						<button id="btn-guardar-contacto" class="btn ripple btn-outline-success" onclick="AddContacto()">
