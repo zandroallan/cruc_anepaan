@@ -106,6 +106,16 @@ function fill_soporte(id_documento, tipo = 0) {
                 "factura_pago": "Factura de pago"
             };
             break;
+        case 245:
+            array = {
+                "constancia_registro": "Constancia de Registro de Contratistas emitido por la Secretaría*"
+            };
+            break;
+            case 246:
+                array = {
+                    "constancia_rtec": "Constancia vigente emitida por el Colegio de profesionistas*"
+                };
+                break;
         case 251:
             array = {
                 "contrato": "Contrato*",
@@ -511,6 +521,7 @@ function upload_soporte(form_name)
     //         clearFileInput();
     //     }
     // });
+    
     $.confirm({
         title: '¡ Advertencia !',
         content: '¿ Realmente deseas subir el documento ?',
@@ -666,6 +677,7 @@ $('#frm-subir-adjunto-tmp').on('submit', function(e) {
         }
     });
 });
+
 $('#frm-subir-adjunto-soporte').on('submit', function(e) {
     var el = $('#frm-subir-adjunto-soporte');
     e.preventDefault();
@@ -679,65 +691,36 @@ $('#frm-subir-adjunto-soporte').on('submit', function(e) {
         beforeSend: function() {
             $('.spinner_wait').show(); 
             $('.spinner_no_wait').hide(); 
-            
-            
         },  
         success: function(json) {
             messages_validation_soporte(json.data, false);
-            // swal({
-            //     type: 'success',
-            //     title: 'Confirmación',
-            //     content: {
-            //         element: 'p',
-            //         attributes: {
-            //             innerHTML: json.msg,
-            //         },
-            //     },
-            //     showConfirmButton: false,
-            //     timer: 1500
-            // }).then(function() {
-            //     let id_sujeto = $("#ssjjtt").val();
-            //     let id_tipo_tramite = $("#id_tipo_tramite").val();
-            //     let obligado_dec_isr = $("#obligado_dec_isr").val();
 
-            //     $('.spinner_wait').hide(); 
-            //     $('.spinner_no_wait').show(); 
-
-            //     cargar_documentacion_requerida_legal(id_tipo_tramite, 2, json.data.id_registro_temp);
-            //     if (json.data.id_sujeto == 1) {
-            //         cargar_documentacion_requerida_financiera(id_tipo_tramite, 3, json.data.id_registro_temp, obligado_dec_isr);
-            //     }
-            //     cargar_documentacion_requerida_tecnica(id_tipo_tramite, 4, json.data.id_registro_temp, json.data.tec_acredita_tmp);
-            //     $('#files-alias').val("");
-            //     $("#mdl_documento_soporte").modal("toggle");
-            // });
-            $.confirm({
-                title: 'Confirmación',
+            $.alert({
+                title: 'Confirmación!',
                 content: json.msg,
-                type: 'green',
-                autoClose:'close|1500',
-                typeAnimated: true,
-                icon : 'fa fa-check',
+                type: 'blue', // info | red | green | orange | dark | etc.
                 buttons: {
-                    close: {
-                        isHidden: true
-                    }
-                },
-                onclose: function() {
-                    let id_sujeto = $("#ssjjtt").val();
-                    let id_tipo_tramite = $("#id_tipo_tramite").val();
-                    let obligado_dec_isr = $("#obligado_dec_isr").val();
+                    ok: {
+                        text: 'Entendido',
+                        btnClass: 'btn-blue',
+                        action: function(){
+                            // Tu lógica acá
+                            let id_sujeto = $("#ssjjtt").val();
+                            let id_tipo_tramite = $("#id_tipo_tramite").val();
+                            let obligado_dec_isr = $("#obligado_dec_isr").val();
 
-                    $('.spinner_wait').hide(); 
-                    $('.spinner_no_wait').show(); 
+                            $('.spinner_wait').hide(); 
+                            $('.spinner_no_wait').show(); 
 
-                    cargar_documentacion_requerida_legal(id_tipo_tramite, 2, json.data.id_registro_temp);
-                    if (json.data.id_sujeto == 1) {
-                        cargar_documentacion_requerida_financiera(id_tipo_tramite, 3, json.data.id_registro_temp, obligado_dec_isr);
+                            cargar_documentacion_requerida_legal(id_tipo_tramite, 2, json.data.id_registro_temp);
+                            if (json.data.id_sujeto == 1) {
+                                cargar_documentacion_requerida_financiera(id_tipo_tramite, 3, json.data.id_registro_temp, obligado_dec_isr);
+                            }
+                            cargar_documentacion_requerida_tecnica(id_tipo_tramite, 4, json.data.id_registro_temp, json.data.tec_acredita_tmp);
+                            $('#files-alias').val("");
+                            $("#mdl_documento_soporte").modal("toggle");
+                        }
                     }
-                    cargar_documentacion_requerida_tecnica(id_tipo_tramite, 4, json.data.id_registro_temp, json.data.tec_acredita_tmp);
-                    $('#files-alias').val("");
-                    $("#mdl_documento_soporte").modal("toggle");
                 }
             });
         },
@@ -754,41 +737,19 @@ $('#frm-subir-adjunto-soporte').on('submit', function(e) {
             if (json.status === 409) {
                 str_errors = jsonString.msg;
             }
-            // swal({
-            //     title: "¡ Advertencia !",
-            //     content: {
-            //         element: 'p',
-            //         attributes: {
-            //             innerHTML: str_errors,
-            //         },
-            //     },
-            //     icon: "warning",
-            //     buttons: {
-            //         confirm: {
-            //             text: 'Confirmar',
-            //             value: true,
-            //             visible: true,
-            //             className: 'btn btn-primary',
-            //             closeModal: true
-            //         }
-            //     }
-            // });
-            $.confirm({
-                title: '¡ Advertencia !',
+
+            $.alert({
+                title: 'Confirmación!',
                 content: str_errors,
-                type: 'orange',
-                icon : 'fa fa-warning',
-                typeAnimated: true,
+                type: 'orange', // info | red | green | orange | dark | etc.
                 buttons: {
-                    confirmar: {
-                        text: 'Confirmar',
-                        btnClass: 'btn-primary',
-                        action: function() {
-                            return true;
-                        }
+                    ok: {
+                        text: 'Entendido',
+                        btnClass: 'btn-blue'
                     }
                 }
-            })
+            });
+            
         }
     });
 });
@@ -945,45 +906,56 @@ function cargar_documentacion_requerida_get_n(valor) {
     return str;
 }
 
-function cargar_documentacion_requerida_get_hijos(valor) {
+function cargar_documentacion_requerida_get_hijos(valor) 
+{
     let str = "";
     var inputTol = "";  
-
-    if (valor.tiene_hijos == 1) {
+    // console.log(valor);
+    if ( valor.tiene_hijos == 1 ) {
         str += '<ol>';
         $.each(valor.hijos, function(j, hijo1) {
             
             let objeto_hijo1 = '';
             let lbl_nombre = hijo1.documento;
-            if (hijo1.obligatorio == 1) {
+            if ( hijo1.obligatorio == 1 ) {
                 lbl_nombre += ' <b>(Obligatorio)</b>';
             }
             str += '<li>';
-            if (hijo1.id_tramite_documento != null) {
+            if ( hijo1.id_tramite_documento != null ) {
                 let download = project_name + "/tramites-adjuntos/" + hijo1.id_tramite_documento + "/descargar";
                 objeto_hijo1 += '<span class="text-success-dark">' + lbl_nombre + '</span> <a href="' + download + '" class="text-info-dark" target="_blank"><i class="fa fa-download"></i></a> | <a href="#" onclick="eliminar_adjunto_tmp(' + hijo1.id_tramite_documento + ')" class="text-danger"><i class="far fa-trash-alt"></i></a>';
-            } else {
+            } 
+            else {
                 objeto_hijo1 += '<span class="">' + lbl_nombre + '</span>';
-                if (hijo1.subir == 1) {
+                if ( hijo1.subir == 1 ) {
                     objeto_hijo1 += ' <a href="#" onclick="mdl_documento_1(' + hijo1.id + ', \'' + lbl_nombre + '\')">' + 'Subir</a>';
                 }
-                if (hijo1.subir_n == 1) {
-                    if (hijo1.id_padre == 173 || hijo1.id == 251 || hijo1.id == 252 || hijo1.id == 253 || hijo1.id_padre == 304) {
+                if ( hijo1.subir_n == 1 ) {
+                    if (
+                        hijo1.id_padre == 173 ||
+                        hijo1.id_padre == 304 ||
+                        hijo1.id_padre == 363 ||
+                        hijo1.id_padre == 364 ||
+                        hijo1.id == 251 || 
+                        hijo1.id == 252 || 
+                        hijo1.id == 253
+                    ) {
                         let temp = 0;
-                        if (hijo1.id == 266 || hijo1.id == 317) {
+                        if ( hijo1.id == 266 || hijo1.id == 317 ) {
                             temp = 1; //Agregar cuenta input para agregar nombre   
                         }
                         objeto_hijo1 += ' <a href="#" onclick="mdl_documento_soporte(' + hijo1.id + ', \'' + lbl_nombre + '\',0,' + temp + ')">' + 'Agregar</a>';
-                    } else {
+                    } 
+                    else {
                         objeto_hijo1 += ' <a href="#" onclick="mdl_documento_1(' + hijo1.id + ', \'' + lbl_nombre + '\')">' + 'Agregar</a>';
                     }
                 }
             }
             str += objeto_hijo1;
-            if (hijo1.tiene_hijos == 1) {
+            if ( hijo1.tiene_hijos == 1 ) {
                 str += cargar_documentacion_requerida_get_hijos(hijo1);
             }
-            if (hijo1.subir_n == 1) {
+            if ( hijo1.subir_n == 1 ) {
                 str += cargar_documentacion_requerida_get_n(hijo1);
             }
             str += '</li>';
