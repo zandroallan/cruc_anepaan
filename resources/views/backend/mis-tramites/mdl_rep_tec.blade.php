@@ -125,7 +125,7 @@
                             <div class="form-group row">
                                 <div class="col-lg-6">
                                     <label><b>Fecha de expedición de cédula:</b></label>
-                                    {!! Form::text('dtrtec_fecha_cedula', null, ['id'=>'dtrtec_fecha_cedula', 'class'=>'form-control inp-udi datepicker']) !!}   
+                                    {!! Form::date('dtrtec_fecha_cedula', null, ['id'=>'dtrtec_fecha_cedula', 'class'=>'form-control inp-udi']) !!}   
                                 </div>
                             </div>
 

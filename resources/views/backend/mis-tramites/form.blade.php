@@ -41,7 +41,7 @@
 					<label class="col-form-label">
 						<b>Fecha del recibo oficial electrónico de pago de derechos *:</b>
 					</label>
-		     		{!! Form::text('fecha_pago_temp', null, ['id'=>'fecha_pago_temp', 'class'=>'form-control  fc-datepicker inp-udi']) !!}
+		     		{!! Form::date('fecha_pago_temp', null, ['id'=>'fecha_pago_temp', 'class'=>'form-control  inp-udi']) !!}
 		    	</div>
 		    </div>
 			<hr />

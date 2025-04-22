@@ -47,7 +47,7 @@ class T_Tramite_Tecnica_Representante_Tecnico extends FormRequest
             'dtrtec_id_colegio' =>'required|not_zero',
             'dtrtec_num_constancia' =>'required',
             'dtrtec_cedula' =>'required',
-            'dtrtec_fecha_cedula' =>'required|date_format:d/m/Y'
+            'dtrtec_fecha_cedula' =>'required|date_format:Y-m-d'
         ];
         return $rules;
     }

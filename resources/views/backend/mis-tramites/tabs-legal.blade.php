@@ -56,7 +56,7 @@
 											<label for="dlg_fecha_pago" class="col-form-label text-right col-md-6"><b>Folio de Fecha de pago *</b></label>
 											<div class="col-md-6">							
 												<div class="input-group date">
-													{!! Form::text('dlg_fecha_pago', null, ['id'=>'dlg_fecha_pago', 'placeholder'=>'',  'class'=>'form-control inp-udi fc-datepicker']) !!}
+													{!! Form::date('dlg_fecha_pago', null, ['id'=>'dlg_fecha_pago', 'placeholder'=>'',  'class'=>'form-control inp-udi']) !!}
 													<div id="el-dlg_fecha_pago" class="invalid-feedback lbl-error"></div>
 												</div>
 											</div>
@@ -66,7 +66,7 @@
 											<label for="dlg_fecha_inicio" class="col-form-label text-right col-md-6"><b>Fecha de inicio de operaciones *</b></label>
 											<div class="col-md-6">							
 												<div class="input-group date">
-													{!! Form::text('dlg_fecha_inicio', null, ['id'=>'dlg_fecha_inicio', 'placeholder'=>'',  'class'=>'form-control inp-udi fc-datepicker']) !!}
+													{!! Form::date('dlg_fecha_inicio', null, ['id'=>'dlg_fecha_inicio', 'placeholder'=>'',  'class'=>'form-control inp-udi']) !!}
 												</div>							
 												<div id="el-dlg_fecha_inicio" class="invalid-feedback lbl-error"></div>											
 											</div>
@@ -75,7 +75,7 @@
 											<label for="dlg_fecha_inscripcion" class="col-form-label text-right col-md-6"><b>Fecha de último cambio de estado *</b></label>
 											<div class="col-md-6">							
 												<div class="input-group date">
-													{!! Form::text('dlg_fecha_inscripcion', null, ['id'=>'dlg_fecha_inscripcion', 'placeholder'=>'',  'class'=>'form-control inp-udi fc-datepicker']) !!}
+													{!! Form::date('dlg_fecha_inscripcion', null, ['id'=>'dlg_fecha_inscripcion', 'placeholder'=>'',  'class'=>'form-control inp-udi']) !!}
 												</div>							
 												<div id="el-dlg_fecha_inscripcion" class="invalid-feedback lbl-error"></div>
 											</div>
@@ -93,7 +93,7 @@
 											<label for="dlg_rec" class="col-form-label text-right col-md-6"><b>Fecha de inicio de obligaciones del registro estatal de contribuyentes FR-1 *</b></label>
 											<div class="col-md-6">							
 												<div class="input-group date">
-													{!! Form::text('dlg_rec', null, ['id'=>'dlg_rec', 'placeholder'=>'',  'class'=>'form-control inp-udi fc-datepicker']) !!}
+													{!! Form::date('dlg_rec', null, ['id'=>'dlg_rec', 'placeholder'=>'',  'class'=>'form-control inp-udi']) !!}
 												</div>							
 												<div id="el-dlg_rec" class="invalid-feedback lbl-error"></div>											
 											</div>
@@ -118,7 +118,7 @@
 											<label for="dlg_vigencia_de" class="col-form-label text-right col-md-6"><b>Vigencia de inicio *</b></label>
 											<div class="col-md-6">							
 												<div class="input-group date">
-													{!! Form::text('dlg_vigencia_de', null, ['id'=>'dlg_vigencia_de', 'placeholder'=>'',  'class'=>'form-control inp-udi fc-datepicker']) !!}
+													{!! Form::date('dlg_vigencia_de', null, ['id'=>'dlg_vigencia_de', 'placeholder'=>'',  'class'=>'form-control inp-udi']) !!}
 												</div>							
 												<div id="el-dlg_vigencia_de" class="invalid-feedback lbl-error"></div>											
 											</div>
@@ -127,7 +127,7 @@
 											<label for="dlg_vigencia_al" class="col-form-label text-right col-md-6"><b>Vigencia de término *</b></label>
 											<div class="col-md-6">							
 												<div class="input-group date">
-													{!! Form::text('dlg_vigencia_al', null, ['id'=>'dlg_vigencia_al', 'placeholder'=>'',  'class'=>'form-control inp-udi fc-datepicker']) !!}
+													{!! Form::date('dlg_vigencia_al', null, ['id'=>'dlg_vigencia_al', 'placeholder'=>'',  'class'=>'form-control inp-udi']) !!}
 												</div>							
 												<div id="el-dlg_vigencia_al" class="invalid-feedback lbl-error"></div>											
 											</div>
@@ -182,7 +182,7 @@
 												<label for="dlac_fecha_escritura" class="col-form-label text-right col-md-4"><b>Fecha de escritura *</b></label>
 												<div class="col-md-8">              
 													<div class="input-group date">
-														{!! Form::text('dlac_fecha_escritura', null, ['id'=>'dlac_fecha_escritura', 'placeholder'=>'',  'class'=>'form-control inp-udi fc-datepicker']) !!}
+														{!! Form::date('dlac_fecha_escritura', null, ['id'=>'dlac_fecha_escritura', 'placeholder'=>'',  'class'=>'form-control inp-udi']) !!}
 														<div id="el-dlac_fecha_escritura" class="invalid-feedback lbl-error"></div>
 													</div>
 												</div>
@@ -236,7 +236,7 @@
 												<label for="dlac_fecha_registro_publico" class="col-form-label text-right col-md-4"><b>Fecha de registro público *</b></label>
 												<div class="col-md-8">
 													<div class="input-group date">
-														{!! Form::text('dlac_fecha_registro_publico', null, ['id'=>'dlac_fecha_registro_publico', 'placeholder'=>'',  'class'=>'form-control inp-udi fc-datepicker']) !!}
+														{!! Form::date('dlac_fecha_registro_publico', null, ['id'=>'dlac_fecha_registro_publico', 'placeholder'=>'',  'class'=>'form-control inp-udi']) !!}
 														<div id="el-dlac_fecha_registro_publico" class="invalid-feedback lbl-error"></div>  
 													</div>
 												</div>
@@ -266,7 +266,7 @@
 												<label for="dlac_fecha_escritura_m" class="col-form-label text-right col-md-4"><b>Fecha de escritura *</b></label>
 												<div class="col-md-8">              
 													<div class="input-group date">
-														{!! Form::text('dlac_fecha_escritura_m', null, ['id'=>'dlac_fecha_escritura_m', 'placeholder'=>'',  'class'=>'form-control inp-udi fc-datepicker']) !!}
+														{!! Form::date('dlac_fecha_escritura_m', null, ['id'=>'dlac_fecha_escritura_m', 'placeholder'=>'',  'class'=>'form-control inp-udi']) !!}
 														<div id="el-dlac_fecha_escritura_m" class="invalid-feedback lbl-error"></div>
 													</div>
 												</div>
@@ -320,7 +320,7 @@
 												<label for="dlac_fecha_registro_publico_m" class="col-form-label text-right col-md-4"><b>Fecha de registro público *</b></label>
 												<div class="col-md-8">
 													<div class="input-group date">
-														{!! Form::text('dlac_fecha_registro_publico_m', null, ['id'=>'dlac_fecha_registro_publico_m', 'placeholder'=>'',  'class'=>'form-control inp-udi fc-datepicker']) !!}
+														{!! Form::date('dlac_fecha_registro_publico_m', null, ['id'=>'dlac_fecha_registro_publico_m', 'placeholder'=>'',  'class'=>'form-control inp-udi']) !!}
 														<div id="el-dlac_fecha_registro_publico_m" class="invalid-feedback lbl-error"></div>  
 													</div>
 												</div>
@@ -460,6 +460,7 @@
 												</div>
 											</div>
 										</div>
+
 										<div class="form-group row ">
 											<label for="dlrepl_id_tipo_rep_legal" class="col-form-label text-right col-md-4"><b>Tipo de representante legal *</b></label>
 											<div class="col-md-8">
@@ -468,44 +469,7 @@
 											</div>
 										</div>	
 										
-										<h5 class="mb-1 mt-3 tx-gray-700">Registro público de la propiedad</h5><hr />
-										<div class="form-group row ">
-											<label for="dlrepl_num_registro_publico" class="col-form-label text-right col-md-4"><b>Número de registro público *</b></label>
-											<div class="col-md-8">
-												{!! Form::text('dlrepl_num_registro_publico', null, ['id'=>'dlrepl_num_registro_publico', 'placeholder'=>'',  'class'=>'form-control inp-udi ']) !!}
-												<div id="el-dlrepl_num_registro_publico" class="invalid-feedback lbl-error"></div>											
-											</div>
-										</div>
-										<div class="form-group row ">
-											<label for="dlrepl_seccion" class="col-form-label text-right col-md-4"><b>Sección *</b></label>
-											<div class="col-md-8">
-												{!! Form::text('dlrepl_seccion', null, ['id'=>'dlrepl_seccion', 'placeholder'=>'',  'class'=>'form-control inp-udi ']) !!}
-												<div id="el-dlrepl_seccion" class="invalid-feedback lbl-error"></div>											
-											</div>
-										</div>
-										<div class="form-group row ">
-											<label for="dlrepl_ciudad" class="col-form-label text-right col-md-4"><b>Ciudad *</b></label>
-											<div class="col-md-8">
-												{!! Form::text('dlrepl_ciudad', null, ['id'=>'dlrepl_ciudad', 'placeholder'=>'',  'class'=>'form-control inp-udi ']) !!}
-												<div id="el-dlrepl_ciudad" class="invalid-feedback lbl-error"></div>											
-											</div>
-										</div>
-										<div class="form-group row ">
-											<label for="dlrepl_fecha_registro_publico" class="col-form-label text-right col-md-4"><b>Fecha de registro público *</b></label>
-											<div class="col-md-8">							
-												<div class="input-group date">
-													{!! Form::text('dlrepl_fecha_registro_publico', null, ['id'=>'dlrepl_fecha_registro_publico', 'placeholder'=>'',  'class'=>'form-control inp-udi fc-datepicker']) !!}
-													<div id="el-dlrepl_fecha_registro_publico" class="invalid-feedback lbl-error"></div>	
-												</div>																	
-											</div>
-										</div>	
-										<div class="form-group row ">
-											<label for="dlrepl_id_estado_registro" class="col-form-label text-right col-md-4"><b>Estado *</b></label>
-											<div class="col-md-8">
-												{!! Form::select('dlrepl_id_estado_registro', $estados, null, ['id' => 'dlrepl_id_estado_registro', 'style'=>'width: 100%;', 'class' => 'default-select2 form-control input-sm']) !!}			
-												<div id="el-dlrepl_id_estado_registro" class="invalid-feedback lbl-error"></div>			
-											</div>
-										</div>
+										
 									</div>
 
 									<div class="col-md-6 ">  
@@ -539,26 +503,32 @@
 											</div>
 										</div>
 										<div class="form-group row ">
-											<label for="dlrepl_ext_particular" class="col-form-label text-right col-md-3"><b>Núm. exterior *</b></label>
-											<div class="col-md-3">
+											<label for="dlrepl_ext_particular" class="col-form-label text-right col-md-4"><b>Núm. exterior *</b></label>
+											<div class="col-md-8">
 												{!! Form::text('dlrepl_ext_particular', null, ['id'=>'dlrepl_ext_particular', 'placeholder'=>'',  'class'=>'form-control inp-udi ']) !!}
 												<div id="el-dlrepl_ext_particular" class="invalid-feedback lbl-error"></div>			
 											</div>
 
-											<label for="dlrepl_int_particular" class="col-form-label text-right col-md-3"><b>Núm. interior *</b></label>
-											<div class="col-md-3">
+											
+										</div>
+
+										<div class="form-group row ">
+											<label for="dlrepl_int_particular" class="col-form-label text-right col-md-4"><b>Núm. interior *</b></label>
+											<div class="col-md-8">
 												{!! Form::text('dlrepl_int_particular', null, ['id'=>'dlrepl_int_particular', 'placeholder'=>'',  'class'=>'form-control inp-udi ']) !!}
 												<div id="el-dlrepl_int_particular" class="invalid-feedback lbl-error"></div>			
 											</div>
-										</div>	
+										</div>
 										<div class="form-group row ">
-											<label for="dlrepl_colonia_particular" class="col-form-label text-right col-md-3"><b>Colonia *</b></label>
-											<div class="col-md-4">
+											<label for="dlrepl_colonia_particular" class="col-form-label text-right col-md-4"><b>Colonia *</b></label>
+											<div class="col-md-8">
 												{!! Form::text('dlrepl_colonia_particular', null, ['id'=>'dlrepl_colonia_particular', 'placeholder'=>'',  'class'=>'form-control inp-udi ']) !!}
 												<div id="el-dlrepl_colonia_particular" class="invalid-feedback lbl-error"></div>			
 											</div>
-											<label for="dlrepl_cp_particular" class="col-form-label text-right col-md-2"><b>C.P. *</b></label>
-											<div class="col-md-3">
+										</div>
+										<div class="form-group row ">
+											<label for="dlrepl_cp_particular" class="col-form-label text-right col-md-4"><b>C.P. *</b></label>
+											<div class="col-md-8">
 												{!! Form::text('dlrepl_cp_particular', null, ['id'=>'dlrepl_cp_particular', 'placeholder'=>'',  'class'=>'form-control inp-udi ']) !!}
 												<div id="el-dlrepl_cp_particular" class="invalid-feedback lbl-error"></div>			
 											</div>
@@ -569,9 +539,54 @@
 												{!! Form::text('dlrepl_referencias_particular', null, ['id'=>'dlrepl_referencias_particular', 'placeholder'=>'',  'class'=>'form-control inp-udi ']) !!}
 												<div id="el-dlrepl_referencias_particular" class="invalid-feedback lbl-error"></div>			
 											</div>
-										</div>
+										</div>										
+									</div>
+					            </div>
 
-										<h5 class="mb-1 mt-3 tx-gray-700">Instrumento legal</h5><hr />
+								<div class="row">
+									<div class="col-md-6">
+									<h5 class="mb-1 mt-3 tx-gray-700">Registro público de la propiedad</h5><hr />
+										<div class="form-group row ">
+											<label for="dlrepl_num_registro_publico" class="col-form-label text-right col-md-4"><b>Número de registro público *</b></label>
+											<div class="col-md-8">
+												{!! Form::text('dlrepl_num_registro_publico', null, ['id'=>'dlrepl_num_registro_publico', 'placeholder'=>'',  'class'=>'form-control inp-udi ']) !!}
+												<div id="el-dlrepl_num_registro_publico" class="invalid-feedback lbl-error"></div>											
+											</div>
+										</div>
+										<div class="form-group row ">
+											<label for="dlrepl_seccion" class="col-form-label text-right col-md-4"><b>Sección *</b></label>
+											<div class="col-md-8">
+												{!! Form::text('dlrepl_seccion', null, ['id'=>'dlrepl_seccion', 'placeholder'=>'',  'class'=>'form-control inp-udi ']) !!}
+												<div id="el-dlrepl_seccion" class="invalid-feedback lbl-error"></div>											
+											</div>
+										</div>
+										<div class="form-group row ">
+											<label for="dlrepl_ciudad" class="col-form-label text-right col-md-4"><b>Ciudad *</b></label>
+											<div class="col-md-8">
+												{!! Form::text('dlrepl_ciudad', null, ['id'=>'dlrepl_ciudad', 'placeholder'=>'',  'class'=>'form-control inp-udi ']) !!}
+												<div id="el-dlrepl_ciudad" class="invalid-feedback lbl-error"></div>											
+											</div>
+										</div>
+										<div class="form-group row ">
+											<label for="dlrepl_fecha_registro_publico" class="col-form-label text-right col-md-4"><b>Fecha de registro público *</b></label>
+											<div class="col-md-8">							
+												<div class="input-group date">
+													{!! Form::date('dlrepl_fecha_registro_publico', null, ['id'=>'dlrepl_fecha_registro_publico', 'placeholder'=>'',  'class'=>'form-control inp-udi']) !!}
+													<div id="el-dlrepl_fecha_registro_publico" class="invalid-feedback lbl-error"></div>	
+												</div>																	
+											</div>
+										</div>	
+										<div class="form-group row ">
+											<label for="dlrepl_id_estado_registro" class="col-form-label text-right col-md-4"><b>Estado *</b></label>
+											<div class="col-md-8">
+												{!! Form::select('dlrepl_id_estado_registro', $estados, null, ['id' => 'dlrepl_id_estado_registro', 'style'=>'width: 100%;', 'class' => 'default-select2 form-control input-sm']) !!}			
+												<div id="el-dlrepl_id_estado_registro" class="invalid-feedback lbl-error"></div>			
+											</div>
+										</div>
+									</div>
+
+									<div class="col-md-6">
+									<h5 class="mb-1 mt-3 tx-gray-700">Instrumento legal</h5><hr />
 										<div class="form-group row ">
 											<label for="dlrepl_num_escritura" class="col-form-label text-right col-md-4"><b>Núm. de escritura *</b></label>
 											<div class="col-md-8">
@@ -583,7 +598,7 @@
 											<label for="dlrepl_fecha_escritura" class="col-form-label text-right col-md-4"><b>Fecha de escritura *</b></label>
 											<div class="col-md-8">							
 												<div class="input-group date">
-													{!! Form::text('dlrepl_fecha_escritura', null, ['id'=>'dlrepl_fecha_escritura', 'placeholder'=>'',  'class'=>'form-control inp-udi fc-datepicker']) !!}
+													{!! Form::date('dlrepl_fecha_escritura', null, ['id'=>'dlrepl_fecha_escritura', 'placeholder'=>'',  'class'=>'form-control inp-udi']) !!}
 													<div id="el-dlrepl_fecha_escritura" class="invalid-feedback lbl-error"></div>
 												</div>									
 											</div>
@@ -610,7 +625,7 @@
 											</div>
 										</div>
 									</div>
-					            </div>
+								</div>
 
 								{!! Form::close() !!}
 
