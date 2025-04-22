@@ -96,7 +96,8 @@ function fill_soporte(id_documento, tipo = 0)
             array = {
                 "contrato": "Contrato*",
                 "acta_entrega": "Acta de entrega-recepción*",
-                "finiquito_obra": "Finiquito de obra*"
+                "finiquito_obra": "Finiquito de obra*",
+                "finiquito_factura": "Finiquito de factura"
             };
             break;
         case 244:
@@ -388,11 +389,11 @@ function fill_soporte(id_documento, tipo = 0)
 }
 
 function mdl_documento_soporte(id_documento, txt_documento, tipo = 0, alias = 0)
-{
+ {
     $("#id_documento_soporte").val(id_documento);
     $("#mdl_lbl_documento_soporte").html(txt_documento);
     
-    if (alias != 0) {
+    if ( alias != 0 ) {
         $('#div_alias').show();
     } 
     else {
@@ -414,14 +415,15 @@ function mdl_documento_soporte(id_documento, txt_documento, tipo = 0, alias = 0)
 
     $("#soporte_variable").html(str);
     $("#mdl_documento_soporte").modal();
-}
+ }
 
-function clearFileInput() {
+function clearFileInput() 
+ {
     $('input[type=file]').val(null);
-}
+ }
 
 function messages_validation_soporte(fields, show)
-{
+ {
     if (show == true) {
         $.each(fields, function(key, value) {
             if (key == "files-alias") {
@@ -439,10 +441,10 @@ function messages_validation_soporte(fields, show)
         $('.lbl-error').removeClass('is-invalid');
         $('.form-control').removeClass('is-invalid');
     }
-}
+ }
 
 function mdl_documento_declaracion_anual(id_padre, txt_documento) 
-{
+ {
     let url = project_name + "/combos/get-opcionales/" + id_padre;
     $("#mdl_lbl_documento_declaracion_anual").html(txt_documento);
     $.get(url, function(data, textStatus) {
@@ -452,7 +454,7 @@ function mdl_documento_declaracion_anual(id_padre, txt_documento)
         });
     }, "json");
     $("#mdl_documento_declaracion_anual").modal();
-}
+ }
 
 function upload_tmp(form_name) 
 {
@@ -583,63 +585,37 @@ $('#frm-subir-adjunto-tmp').on('submit', function(e) {
         },        
         success: function(json) {
             messages_validation(json.data, false);
-            // swal({
-            //     type: 'success',
-            //     title: 'Confirmación',
-            //     content: {
-            //         element: 'p',
-            //         attributes: {
-            //             innerHTML: json.msg,
-            //         },
-            //     },
-            //     showConfirmButton: false,
-            //     timer: 1500
-            // }).then(function() {
-            //     let id_sujeto = $("#ssjjtt").val();
-            //     let id_tipo_tramite = $("#id_tipo_tramite").val();
-            //     let obligado_dec_isr = $("#obligado_dec_isr").val();
 
-            //     $('.spinner_wait').hide(); 
-            //     $('.spinner_no_wait').show(); 
-
-            //     cargar_documentacion_requerida_legal(id_tipo_tramite, 2, json.data.id_registro_temp);
-            //     if (json.data.id_sujeto == 1) {
-            //         cargar_documentacion_requerida_financiera(id_tipo_tramite, 3, json.data.id_registro_temp, obligado_dec_isr);
-            //     }
-            //     cargar_documentacion_requerida_tecnica(id_tipo_tramite, 4, json.data.id_registro_temp, json.data.tec_acredita_tmp);
-                
-            //     $("#mdl_documento_1").modal("toggle");
-                
-            // });
-            $.confirm({
-                title: 'Confirmación',
+            $.alert({
+                title: 'Confirmación!',
                 content: json.msg,
-                type: 'green',
-                typeAnimated: true,
-                autoClose: 'close|1500',
-                icon : 'fa fa-check',
+                type: 'blue', // info | red | green | orange | dark | etc.
                 buttons: {
-                    close: {
-                        isHidden: true
-                    }
-                },
-                onClose: function() {
-                    let id_sujeto = $("#ssjjtt").val();
-                    let id_tipo_tramite = $("#id_tipo_tramite").val();
-                    let obligado_dec_isr = $("#obligado_dec_isr").val();
-            
-                    $('.spinner_wait').hide(); 
-                    $('.spinner_no_wait').show(); 
-            
-                    cargar_documentacion_requerida_legal(id_tipo_tramite, 2, json.data.id_registro_temp);
-                    if (json.data.id_sujeto == 1) {
-                        cargar_documentacion_requerida_financiera(id_tipo_tramite, 3, json.data.id_registro_temp, obligado_dec_isr);
-                    }
-                    cargar_documentacion_requerida_tecnica(id_tipo_tramite, 4, json.data.id_registro_temp, json.data.tec_acredita_tmp);
+                    ok: {
+                        text: 'Entendido',
+                        btnClass: 'btn-blue',
+                        action: function(){
+                            // Tu lógica acá
+                            let id_sujeto = $("#ssjjtt").val();
+                            let id_tipo_tramite = $("#id_tipo_tramite").val();
+                            let obligado_dec_isr = $("#obligado_dec_isr").val();
                     
-                    $("#mdl_documento_1").modal("toggle");
+                            $('.spinner_wait').hide(); 
+                            $('.spinner_no_wait').show(); 
+                    
+                            cargar_documentacion_requerida_legal(id_tipo_tramite, 2, json.data.id_registro_temp);
+                            if (json.data.id_sujeto == 1) {
+                                cargar_documentacion_requerida_financiera(id_tipo_tramite, 3, json.data.id_registro_temp, obligado_dec_isr);
+                            }
+                            cargar_documentacion_requerida_tecnica(id_tipo_tramite, 4, json.data.id_registro_temp, json.data.tec_acredita_tmp);
+                            
+                            $("#mdl_documento_1").modal("toggle");
+                            // Fin logica
+                        }
+                    }
                 }
             });
+
         },
         error: function(json) {
             console.log('error');
@@ -790,31 +766,32 @@ $('#frm-subir-adjunto-tmp-dec-anual').on('submit',
             success: function(json) {
                 messages_validation(json.data, false);
 
-                $.confirm({
-                    title: 'Confirmación',
+                $.alert({
+                    title: 'Confirmación!',
                     content: json.msg,
-                    type: 'green',
-                    autoClose:'close|1500',
-                    typeAnimated: true,
-                    icon : 'fa fa-check',
+                    type: 'blue', // info | red | green | orange | dark | etc.
                     buttons: {
-                        close: {
-                            isHidden: true
+                        ok: {
+                            text: 'Entendido',
+                            btnClass: 'btn-blue',
+                            action: function(){
+                                // Tu lógica acá
+                                let id_sujeto = $("#ssjjtt").val();
+                                let id_tipo_tramite = $("#id_tipo_tramite").val();
+                                let obligado_dec_isr = $("#obligado_dec_isr").val();
+                                $('.spinner_wait').hide(); 
+                                $('.spinner_no_wait').show(); 
+                                
+                                if ( json.data.id_sujeto == 1 ) {
+                                    cargar_documentacion_requerida_financiera(id_tipo_tramite, 3, json.data.id_registro_temp, obligado_dec_isr);
+                                }
+                                $("#mdl_documento_declaracion_anual").modal("toggle");
+                                // Fin logica
+                            }
                         }
-                    },
-                    onclose: function() {
-                        let id_sujeto = $("#ssjjtt").val();
-                        let id_tipo_tramite = $("#id_tipo_tramite").val();
-                        let obligado_dec_isr = $("#obligado_dec_isr").val();
-                        $('.spinner_wait').hide(); 
-                        $('.spinner_no_wait').show(); 
-                        
-                        if (json.data.id_sujeto == 1) {
-                            cargar_documentacion_requerida_financiera(id_tipo_tramite, 3, json.data.id_registro_temp, obligado_dec_isr);
-                        }
-                        $("#mdl_documento_declaracion_anual").modal("toggle");
                     }
                 });
+
             },
             error: function(json) {
                 $('.spinner_wait').hide(); 
@@ -870,17 +847,16 @@ $('#frm-subir-adjunto-tmp-dec-anual').on('submit',
 );
 
 function cargar_documentacion_requerida_get_n(valor) 
-{
-    let str = "";
- 
-    str += '<ol>';
+ {
+    let str ="";
+        str+='<ol>';
     $.each(valor.hijos, function(j, hijo1) {
         let objeto_hijo1 = '';
         let lbl_nombre = 'Documento ' + (j + 1);
         if (hijo1.alias != null) {
             lbl_nombre = hijo1.alias;
         }
-        str += '<li>';
+        str+='  <li>';
         if (hijo1.id_tramite_documento != null) {
             let download = project_name + "/tramites-adjuntos/" + hijo1.id_tramite_documento + "/descargar";
             if (hijo1.desglose != null) {
@@ -890,24 +866,33 @@ function cargar_documentacion_requerida_get_n(valor)
                     let download_documento = project_name + "/tramites-adjuntos/" + hijo1.id_tramite_documento + "/descargar-by-name/" + item;
                     objeto_hijo1 += ' | <a href="' + download_documento + '" target="_blank">' + tt[2] + '</a>';
                 });
-                objeto_hijo1 += ' | <a href="#" onclick="eliminar_adjunto_tmp(' + hijo1.id_tramite_documento + ')" class="text-danger"><i class="far fa-trash-alt"></i></a>';
+                objeto_hijo1+=' | ';
+                objeto_hijo1+=' <a href="#" onclick="eliminar_adjunto_tmp(' + hijo1.id_tramite_documento + ')">'
+                objeto_hijo1+='     <i class="far fa-trash-alt text-danger"></i>';
+                objeto_hijo1+=' </a>';
             } 
             else {
-                objeto_hijo1 += '<span class="text-success-dark">' + lbl_nombre + '</span> <a href="' + download + '" class="text-info-dark" target="_blank"><i class="fa fa-download"></i></a> | <a href="#" onclick="eliminar_adjunto_tmp(' + hijo1.id_tramite_documento + ')" class="text-danger"><i class="far fa-trash-alt"></i></a>';
+                objeto_hijo1+=' <span class="text-success-dark">' + lbl_nombre + '</span>';
+                objeto_hijo1+=' <a href="' + download + '" target="_blank">';
+                objeto_hijo1+='     <i class="fa fa-download text-info"></i>';
+                objeto_hijo1+=' </a> |';
+                objeto_hijo1+=' <a href="#" onclick="eliminar_adjunto_tmp(' + hijo1.id_tramite_documento + ')">';
+                objeto_hijo1+='     <i class="far fa-trash-alt text-danger"></i>';
+                objeto_hijo1+=' </a>';
             }
         } 
         else {
             objeto_hijo1 += '<span class="">' + lbl_nombre + '</span>';
         }
-        str += objeto_hijo1;
-        str += '</li>';
+        str+= objeto_hijo1;
+        str+='  </li>';
     }, "json");
     str += '</ol>';
     return str;
-}
+ }
 
 function cargar_documentacion_requerida_get_hijos(valor) 
-{
+ {
     let str = "";
     var inputTol = "";  
     // console.log(valor);
@@ -923,12 +908,18 @@ function cargar_documentacion_requerida_get_hijos(valor)
             str += '<li>';
             if ( hijo1.id_tramite_documento != null ) {
                 let download = project_name + "/tramites-adjuntos/" + hijo1.id_tramite_documento + "/descargar";
-                objeto_hijo1 += '<span class="text-success-dark">' + lbl_nombre + '</span> <a href="' + download + '" class="text-info-dark" target="_blank"><i class="fa fa-download"></i></a> | <a href="#" onclick="eliminar_adjunto_tmp(' + hijo1.id_tramite_documento + ')" class="text-danger"><i class="far fa-trash-alt"></i></a>';
+                objeto_hijo1+=' <span class="text-success-dark">' + lbl_nombre + '</span>';
+                objeto_hijo1+=' <a href="' + download + '" target="_blank">';
+                objeto_hijo1+='     <i class="fa fa-download text-success"></i>';
+                objeto_hijo1+=' </a> |';
+                objeto_hijo1+=' <a href="#" onclick="eliminar_adjunto_tmp(' + hijo1.id_tramite_documento + ')">';
+                objeto_hijo1+='     <i class="far fa-trash-alt text-danger"></i>';
+                objeto_hijo1+=' </a>';
             } 
             else {
                 objeto_hijo1 += '<span class="">' + lbl_nombre + '</span>';
                 if ( hijo1.subir == 1 ) {
-                    objeto_hijo1 += ' <a href="#" onclick="mdl_documento_1(' + hijo1.id + ', \'' + lbl_nombre + '\')">' + 'Subir</a>';
+                    objeto_hijo1+=' <a href="#" onclick="mdl_documento_1(' + hijo1.id + ', \'' + lbl_nombre + '\')">' + 'Agregar</a>';
                 }
                 if ( hijo1.subir_n == 1 ) {
                     if (
@@ -938,7 +929,7 @@ function cargar_documentacion_requerida_get_hijos(valor)
                         hijo1.id_padre == 364 ||
                         hijo1.id == 251 || 
                         hijo1.id == 252 || 
-                        hijo1.id == 253
+                        hijo1.id == 253 
                     ) {
                         let temp = 0;
                         if ( hijo1.id == 266 || hijo1.id == 317 ) {
@@ -953,9 +944,12 @@ function cargar_documentacion_requerida_get_hijos(valor)
             }
             str += objeto_hijo1;
             if ( hijo1.tiene_hijos == 1 ) {
+                // console.log(valor);
                 str += cargar_documentacion_requerida_get_hijos(hijo1);
             }
             if ( hijo1.subir_n == 1 ) {
+                console.log('subir n');
+                console.log(hijo1);
                 str += cargar_documentacion_requerida_get_n(hijo1);
             }
             str += '</li>';
@@ -963,4 +957,4 @@ function cargar_documentacion_requerida_get_hijos(valor)
         str += '</ol>';
     }
     return str;
-}
+ }

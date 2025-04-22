@@ -19,16 +19,16 @@ function cargar_documentacion_requerida_tecnica(id_tipo_tramite, id_area, id_reg
             if ( valor.id_tramite_documento != null ) {
                 let download= project_name + "/tramites-adjuntos/" + valor.id_tramite_documento + "/descargar";  
                 objeto+='<span class="text-success-dark">' + lbl_nombre + '</span>';
-                objeto+='<a href="'+ download +'" class="text-info-dark" target="_blank">';
-                objeto+='   <i class="fa fa-download"></i>';
-                objeto+='</a> | <a href="#" onclick="eliminar_adjunto_tmp('+ valor.id_tramite_documento +')" class="text-danger">';
-                objeto+='   <i class="far fa-trash-alt"></i>';
+                objeto+='<a href="'+ download +'" target="_blank">';
+                objeto+='   <i class="fa fa-download text-success"></i>';
+                objeto+='</a> | <a href="#" onclick="eliminar_adjunto_tmp('+ valor.id_tramite_documento +')">';
+                objeto+='   <i class="far fa-trash-alt text-danger"></i>';
                 objeto+='</a>';
             }
             else {
                 objeto+= '<span class="">' + lbl_nombre + strTooltip +' </span>';
                 if ( valor.subir == 1 ) {
-                    objeto+= ' <a href="#" onclick="mdl_documento_1('+ valor.id+', \''+lbl_nombre +'\')">'+ 'Subir</a>';
+                    objeto+= ' <a href="#" onclick="mdl_documento_1('+ valor.id+', \''+lbl_nombre +'\')">'+ 'Agregar</a>';
                 }
                 if ( valor.tiene_opcionales == 1 ) {
                     objeto+= ' <a href="#" onclick="mdl_documento_1('+ valor.id+', \''+lbl_nombre +'\')">'+ 'Agregar</a>';

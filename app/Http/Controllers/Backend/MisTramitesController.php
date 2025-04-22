@@ -244,7 +244,7 @@ class MisTramitesController extends Controller
         $route_redirect              = "";
         $send                        = $post["enviar_stt"];
         $id_tipo_persona             = $post['id_tipo_persona'];
-        $msg                         = '';
+        $msg                         = 'Los datos han sido guardados exitosamente.';
 
         $finDeSemana = false;
         setlocale ( LC_TIME, 'spanish' );
@@ -313,461 +313,450 @@ class MisTramitesController extends Controller
                     }
                 }
             }
+
+            # Sandro Alan Gomez Aceituno
+            # Asignar los representantes tecnicos con sus id´s de tramite
+            # Begin T_Tramite_Rep_Tecnico
+            $statusRepTecnico = Herramientas::setRepTecnicoContratista(Auth::user()->id_registro);
+            if ($statusRepTecnico == 0) {
+                $msg                    = "No se han agregado represententate tecnicos, favor de agregar.";
+                $statusExisteRepTecnico = true;
+                $send                   = 0;
+            }
+            # End T_Tramite_Rep_Tecnico
+
+            if ( $id_tipo_persona != 1 ) {
+                # Asignar los datos al Acta Instrumento con sus id´s de tramite
+                # Begin T_Tramite_Acta_Instrumento
+                $statusActaInstrumento = Herramientas::setActaInstrumento(Auth::user()->id_registro);
+                if ($statusActaInstrumento == 0) {
+                    $msg                         = "No se ha agregado el acta constitutiva, favor de agregar.";
+                    $statusExisteActaInstrumento = true;
+                    $send                        = 0;
+                }
+                # End T_Tramite_Dato_Legal
+
+                # Asignar los datos legales con sus id´s de tramite
+                # Begin T_Tramite_Dato_Legal
+                $statusDatoLegal = Herramientas::setDatoLegal(Auth::user()->id_registro);
+                if ( $statusDatoLegal == 0 ) {
+                    $msg                   = "No se han agregado los datos legales, favor de agregar.";
+                    $statusExisteDatoLegal = true;
+                    $send                  = 0;
+                }
+                # End T_Tramite_Dato_Legal
+            }
         }
         # 1. End Code
 
-        // Si es 1 envia el tramite, si es 0 solo guardo
-        // if ($post['folio_pago_temp'] == "FI6003124") {
-        //     $msg    = "El Folio FI6003124 ya ha sido registrado.";
-        //     $status = 3;
-        //     $code   = 409;
-        //     $data   = [];
-        // } 
-        // else {
-            $v_folio_p = Herramientas::setFolioPago($post['folio_pago_temp']);
-            if ( $v_folio_p == 1 ) {
-                $msg    = "No puedes utilizar este folio de pago, porque ya ha sido utilizado en un tramite distinto al suyo.";
-                $status = 3;
-                $code   = 409;
-                $data   = [];
+
+        $v_folio_p = Herramientas::setFolioPago($post['folio_pago_temp']);
+        if ( $v_folio_p == 1 ) {
+            $msg    = "No puedes utilizar este folio de pago, porque ya ha sido utilizado en un tramite distinto al suyo.";
+            $status = 3;
+            $code   = 409;
+            $data   = [];
+        } 
+        else {
+
+            isset($post['id_sujeto']) ? $id_sujeto             = $post['id_sujeto'] : $id_sujeto             = 0;
+            isset($post['id']) ? $id                           = $post['id'] : $id                           = 0;
+            isset($post['id_tipo_tramite']) ? $id_tipo_tramite = $post['id_tipo_tramite'] : $id_tipo_tramite = 0;
+            isset($post['ssjjtt']) ? $ssjjtt                   = $post['ssjjtt'] : $ssjjtt                   = 0;
+
+            //Datos para tabla T_Registro
+            if ( $id_sujeto != 0 ) {
+                $p_registro['id_sujeto'] = $id_sujeto;
+            }
+            $p_registro['id_tipo_persona'] = $id_tipo_persona;
+            $p_registro['rfc']             = $post['rfc'];
+            $p_registro['telefono']        = $post['telefono'];
+            $p_registro['email']           = $post['correo'];
+            $p_registro['folio_pago_temp'] = $post['folio_pago_temp'];
+            $p_registro['fecha_pago_temp'] = $post['fecha_pago_temp'];
+
+            //Datos para D_Domicilio fiscal
+            $p_domicilio_fiscal['id_tipo_domicilio'] = 2;
+            $p_domicilio_fiscal['id_municipio']      = $post['id_municipio_fiscal'];
+            $p_domicilio_fiscal['ciudad']            = $post['ciudad_fiscal'];
+            $p_domicilio_fiscal['codigo_postal']     = $post['cp_fiscal'];
+            $p_domicilio_fiscal['calle']             = $post['calle_fiscal'];
+            $p_domicilio_fiscal['num_exterior']      = $post['ext_fiscal'];
+            $p_domicilio_fiscal['num_interior']      = $post['int_fiscal'];
+            $p_domicilio_fiscal['colonia']           = $post['colonia_fiscal'];
+            $p_domicilio_fiscal['referencias']       = $post['referencias_fiscal'];
+
+            if ( $id_tipo_persona == 1 ) {
+                //Datos para tabla T_Registro
+                $p_registro['razon_social_o_nombre'] = $post['nombre'] . ' ' . $post['ap_paterno'] . ' ' . $post['ap_materno'];
+                //Datos personales
+                $p_personal['nombre']     = $post['nombre'];
+                $p_personal['ap_paterno'] = $post['ap_paterno'];
+                $p_personal['ap_materno'] = $post['ap_materno'];
+                $p_personal['rfc']                    = $post['rfc'];
+                $p_personal['id_nacionalidad']        = $post['id_nacionalidad'];
+                $p_personal['sexo']                   = $post['sexo'];
+                $p_personal['telefono']               = $post['telefono'];
+                $p_personal['correo_electronico']     = $post['correo'];
+                $p_personal['id_tipo_identificacion'] = $post['id_tipo_identificacion'];
+                $p_personal['numero_identificacion']  = $post['numero_identificacion'];
+
+                //Datos para D_Domicilio particular
+                $p_domicilio_particular['id_tipo_domicilio'] = 1;
+                $p_domicilio_particular['id_municipio']      = $post['id_municipio_particular'];
+                $p_domicilio_particular['ciudad']            = $post['ciudad_particular'];
+                $p_domicilio_particular['codigo_postal']     = $post['cp_particular'];
+                $p_domicilio_particular['calle']             = $post['calle_particular'];
+                $p_domicilio_particular['num_exterior']      = $post['ext_particular'];
+                $p_domicilio_particular['num_interior']      = $post['int_particular'];
+                $p_domicilio_particular['colonia']           = $post['colonia_particular'];
+                $p_domicilio_particular['referencias']       = $post['referencias_particular'];
             } 
             else {
-                # Sandro Alan Gomez Aceituno
-                # Asignar los representantes tecnicos con sus id´s de tramite
-                # Begin T_Tramite_Rep_Tecnico
-                $statusRepTecnico = Herramientas::setRepTecnicoContratista(Auth::user()->id_registro);
-                if ($statusRepTecnico == 0) {
-                    $msg                    = "No se han agregado represententate tecnicos, favor de agregar.";
-                    $statusExisteRepTecnico = true;
-                    $send                   = 0;
-                }
-                # End T_Tramite_Rep_Tecnico
-
-                if ( $id_tipo_persona != 1 ) {
-                    # Asignar los datos al Acta Instrumento con sus id´s de tramite
-                    # Begin T_Tramite_Acta_Instrumento
-                    $statusActaInstrumento = Herramientas::setActaInstrumento(Auth::user()->id_registro);
-                    if ($statusActaInstrumento == 0) {
-                        $msg                         = "No se ha agregado el acta constitutiva, favor de agregar.";
-                        $statusExisteActaInstrumento = true;
-                        $send                        = 0;
-                    }
-                    # End T_Tramite_Dato_Legal
-
-                    # Asignar los datos legales con sus id´s de tramite
-                    # Begin T_Tramite_Dato_Legal
-                    $statusDatoLegal = Herramientas::setDatoLegal(Auth::user()->id_registro);
-                    if ( $statusDatoLegal == 0 ) {
-                        $msg                   = "No se han agregado los datos legales, favor de agregar.";
-                        $statusExisteDatoLegal = true;
-                        $send                  = 0;
-                    }
-                    # End T_Tramite_Dato_Legal
-                }
-
-                isset($post['id_sujeto']) ? $id_sujeto             = $post['id_sujeto'] : $id_sujeto             = 0;
-                isset($post['id']) ? $id                           = $post['id'] : $id                           = 0;
-                isset($post['id_tipo_tramite']) ? $id_tipo_tramite = $post['id_tipo_tramite'] : $id_tipo_tramite = 0;
-                isset($post['ssjjtt']) ? $ssjjtt                   = $post['ssjjtt'] : $ssjjtt                   = 0;
-
                 //Datos para tabla T_Registro
-                if ( $id_sujeto != 0 ) {
-                    $p_registro['id_sujeto'] = $id_sujeto;
-                }
-                $p_registro['id_tipo_persona'] = $id_tipo_persona;
-                $p_registro['rfc']             = $post['rfc'];
-                $p_registro['telefono']        = $post['telefono'];
-                $p_registro['email']           = $post['correo'];
-                $p_registro['folio_pago_temp'] = $post['folio_pago_temp'];
-                $p_registro['fecha_pago_temp'] = $post['fecha_pago_temp'];
+                $p_registro['razon_social_o_nombre'] = $post['razon_social_o_nombre'];
+            }
 
-                //Datos para D_Domicilio fiscal
-                $p_domicilio_fiscal['id_tipo_domicilio'] = 2;
-                $p_domicilio_fiscal['id_municipio']      = $post['id_municipio_fiscal'];
-                $p_domicilio_fiscal['ciudad']            = $post['ciudad_fiscal'];
-                $p_domicilio_fiscal['codigo_postal']     = $post['cp_fiscal'];
-                $p_domicilio_fiscal['calle']             = $post['calle_fiscal'];
-                $p_domicilio_fiscal['num_exterior']      = $post['ext_fiscal'];
-                $p_domicilio_fiscal['num_interior']      = $post['int_fiscal'];
-                $p_domicilio_fiscal['colonia']           = $post['colonia_fiscal'];
-                $p_domicilio_fiscal['referencias']       = $post['referencias_fiscal'];
-
-                if ( $id_tipo_persona == 1 ) {
-                    //Datos para tabla T_Registro
-                    $p_registro['razon_social_o_nombre'] = $post['nombre'] . ' ' . $post['ap_paterno'] . ' ' . $post['ap_materno'];
-                    //Datos personales
-                    $p_personal['nombre']     = $post['nombre'];
-                    $p_personal['ap_paterno'] = $post['ap_paterno'];
-                    $p_personal['ap_materno'] = $post['ap_materno'];
-                    $p_personal['rfc']                    = $post['rfc'];
-                    $p_personal['id_nacionalidad']        = $post['id_nacionalidad'];
-                    $p_personal['sexo']                   = $post['sexo'];
-                    $p_personal['telefono']               = $post['telefono'];
-                    $p_personal['correo_electronico']     = $post['correo'];
-                    $p_personal['id_tipo_identificacion'] = $post['id_tipo_identificacion'];
-                    $p_personal['numero_identificacion']  = $post['numero_identificacion'];
-
-                    //Datos para D_Domicilio particular
-                    $p_domicilio_particular['id_tipo_domicilio'] = 1;
-                    $p_domicilio_particular['id_municipio']      = $post['id_municipio_particular'];
-                    $p_domicilio_particular['ciudad']            = $post['ciudad_particular'];
-                    $p_domicilio_particular['codigo_postal']     = $post['cp_particular'];
-                    $p_domicilio_particular['calle']             = $post['calle_particular'];
-                    $p_domicilio_particular['num_exterior']      = $post['ext_particular'];
-                    $p_domicilio_particular['num_interior']      = $post['int_particular'];
-                    $p_domicilio_particular['colonia']           = $post['colonia_particular'];
-                    $p_domicilio_particular['referencias']       = $post['referencias_particular'];
-                } 
-                else {
-                    //Datos para tabla T_Registro
-                    $p_registro['razon_social_o_nombre'] = $post['razon_social_o_nombre'];
-                }
-
-                $validation->registroNuevo(['id' => $id, 'rfc' => $p_registro['rfc'], 'id_tipo_tramite' => $id_tipo_tramite, 'id_sujeto' => $ssjjtt], $send);
-                if (!$validation->getStatusB()) {
-                    //si todo esta bien entra
-                    try {
-                        DB::beginTransaction();
-                        if ( $id == 0 ) {
-                            $d_registro         = new T_Registro;
-                            $d_domicilio_fiscal = new D_Domicilio;
-                            $t_tramite          = new T_Tramite;
-                            if ( $id_tipo_persona == 1 ) {
-                                $d_personal             = new D_Personal;
-                                $d_domicilio_particular = new D_Domicilio;
+            $validation->registroNuevo(['id' => $id, 'rfc' => $p_registro['rfc'], 'id_tipo_tramite' => $id_tipo_tramite, 'id_sujeto' => $ssjjtt], $send);
+            if (!$validation->getStatusB()) {
+                //si todo esta bien entra
+                try {
+                    DB::beginTransaction();
+                    if ( $id == 0 ) {
+                        $d_registro         = new T_Registro;
+                        $d_domicilio_fiscal = new D_Domicilio;
+                        $t_tramite          = new T_Tramite;
+                        if ( $id_tipo_persona == 1 ) {
+                            $d_personal             = new D_Personal;
+                            $d_domicilio_particular = new D_Domicilio;
+                        }
+                    }
+                    else {
+                        $d_registro = T_Registro::find($id);
+                        if ($id_tipo_tramite != 0) {
+                            $t_tramite = new T_Tramite;
+                            if ($d_registro->id_d_domicilio_fiscal == null) {
+                                $d_domicilio_fiscal = new D_Domicilio;
+                            } 
+                            else {
+                                $d_domicilio_fiscal = D_Domicilio::find($d_registro->id_d_domicilio_fiscal);
+                            }
+                            if ($id_tipo_persona == 1) {
+                                if ($d_registro->id_d_personal == null) {
+                                    $d_personal             = new D_Personal;
+                                    $d_domicilio_particular = new D_Domicilio;
+                                }
+                                else {
+                                    $d_personal = D_Personal::find($d_registro->id_d_personal);
+                                    if ($d_personal->id_d_domicilio == null) {
+                                        $d_domicilio_particular = new D_Domicilio;
+                                    } 
+                                    else {
+                                        $d_domicilio_particular = D_Domicilio::find($d_personal->id_d_domicilio);
+                                    }
+                                }
                             }
                         }
                         else {
-                            $d_registro = T_Registro::find($id);
-                            if ($id_tipo_tramite != 0) {
-                                $t_tramite = new T_Tramite;
-                                if ($d_registro->id_d_domicilio_fiscal == null) {
-                                    $d_domicilio_fiscal = new D_Domicilio;
-                                } 
-                                else {
-                                    $d_domicilio_fiscal = D_Domicilio::find($d_registro->id_d_domicilio_fiscal);
-                                }
-                                if ($id_tipo_persona == 1) {
-                                    if ($d_registro->id_d_personal == null) {
-                                        $d_personal             = new D_Personal;
-                                        $d_domicilio_particular = new D_Domicilio;
-                                    }
-                                    else {
-                                        $d_personal = D_Personal::find($d_registro->id_d_personal);
-                                        if ($d_personal->id_d_domicilio == null) {
-                                            $d_domicilio_particular = new D_Domicilio;
-                                        } 
-                                        else {
-                                            $d_domicilio_particular = D_Domicilio::find($d_personal->id_d_domicilio);
-                                        }
-                                    }
-                                }
-                            }
-                            else {
-                                $d_domicilio_fiscal = D_Domicilio::find($post['id_domicilio_fiscal']);
-                                if ($id_tipo_persona == 1) {
-                                    $d_personal             = D_Personal::find($post['id_d_personal']);
-                                    $d_domicilio_particular = D_Domicilio::find($post['id_domicilio_particular']);
-                                }
+                            $d_domicilio_fiscal = D_Domicilio::find($post['id_domicilio_fiscal']);
+                            if ($id_tipo_persona == 1) {
+                                $d_personal             = D_Personal::find($post['id_d_personal']);
+                                $d_domicilio_particular = D_Domicilio::find($post['id_domicilio_particular']);
                             }
                         }
+                    }
 
-                        //Domicilio fiscal
-                        $d_domicilio_fiscal->fill($p_domicilio_fiscal)->save();
-                        $p_registro['id_d_domicilio_fiscal'] = $d_domicilio_fiscal->id;
-                        if ($id_tipo_persona == 1) {
-                            $d_domicilio_particular->fill($p_domicilio_particular)->save();
-                            $p_personal['id_d_domicilio'] = $d_domicilio_particular->id;
-                            $d_personal->fill($p_personal)->save();
-                            $p_registro['id_d_personal'] = $d_personal->id;
-                        }
-                        $d_registro->fill($p_registro)->save();
-                        if ($send == 1 && $id_tipo_tramite != 0) {
-                            $v_folio_p = Herramientas::setFolioPago($d_registro->folio_pago_temp);
-                            if ($v_folio_p == 1) {
-                                $msg    = "No puedes utilizar este folio de pago, porque ya ha sido utilizado en un tramite distinto al suyo.";
-                                $status = 3;
-                                $code   = 409;
-                                $data   = [];
+                    //Domicilio fiscal
+                    $d_domicilio_fiscal->fill($p_domicilio_fiscal)->save();
+                    $p_registro['id_d_domicilio_fiscal'] = $d_domicilio_fiscal->id;
+                    if ($id_tipo_persona == 1) {
+                        $d_domicilio_particular->fill($p_domicilio_particular)->save();
+                        $p_personal['id_d_domicilio'] = $d_domicilio_particular->id;
+                        $d_personal->fill($p_personal)->save();
+                        $p_registro['id_d_personal'] = $d_personal->id;
+                    }
+                    $d_registro->fill($p_registro)->save();
+                    $msg    = "Los datos han sido guardados exitosamente.";
+
+                    if ($send == 1 && $id_tipo_tramite != 0) {
+                        $v_folio_p = Herramientas::setFolioPago($d_registro->folio_pago_temp);
+                        if ($v_folio_p == 1) {
+                            $msg    = "No puedes utilizar este folio de pago, porque ya ha sido utilizado en un tramite distinto al suyo.";
+                            $status = 3;
+                            $code   = 409;
+                            $data   = [];
+                        } 
+                        else {
+                            $existe_contacto = Herramientas::setContacto($d_registro->id);
+                            if ($existe_contacto == 0) {
+                                $status_mensaje = 1;
+                                $msg            = "No has agregado ningun contacto es obligatorio para que tu tramite se pueda generar.";
+                                $status         = 3;
+                                $code           = 409;
+                                $data           = [];
                             } 
                             else {
-                                $existe_contacto = Herramientas::setContacto($d_registro->id);
-                                if ($existe_contacto == 0) {
+                                //busca socios legales
+                                $busca_socios_legales = T_Tramite_Socio_Legal::general(['id_registro_temp' => $id])->get();
+                                if (count($busca_socios_legales) == 0 && $id_tipo_persona == 2) {
                                     $status_mensaje = 1;
-                                    $msg            = "No has agregado ningun contacto es obligatorio para que tu tramite se pueda generar.";
+                                    $msg            = "No has agregado ningun socio legal es obligatorio para que tu tramite se pueda generar.";
                                     $status         = 3;
                                     $code           = 409;
                                     $data           = [];
-                                } 
+                                }
                                 else {
-                                    //busca socios legales
-                                    $busca_socios_legales = T_Tramite_Socio_Legal::general(['id_registro_temp' => $id])->get();
+                                    //enviar tramite
+                                    $id_sujeto                        = $d_registro->id_sujeto;
+                                    ($id_sujeto == 1) ? $clave_sujeto = "C" : $clave_sujeto = "S";
+                                    $total_tramites                   = (T_Tramite::total_anio(date('Y'), $id_sujeto)) + 1;
 
-                                    if (count($busca_socios_legales) == 0 && $id_tipo_persona == 2) {
-                                        $status_mensaje = 1;
-                                        $msg            = "No has agregado ningun socio legal es obligatorio para que tu tramite se pueda generar.";
-                                        $status         = 3;
-                                        $code           = 409;
-                                        $data           = [];
+                                    // Modificacion de folio
+                                    $p_tramite['folio']      = str_pad($total_tramites, 4, "0", STR_PAD_LEFT) . '-' . $clave_sujeto . '-' . date('Y');
+                                    $documentacion_recibida  = T_Tramite_Documentacion::documentacion_temporal_array($id);
+                                    $documentacion_requerida = C_Tipo_Tramite::documentacion_requerida($id_tipo_tramite, $id_sujeto);
+                                    $documentacion_pendiente = array_diff($documentacion_requerida, $documentacion_recibida);
+
+                                    $p_tramite['id_cs']                       = $d_registro->id;
+                                    $p_tramite['id_tipo_tramite']             = $id_tipo_tramite;
+                                    $p_tramite['fecha_inicio']                = date('Y-m-d H:i:s');
+                                    $p_tramite['especialidades_tecnicas']     = json_encode([]);
+                                    $p_tramite['documentacion_recibida']      = json_encode($documentacion_recibida);
+                                    $p_tramite['documentacion_pendiente']     = json_encode(array_values($documentacion_pendiente));
+                                    $p_tramite['documentacion_revisada']      = json_encode([]);
+                                    $p_tramite['documentacion_no_revisada']   = json_encode($documentacion_recibida);
+                                    $p_tramite['documentacion_observaciones'] = json_encode([]);
+                                    $p_tramite['id_d_domicilio_fiscal']       = $d_domicilio_fiscal->id;
+                                    $p_tramite['telefono']                    = $post['telefono'];
+                                    $p_tramite['email']                       = $post['correo'];
+                                    $p_tramite['obligado_dec_isr']            = $d_registro->obligado_dec_isr;
+
+                                    //Asignar responsables
+                                    $turnar        = new \App\Http\Classes\Turnar;
+                                    $turnar_status = $turnar->asignar_responsables();
+                                    if ($turnar_status == true) {
+                                        $array                        = [];
+                                        $p_tramite['id_r_area_legal'] = $turnar->getResponsableAreaLegal();
+                                        array_push($array, $turnar->getResponsableAreaLegal());
+                                        if ($id_sujeto == 1) {
+                                            $p_tramite['id_r_area_financiera'] = $turnar->getResponsableAreaFinanciera();
+                                            array_push($array, $turnar->getResponsableAreaFinanciera());
+                                        }
+                                        $p_tramite['id_r_area_tecnica'] = $turnar->getResponsableAreaTecnica();
+                                        array_push($array, $turnar->getResponsableAreaTecnica());
                                     }
-                                    else {
-                                        //enviar tramite
-                                        $id_sujeto                        = $d_registro->id_sujeto;
-                                        ($id_sujeto == 1) ? $clave_sujeto = "C" : $clave_sujeto = "S";
-                                        $total_tramites                   = (T_Tramite::total_anio(date('Y'), $id_sujeto)) + 1;
 
+                                    $p_tramite['id_sujeto_tramite'] = $id_sujeto;
+                                    $p_tramite['terminos']          = 1;
+                                    $t_tramite->fill($p_tramite)->save();
 
-                                        // Modificacion de folio
-                                        $p_tramite['folio']      = str_pad($total_tramites, 4, "0", STR_PAD_LEFT) . '-' . $clave_sujeto . '-' . date('Y');
-                                        $documentacion_recibida  = T_Tramite_Documentacion::documentacion_temporal_array($id);
-                                        $documentacion_requerida = C_Tipo_Tramite::documentacion_requerida($id_tipo_tramite, $id_sujeto);
-                                        $documentacion_pendiente = array_diff($documentacion_requerida, $documentacion_recibida);
+                                    $upd_reg                    = T_Registro::find($id);
+                                    $p_upd_reg['terminos_temp'] = 0;
+                                    $upd_reg->fill($p_upd_reg)->save();
 
-                                        $p_tramite['id_cs']                       = $d_registro->id;
-                                        $p_tramite['id_tipo_tramite']             = $id_tipo_tramite;
-                                        $p_tramite['fecha_inicio']                = date('Y-m-d H:i:s');
-                                        $p_tramite['especialidades_tecnicas']     = json_encode([]);
-                                        $p_tramite['documentacion_recibida']      = json_encode($documentacion_recibida);
-                                        $p_tramite['documentacion_pendiente']     = json_encode(array_values($documentacion_pendiente));
-                                        $p_tramite['documentacion_revisada']      = json_encode([]);
-                                        $p_tramite['documentacion_no_revisada']   = json_encode($documentacion_recibida);
-                                        $p_tramite['documentacion_observaciones'] = json_encode([]);
-                                        $p_tramite['id_d_domicilio_fiscal']       = $d_domicilio_fiscal->id;
-                                        $p_tramite['telefono']                    = $post['telefono'];
-                                        $p_tramite['email']                       = $post['correo'];
-                                        $p_tramite['obligado_dec_isr']            = $d_registro->obligado_dec_isr;
+                                    # Sandro Alan Gomez Aceituno
+                                    # Asignar los representantes tecnicos con sus id´s de tramite
+                                    # Begin T_Tramite_Rep_Tecnico
 
-                                        //Asignar responsables
-                                        $turnar        = new \App\Http\Classes\Turnar;
-                                        $turnar_status = $turnar->asignar_responsables();
-                                        if ($turnar_status == true) {
-                                            $array                        = [];
-                                            $p_tramite['id_r_area_legal'] = $turnar->getResponsableAreaLegal();
-                                            array_push($array, $turnar->getResponsableAreaLegal());
-                                            if ($id_sujeto == 1) {
-                                                $p_tramite['id_r_area_financiera'] = $turnar->getResponsableAreaFinanciera();
-                                                array_push($array, $turnar->getResponsableAreaFinanciera());
-                                            }
-                                            $p_tramite['id_r_area_tecnica'] = $turnar->getResponsableAreaTecnica();
-                                            array_push($array, $turnar->getResponsableAreaTecnica());
+                                    $_MDL_Tramite_Contador=T_Tramite_Contador::where('id_registro_tmp', Auth::User()->id_registro)->first();
+                                    $_MDL_Tramite_Contador->fill(['id_registro_tmp'=>null, 'id_tramite'=> $t_tramite->id])->save();
+
+                                    $datosRepTecnico = T_Tramite_Rep_Tecnico::getRepTecnicoTMP(['id_registro_tmp' => Auth::user()->id_registro])->get();
+                                    if (count($datosRepTecnico) > 0) {
+                                        foreach ($datosRepTecnico as $key => $value) {
+                                            # code...
+                                            $vdatoRepTecnico                  = T_Tramite_Rep_Tecnico::findOrFail($value->id);
+                                            $vflRepTecnico['id_tramite']      = $t_tramite->id;
+                                            $vflRepTecnico['id_registro_tmp'] = null;
+                                            $vdatoRepTecnico->fill($vflRepTecnico)->save();
+                                            unset($vflRepTecnico, $vdatoRepTecnico);
                                         }
+                                    }
+                                    #End T_Tramite_Rep_Tecnico
 
-                                        $p_tramite['id_sujeto_tramite'] = $id_sujeto;
-                                        $p_tramite['terminos']          = 1;
-                                        $t_tramite->fill($p_tramite)->save();
+                                    # Asignar los datos legales con sus id´s de tramite
+                                    # Begin T_Tramite_Dato_Legal
+                                    $datosDatoLegal = T_Tramite_Dato_Legal::general(['id_registro_tmp' => Auth::user()->id_registro])->first();
+                                    if (isset($datosDatoLegal)) {
+                                        $vflDatoLegal['id_tramite']      = $t_tramite->id;
+                                            $vflDatoLegal['id_registro_tmp'] = null;
+                                        $vdatoDatoLegal                  = T_Tramite_Dato_Legal::findOrFail($datosDatoLegal->id);
+                                        $vdatoDatoLegal->fill($vflDatoLegal)->save();
+                                        unset($vflDatoLegal, $vdatoDatoLegal, $datosDatoLegal);
+                                    }
+                                    #End T_Tramite_Rep_Tecnico
 
-                                        $upd_reg                    = T_Registro::find($id);
-                                        $p_upd_reg['terminos_temp'] = 0;
-                                        $upd_reg->fill($p_upd_reg)->save();
+                                    # Asignar los datos al acta instrumento con sus id´s de tramite
+                                    # Begin T_Tramite_Acta_Instrumento
+                                    $datosActaInstrumento = T_Tramite_Acta_Instrumento::general(['id_registro_tmp' => Auth::user()->id_registro])->first();
+                                    if (isset($datosActaInstrumento)) {
+                                        $vfldatoActaInstrumento['id_tramite']      = $t_tramite->id;
+                                        $vfldatoActaInstrumento['id_registro_tmp'] = null;
+                                        $vdatoActaInstrumento                      = T_Tramite_Acta_Instrumento::findOrFail($datosActaInstrumento->id);
+                                        $vdatoActaInstrumento->fill($vfldatoActaInstrumento)->save();
+                                        unset($vfldatoActaInstrumento, $vdatoActaInstrumento, $datosActaInstrumento);
+                                    }
+                                    #End T_Tramite_Acta_Instrumento
 
-                                        # Sandro Alan Gomez Aceituno
-                                        # Asignar los representantes tecnicos con sus id´s de tramite
-                                        # Begin T_Tramite_Rep_Tecnico
-
-                                        $_MDL_Tramite_Contador=T_Tramite_Contador::where('id_registro_tmp', Auth::User()->id_registro)->first();
-                                        $_MDL_Tramite_Contador->fill(['id_registro_tmp'=>null, 'id_tramite'=> $t_tramite->id])->save();
-
-
-
-                                        $datosRepTecnico = T_Tramite_Rep_Tecnico::getRepTecnicoTMP(['id_registro_tmp' => Auth::user()->id_registro])->get();
-                                        if (count($datosRepTecnico) > 0) {
-                                            foreach ($datosRepTecnico as $key => $value) {
-                                                # code...
-                                                $vdatoRepTecnico                  = T_Tramite_Rep_Tecnico::findOrFail($value->id);
-                                                $vflRepTecnico['id_tramite']      = $t_tramite->id;
-                                                $vflRepTecnico['id_registro_tmp'] = null;
-                                                $vdatoRepTecnico->fill($vflRepTecnico)->save();
-                                                unset($vflRepTecnico, $vdatoRepTecnico);
-                                            }
-                                        }
-                                        #End T_Tramite_Rep_Tecnico
-
-                                        # Asignar los datos legales con sus id´s de tramite
-                                        # Begin T_Tramite_Dato_Legal
-                                        $datosDatoLegal = T_Tramite_Dato_Legal::general(['id_registro_tmp' => Auth::user()->id_registro])->first();
-                                        if (isset($datosDatoLegal)) {
-                                            $vflDatoLegal['id_tramite']      = $t_tramite->id;
-                                             $vflDatoLegal['id_registro_tmp'] = null;
-                                            $vdatoDatoLegal                  = T_Tramite_Dato_Legal::findOrFail($datosDatoLegal->id);
-                                            $vdatoDatoLegal->fill($vflDatoLegal)->save();
-                                            unset($vflDatoLegal, $vdatoDatoLegal, $datosDatoLegal);
-                                        }
-                                        #End T_Tramite_Rep_Tecnico
-
+                                    if ($id_tipo_persona != 1) {
                                         # Asignar los datos al acta instrumento con sus id´s de tramite
-                                        # Begin T_Tramite_Acta_Instrumento
-                                        $datosActaInstrumento = T_Tramite_Acta_Instrumento::general(['id_registro_tmp' => Auth::user()->id_registro])->first();
-                                        if (isset($datosActaInstrumento)) {
-                                            $vfldatoActaInstrumento['id_tramite']      = $t_tramite->id;
-                                            $vfldatoActaInstrumento['id_registro_tmp'] = null;
-                                            $vdatoActaInstrumento                      = T_Tramite_Acta_Instrumento::findOrFail($datosActaInstrumento->id);
-                                            $vdatoActaInstrumento->fill($vfldatoActaInstrumento)->save();
-                                            unset($vfldatoActaInstrumento, $vdatoActaInstrumento, $datosActaInstrumento);
+                                        # Begin T_Tramite_Rep_Legal
+                                        $datosRepLegal = T_Tramite_Rep_Legal::general(['id_registro_tmp' => Auth::user()->id_registro])->first();
+                                        if (isset($datosRepLegal)) {
+                                            $vfldatoRepLegal['id_tramite']      = $t_tramite->id;
+                                            $vfldatoRepLegal['id_registro_tmp'] = null;
+                                            $vdatoRepLegal                      = T_Tramite_Rep_Legal::findOrFail($datosRepLegal->id);
+                                            $vdatoRepLegal->fill($vfldatoRepLegal)->save();
+
+                                            $vfldatoActaInstrumentoRepLegal['id_tramite'] = $t_tramite->id;
+                                            $vdatoActaInstrumentoRepLegal                 = T_Tramite_Acta_Instrumento::findOrFail($vdatoRepLegal->id_acta_instrumento);
+                                            $vdatoActaInstrumentoRepLegal->fill($vfldatoActaInstrumentoRepLegal)->save();
+                                            unset($vfldatoRepLegal, $vdatoRepLegal, $datosRepLegal, $vfldatoActaInstrumentoRepLegal, $vdatoActaInstrumentoRepLegal);
                                         }
-                                        #End T_Tramite_Acta_Instrumento
-
-                                        if ($id_tipo_persona != 1) {
-                                            # Asignar los datos al acta instrumento con sus id´s de tramite
-                                            # Begin T_Tramite_Rep_Legal
-                                            $datosRepLegal = T_Tramite_Rep_Legal::general(['id_registro_tmp' => Auth::user()->id_registro])->first();
-                                            if (isset($datosRepLegal)) {
-                                                $vfldatoRepLegal['id_tramite']      = $t_tramite->id;
-                                                $vfldatoRepLegal['id_registro_tmp'] = null;
-                                                $vdatoRepLegal                      = T_Tramite_Rep_Legal::findOrFail($datosRepLegal->id);
-                                                $vdatoRepLegal->fill($vfldatoRepLegal)->save();
-
-                                                $vfldatoActaInstrumentoRepLegal['id_tramite'] = $t_tramite->id;
-                                                $vdatoActaInstrumentoRepLegal                 = T_Tramite_Acta_Instrumento::findOrFail($vdatoRepLegal->id_acta_instrumento);
-                                                $vdatoActaInstrumentoRepLegal->fill($vfldatoActaInstrumentoRepLegal)->save();
-                                                unset($vfldatoRepLegal, $vdatoRepLegal, $datosRepLegal, $vfldatoActaInstrumentoRepLegal, $vdatoActaInstrumentoRepLegal);
-                                            }
-                                            #End T_Tramite_Rep_Legal
-                                        }
-
-                                        $t_pago                   = new T_Pagos;
-                                        $p_pago['id_tramite']     = $t_tramite->id;
-                                        $p_pago['folio_hacienda'] = $d_registro->folio_pago_temp;
-                                        $p_pago['fecha_pago']     = $d_registro->fecha_pago_temp;
-                                        $t_pago->fill($p_pago)->save();
-
-                                        //Enviar notificaciones
-                                        if ($turnar_status == true) {
-                                            $notificacion     = new \App\Http\Classes\Notificacion;
-                                            $notificacion_msg = 'Tienes turnado un nuevo trámite en tu bandeja con folio <b>' . $p_tramite['folio'] . '</b>';
-                                            $notificacion->setIdTramite($t_tramite->id);
-                                            $notificacion->setDescripcion($notificacion_msg);
-                                            $r = $notificacion->turnarAreasNotificacion($array);
-                                        }
-
-                                        $d_registro2                      = T_Registro::find($d_registro->id);
-                                        $p_registro2['id_ultimo_tramite'] = $t_tramite->id;
-                                        $d_registro2->fill($p_registro2)->save();
-
-                                        $t_contacto_t                        = T_Contacto::busca_contacto(['id_registro_temp' => $d_registro->id])->first();
-                                        $post_contacto_t['id_registro_temp'] = null;
-                                        $post_contacto_t['id_tramite']       = $t_tramite->id;
-                                        $t_contacto_t->fill($post_contacto_t)->save();
-
-                                        //Actualizar documentacion
-                                        $documentacion_subida = T_Tramite_Documentacion::general(['id_registro_temp' => $id])->get();
-                                        $folder               = '/expedientes/' . date('Y') . '/' . $d_registro2->rfc . '/' . $t_tramite->folio;
-
-                                        foreach ($documentacion_subida as $doc_subida) {
-                                            $t_tramites_documentacion                    = T_Tramite_Documentacion::find($doc_subida->id);
-                                            $p_tramite_documentacion['id_tramite']       = $t_tramite->id;
-                                            $p_tramite_documentacion['path']             = $folder;
-                                            $p_tramite_documentacion['id_registro_temp'] = null;
-                                            $t_tramites_documentacion->fill($p_tramite_documentacion)->save();
-                                        }
-
-                                        //Actualizar socios legales
-                                        $socios_legales_agregados = T_Tramite_Socio_Legal::general(['id_registro_temp' => $id])->get();
-
-                                        foreach ($socios_legales_agregados as $socio) {
-                                            $t_tramites_socios_legales                     = T_Tramite_Socio_Legal::find($socio->id);
-                                            $p_tramites_socios_legales['id_tramite']       = $t_tramite->id;
-                                            $p_tramites_socios_legales['id_registro_temp'] = null;
-                                            $t_tramites_socios_legales->fill($p_tramites_socios_legales)->save();
-                                        }
-
-                                        $vdatos                 = array();
-                                        $vdatos['name']         = $p_registro['razon_social_o_nombre'];
-                                        $vdatos['folio']        = $t_tramite->folio;
-                                        $vdatos['fecha_inicio'] = $p_tramite['fecha_inicio'];
-                                        if ($id_tipo_tramite == 1) {$tipo_tramite = "Inscripción";}
-                                        if ($id_tipo_tramite == 2) {$tipo_tramite = "Actualización";}
-                                        if ($id_tipo_tramite == 3) {$tipo_tramite = "Modificación";}
-                                        $vdatos['tipo_tramite'] = $tipo_tramite;
-
-                                        $datos_correo                        = array();
-                                        $datos_correo['asunto']              = 'Portal del contratista SHYFP: Registro de cuenta de usuario';
-                                        $datos_correo['cuerpo']              = \App\Http\Classes\CorreoPlantillas::solicitud_enviada($vdatos);
-                                        $datos_correo['correo_destinatario'] = [$p_registro['email']];
-                                        $datos_correo['nombre_destinatario'] = $p_registro['razon_social_o_nombre'];
-                                        $impresion_controller                = new \App\Http\Controllers\ImpresionController();
-                                        $attachment                          = $impresion_controller->constancia_documentacion($t_tramite->id, 'S');
-                                        $vstatusCorreo                       = \App\Http\Classes\Correo::sendEmail($datos_correo, 1, $attachment);
+                                        #End T_Tramite_Rep_Legal
                                     }
-                                }
-                            }
-                        }
 
-                        DB::commit();
-                        if ($id == 0) {
-                            if (
-                                $status_mensaje != 1 &&
-                                !$statusExisteRepTecnico &&
-                                !$statusExisteActaInstrumento &&
-                                !$statusExisteRepLegal
-                            ) {
-                                $msg            = "La información ha sido registrada";
-                                $route_redirect = route($this->route . '.index');
-                            }
-                        }
-                        else {
-                            if (
-                                $status_mensaje != 1 &&
-                                !$statusExisteRepTecnico &&
-                                !$statusExisteActaInstrumento &&
-                                !$statusExisteRepLegal
-                            ) {
-                                if ($send != 0) {
-                                    $msg = "La información ha sido actualizada";
+                                    $t_pago                   = new T_Pagos;
+                                    $p_pago['id_tramite']     = $t_tramite->id;
+                                    $p_pago['folio_hacienda'] = $d_registro->folio_pago_temp;
+                                    $p_pago['fecha_pago']     = $d_registro->fecha_pago_temp;
+                                    $t_pago->fill($p_pago)->save();
+
+                                    //Enviar notificaciones
+                                    if ($turnar_status == true) {
+                                        $notificacion     = new \App\Http\Classes\Notificacion;
+                                        $notificacion_msg = 'Tienes turnado un nuevo trámite en tu bandeja con folio <b>' . $p_tramite['folio'] . '</b>';
+                                        $notificacion->setIdTramite($t_tramite->id);
+                                        $notificacion->setDescripcion($notificacion_msg);
+                                        $r = $notificacion->turnarAreasNotificacion($array);
+                                    }
+
+                                    $d_registro2                      = T_Registro::find($d_registro->id);
+                                    $p_registro2['id_ultimo_tramite'] = $t_tramite->id;
+                                    $d_registro2->fill($p_registro2)->save();
+
+                                    $t_contacto_t                        = T_Contacto::busca_contacto(['id_registro_temp' => $d_registro->id])->first();
+                                    $post_contacto_t['id_registro_temp'] = null;
+                                    $post_contacto_t['id_tramite']       = $t_tramite->id;
+                                    $t_contacto_t->fill($post_contacto_t)->save();
+
+                                    //Actualizar documentacion
+                                    $documentacion_subida = T_Tramite_Documentacion::general(['id_registro_temp' => $id])->get();
+                                    $folder               = '/expedientes/' . date('Y') . '/' . $d_registro2->rfc . '/' . $t_tramite->folio;
+
+                                    foreach ($documentacion_subida as $doc_subida) {
+                                        $t_tramites_documentacion                    = T_Tramite_Documentacion::find($doc_subida->id);
+                                        $p_tramite_documentacion['id_tramite']       = $t_tramite->id;
+                                        $p_tramite_documentacion['path']             = $folder;
+                                        $p_tramite_documentacion['id_registro_temp'] = null;
+                                        $t_tramites_documentacion->fill($p_tramite_documentacion)->save();
+                                    }
+
+                                    //Actualizar socios legales
+                                    $socios_legales_agregados = T_Tramite_Socio_Legal::general(['id_registro_temp' => $id])->get();
+
+                                    foreach ($socios_legales_agregados as $socio) {
+                                        $t_tramites_socios_legales                     = T_Tramite_Socio_Legal::find($socio->id);
+                                        $p_tramites_socios_legales['id_tramite']       = $t_tramite->id;
+                                        $p_tramites_socios_legales['id_registro_temp'] = null;
+                                        $t_tramites_socios_legales->fill($p_tramites_socios_legales)->save();
+                                    }
+
+                                    $vdatos                 = array();
+                                    $vdatos['name']         = $p_registro['razon_social_o_nombre'];
+                                    $vdatos['folio']        = $t_tramite->folio;
+                                    $vdatos['fecha_inicio'] = $p_tramite['fecha_inicio'];
+                                    if ($id_tipo_tramite == 1) {$tipo_tramite = "Inscripción";}
+                                    if ($id_tipo_tramite == 2) {$tipo_tramite = "Actualización";}
+                                    if ($id_tipo_tramite == 3) {$tipo_tramite = "Modificación";}
+                                    $vdatos['tipo_tramite'] = $tipo_tramite;
+
+                                    $datos_correo                        = array();
+                                    $datos_correo['asunto']              = 'Portal del contratista SHYFP: Registro de cuenta de usuario';
+                                    $datos_correo['cuerpo']              = \App\Http\Classes\CorreoPlantillas::solicitud_enviada($vdatos);
+                                    $datos_correo['correo_destinatario'] = [$p_registro['email']];
+                                    $datos_correo['nombre_destinatario'] = $p_registro['razon_social_o_nombre'];
+                                    $impresion_controller                = new \App\Http\Controllers\ImpresionController();
+                                    $attachment                          = $impresion_controller->constancia_documentacion($t_tramite->id, 'S');
+                                    $vstatusCorreo                       = \App\Http\Classes\Correo::sendEmail($datos_correo, 1, $attachment);
                                 }
-                                $route_redirect = route($this->route . '.index');
                             }
                         }
-                        $data = [];
                     }
-                    catch (\Exception $e) {
-                        $status         = 3;
-                        $code           = 409;
-                        $msg            = "No pudimos procesar la solicitud de su navegador porque hay peticiones simultaneas al recurso correspondiente, intente de nuevo.". $e->getMessage();
-                        $route_redirect = "";
-                        $data           = [];
-                        DB::rollback();
+
+                    DB::commit();
+                    if ($id == 0) {
+                        if (
+                            $status_mensaje != 1 &&
+                            !$statusExisteRepTecnico &&
+                            !$statusExisteActaInstrumento &&
+                            !$statusExisteRepLegal
+                        ) {
+                            $msg            = "La información ha sido registrada";
+                            $route_redirect = route($this->route . '.index');
+                        }
                     }
-                } 
-                else {
+                    else {
+                        if (
+                            $status_mensaje != 1 &&
+                            !$statusExisteRepTecnico &&
+                            !$statusExisteActaInstrumento &&
+                            !$statusExisteRepLegal
+                        ) {
+                            if ($send != 0) {
+                                $msg = "La información ha sido actualizada";
+                            }
+                            $route_redirect = route($this->route . '.index');
+                        }
+                    }
+                    $data = [];
+                }
+                catch (\Exception $e) {
                     $status         = 3;
-                    $code           = $validation->getStatusCode();
-                    $msg            = $validation->getStatusMsg();
+                    $code           = 409;
+                    $msg            = "No pudimos procesar la solicitud de su navegador porque hay peticiones simultaneas al recurso correspondiente, intente de nuevo.". $e->getMessage();
                     $route_redirect = "";
                     $data           = [];
+                    DB::rollback();
                 }
-                if ($status == 1 && $send == 1) {
-                    Storage::disk('sircs')->makeDirectory($folder);
-                    $folderTMP = 'expedientes/' . date('Y') . '/' . $d_registro2->rfc . '/tmp';
-                    $oldFolder = substr(Storage::disk('sircs')->getAdapter()->getPathPrefix(), 0, -1) . '/' . $folderTMP;
-                    $newFolder = substr(Storage::disk('sircs')->getAdapter()->getPathPrefix(), 0, -1) . '/' . $folder;
+            } 
+            else {
+                $status         = 3;
+                $code           = $validation->getStatusCode();
+                $msg            = $validation->getStatusMsg();
+                $route_redirect = "";
+                $data           = [];
+            }
+            if ($status == 1 && $send == 1) {
+                Storage::disk('sircs')->makeDirectory($folder);
+                $folderTMP = 'expedientes/' . date('Y') . '/' . $d_registro2->rfc . '/tmp';
+                $oldFolder = substr(Storage::disk('sircs')->getAdapter()->getPathPrefix(), 0, -1) . '/' . $folderTMP;
+                $newFolder = substr(Storage::disk('sircs')->getAdapter()->getPathPrefix(), 0, -1) . '/' . $folder;
 
-                    // Se comprueba que realmente sea la ruta de un directorio
-                    if (is_dir($oldFolder)) {
-                        // Abre un gestor de directorios para la ruta indicada
-                        $gestor = opendir($oldFolder);
+                // Se comprueba que realmente sea la ruta de un directorio
+                if (is_dir($oldFolder)) {
+                    // Abre un gestor de directorios para la ruta indicada
+                    $gestor = opendir($oldFolder);
+                    // Recorre todos los elementos del directorio
+                    while (($archivo = readdir($gestor)) !== false) {
+                        $ruta_completa = $oldFolder . "/" . $archivo;
 
-                        // Recorre todos los elementos del directorio
-                        while (($archivo = readdir($gestor)) !== false) {
-
-                            $ruta_completa = $oldFolder . "/" . $archivo;
-
-                            // Se muestran todos los archivos y carpetas excepto "." y ".."
-                            if ($archivo != "." && $archivo != "..") {
-                                File::move($oldFolder . '/' . $archivo, $newFolder . '/' . $archivo, 'sircs');
-                            }
+                        // Se muestran todos los archivos y carpetas excepto "." y ".."
+                        if ($archivo != "." && $archivo != "..") {
+                            File::move($oldFolder . '/' . $archivo, $newFolder . '/' . $archivo, 'sircs');
                         }
-
-                        // Cierra el gestor de directorios
-                        closedir($gestor);
                     }
+                    // Cierra el gestor de directorios
+                    closedir($gestor);
                 }
             }
-        // }
+        }
+
         return response()->json(['status' => $status, 'code' => $code, 'msg' => $msg, 'route_redirect' => $route_redirect, 'data' => $data], $code);
     }
 
     public function tec_acredita($id, $tec_acredita)
-    {
+     {
         $arr_validacion = [];
         $validation     = new Validations;
         $status         = 1;
@@ -799,10 +788,10 @@ class MisTramitesController extends Controller
             $data           = [];
         }
         return response()->json(['status' => $status, 'code' => $code, 'msg' => $msg, 'route_redirect' => $route_redirect, 'data' => $data], $code);
-    }
+     }
 
     public function obligado_dec_isr($id, $obligado_dec_isr)
-    {
+     {
         //actaliza si esta obligado a presentear declaracion anual cada vez que oprime el radiobutton
         $arr_validacion = [];
         $validation     = new Validations;
@@ -835,10 +824,10 @@ class MisTramitesController extends Controller
             $data           = [];
         }
         return response()->json(['status' => $status, 'code' => $code, 'msg' => $msg, 'route_redirect' => $route_redirect, 'data' => $data], $code);
-    }
+     }
 
     public function store_document_tmp(\App\Http\Requests\Backend\SubirDocumento $request)
-    {
+     {
         $arr_validacion = [];
         $validation     = new Validations;
         $status         = 1;
@@ -900,10 +889,10 @@ class MisTramitesController extends Controller
             $data           = [];
         }
         return response()->json(['status' => $status, 'code' => $code, 'msg' => $msg, 'route_redirect' => $route_redirect, 'data' => $data], $code);
-    }
+     }
 
     public function store_document_soporte(\App\Http\Requests\Backend\SubirDocumentoSoporte $request)
-    {
+     {
         $arr_validacion = [];
         $validation     = new Validations;
         $status         = 1;
@@ -985,22 +974,21 @@ class MisTramitesController extends Controller
             $data           = [];
         }
         return response()->json(['status' => $status, 'code' => $code, 'msg' => $msg, 'route_redirect' => $route_redirect, 'data' => $data], $code);
-    }
+     }
 
     public function mis_observaciones($id_tramite)
-    {
+     {
         $resultados = T_Tramite_Observacion::general(['id_tramite' => $id_tramite, 'id_c_tramites_seguimiento' => 2])->get();
         return $resultados;
-    }
+     }
 
     //Socios legales
     //lista todos los socios en la tabla
     public function resultados_socios_legales($id_tramite)
-    {
+     {
         $resultados = T_Tramite_Socio_Legal::general(['id_registro_temp' => $id_tramite])->get();
-
         return $resultados;
-    }
+     }
 
     public function destroy_socios_legales($id)
     {
@@ -1155,7 +1143,6 @@ class MisTramitesController extends Controller
         $post   = $request->all();
 
         $id_contacto = $post['hdIdContacto'];
-
         $contacto['id_registro_temp'] = $post['hdIdRegistro'];
         $contacto['nombre']           = $post['nombre_contacto'];
         $contacto['ap_paterno']       = $post['ap_paterno_contacto'];

@@ -252,7 +252,7 @@ function guardarTramite()
                 },
                 onClose: function() {
                     ciclando = false;
-                    if (json.route_redirect != "") {
+                    if ( json.route_redirect != "" ) {
                         window.location = json.route_redirect;
                     }
                 }
@@ -309,16 +309,6 @@ function guardarTramite()
     });
 }
 
-
-// function clean_table()
-// {
-//     dt_defaultt.clear();
-//     dt_defaultt.destroy();
-//     $('.dt_default').empty();
-// }
-
-
-
 function modal_contacto(id_tramite)
  {
     $.ajax({
@@ -338,7 +328,6 @@ function modal_contacto(id_tramite)
     });
     $("#modal-message-contacto").modal();
  }
-
 
 function limpiarModal() 
  {
@@ -432,7 +421,6 @@ function eliminar_adjunto_tmp(id)
     });
 }
 
-
 $('#frm-destroy-adjunto-tmp').on('submit', function(e) {
     var el = $('#frm-destroy-adjunto-tmp');
     e.preventDefault(); 
@@ -441,69 +429,45 @@ $('#frm-destroy-adjunto-tmp').on('submit', function(e) {
         url: el.attr('action'),
         data: $(this).serialize(),
         success: function(json) {
-            // swal({                
-            //     icon: 'success',
-            //     title: 'Exito',
-            //     content: {
-            //         element: 'p',
-            //         attributes: {
-            //             innerHTML: json.success,
-            //         },
-            //     },                 
-            //     showConfirmButton: false,
-            //     timer: 1500
-            // }).then(function() {
-            //     var url=$('#frm-destroy-adjunto-tmp').attr('action');
-            //     url= url.replace(/\/[^\/]*$/, '/0');     
-            //     $('#frm-destroy-adjunto-tmp').attr('action', url); 
-            //     let id_sujeto = $("#ssjjtt").val();
-            //     let id_tipo_tramite = $("#id_tipo_tramite").val(); 
-            //     let obligado_dec_isr= $("#obligado_dec_isr").val(); 
 
-            //     cargar_documentacion_requerida_legal(id_tipo_tramite, 2, json.datos.id_registro_temp);
-            //     if(id_sujeto==1){//solo si es contratista, supervisor lo oculta
-            //       cargar_documentacion_requerida_financiera(id_tipo_tramite, 3, json.datos.id_registro_temp,obligado_dec_isr);
-            //     }
-            //     cargar_documentacion_requerida_tecnica(id_tipo_tramite, 4, json.datos.id_registro_temp);                
-            // });
-
-            $.confirm({
-                title: 'Exito',
+            $.alert({
+                title: 'Mensaje!',
                 content: json.success,
-                type: 'green',
-                icon: 'fa fa-check',
-                typeAnimated: true,
-                autoClose: 'close|1500',
+                type: 'red', // info | red | green | orange | dark | etc.
                 buttons: {
-                    close: {
-                        isHidden: true
+                    ok: {
+                        text: 'Entendido',
+                        btnClass: 'btn-blue',
+                        action: function() {
+                            // 
+                            var url = $('#frm-destroy-adjunto-tmp').attr('action');
+                            url = url.replace(/\/[^\/]*$/, '/0');     
+                            $('#frm-destroy-adjunto-tmp').attr('action', url); 
+                            let id_sujeto = $("#ssjjtt").val();
+                            let id_tipo_tramite = $("#id_tipo_tramite").val(); 
+                            let obligado_dec_isr = $("#obligado_dec_isr").val(); 
+                    
+                            cargar_documentacion_requerida_legal(id_tipo_tramite, 2, json.datos.id_registro_temp);
+                            if(id_sujeto == 1) { // solo si es contratista, supervisor lo oculta
+                                cargar_documentacion_requerida_financiera(id_tipo_tramite, 3, json.datos.id_registro_temp, obligado_dec_isr);
+                            }
+                            cargar_documentacion_requerida_tecnica(id_tipo_tramite, 4, json.datos.id_registro_temp);
+                            // 
+                        }
                     }
-                },
-                onClose: function() {
-                    var url = $('#frm-destroy-adjunto-tmp').attr('action');
-                    url = url.replace(/\/[^\/]*$/, '/0');     
-                    $('#frm-destroy-adjunto-tmp').attr('action', url); 
-                    let id_sujeto = $("#ssjjtt").val();
-                    let id_tipo_tramite = $("#id_tipo_tramite").val(); 
-                    let obligado_dec_isr = $("#obligado_dec_isr").val(); 
-            
-                    cargar_documentacion_requerida_legal(id_tipo_tramite, 2, json.datos.id_registro_temp);
-                    if(id_sujeto == 1) { // solo si es contratista, supervisor lo oculta
-                        cargar_documentacion_requerida_financiera(id_tipo_tramite, 3, json.datos.id_registro_temp, obligado_dec_isr);
-                    }
-                    cargar_documentacion_requerida_tecnica(id_tipo_tramite, 4, json.datos.id_registro_temp);                
                 }
             });
+
         },
-        error: function(json)
-        {
-            if(json.status === 422) {                   
+        error: function(json) {
+            if ( json.status === 422 ) {                   
                 var jsonString= json.responseJSON;
                 var errors = jsonString.errors;
-            } else {
+            } 
+            else {
                 alert('Ha ocurrido un error inesperado, contacte a su administrador.');
             }
         }           
     });
-})
+});
 
