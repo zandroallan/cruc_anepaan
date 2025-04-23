@@ -14,7 +14,6 @@
 
 	@endsection
 
-
 	@section('title')
 
 		<h2 class="main-content-title tx-24 mg-b-5">Formatos</h2>
@@ -56,26 +55,22 @@
 						</div>
 						<div class="row">
 							<div class="col-md-12">
-								<p class="text-primary"><b>Notas:</b></p>
-								<div class="activity-block">
-									<ul class="task-list">
-										<li>
-											<i class="task-icon bg-secondary"></i>
-											<h6>El tamaño maximo de los archivos es <strong>5 MB</strong>.</h6>					
-										</li>
-										<li>
-											<i class="task-icon bg-secondary"></i>
-											<h6>Los Archivos (<strong>DOCX, PDF</strong>) son los permitidos para descargas.</h6>										
-										</li>
-										<li>
-											<i class="task-icon bg-secondary"></i>
-											<h6>Los archivos cargados estaran disponibles para su descarga desde el portal.</h6>										
-										</li>										
-									</ul>
+								<div class="alert alert-dark mb-2" role="alert">
+								  	<h4 class="alert-heading"><b>Notas.</b></h4>
+								  	<p class="text-justify">
+								  		El tamaño maximo de los archivos es <strong>5 MB</strong>.
+								  	</p>
+								  	<hr>
+								  	<p class="mb-0 text-justify">
+								  		Los Archivos (<strong>DOCX, PDF</strong>) son los permitidos para descargas.
+								  	</p>
+								  	<hr>
+								  	<p class="mb-0 text-justify">
+								  		Los archivos cargados estaran disponibles para su descarga desde el portal.
+								  	</p>
 								</div>
 							</div>
 						</div>
-
 						<div class="table-responsive _response"></div>
 					</div>
 				</div>

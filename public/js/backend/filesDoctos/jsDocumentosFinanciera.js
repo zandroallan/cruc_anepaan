@@ -1,4 +1,5 @@
-function cargar_documentacion_requerida_financiera(id_tipo_tramite, id_area, id_registro, obligado_dec_isr) {
+function cargar_documentacion_requerida_financiera(id_tipo_tramite, id_area, id_registro, obligado_dec_isr)
+ {
     let url = project_name + "/listas/documentacion-requerida/" + id_tipo_tramite + "/registro/" + id_registro + "/area-financiera/" + obligado_dec_isr;
     $.get(url, function(data, textStatus) {
         let str = '<ol class="mi-lista">';
@@ -19,17 +20,17 @@ function cargar_documentacion_requerida_financiera(id_tipo_tramite, id_area, id_
             if (valor.id_tramite_documento != null) {
                 let download = project_name + "/tramites-adjuntos/" + valor.id_tramite_documento + "/descargar";
                 objeto+='<span class="text-success-dark">' + lbl_nombre + '</span>';
-                objeto+='<a href="' + download + '" class="text-info-dark" target="_blank">';
-                objeto+='   <i class="fa fa-download"></i>';
+                objeto+='<a href="' + download + '" target="_blank">';
+                objeto+='   <i class="fa fa-download text-success"></i>';
                 objeto+='</a> |';
-                objeto+='<a href="#" onclick="eliminar_adjunto_tmp(' + valor.id_tramite_documento + ')" class="text-danger">';
-                objeto+='   <i class="far fa-trash-alt"></i>';
+                objeto+='<a href="#" onclick="eliminar_adjunto_tmp(' + valor.id_tramite_documento + ')">';
+                objeto+='   <i class="far fa-trash-alt text-danger"></i>';
                 objeto+='</a>';
             }
             else {
                 objeto += '<span class="">' + lbl_nombre + strTooltip + ' </span>';
                 if (valor.subir == 1) {
-                    objeto += ' <a href="#" onclick="mdl_documento_1(' + valor.id + ', \'' + lbl_nombre + '\')">' + 'Subir</a>';
+                    objeto += ' <a href="#" onclick="mdl_documento_1(' + valor.id + ', \'' + lbl_nombre + '\')">' + 'Agregar</a>';
                 }
                 if (valor.subir_n == 1) {
                     if (valor.id == 356) { //356 documentacion del contador
@@ -53,10 +54,10 @@ function cargar_documentacion_requerida_financiera(id_tipo_tramite, id_area, id_
         str += '</ol>';
         $("#doctos-financiera").html(str);
     }, "json");
-}
+ }
 
 function obligado_dec_isr(id_tipo_tramite, id_registro, id_tec)
-{
+ {
     // muestra o oculta en el area financiera las declaraciones anuales segun elija en el radiobutton  
     let url = project_name + "/mis-tramites/tramite/" + id_registro + "/obligado-dec-isr/" + id_tec;
     $.get(url, function(json, textStatus) {
@@ -64,4 +65,4 @@ function obligado_dec_isr(id_tipo_tramite, id_registro, id_tec)
         $("#obligado_dec_isr").val(id_tec);
         cargar_documentacion_requerida_financiera(id_tipo_tramite, 3, json.data.id, json.data.obligado_dec_isr);
     }, "json");
-}
+ }

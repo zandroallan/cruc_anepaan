@@ -130,6 +130,7 @@ class SubirDocumentoSoporte extends FormRequest
                     'files.contrato'       => 'required|file|mimes:pdf|max:40960',
                     'files.acta_entrega'   => 'required|file|mimes:pdf,xml|max:40960',
                     'files.finiquito_obra' => 'required|file|mimes:pdf,xml|max:40960',
+                    'files.finiquito_factura' => 'required|file|mimes:pdf,xml|max:40960',
                 ];
                 break;
 

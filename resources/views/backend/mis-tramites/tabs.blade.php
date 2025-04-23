@@ -25,9 +25,6 @@
 			
 	<input id="tab1" type="radio" name="tabs" checked>
 	<label class="tablabel label1" for="tab1">Mis datos</label>
-	    
-	<input id="tab2" type="radio" name="tabs">
-	<label class="tablabel label2" for="tab2">Documentaci&oacute;n</label>
 	
 	@if ( $datos->id_tipo_persona != 1 )
 	<input id="tab3" type="radio" name="tabs">
@@ -43,6 +40,9 @@
 	<input id="tab5" type="radio" name="tabs">
 	<label class="tablabel label5" for="tab5">Tecnica</label>
 
+	<input id="tab2" type="radio" name="tabs">
+	<label class="tablabel label2" for="tab2">Documentaci&oacute;n</label>
+
 	<input id="tab7" type="radio" name="tabs">
 	<label class="tablabel label7" for="tab7">Contacto</label>
 
@@ -52,14 +52,6 @@
 				@include('backend.mis-tramites.tabs-general')		
 			</div>
 		</div>		
-	</section>
-
-	<section id="content2">
-		<div class="card">
-			<div class="card-body">
-				@include('backend.mis-tramites.tabs-documentacion')
-			</div>
-		</div>
 	</section>
 
 	@if ( $datos->id_tipo_persona != 1 )
@@ -88,6 +80,14 @@
 		<div class="card">
 			<div class="card-body">
 				@include('backend.mis-tramites.tabs-tecnica')
+			</div>
+		</div>
+	</section>
+
+	<section id="content2">
+		<div class="card">
+			<div class="card-body">
+				@include('backend.mis-tramites.tabs-documentacion')
 			</div>
 		</div>
 	</section>

@@ -1,4 +1,5 @@
-function AddContacto() {
+function AddContacto() 
+{
     var el = $("#frmContacto");
     var str_errors;
     $.ajax({
@@ -87,7 +88,8 @@ function AddContacto() {
     });
 }
 
-function messages_validation(fields, show) {
+function messages_validation(fields, show) 
+{
     if (show == true) {
         $.each(fields, function (key, value) {
             $("#el-" + key).html(value);
@@ -111,6 +113,7 @@ function cargar_contacto() {
             $("#ap_materno_contacto").val(json.contacto.ap_materno);
             $("#cargo_contacto").val(json.contacto.cargo);
             $("#clave_atencion_contacto").val(json.contacto.clave_atencion);
+            $("#telefono_contacto").val(json.contacto.telefono_contacto);
             $("#btn-guardar-contacto").html("Editar contacto");
         },
         error: function (json) { },
