@@ -115,12 +115,14 @@ class HomeController extends Controller
             $datosTramite=T_Tramite::consulta_portal(['id_tramite'=>$id_tramite])->first();
             
             $arrayEspContratista=array();
-            $jsonEsp_Contratista=json_decode($datosTramite->esp_contratista);
-            foreach ($jsonEsp_Contratista as $key => $value) {
-                // code...
-                $datosEspecialidad=C_Especialidad::findOrFail($value);
-                array_push($arrayEspContratista, $datosEspecialidad);
-                unset($datosEspecialidad);
+            if (isset($datosTramite->esp_contratista)) {
+                $jsonEsp_Contratista=json_decode($datosTramite->esp_contratista);
+                foreach ($jsonEsp_Contratista as $key => $value) {
+                    // code...
+                    $datosEspecialidad=C_Especialidad::findOrFail($value);
+                    array_push($arrayEspContratista, $datosEspecialidad);
+                    unset($datosEspecialidad);
+                }
             }
 
             $arrayEspRTEC=array();

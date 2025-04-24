@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Classes\Correo;
@@ -32,9 +33,6 @@ class MisObservacionesController extends Controller
     {
         $id    = Auth::User()->id_registro;
         $datos = T_Registro::edit($id);
-
-
-
 
         $n_dacs       = ["id_tramite" => $datos->id_ultimo_tramite, "id_c_notificacion" => 1, "acepto_condiciones" => 1];
         $t_n_usuarios = \App\Http\Models\Catalogos\N_Usuario::general2($n_dacs)->first();
@@ -115,7 +113,7 @@ class MisObservacionesController extends Controller
         if (isset($t_tramite->fecha_solventacion)) {
             $yano = 1;
         }
-//cuando sea uno ya no muestra el boton
+        //cuando sea uno ya no muestra el boton
 
         //n_usuarios
         $n_dacs       = ["id_tramite" => $datos->id_ultimo_tramite, "id_c_notificacion" => 1];
@@ -129,7 +127,7 @@ class MisObservacionesController extends Controller
 
         return view('backend.mis-observaciones.index', [
             'contar_observaciones' => $contar_observaciones,
-            'fecha_larga' => $fecha_larga, 
+            'fecha_larga' => $fecha_larga,
             'en_tiempo' => $en_tiempo,
             'yano' => $yano,
             'si_o_no' => $si_o_no,
@@ -148,14 +146,14 @@ class MisObservacionesController extends Controller
     {
         //index de observaciones
         $resultados         = array();
-        if ( $id_tramite != 0 ) {
+        if ($id_tramite != 0) {
             $resultados_tramite = \App\Http\Models\Backend\T_Tramite::find($id_tramite);
-            
+
             $resultados         = \App\Http\Models\Backend\T_Tramite_Observacion::observaciones(['id_tramite' => $id_tramite, 'id_c_tramites_seguimiento' => $resultados_tramite->id_c_tramites_seguimiento])->get();
-        }
+        } 
         else {
-            $resultados['codigo']=0;
-            $resultados['mensaje']='Aun no existe un tramite para esta empresa';
+            $resultados['codigo'] = 0;
+            $resultados['mensaje'] = 'Aun no existe un tramite para esta empresa';
         }
         return $resultados;
     }
@@ -182,8 +180,7 @@ class MisObservacionesController extends Controller
     }
 
     public function guardar_observacion(Request $request)
-     {
-
+    {
         $id_tramite       = $request->input('id_tramite');
         $id_observacion   = $request->input('id_observacion');
         $id_documento     = $request->input('id_documentacion');
@@ -217,7 +214,7 @@ class MisObservacionesController extends Controller
                     }
                 }
                 $post_documento["desglose"] = json_encode($vdatosAlmacenDesglose);
-            }
+            } 
             else {
                 if ($request->hasFile('file_documento')) {
                     if ($request->file('file_documento')->isValid()) {
@@ -244,28 +241,30 @@ class MisObservacionesController extends Controller
             $post_documento["id_tramite"]             = $id_tramite;
             $post_documento["extension"]              = $vextensionArchivo;
             $post_documento["tamanio"]                = 11;
-            $post_documento["id_status"]              = 5;
             $post_documento["nombre"]                 = $vnombreArchivo;
             $post_documento["id_usuario_subio"]       = Auth::User()->id;
             $post_documento["id_tramite_observacion"] = $t_tramite_observacion->id;
+            $post_documento["id_status"]  = 5;
 
             $t_tramite_documentacion = new T_Tramite_Documentacion;
             $t_tramite_documentacion->fill($post_documento)->save();
 
             $post_observacion["id_tramite_documentacion"] = $t_tramite_documentacion->id;
+            $post_observacion["solventado"] = 1;
+            $post_observacion["id_status"]  = 5;
             $t_tramite_observacion->fill($post_observacion)->save();
 
             DB::commit();
             return redirect()->route('mis-observaciones.index');
-        }
+        } 
         catch (ModelNotFoundException $ex) {
             DB::rollback();
             return redirect('dashboard');
         }
-     }
+    }
 
     public function eliminar_solventacion($id_tramite_documentacion)
-     {
+    {
         if (isset($id_tramite_documentacion)) {
             $vflTramiteDocumentacion                  = T_Tramite_Documentacion::find($id_tramite_documentacion);
             $vdatosTramiteDocumentacion["deleted_at"] = Carbon::now();
@@ -278,7 +277,8 @@ class MisObservacionesController extends Controller
             if ($vflTramiteDocumentacion->desglose == null) {
                 $file = $path . $vflTramiteDocumentacion->nombre;
                 File::delete($file);
-            } else {
+            } 
+            else {
                 $arreglo_doctos = json_decode($vflTramiteDocumentacion->desglose);
                 foreach ($arreglo_doctos as $key => $value) {
                     $fileArray = "";
@@ -287,10 +287,10 @@ class MisObservacionesController extends Controller
                 }
             }
         }
-     }
+    }
 
     public function terminar_solventacion(Request $request)
-     {
+    {
         // Autor: Sandro Alan Gomez Aceituno
         // Modificación: 20 de Abril de 2022
         // Descripción: Terminar la solventación por observación.
@@ -302,13 +302,13 @@ class MisObservacionesController extends Controller
         try {
             DB::beginTransaction();
 
-            $vflTramiteDocumentacion=T_Tramite_Documentacion::general(
+            $vflTramiteDocumentacion = T_Tramite_Documentacion::general(
                 [
                     'id_tramite_observacion' => $request->id_observacion
                 ]
-            )->get();    
+            )->get();
 
-            if ( count($vflTramiteDocumentacion) >= 1 ) {
+            if (count($vflTramiteDocumentacion) >= 1) {
                 $post_observacion["id_status"]  = 5;
                 $post_observacion["solventado"] = 1;
 
@@ -318,7 +318,7 @@ class MisObservacionesController extends Controller
                 $vcodigoRespuesta = 1;
                 $vrutaRedireccion = route('mis-observaciones.index');
                 $msg              = 'Observación solventada';
-            }
+            } 
             else {
                 $vcodigoRespuesta = 0;
                 $vrespuestaHTTP   = 201;
@@ -327,23 +327,24 @@ class MisObservacionesController extends Controller
             }
 
             DB::commit();
-        }
+        } 
         catch (Exception $e) {
             $vrespuestaHTTP = 500;
             DB::rollback();
         }
-
         return response()->json(
             [
                 'code'            => $vcodigoRespuesta,
                 'msg'             => $msg,
                 'rutaRedireccion' => $vrutaRedireccion
                 // 'data'            => $t_tramite_observacion
-            ], $vrespuestaHTTP);
-     }
+            ],
+            $vrespuestaHTTP
+        );
+    }
 
     public function volverCargarObservacion($idTramiteObservacion)
-     {
+    {
         # Autor Modifico: Sandro Alan Gómez Aceituno
         # Modificación: 17 de Junio de 2021
         # Descripción: Regresa las observaciones solventadas, para volver ha solventar.
@@ -360,7 +361,7 @@ class MisObservacionesController extends Controller
             $vrespuesta['code']    = 1;
             $vrespuesta['message'] = 'La observacion ha sido puesto en observacion nuevamente.';
             DB::commit();
-        }
+        } 
         catch (Exception $e) {
             DB::rollback();
             $vrespuesta['code']    = -1;
@@ -368,10 +369,10 @@ class MisObservacionesController extends Controller
             $vrespuestaHTTP        = 500;
         }
         return response()->json($vrespuesta, $vrespuestaHTTP);
-     }
+    }
 
     public function enviar_solventacion_observacion($id_tramite, Request $request)
-     {
+    {
         # Autor Modifico: Sandro Alan Gómez Aceituno
         # Modificación: 03/06/2021.
         # Descripción: Enviar solventaciones a revision de las áreas.
@@ -426,15 +427,15 @@ class MisObservacionesController extends Controller
 
             $vflTramite->fill($post_tramite)->save();
             return redirect()->back()->with('success', "El documento ha sido subido <b>satisfactoriamente</b>.");
-
-        } catch (ModelNotFoundException $ex) {
+        } 
+        catch (ModelNotFoundException $ex) {
             return redirect('dashboard');
         }
-     }
+    }
 
     public function mis_observaciones2($id_tramite)
-     {
+    {
         $resultados = \App\Http\Models\Backend\T_Tramite_Observacion::general(['id_tramite' => $id_tramite])->get();
         return $resultados;
-     }
+    }
 }

@@ -192,26 +192,32 @@ class T_Tramite extends Model
      {
         $result=T_Tramite::select(
             't_tramites.id as id_tramite',
+            'r.id_tipo_persona',
             't_tramites.folio', 
+            DB::raw("CASE r.id_tipo_persona 
+             WHEN 1 THEN 'Física' 
+             WHEN 2 THEN 'Moral' 
+             ELSE 'Desconocido' 
+            END as tipo_persona"),
+
             'r.razon_social_o_nombre',
             DB::raw('concat_ws(" ", persona.nombre, persona.ap_paterno, persona.ap_materno) as nombre_representante_legal'),
             'r.rfc',
             'tt.nombre as tipo_tramite',
             't_tramites.especialidades_tecnicas as esp_contratista', 
-            'r.id_tipo_persona',
+            'rt.especialidades as esp_rtec',
             DB::raw('concat_ws(" ", dom_fiscal.calle, " Ext. ", dom_fiscal.num_exterior, " Int. ", dom_fiscal.num_interior, " Col. ", dom_fiscal.colonia,", ", mun_fiscal.nombre) as domicilio_fiscal')
         );
 
         $result=$result->leftJoin('t_registro as r', 't_tramites.id_cs', '=', 'r.id');
         $result=$result->leftJoin('t_tramites_rep_legales as rl', 'rl.id_tramite', '=', 't_tramites.id');
+        $result=$result->leftJoin('t_tramites_rep_tecnicos as rt', 'rt.id_tramite', '=', 't_tramites.id');
         $result=$result->leftJoin('d_personales as persona', 'rl.id_d_personal', '=', 'persona.id');
         $result=$result->leftJoin('c_tipos_tramite as tt', 't_tramites.id_tipo_tramite', '=', 'tt.id');
-
         $result=$result->leftJoin('d_domicilios as dom_fiscal', 'r.id_d_domicilio_fiscal', '=', 'dom_fiscal.id');
         $result=$result->leftJoin('c_municipios as mun_fiscal', 'dom_fiscal.id_municipio', '=', 'mun_fiscal.id');
-
-
         $result=$result->where('t_tramites.id_status', '=', 1);
+        $result=$result->whereNull('rt.deleted_at');
 
         if(array_key_exists('anio', $data)){
             $filtro= $data["anio"];

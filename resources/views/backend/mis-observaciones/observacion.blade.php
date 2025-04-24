@@ -35,69 +35,57 @@
 
 		@include('backend.encabezado')
 
-		<div class="alert alert-custom alert-light-dark fade show mb-2" role="alert">
-				<div class="alert-icon">
-					<span class="svg-icon svg-icon-primary svg-icon-3x">
-						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-						    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-						        <rect x="0" y="0" width="24" height="24"/>
-						        <path d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
-						        <path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z" fill="#000000" fill-rule="nonzero"/>
-						    </g>
-						</svg>
-					</span>
-				</div>
-				<div class="alert-text font-weight-bold">
-					<h4 class="text-dark">Observación</h4>
-					<?php
-						$vdocumentoPadreHijo='';
-						if( $observacion->padre == null || $observacion->padre == '' ) {
-			                $vdocumentoPadreHijo=$observacion->documento;
-			            }
-			            else {
-			                $vdocumentoPadreHijo='<strong>' . $observacion->padre . '</strong> - ' . $observacion->documento;
-			            }
-					?>
-					<p>
-						<b>{!! $vdocumentoPadreHijo !!}</b>
-					</p>
-					{{ $observacion->observacion }}
-				</div>
-			</div>
-
-		<div class="card">
+		<div class="card card-custom mb-4">
 			<div class="card-body">
-				@if ( $observacion->id_status_tramite == 4)
+
+			<a href="#" class="text-dark font-weight-bolder text-hover-primary font-size-h4">
+				Modulo de solventación <br />
+				<?php
+					$vdocumentoPadreHijo='';
+					if( $observacion->padre == null || $observacion->padre == '' ) {
+						$vdocumentoPadreHijo=$observacion->documento;
+					}
+					else {
+						$vdocumentoPadreHijo='<strong>' . $observacion->padre . '</strong> - <span class="text-muted">' . $observacion->documento .'</span>';
+					}
+				?>
+				{!! $vdocumentoPadreHijo !!}
+			</a>
+			<p class="text-dark-50 font-weight-normal font-size-lg mt-6">
+				<i><b>Observación:</b> {{ $observacion->observacion }}</i>
+			</p>
+			<hr />
+
+			@if ( $observacion->id_status_tramite == 4)
 			    <!-- Cargar documentos  -->
 			    {!! Form::open(['route' => 'tramites.subir-documento-observacion', 'id'=>'myformdocumento','class'=>'form-horizontal myformdocumento', 'method' => 'post' , 'files' => true, 'enctype'=>'multipart/form-data']) !!}
 					{!! Form::hidden('id_observacion', $observacion->id,['id'=>'id_observacion']) !!}               
 					{!! Form::hidden('id_tramite', $observacion->id_tramite,['id'=>'id_tramite']) !!}               
 					{!! Form::hidden('id_documentacion', $observacion->id_documentacion,['id'=>'id_documentacion']) !!}
+					<input type="hidden" name="inputShowButton" id="inputShowButton" value="0">
 					
-						<div class="card custom-card" >
-							<div class="card-body">
-								<input type="hidden" name="inputShowButton" id="inputShowButton" value="0">
-								
-								<div class="text-wrap">	
-									<div class="panel-body" id="vcargarInputsArray"></div>
-
-									<div class="example" style="text-align: right;">
-										<div class="btn btn-list">									
-											<button type="button" id="btnterminarSolventacion" class="btn ripple btn-outline-info" style="display: none;">
-												<i class="fa fa-save"></i> Solventar esta observación
-											</button>
-											<button type="submit" class="btn ripple btn-outline-primary">
-												<i class="fa fa-search fa-upload"></i> Cargar documento
-											</button>
-										</div>
-									</div>
-								</div>
+					<div class="text-wrap">	
+						<div class="panel-body" id="vcargarInputsArray"></div>
+						<div class="example" style="text-align: right;">
+							<div class="btn btn-list">									
+								<button type="button" id="btnterminarSolventacion" class="btn ripple btn-outline-success" style="display: none;">
+									<i class="fa fa-save"></i> Solventar esta observación
+								</button>
+								<button type="submit" class="btn ripple btn-outline-primary">
+									<i class="fa fa-search fa-upload"></i> Cargar documento
+								</button>
 							</div>
-						</div>						    
+						</div>
+					</div>
 			    {!! Form::close() !!}
 				<!-- Fin Cargar documentos  -->
 				@endif
 
+			</div>
+		</div>
+
+		<div class="card">
+			<div class="card-body">
 				<div class="table-responsive">
 					<table id="solventaciones_tbl" class="table table-bordered table-checkable dataTable no-footer dtr-inline">
 						<thead class="thead-dark head-dark">
