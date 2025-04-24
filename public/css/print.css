@@ -4,9 +4,9 @@ body{
 }
 .titulo {
     font-size: 14px;
-    text-align: center;
+    text-align: right;
     vertical-align: middle;
-    font-weight:bold;
+/*    font-weight:bold;*/
 }
 
 .titulo2 {
@@ -74,6 +74,8 @@ address{
 	letter-spacing: .06em;
     color: #fff;
     margin-bottom: 0px;
+    position: relative;
+    z-index: 1;
 }
 
 

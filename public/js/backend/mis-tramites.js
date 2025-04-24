@@ -1,4 +1,3 @@
-
 function index(id_cs)
  {
     $.ajax({
@@ -80,4 +79,34 @@ function index(id_cs)
     });
  }
 
+function modal_contacto(id_tramite) 
+ {
+    $.ajax({
+        type: "GET",
+        url: vuri + '/mis-tramites/' + id_tramite + '/contacto/get-contacto-tramite',
+        success: function(json) {
+            limpiarModal();
+            if (json.contacto != null) {
+                $('#txtNombre').val(json.contacto.nombre);
+                $('#txtPaterno').val(json.contacto.ap_paterno);
+                $('#txtMaterno').val(json.contacto.ap_materno);
+                $('#txtCargo').val(json.contacto.cargo);
+                $('#txtTelefono').val(json.contacto.telefono_contacto);
+                $('#txtClave').val(json.contacto.clave_atencion);
+            }
+        },
+        error: function(json) {}
+    });
+    $("#modal-message-contacto").modal();
+ }
 
+ 
+function limpiarModal() 
+ {
+    $('#txtNombre').val('');
+    $('#txtPaterno').val('');
+    $('#txtMaterno').val('');
+    $('#txtCargo').val('');
+    $('#txtTelefono').val('');
+    $('#txtClave').val('');
+ }

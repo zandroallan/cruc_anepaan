@@ -138,7 +138,7 @@ class ImpresionController extends Controller
         $correo_electronico= $t_tramite->email;
         $telefono= $t_tramite->telefono;
 
-        $html= '<h3 class="titulo2">Observaciones</h3>';
+        $html = '<h3 class="titulo2">Observaciones</h3>';
         $html.= '<h4 class="subtitulo">Padrón de '.$sujeto.'</h4>';
 
       

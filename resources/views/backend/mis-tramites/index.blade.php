@@ -142,7 +142,7 @@
 		<div class="modal modal-message-contacto fade" id="modal-message-contacto">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<div class="modal-header">
+					<div class="modal-header" style="color: #1f5c01; background-color: #ced7df; border-color: #ced7df;">
 						<h4 class="modal-title">Datos del contacto</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 					</div>
@@ -153,25 +153,28 @@
 								<input class="form-control" type="text" id="txtNombre" name="txtNombre" readonly />
 							</div>
 						</div>
-
 						<div class="form-group row m-b-15">
 							<label class="col-sm-3 col-form-label">Paterno</label>
 							<div class="col-sm-9">
 								<input class="form-control" type="text" id="txtPaterno" name="txtPaterno" readonly />
 							</div>
 						</div>
-
 						<div class="form-group row m-b-15">
 							<label class="col-sm-3 col-form-label">Materno</label>
 							<div class="col-sm-9">
 								<input class="form-control" type="text" id="txtMaterno" name="txtMaterno" readonly />
 							</div>
 						</div>
-
 						<div class="form-group row m-b-15">
 							<label class="col-sm-3 col-form-label">Cargo</label>
 							<div class="col-sm-9">
 								<input class="form-control" type="text" id="txtCargo" name="txtCargo" readonly />
+							</div>
+						</div>
+						<div class="form-group row m-b-15">
+							<label class="col-sm-3 col-form-label">Teléfono de contacto</label>
+							<div class="col-sm-9">
+								<input class="form-control" type="text" id="txtTelefono" name="txtTelefono" readonly />
 							</div>
 						</div>
 
@@ -193,7 +196,7 @@
 		<div class="modal modal-message fade" id="modal-message">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<div class="modal-header">
+					<div class="modal-header" style="color: #1f5c01; background-color: #ced7df; border-color: #ced7df;">
 						<h4 class="modal-title">Documentación adjunta al trámite <span id="modal-folio"></span></h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 					</div>

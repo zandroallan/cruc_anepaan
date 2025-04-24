@@ -124,45 +124,6 @@ function send_1(button)
 
 function send(button)
 {
-    // if (!clicando) {
-    //     swal({
-    //         title: "¡ Advertencia !",
-    //         text: "La SHyFP procederá a revisar la documentación adjunta solicitándole los documentos originales al termino para su verificación. Deberá presentar la documentación original para cotejo con los documentos digitales proporcionados en el SIRCSE, en la fecha y hora en que la Secretaría de la Honestidad y Función Pública le notifique, conforme al artículo 6 de los Lineamientos. ¿Desea enviar a tramite?",
-    //         icon: "warning",
-    //         buttons: {
-    //             cancel: {
-    //                 text: 'Cancelar',
-    //                 value: false,
-    //                 visible: true,
-    //                 className: 'btn btn-default',
-    //                 closeModal: true,
-    //             },
-    //             confirm: {
-    //                 text: 'Confirmar',
-    //                 value: true,
-    //                 visible: true,
-    //                 className: 'btn btn-primary',
-    //                 closeModal: true
-    //             }
-    //         }
-    //     }).then((result) => {
-    //         clicando = false;
-    //         if (result) {
-    //             $("#enviar_stt").val(1);
-    //             guardarTramite();
-    //         } else {
-    //             clicando = false;
-    //         }
-    //     });
-    // } else {
-    //     swal({
-    //         type: 'info',
-    //         title: 'Notificación',
-    //         text: "Por favor espere un momento, la información esta siendo procesada.",
-    //         icon: "info",
-    //         timer: 1500
-    //     });
-    // }
     if (!clicando) {
         $.confirm({
             title: '¡ Advertencia !',

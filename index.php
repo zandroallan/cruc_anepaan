@@ -1,11 +1,4 @@
 <?php
-/*
-$host= $_SERVER["HTTP_HOST"];
-if ( $host=='apps.shyfpchiapas.gob.mx') {
-    header('Location: https://apps.anticorrupcionybg.gob.mx/sircse/login');
-    exit();
-}
-*/
 /**
  * Laravel - A PHP Framework For Web Artisans
  *

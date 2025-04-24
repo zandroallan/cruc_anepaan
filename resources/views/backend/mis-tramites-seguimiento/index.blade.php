@@ -24,7 +24,7 @@
 						<i class="flaticon2-chat-1 fa-2x text-primary"></i>
 					</span>
 					<h3>
-						Seguimiento del tramite {!! $folio !!}
+						Seguimiento del trámite {!! $folio !!}
 					</h3>
 				</div>
 			</div>

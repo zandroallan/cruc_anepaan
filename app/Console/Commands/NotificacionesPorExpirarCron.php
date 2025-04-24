@@ -81,7 +81,7 @@ class NotificacionesPorExpirarCron extends Command
                     # Begin: Envio de Correo Electrónico.
                                  
                     $datosEnviarCorreo=array();
-                    $datosEnviarCorreo['asunto']= 'Portal del contratista SHYFP: Recordatorio Folio '. $datos->folio;
+                    $datosEnviarCorreo['asunto']= 'Portal del contratista SAyBG: Recordatorio Folio '. $datos->folio;
                     $datosEnviarCorreo['cuerpo']= CorreoPlantillas::notificacionCron($datos, $tipoTramite);
                     $datosEnviarCorreo['correo_destinatario']=$datos->email; //[$p_registro['email']];
                     $datosEnviarCorreo['nombre_destinatario']=$datos->razon_social_o_nombre;  

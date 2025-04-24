@@ -179,7 +179,7 @@ class CrearCuentaController extends Controller
                
 
                 $datos_correo=array();
-                $datos_correo['asunto']= 'Contratista/Supervisor SHYFP: Restablecer contraseña';
+                $datos_correo['asunto']= 'Contratista/Supervisor SAyBG: Restablecer contraseña';
                 $datos_correo['cuerpo']= CorreoPlantillas::recuperar_contrasenia($vdatos);
                 $datos_correo['correo_destinatario']=[$datos->email];
                 $datos_correo['nombre_destinatario']= $vdatos['name'];       

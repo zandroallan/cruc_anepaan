@@ -57,7 +57,6 @@
 			}
 			    
 		</style>
-
 	</head>
 	<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled page-loading">
 		<!--begin::Main-->
@@ -260,7 +259,6 @@
 													<span class="menu-text">Dashboard</span>
 												</a>
 											</li> -->
-
 
 					                        <li class="menu-item _inicio" aria-haspopup="true">
 					                            <a class="menu-link" href="{{ route('mis-tramites.index') }}">

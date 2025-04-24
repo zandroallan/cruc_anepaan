@@ -5,7 +5,7 @@
                     <a href="index.html">
                         {!! Html::image('img/shyfpchiapas.png', 'alt', ['width'=>'71', 'height'=>'15']) !!}
                     </a>
-                    <a href="https://shyfpchiapas.gob.mx/" class="md-color-grey-50">
+                    <a href="https://anticorrupcionybg.gob.mx/" class="md-color-grey-50">
                         Secretaría de la Honestidad y Función Pública
                     </a>
                     
