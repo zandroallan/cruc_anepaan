@@ -179,24 +179,28 @@
 															</div>
 														</div>
 														<div id="collapseOne6" class="collapse show" data-parent="#accordionExample6">
-															<div class="card-body">
-																<div class="column">
+															<div class="column">	
+																<div class="card-body">																
 																	<?php $contadorLeg = 0; ?>
 																	@foreach ( $observaciones['obsLegal'] as $dato )
 																	<?php $contadorLeg++; ?>
 															        <div class="belief top">
 															          <h3 style="padding-left: 5px; width: 25px;">{{$contadorLeg}}</h3>
 															          <h4>
-															          		{!! $dato['documento_padre'] !!} -
-															          		@if ( $dato['id_status'] != 9 )
-															          		<span class="label label-outline-{!! $dato['status_color'] !!} label-inline mr-2">
-															          			<span class="label label-{!! $dato['status_color'] !!} label-dot mr-2"></span>
-															          			<b>{!! $dato['status'] !!}</b>
-															          		</span>
+																	  		@if ( $dato['id_status'] != 9 )
+																			<span class="label label-outline-{!! $dato['status_color'] !!} label-inline mr-2">
+																				<span class="label label-{!! $dato['status_color'] !!} label-dot mr-2"></span>
+																				<b>{!! $dato['status'] !!}</b>
+																			</span>
 																			@endif
+
+																			@if(isset($dato['documento_padre']))
+																				<br>
+															          			{!! $dato['documento_padre'] !!} 
+																			@endif																			
 															          </h4>
 															          <h5>{!! $dato['documento'] !!}</h5>
-															          <p class="mb-0" style="text-align: justify;">{!! $dato['observacion'] !!}</p>
+															          <p class="mb-0" style="text-align: justify; font-style: italic;"><b>Observacion:</b> {!! $dato['observacion'] !!}</p>
 															        </div>
 															        @endforeach
 															    </div>
@@ -213,7 +217,7 @@
 															</div>
 														</div>
 														<div id="collapseTwo6" class="collapse" data-parent="#accordionExample6">
-															<div class="card-body">
+															<div class="column">
 																<?php
 																	$vflTramiteCapitalContable=\App\Http\Models\Backend\T_Tramite_Estado_Financiero::general([
 																		'id_tramite'=>$datosTramite->id
@@ -223,23 +227,27 @@
 																		$vcapitalContable=json_decode($vflTramiteCapitalContable->capital_neto);
 																?>
 
-																<div class="column">
+																<div class="card-body">
 																	<?php $contadorFin = 0; ?>
 																	@foreach ( $observaciones['obsFinanciera'] as $dato )
 																	<?php $contadorFin++; ?>
 															        <div class="belief top">
 															          <h3 style="padding-left: 5px; width: 25px;">{{$contadorFin}}</h3>
-															          <h4>
-															          		{!! $dato['documento_padre'] !!} -
+															          <h4>																	  
 															          		@if ( $dato['id_status'] != 9 )
 															          		<span class="label label-outline-{!! $dato['status_color'] !!} label-inline mr-2">
 															          			<span class="label label-{!! $dato['status_color'] !!} label-dot mr-2"></span>
 															          			<b>{!! $dato['status'] !!}</b>
 															          		</span>
 																			@endif
+
+																			@if(isset($dato['documento_padre']))
+																				<br>
+																				{!! $dato['documento_padre'] !!} 
+																			@endif
 															          </h4>
 															          <h5>{!! $dato['documento'] !!}</h5>
-															          <p class="mb-0" style="text-align: justify;">{!! $dato['observacion'] !!}</p>
+															          <p class="mb-0" style="text-align: justify; font-style: italic;"><b>Observacion:</b> {!! $dato['observacion'] !!}</p>
 															        </div>
 															        @endforeach
 															    </div>
@@ -256,24 +264,28 @@
 															</div>
 														</div>
 														<div id="collapseThree6" class="collapse" data-parent="#accordionExample6">
-															<div class="card-body">
-																<div class="column">
+															<div class="column">
+																<div class="card-body">
 																	<?php $contadorTec = 0; ?>
 																	@foreach ( $observaciones['obsTecnica'] as $dato )
 																	<?php $contadorTec++; ?>
 															        <div class="belief top">
 															          <h3 style="padding-left: 5px; width: 25px;">{{$contadorTec}}</h3>
 															          <h4>
-															          		{!! $dato['documento_padre'] !!} -
 															          		@if ( $dato['id_status'] != 9 )
 															          		<span class="label label-outline-{!! $dato['status_color'] !!} label-inline mr-2">
 															          			<span class="label label-{!! $dato['status_color'] !!} label-dot mr-2"></span>
 															          			<b>{!! $dato['status'] !!}</b>
 															          		</span>
 																			@endif
+																			
+																			@if(isset($dato['documento_padre']))
+																				<br>
+															          			{!! $dato['documento_padre'] !!} 
+																			@endif
 															          </h4>
 															          <h5>{!! $dato['documento'] !!}</h5>
-															          <p class="mb-0" style="text-align: justify;">{!! $dato['observacion'] !!}</p>
+															          <p class="mb-0" style="text-align: justify; font-style: italic;"><b>Observacion:</b> {!! $dato['observacion'] !!}</p>
 															        </div>
 															        @endforeach
 															    </div>
