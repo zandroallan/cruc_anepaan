@@ -186,12 +186,12 @@
 										<th style="color: #fff; padding: 15px 15px;">
 											<i class="far fa-check-circle"></i>
 										</th>
-										<th style="color: #fff; padding: 15px 15px;" class="wd-10p">Folio</th>
-										<th style="color: #fff; padding: 15px 15px;">Documento observado</th>
-										<th style="color: #fff; padding: 15px 15px;">Observación</th>
-										<th style="color: #fff; padding: 15px 15px;">Area</th>
-										<th style="color: #fff; padding: 15px 15px;">Status</th>
-										<th style="color: #fff; padding: 15px 15px;">Solventar</th>
+										<th style="color: #fff; padding: 15px 15px;" class="wd-10p">FOLIO</th>
+										<th style="color: #fff; padding: 15px 15px;">DOCUMENTO OBSERVADO</th>
+										<th style="color: #fff; padding: 15px 15px;">OBSERVACIÓN</th>
+										<th style="color: #fff; padding: 15px 15px;">ÁREA</th>
+										<th style="color: #fff; padding: 15px 15px;">ESTATUS</th>
+										<th style="color: #fff; padding: 15px 15px;">ACCIONES</th>
 									</tr>
 								</thead>
 								<tbody>

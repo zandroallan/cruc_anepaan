@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use App\Http\Models\Catalogos\N_Usuario;
 use App\Http\Models\Backend\T_Tramite_Entrega;
 use App\Http\Models\Backend\T_Tramite_Cancelado;
@@ -9,6 +10,7 @@ use App\Http\Models\Backend\T_Execute_Cron;
 use App\Http\Models\Catalogos\C_Especialidad;
 use App\Http\Models\Backend\T_Tramite_Rep_Tecnico;
 use App\Http\Models\Catalogos\C_Inhabiles;
+use App\Http\Models\Backend\T_Registro;
 use App\Http\Classes\CorreoPlantillas;
 use App\Http\Classes\Correo;
 use App\Http\Controllers\ImpresionController;
@@ -27,6 +29,28 @@ class HomeController extends Controller
      {
         // $this->middleware('auth');
      }
+    
+    public function bloqueado ($id_registro)
+    {
+        if (empty($id_registro)) {
+            abort(404, 'ID de registro no proporcionado.');
+        }
+
+        try {
+            $id = Crypt::decryptString($id_registro);
+        }
+        catch (DecryptException $e) {
+            abort(403, 'ID de registro inválido.');
+        }
+
+        $_MDL_Registro = T_Registro::find($id);
+
+        if (!$_MDL_Registro) {
+            abort(404, 'Registro no encontrado.');
+        }
+    
+        return view('auth.error', ['data' => $_MDL_Registro]);
+    }
 
     public function diasHabiles()
      {
@@ -536,7 +560,7 @@ class HomeController extends Controller
                     # Begin: Envio de Correo Electrónico.
                                  
                     $datosEnviarCorreo=array();
-                    $datosEnviarCorreo['asunto']= 'Portal del contratista SAyBG: Recordatorio Folio '. $datos->folio;
+                    $datosEnviarCorreo['asunto']= 'Recordatorio Folio '. $datos->folio;
                     $datosEnviarCorreo['cuerpo']= CorreoPlantillas::notificacionCron($datos, $tipoTramite);
                     $datosEnviarCorreo['correo_destinatario']=$datos->email; //[$p_registro['email']];
                     $datosEnviarCorreo['nombre_destinatario']=$datos->razon_social_o_nombre;  

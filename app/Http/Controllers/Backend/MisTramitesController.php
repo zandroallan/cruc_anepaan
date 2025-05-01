@@ -672,7 +672,7 @@ class MisTramitesController extends Controller
                                     $vdatos['tipo_tramite'] = $tipo_tramite;
 
                                     $datos_correo                        = array();
-                                    $datos_correo['asunto']              = 'Portal del contratista SAyBG: Registro de cuenta de usuario';
+                                    $datos_correo['asunto']              = 'Trámite iniciado y asignación de folio';
                                     $datos_correo['cuerpo']              = \App\Http\Classes\CorreoPlantillas::solicitud_enviada($vdatos);
                                     $datos_correo['correo_destinatario'] = [$p_registro['email']];
                                     $datos_correo['nombre_destinatario'] = $p_registro['razon_social_o_nombre'];

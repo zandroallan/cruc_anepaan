@@ -158,13 +158,21 @@
 
                                 <div class="pb-1 pb-lg-5">
                                     <div class="text-dark font-weight-bold font-size-h4">Eres nuevo?
-                                    <a href="{{ url('crear-cuenta/registro') }}" class="colorinpt font-weight-bolder">Crea tu cuenta</a></div>
+                                        <a href="{{ url('crear-cuenta/registro') }}" class="colorinpt font-weight-bolder">
+                                            Crea tu cuenta
+                                        </a>
+                                    </div>
+                                    
+                                    <a href="https://www.ingresos.finanzaschiapas.gob.mx/PagoDerechos/frmDerechosWeb002_A.asp" class="colorinpt font-weight-bolder" target="_blank">
+                                        Link al pago de derecho
+                                    </a>
                                 </div>
-
+                                
                                 <!--begin::Action-->
                                 <div class="pb-lg-0 pb-5">
                                     <button type="submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3 img myshadow" style="background-color: #1d1d1b; border-color: #1d1d1b;">Accesar</button>
                                 </div>
+
                                 <!--end::Action-->
                             {!! Form::close() !!}
                             <!--end::Form-->

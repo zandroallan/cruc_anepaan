@@ -278,7 +278,7 @@
 									<!--begin::Title-->
 									<div class="row mb-3">
 										<div class="col-md-6">
-											<div class="wizard-desc text-center font-size-h6 font-weight-bolder text-dark">Tipo de contratista</div>
+											<div class="wizard-desc text-center font-size-h6 font-weight-bolder text-dark">Tipo de trámite</div>
 											<div class="radio-tile-group">
 											    <div class="input-container">
 											      <input  class="radio-button" type="radio" name="id_sujeto" id="id_sujeto_1" value="1" checked  />

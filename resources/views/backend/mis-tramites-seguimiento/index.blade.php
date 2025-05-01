@@ -82,7 +82,7 @@
 														<i class="flaticon-clock-2 icon-3x text-muted font-weight-bold"></i>
 													</div>
 													<div class="alert-text font-weight-bold">
-														<h6><span class="label label-dot label-dark"></span> Fecha de inicio del tramite: {!! $datosTramite->fecha_inicio !!}</h6>
+														<h6><span class="label label-dot label-dark"></span> Fecha de inicio del trámite: {!! $datosTramite->fecha_inicio !!}</h6>
 														
 														<h6><span class="label label-dot label-dark"></span>
 														Capital contable: {{ $vcp }}</h6>
@@ -90,7 +90,7 @@
 												</div>
 
 												<h3 class="card-title align-items-start flex-column mt-10">
-													<span class="card-label font-weight-bolder text-dark">Status del tr&aacute;mite</span>
+													<span class="card-label font-weight-bolder text-dark">Estatus del tr&aacute;mite</span>
 												</h3>
 
 												<div class="d-flex align-items-center flex-wrap mb-3">
@@ -100,7 +100,7 @@
 															<i class="flaticon-globe icon-3x text-muted font-weight-bold"></i>
 														</span>
 														<div class="d-flex flex-column text-dark-75">
-															<span class="font-weight-bolder font-size-h6">Area Legal</span>
+															<span class="font-weight-bolder font-size-h6">Área Legal</span>
 															<span class="font-weight-bolder font-size-h5">
 																<span class="label label-lg font-weight-bold label-light-{!! $datosTramite->status_legal_color !!} label-inline">
 																	<span class="label label-{!! $datosTramite->status_legal_color !!} label-dot mr-2"></span><b>{!! $datosTramite->status_legal !!}</b>
@@ -117,7 +117,7 @@
 															<i class="flaticon-coins icon-3x text-muted font-weight-bold"></i>
 														</span>
 														<div class="d-flex flex-column text-dark-75">
-															<span class="font-weight-bolder font-size-h6">Area Financiera</span>
+															<span class="font-weight-bolder font-size-h6">Área Financiera</span>
 															<span class="font-weight-bolder font-size-h5">
 																<span class="label label-lg font-weight-bold label-light-{!! $datosTramite->status_financiera_color !!} label-inline">
 																	<span class="label label-{!! $datosTramite->status_financiera_color !!} label-dot mr-2"></span><b>{!! $datosTramite->status_financiera !!}</b>
@@ -134,7 +134,7 @@
 															<i class="flaticon2-delivery-truck icon-3x text-muted font-weight-bold"></i>
 														</span>
 														<div class="d-flex flex-column text-dark-75">
-															<span class="font-weight-bolder font-size-h6">Area T&eacute;cnica</span>
+															<span class="font-weight-bolder font-size-h6">Área T&eacute;cnica</span>
 															<span class="font-weight-bolder font-size-h5">
 																<span class="text-dark-50 font-weight-bold">
 																	<span class="label label-lg font-weight-bold label-light-{!! $datosTramite->status_tecnica_color !!} label-inline">

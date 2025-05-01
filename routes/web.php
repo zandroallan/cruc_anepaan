@@ -46,9 +46,13 @@ Route::get('/notificaciones/apertura', 'HomeController@notificacionApertura');
 
 Route::get('dias/tramites', 'HomeController@diasHabiles');
 
-Route::get('consulta/total-folios', function () {
-	return (\App\Http\Models\Backend\T_Tramite::total_anio(date('Y'), 1)) + 1;
-});
+Route::get('registro/{id_registro}/bloqueado', 'HomeController@bloqueado')->name('registro.bloqueado');
+
+Route::get('consulta/total-folios', 
+	function () {
+		return (\App\Http\Models\Backend\T_Tramite::total_anio(date('Y'), 1)) + 1;
+	}
+);
 
 
 Route::get('/', function () {

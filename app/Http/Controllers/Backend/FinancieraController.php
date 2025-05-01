@@ -96,8 +96,13 @@ class FinancieraController extends Controller
             $_Input_Request=$request->all();
             $_MDL_Tramite_Contador=T_Tramite_Contador::where('id_registro_tmp', Auth::User()->id_registro)->first();
 
+            $_MDL_Personal=D_Personal::find((int)$request['id_contador']);
+
             $_Input_Request['id_registro_tmp']=Auth::User()->id_registro;
             $_Input_Request['id_d_personal']=$request['id_contador'];
+            $_Input_Request['cedula']=$_MDL_Personal->numero_cedula;
+            $_Input_Request['fecha_cedula']=$_MDL_Personal->fecha_cedula;
+            $_Input_Request['registro_aggaf']=$_MDL_Personal->registro_agaff;
 
 
             if ($_MDL_Tramite_Contador) {

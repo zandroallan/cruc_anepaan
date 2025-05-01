@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Http\Requests\Frontend\LoginRequest;
+use Illuminate\Support\Facades\Crypt;
+use App\Http\Models\Backend\T_Registro;
 use App\User;
 use Auth;
 
@@ -13,6 +15,7 @@ class LoginController extends Controller
 {
     use AuthenticatesUsers;
     protected $redirectTo = RouteServiceProvider::HOME;
+    private $registrosBloqueados=array();
 
     public function __construct()
     {
@@ -24,7 +27,8 @@ class LoginController extends Controller
         return 'nickname';
     }    
 
-    /**public function authenticate(Request $request)
+    /*
+    public function authenticate(Request $request)
     {
         $this->validate($request,['nickname'=>'required', 'password'=>'required']);
         $credentials= $request->only('nickname', 'password');
@@ -36,27 +40,43 @@ class LoginController extends Controller
         return redirect('login')
                 ->withInput($request->only('nickname'))
                 ->withErrors(['error'=>'Los datos proporcionados son incorrectos!']);        
-    }*/
+    }
+    */
     
     public function login(LoginRequest $request)
     {
 		$vflUsuario = User::where('nickname', '=', $request->input('nickname'))->first();
         if(isset($vflUsuario)){
-            if ( 
-                ($vflUsuario->id_registro != null) || 
-                ($vflUsuario->id_registro != '')
-            ) {
 
-                $this->validate($request,['nickname'=>'required', 'password'=>'required']);
-                $credentials= $request->only('nickname', 'password');
-                //$request['id_registro']=null;
-
-                if (Auth::attempt($credentials+['active' => 1])) {
-                    if(Auth::User()->hasRole(['usuario'])){                 
-                        return redirect()->route('mis-tramites.index'); 
-                    }
+            $registro_bloqueado=false;
+            if ( count($this->registrosBloqueados) > 0 ) {
+                foreach ($this->registrosBloqueados as $key => $value) {
+                    $_MDL_Registro=T_Registro::find($vflUsuario->id_registro);
+                    if ( $value == $_MDL_Registro->rfc )  $registro_bloqueado=true;
                 }
+            }
 
+            if ( $registro_bloqueado ) {
+                $encryptedId = Crypt::encryptString($vflUsuario->id_registro);
+                return redirect()->route('registro.bloqueado', ['id_registro' => $encryptedId]);
+            }
+            else {
+                if ( 
+                    ($vflUsuario->id_registro != null) || 
+                    ($vflUsuario->id_registro != '')
+                ) {
+
+                    $this->validate($request,['nickname'=>'required', 'password'=>'required']);
+                    $credentials= $request->only('nickname', 'password');
+                    //$request['id_registro']=null;
+
+                    if (Auth::attempt($credentials+['active' => 1])) {
+                        if(Auth::User()->hasRole(['usuario'])){                 
+                            return redirect()->route('mis-tramites.index'); 
+                        }
+                    }
+
+                }
             }
         }
         return redirect('login')
@@ -78,5 +98,4 @@ class LoginController extends Controller
                 ->withErrors(['error'=>'Los datos proporcionados son incorrectos!']); 
 		*/
     }
-
 }

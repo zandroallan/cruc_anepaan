@@ -47,12 +47,12 @@ function cargar_mis_observaciones(id_tramite)
                 }
                 else if ( valor.id_status_tramite == 4 ) {
                     if (valor.solventado == 0) {
-                        body += '       <a class="btn btn-icon btn-sm btn-outline-info btn-circle" href="' + url_ir_a_observacion + '" title="Agregar documentos a la observación">';
+                        body += '       <a class="btn btn-icon btn-sm btn-outline-primary btn-circle" href="' + url_ir_a_observacion + '" title="Agregar documentos a la observación">';
                         body += '           <i class="fa fa-plus"></i>';
                         body += '       </a>';
-                        body += '       <button class="btn btn-icon btn-sm btn-outline-success btn-circle" onclick="solventarObservacion(' + valor.id + ')" title="Solventar esta observación">';
-                        body += '           <i class="fas fa-save"></i>';
-                        body += '       </button>';
+                        // body += '       <button class="btn btn-icon btn-sm btn-outline-success btn-circle" onclick="solventarObservacion(' + valor.id + ')" title="Solventar esta observación">';
+                        // body += '           <i class="fas fa-save"></i>';
+                        // body += '       </button>';
                     } 
                     else {
                         body += '       <button class="btn btn-icon btn-sm btn-outline-danger btn-circle" onclick="reloadObservation(' + valor.id + ', ' + id_tramite + ')" title="Desbloquear y volver a cargar solventación">';

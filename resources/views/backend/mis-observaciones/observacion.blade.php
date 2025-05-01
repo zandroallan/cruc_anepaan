@@ -71,7 +71,7 @@
 								<button type="button" id="btnterminarSolventacion" class="btn ripple btn-outline-success" style="display: none;">
 									<i class="fa fa-save"></i> Solventar esta observación
 								</button>
-								<button type="submit" class="btn ripple btn-outline-primary">
+								<button type="submit" class="btn ripple btn-outline-primary btn-cargar-documento" style="display: none;">
 									<i class="fa fa-search fa-upload"></i> Cargar documento
 								</button>
 							</div>
@@ -90,12 +90,12 @@
 					<table id="solventaciones_tbl" class="table table-bordered table-checkable dataTable no-footer dtr-inline">
 						<thead class="thead-dark head-dark">
 							<tr>
-								<th style="padding: 15px; color: #fff;">#</th>
-								<th style="padding: 15px; color: #fff;">Area</th>
-								<th style="padding: 15px; color: #fff;">Status</th>
-								<th style="padding: 15px; color: #fff;">Observación</th>
-								<th style="padding: 15px; color: #fff;" class="text-center" width="15%">Soporte</th>
-								<th style="padding: 15px; color: #fff;">Eliminar</th>
+								<th style="padding: 15px; color: #fff;" class="text-center">#</th>
+								<th style="padding: 15px; color: #fff;" class="text-center">ÁREA</th>
+								<th style="padding: 15px; color: #fff;" class="text-center">ESTATUS</th>
+								<th style="padding: 15px; color: #fff;" class="text-center">OBSERVACIÓN</th>
+								<th style="padding: 15px; color: #fff;" class="text-center">SOPORTE</th>
+								<th style="padding: 15px; color: #fff;" class="text-center">ELIMINAR</th>
 							</tr>
 						</thead>
 						<tbody></tbody>

@@ -14,10 +14,10 @@ function cargarTabla(){
                 vhtml+='    <thead class="thead-dark head-dark">';
                 vhtml+='        <tr>';
                 vhtml+='            <th style="color: #fff; padding: 15px 15px;" class="text-center">#</th>';
-                vhtml+='            <th style="color: #fff; padding: 15px 15px;">Clave</th>';
-                vhtml+='            <th style="color: #fff; padding: 15px 15px;">Nombre</th>';
-                vhtml+='            <th style="color: #fff; padding: 15px 15px;" class="text-center">Tipo</th>';
-                vhtml+='            <th style="color: #fff; padding: 15px 15px;" class="text-center">Accion</th>';
+                vhtml+='            <th style="color: #fff; padding: 15px 15px;">CLAVE</th>';
+                vhtml+='            <th style="color: #fff; padding: 15px 15px;">NOMBRE DOCUMENTO</th>';
+                vhtml+='            <th style="color: #fff; padding: 15px 15px;" class="text-center">TIPO</th>';
+                vhtml+='            <th style="color: #fff; padding: 15px 15px;" class="text-center">ACCIONES</th>';
                 vhtml+='        </tr>';
                 vhtml+='    </thead>';
                 vhtml+='    <tbody>';

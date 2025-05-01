@@ -181,6 +181,11 @@ class MisObservacionesController extends Controller
 
     public function guardar_observacion(Request $request)
     {
+
+        // C_Tipo_Tramite::documentacion_requerida($id_tipo_tramite, $id_sujeto);
+        // exit();
+
+
         $id_tramite       = $request->input('id_tramite');
         $id_observacion   = $request->input('id_observacion');
         $id_documento     = $request->input('id_documentacion');

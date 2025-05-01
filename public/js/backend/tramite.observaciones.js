@@ -2,7 +2,7 @@ var _id_tramites_documentacion=0;
 
 $(document).ready(
     function() {
-        $('#btnterminarSolventacion').attr('onclick', 'store_end()');
+        // $('#btnterminarSolventacion').attr('onclick', 'store_end()');
     }
 );
 
@@ -75,10 +75,17 @@ function cargar_solventaciones(id_tramites_documentacion)
         
         var totalDocumentosSubidos=0;
             totalDocumentosSubidos=data.length;
+        
         if( totalDocumentosSubidos > 0 ) 
-            $('#btnterminarSolventacion').show();
+            $('.btn-cargar-documento').hide();
         else 
-            $('#btnterminarSolventacion').hide();
+            $('.btn-cargar-documento').show();
+
+
+        // if( totalDocumentosSubidos > 0 ) 
+            // $('#btnterminarSolventacion').show();
+        // else 
+            // $('#btnterminarSolventacion').hide();
         
         let j = 1;
         $.each(data, function(i, valor) {
@@ -190,7 +197,7 @@ function cargarInputs(id_documento, tipo=0, alias=0)
     }
 
     if( varrayDocumento.length != 0 ) {        
-        $('#btnterminarSolventacion').show();
+        // $('#btnterminarSolventacion').show();
 
         for(let key in varrayDocumento) {
             var vtextoArray = varrayDocumento[key];
@@ -205,7 +212,7 @@ function cargarInputs(id_documento, tipo=0, alias=0)
     }
     else {
         $('#inputShowButton').val(1);
-        $('#btnterminarSolventacion').hide();
+        // $('#btnterminarSolventacion').hide();
 
         vhtml+='    <div class="form-group row m-b-10">';
         vhtml+='        <label for="id_documento" class="col-form-label col-md-3 text-right" style="font-size: 15px"><b>Solventacion *</b></label>';
