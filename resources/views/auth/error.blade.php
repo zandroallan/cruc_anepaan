@@ -51,27 +51,35 @@
 
 
 	<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled page-loading">
-        <div class="error error-5 d-flex flex-row-fluid bgi-size-cover bgi-position-center" style="background-image: url('{{ asset('public/assets/media/error/bg5.jpg') }}');">
+        <div class="error error-5 d-flex flex-row-fluid bgi-size-cover bgi-position-center" style="background-image: url('');">
             <div class="container d-flex flex-row-fluid flex-column justify-content-md-center p-12">
                 <div class="row">
-                    <div class="col-md-8">
-                        <h1 class="error-title font-weight-boldest text-info mt-10 mt-md-0 mb-12">
+                    <div class="col-md-12">
+                        <!-- <h1 class="error-title font-weight-boldest text-info mt-10 mt-md-0 mb-12">
                             Oops!
-                        </h1>
+                        </h1> -->
+
                         <p class="font-weight-boldest display-4">
                             Estimado/a {{ $data->razon_social_o_nombre }}.
                         </p>
                         <p class="font-size-h2" style="text-align: justify;">
-                            Se le comunica de manera oficial que su acceso ha sido bloqueado, por lo que, a partir de este momento, no podrá efectuar ningún tipo de trámite. Esta medida permanecerá vigente hasta que se resuelva la situación que la originó.
+                            Se le comunica que su trámite ha sido <b>suspendido</b> por ubicarse en el supuesto de <b>negación</b>, previsto en los artículos 25 primer y último párrafo de la Ley de Obra Pública del Estado y 19 fracción III del Reglamento de la Ley de Obra Pública del Estado, debido a que existe reporte de <b>obra inconclusa</b>, con lo que no acredita contar con la capacidad de cumplimiento de obligaciones contractuales.
+
                         </p>
+
                         <p class="font-size-h2" style="text-align: justify;">
-                            Para cualquier aclaración o gestión relacionada, deberá comunicarse directamente con el área correspondiente, siguiendo los canales oficiales establecidos.
+	                        Lo anterior, en base al reporte de empresas no aptas proporcionado por la dependencia ejecutora de obra pública: <b>Comisión Estatal de Caminos</b>.
+	                    </p>
+
+                        <p class="font-size-h2" style="text-align: justify;">
+                            Para cualquier aclaración comuníquese a la Coordinación de verificación de la Supervisión Externa de la Obra Pública Estatal de esta Secretaría Anticorrupción y Buen Gobierno al número (961) 61-87-530, Ext. 22022 y 22232 o ante la Entidad Ejecutora de Obra Pública.
+
                         </p>
                         <p class="font-size-h2" style="text-align: justify;">
                             Agradecemos su atención a la presente notificación.
                         </p>
+                        <img src="{{ asset('public/img2/cruc.png') }}">
                     </div>
-                    <div class="col-md-4"></div>
                 </div>
             </div>
         </div>

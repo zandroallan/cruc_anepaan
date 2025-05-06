@@ -20,15 +20,14 @@ Route::post('login', 'Api\LoginSanctumController@login');
 
 Route::post('logout', 'Api\LoginSanctumController@logout');
 
-
 Route::get('unauthorized',function(Request $r){
 	$response = [
             'success' => false,
             'code'    => "C003",
             'message' => "Unauthorized",
             'data'    => [
-            				'error' => "No existe ningun token"
-            			]
+				'error' => "No existe ningun token"
+			]
         ];
 
     return response()->json($response, 404);
@@ -41,12 +40,14 @@ Route::middleware('auth:sanctum')->group(
 
         Route::post('padron', 'Api\ApiController@test');
 
+        Route::get('padron/{year}/tramites', 'Api\ApiController@padron');
+
+        Route::get('padron/tramites/{id_tramite}/detalle', 'Api\ApiController@padronDetalle');
+
     }
 );
 
 
 
 
-Route::get('padron/{year}/tramites', 'Api\ApiController@padron');
 
-Route::get('padron/tramites/{id_tramite}/detalle', 'Api\ApiController@padronDetalle');

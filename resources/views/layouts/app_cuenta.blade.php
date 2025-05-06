@@ -362,7 +362,7 @@
 									<!--begin::Form Group-->
 									<div class="form-group">
 										<label class="font-size-h6 font-weight-bolder text-dark">RFC</label>
-										<input type="text" class="form-control myshadow h-auto py-3 px-6 border-0 rounded-lg font-size-h6" name="rfc" id="rfc" placeholder="Ingrese el rfc" />
+										<input type="text" class="form-control myshadow h-auto py-3 px-6 border-0 rounded-lg font-size-h6" name="rfc" id="rfc" placeholder="Ingrese el rfc" oninput="verificar_rfc_bloqueado(this.value)" />
 									</div>
 									<!--end::Form Group-->
 									<!--begin::Form Group-->
@@ -526,8 +526,33 @@
             $(document).ready(
             	function () {
                 	@yield('script')
+
+                	// document.getElementById('rfc').addEventListener('keypress', 
+                	//   	function(e) {
+					    	
+					// 	}
+					// );
+
             	}
             );
+
+            function verificar_rfc_bloqueado()
+            {
+            	// 
+		    	$.ajax({
+			        type: "GET",
+			        url: vuri + '/verificar/rfc/bloqueado',
+			        data: {
+			        	rfc: document.getElementById('rfc').value
+			        },
+			        success: function(json) {
+			            
+			        },
+			        error: function(json) {}
+			    });
+		    	// 
+            }
+
         </script>
 	</body>
 </html>
