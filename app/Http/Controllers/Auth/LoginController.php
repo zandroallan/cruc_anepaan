@@ -82,7 +82,6 @@ class LoginController extends Controller
 
     public function verificar_rfc_bloqueado(Request $vrequest)
     {
-
         $vstatus=201;
         $vfiltro=array();
         $vrespuesta=[
@@ -102,7 +101,6 @@ class LoginController extends Controller
 
             $registro_bloqueado = 0;
             // $rfc_buscar = strtoupper(trim($vrequest->rfc)); // normalizamos el valor
-
             // if (!empty($this->registrosBloqueados)) {
             //     foreach ($this->registrosBloqueados as $valor) {
             //         if (strtoupper(trim($valor)) === $rfc_buscar) {
@@ -113,7 +111,6 @@ class LoginController extends Controller
             //     }
             // }
 
-
             $rfc = strtoupper(trim($vrequest->rfc));
             $bloqueados = array_map('strtoupper', array_map('trim', $this->registrosBloqueados));
 
@@ -121,7 +118,6 @@ class LoginController extends Controller
                 $vrespuesta['error'] = $rfc;
                 $registro_bloqueado = 1;
             }
-
 
             $vrespuesta['codigo']=1;
             $vrespuesta['icono']='success';
@@ -138,13 +134,12 @@ class LoginController extends Controller
             ];
         }
         return response()->json($vrespuesta, $vstatus);
-
     }
     
     public function login(LoginRequest $request)
     {
 		$vflUsuario = User::where('nickname', '=', $request->input('nickname'))->first();
-        if(isset($vflUsuario)){
+        if ( isset($vflUsuario) ) {
 
             $registro_bloqueado=false;
             if ( count($this->registrosBloqueados) > 0 ) {

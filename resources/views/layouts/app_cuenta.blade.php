@@ -507,6 +507,25 @@
 			</div>
 			<!--end::Login-->
 		</div>
+
+		<div class="modal modal-message-contacto fade mdl-bloqueo" id="modal-message-contacto">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header" style="color: #1f5c01; background-color: #ced7df; border-color: #ced7df;">
+						<h4 class="modal-title">Empresa bloqueada</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					</div>
+					<div class="modal-body">
+						
+					</div>
+					<div class="modal-footer">
+						<a href="javascript:;" class="btn ripple btn-dark" data-dismiss="modal">Cerrar</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
 		<!--end::Main-->
 		<script>var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";</script>
 		<!--begin::Global Config(global config for global JS scripts)-->
@@ -546,7 +565,9 @@
 			        	rfc: document.getElementById('rfc').value
 			        },
 			        success: function(json) {
-			            
+			        	if ( json.bloqueado == 1 ) {
+			        		$('.mdl-bloqueo').modal('show');
+			        	}
 			        },
 			        error: function(json) {}
 			    });
