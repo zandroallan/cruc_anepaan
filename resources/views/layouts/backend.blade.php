@@ -3,7 +3,7 @@
 	<!--begin::Head-->
 	<head><base href="">
 		<meta charset="utf-8" />
-		<title>Cruc Anepaan | Web</title>
+		<title>Cruc balam | Web</title>
 		<meta name="description" content="Updates and statistics" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 		<link rel="canonical" href="https://keenthemes.com/metronic" />
@@ -438,15 +438,14 @@
 		<script src="{{asset('public/assets/plugins/global/plugins.bundle.js')}}"></script>
 		<script src="{{asset('public/assets/plugins/custom/prismjs/prismjs.bundle.js')}}"></script>
 		<script src="{{asset('public/assets/js/scripts.bundle.js')}}"></script>
-
 		<script src="{{asset('public/assets/plugins/confirm/js/jquery-confirm.js')}}"></script>
 
 	
 		@yield('js')
       
         <script type="text/javascript">
-            var project_name= "/cruc_anepaan";
-            var vuri = window.location.origin + '/cruc_anepaan';
+            var project_name= "/cruc_balam";
+            var vuri = window.location.origin + '/cruc_balam';
 
             $(document).ready(
             	function () {

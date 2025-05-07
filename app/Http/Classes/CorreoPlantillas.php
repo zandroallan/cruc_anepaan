@@ -45,7 +45,7 @@ class CorreoPlantillas
                                                         Le notificamos que sus archivos de sus observaciones del trámite de <b>'. $vdatos['tipo_tramite'] .'</b> con folio <b>'. $vdatos['folio'] .'</b> se han enviado para su revisión, la Secretaría procederá al análisis de la documentación proporcionada.
                                                     </p>
                                                     <p style="text-align:justify">
-                                                        La Secretaría comenzará a correr el plazo de treinta días naturales, para que otorgue o niegue la constancia de inscripción, modificación o actualización en el registro de contratistas o de Supervisores Externos, cuando el solicitante solvente las observaciones o presente la documentación completa con todos los requisitos.
+                                                        La Secretaría comenzará a correr el plazo de treinta días naturales, para que otorgue o niegue la constancia de inscripción y, modificación o actualización en el registro de contratistas o de Supervisores Externos, cuando el solicitante solvente las observaciones o presente la documentación completa con todos los requisitos.
                                                     </p>                                                    
                                                     <p style="text-align:justify">
                                                         Todos los seguimientos al trámite se le notificarán a travéz del Sistema de Registro de Contratistas y Supervisores Externos (SIRCSE) y a éste correo  electrónico.
@@ -410,7 +410,7 @@ class CorreoPlantillas
                                                 </div>
                                                 <div style="text-align:justify">
                                                     <p>
-                                                        <strong>Advertencia: </strong> El uso de la cuenta, así como el accesar al Sistema de Registro de Contrastas y Supervisores Externos, por medio del usuario y contraseña es responsabilidad de la persona a la que le fue otorgada; se recomienda cambiar su contraseña periodicamente para aumentar la seguridad de su cuenta, ni compartir con terceros.<br><br>Link para ingresar al sistema: https://apps.anticorrupcionybg.gob.mx/cruc_anepaan
+                                                        <strong>Advertencia: </strong> El uso de la cuenta, así como el accesar al Sistema de Registro de Contrastas y Supervisores Externos, por medio del usuario y contraseña es responsabilidad de la persona a la que le fue otorgada; se recomienda cambiar su contraseña periodicamente para aumentar la seguridad de su cuenta, ni compartir con terceros.<br><br>Link para ingresar al sistema: https://apps.anticorrupcionybg.gob.mx/cruc_balam
                                                     </p>
                                                 </div>                                                
                                                 <div style="text-align:justify">
@@ -433,8 +433,6 @@ class CorreoPlantillas
 
                                                         <br />
                                                         Este correo se genera automaticamente, no responder.
-
-                                                        
 
                                                     </p>
                                                </div>                                                
@@ -514,10 +512,25 @@ class CorreoPlantillas
 														Con esta fecha se ha recibido su solicitud de trámite de <b>'. $vdatos['tipo_tramite'] .'</b> con el folio <b>'. $vdatos['folio'] .'</b> y con fecha de inicio <b>'. $vdatos['fecha_inicio'] .'</b>.
                                                     </p>
                                                     <p style="text-align:justify">
-                                                    La Secretaría procederá al análisis de la documentación proporcionada, en caso de que no cumpla con los requisitos aplicables o se le requiera alguna aclaración. La Secretaría prevendrá por una sola vez, para que subsane la omisión u observaciones dentro del término de <b>cinco días hábiles</b>, contados a partir de que haya surtido efectos la notificación; transcurrido el plazo sin que el solicitante desahogue la prevención, se desechará el trámite de la solicitud, pudiendo interesado solicitar nuevamente el trámite correspondiente.
+                                                        La Secretaría procederá al análisis de la documentación proporcionada. Cuando el
+                                                        solicitante no cumpla con los requisitos aplicables o se le requiera alguna aclaración, la
+                                                        Secretaría realizará por una sola ocasión la prevención para subsanar la informaciónfaltante,
+                                                        misma que se dará a conocer mediante un Aviso Electrónico, para que solvente las
+                                                        observaciones;la cual surtirá efectos a partir del cuarto día hábil siguiente.
                                                     </p>
                                                     <p style="text-align:justify">
-                                                    La Secretaría tendrá por recibida una solicitud y comenzará a correr el plazo de treinta días naturales, para que otorgue o niegue la constancia de inscripción, modificación o actualización en el registro de Contratistas o de Supervisores Externos, cuando el solicitante solvente las observaciones o presente la documentación completa con todos los requisitos
+                                                        Una vez que surta efectos la notificación del Aviso Electrónico de prevención, el Interesado
+                                                        tendrá un plazo de cinco días hábiles, para realizar las solventaciones correspondientes;
+                                                        transcurrido el plazo sin que el solicitante desahogue la prevención, se desechará el trámite
+                                                        de la solicitud, pudiendo el Interesado solicitar nuevamente el trámite correspondiente.
+                                                    </p>
+
+                                                    <p style="text-align:justify">
+                                                        La Secretaría, a partir de que se tengan solventadas las observaciones y/o el Interesado
+                                                        presente la documentación completa con todos los requisitos; tendrá un plazo de treinta días
+                                                        naturales para otorgar o negar la constancia de inscripción, y de quince días naturales en los
+                                                        casos de modificación o actualización en el Registro de Contratistas o de Supervisores
+                                                        Externos, para el otorgamiento o negación de la constancia.
                                                     </p>
                                                     
                                                     <p style="text-align:justify">Todos los seguimientos al trámite se le notificarán a su cuenta a través del <b>Sistema de Registro de Contratistas y de Supervisores Externos (SIRCSE)</b> y a este correo  electrónico.</p>
@@ -755,7 +768,7 @@ class CorreoPlantillas
                                                 </div>
                                                 <div style="text-align:justify">
                                                     <p>
-                                                        <strong>Advertencia: </strong> El uso de la cuenta, así como el accesar al Sistema de Registro de Contrastas y Supervisores Externos, por medio del usuario y contraseña es responsabilidad de la persona a la que le fue otorgada; se recomienda cambiar su contraseña periodicamente para aumentar la seguridad de su cuenta, ni compartir con terceros.<br><br>Link para ingresar al sistema: https://apps.anticorrupcionybg.gob.mx/cruc_anepaan
+                                                        <strong>Advertencia: </strong> El uso de la cuenta, así como el accesar al Sistema de Registro de Contrastas y Supervisores Externos, por medio del usuario y contraseña es responsabilidad de la persona a la que le fue otorgada; se recomienda cambiar su contraseña periodicamente para aumentar la seguridad de su cuenta, ni compartir con terceros.<br><br>Link para ingresar al sistema: https://apps.anticorrupcionybg.gob.mx/cruc_balam
                                                     </p>
                                                 </div>                                                
                                                 <div style="text-align:justify">

@@ -48,6 +48,8 @@ Route::get('dias/tramites', 'HomeController@diasHabiles');
 
 Route::get('registro/{id_registro}/bloqueado', 'HomeController@bloqueado')->name('registro.bloqueado');
 
+// Route::get('registro/bloqueado', 'HomeController@bloqueado_registro');
+
 Route::get('verificar/rfc/bloqueado', 'Auth\LoginController@verificar_rfc_bloqueado');
 
 Route::get('consulta/total-folios', 

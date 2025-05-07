@@ -3,7 +3,7 @@
 	<!--begin::Head-->
 	<head>
 		<meta charset="utf-8" />
-		<title>CRUC ANEPAAN | Web</title>
+		<title>Cruc balam | Web</title>
 		<meta name="description" content="Singin page example" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 		<link rel="canonical" href="https://keenthemes.com/metronic" />
@@ -540,17 +540,12 @@
 		@yield('js')
 
 		<script type="text/javascript">
-            var vuri = window.location.origin + '/cruc_anepaan';
+            var vuri = window.location.origin + '/cruc_balam';
 
             $(document).ready(
             	function () {
+            		
                 	@yield('script')
-
-                	// document.getElementById('rfc').addEventListener('keypress', 
-                	//   	function(e) {
-					    	
-					// 	}
-					// );
 
             	}
             );
@@ -566,7 +561,8 @@
 			        },
 			        success: function(json) {
 			        	if ( json.bloqueado == 1 ) {
-			        		$('.mdl-bloqueo').modal('show');
+			        		// $('.mdl-bloqueo').modal('show');
+			        		window.location = vuri;
 			        	}
 			        },
 			        error: function(json) {}

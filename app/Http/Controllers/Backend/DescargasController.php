@@ -28,7 +28,7 @@ class DescargasController extends Controller
     public function descargar ($id_documento){
         $datos = C_Descargas::find($id_documento);
         
-        $path= public_path().'/descargas/';
+        $path= public_path().'/public/descargas/';
         $file= $path.$datos->nombre.'.'.$datos->tipo;
         return response()->download($file);
     }    

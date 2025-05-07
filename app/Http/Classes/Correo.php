@@ -19,18 +19,15 @@ class Correo
             $mail->CharSet="utf-8";
             $mail->SMTPAuth=true;
             $mail->SMTPSecure="tls";
-            $mail->Host="smtp.gmail.com"; // host gmail
+            $mail->Host="mail.anticorrupcionybg.gob.mx"; // host gmail smtp.gmail.com
             //$mail->Host="mail.shyfpchiapas.gob.mx"; // host gmail smtp.office365.com
-            $mail->Port=587; // port gmail            
+            $mail->Port=587; // port gmail
             
-            // $mail->Username="contratistas.supervisores@gmail.com";
-            // $mail->Password="CntrtasSupvsr";
-            // $mail->setFrom("contratistas.supervisores@gmail.com", "Contratistas y Supervisores");
             
-            $mail->Username="srcse.shyfpchiapas@gmail.com";
+            $mail->Username="notificaciones@anticorrupcionybg.gob.mx";
             //$mail->Password="srcseSHYFP.2020";
-            $mail->Password="ixwhzhbxicrnyxcn";
-            $mail->setFrom("srcse.shyfpchiapas@gmail.com", "SHYFP");
+            $mail->Password="Rq#V020(";
+            $mail->setFrom("notificaciones@anticorrupcionybg.gob.mx", "Notificaciones SAyBG");
 
             // $mail->Username="srcse.shyfpchiapas@gmail.com";
             // $mail->Password="srcseSHYFP.2020";

@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>CRUC ANEPAAN | Web</title>
+        <title>Cruc balam | Web</title>
         <meta name="description" content="Singin page example" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -246,7 +246,7 @@
         <script src="{{asset('public/js/backend/recuperar_password.js')}}"></script>
 
         <script type="text/javascript">
-            var vuri = window.location.origin + '/cruc_anepaan';
+            var vuri = window.location.origin + '/cruc_balam';
 
             $(document).ready(
                 function () {

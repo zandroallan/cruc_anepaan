@@ -180,10 +180,8 @@ class ImpresionController extends Controller
         //Documentación recibida       
         $html.= '<h2 class="titulo_modulos">Observaciones</h2>';
 
-        $html.='<p style="text-align:justify; font-size: 10px;">Con fundamento en el artículo 5, fracción IV, de los “Lineamientos para el Trámite y Expedición de Constancias de Registro de Contratistas y de Supervisores Externos”, se le comunica que la Secretaría le previene por una sola vez, para que solvente las observaciones dentro del término de cinco días hábiles, contados a partir de que haya surtido efectos la notificación; transcurrido el plazo sin que el solicitante desahogue la prevención, se desechará el trámite de la solicitud, pudiendo el Interesado solicitar nuevamente el trámite correspondiente.</p>';
-
-        $html.='<p style="text-align:justify; font-size: 10px;">Los Interesados deberán acusar de recibida la notificación de las observaciones, en un término no mayor a treinta días naturales en el SIRCSE, caso contrario será motivo de desechamiento, pudiendo el Interesado solicitar nuevamente el trámite correspondiente.</p>';        
-        
+        $html.='<p style="text-align:justify; font-size: 10px;">Con fundamento en el artículo 5, fracción IV y V, de los “Lineamientos para el Trámite y Expedición de Constancias de Registro de Contratistas y de Supervisores Externos”, se le comunica que la Secretaría le previene por una sola vez, para que solvente las observaciones dentro del término de cinco días hábiles, contados a partir de que haya surtido efectos la notificación; transcurrido el plazo sin que el solicitante desahogue la prevención, se desechará el trámite de la solicitud, pudiendo el Interesado solicitar nuevamente el trámite correspondiente.</p>';
+ 
         foreach($observaciones as $key=>$value) {			
             $html.= '<div class="lblarea">'.$key.'</div> ';
             foreach($value as $documento) {
@@ -311,7 +309,7 @@ class ImpresionController extends Controller
         $html.='</tbody>
                 </table>'; 
 				
-		$html.='<p style="text-align:justify; font-size: 10px;">Con fundamento en el artículo 5, fracción III, de los “Lineamientos para el Trámite y Expedición de Constancias de Registro de Contratistas y de Registro Supervisores Externos”, publicados en el Periódico Oficial del Estado No. 122, de fecha 19 de agosto de 2020, se emite la presente constancia de recepción de documentos, la cual NO tiene validez jurídica para participar en procedimientos de adjudicación y contratación de la obra pública, regulados por la Ley de Obra Pública del Estado de Chiapas.</p>';
+		$html.='<p style="text-align:justify; font-size: 10px;">Con fundamento en el artículo 5, fracción III, de los “Lineamientos para el Trámite y Expedición de Constancias de Registro de Contratistas y de Supervisores Externos”, se emite la presente constancia de recepción de documentos, la cual NO tiene validez jurídica para participar en procedimientos de adjudicación y contratación de la obra pública, regulados por la Ley de Obra Pública del Estado de Chiapas.</p>';
 
         //Documentación recibida       
         $html.= '<h2 class="titulo_modulos">Documentación presentada para su revisión</h2> ';
@@ -327,7 +325,7 @@ class ImpresionController extends Controller
          //Final
         $html.= '<p style="text-align:justify; font-size: 10px;">La documentación presentada está sujeta a revisión para constatar su existencia legal y personalidad jurídica, así como su capacidad financiera, y especialidad técnica en la materia de la obra pública, por si o a través del representante técnico que designe, y estar en cumplimiento de sus obligaciones fiscales, como lo establece el artículo 25 de la Ley de Obra Púbica del Estado de Chiapas.</p>';
 		
-		$html.= '<p style="text-align:justify; font-size: 10px;">Esta Secretaría procederá al análisis de la documentación proporcionada, en el caso de no cumplir con los requisitos aplicables o se le requiera alguna aclaración; se le prevendrá por una sola vez, para que subsane la omisión u observaciones dentro del término de <b>cinco días hábiles</b>, con base en la fracción IV, del artículo 5, de los Lineamientos para el Trámite y Expedición de Constancias de Registro de Contratistas y de Registro Supervisores Externos y 19, primer parrafo de la Ley de Procedimientos Administrativos para el Estado de Chiapas.</p>';
+		$html.= '<p style="text-align:justify; font-size: 10px;">Esta Secretaría procederá al análisis de la documentación proporcionada, en el caso de no cumplir con los requisitos aplicables o se le requiera alguna aclaración; se le prevendrá por una sola vez, para que subsane la omisión u observaciones dentro del término de <b>cinco días hábiles</b>, con base en la fracción IV, del artículo 5, de los Lineamientos para el Trámite y Expedición de Constancias de Registro de Contratistas y de Supervisores Externos y 19, primer parrafo de la Ley de Procedimientos Administrativos para el Estado de Chiapas.</p>';
 		
         return $imprimir->tramite_acuse_recepcion($html, $mode);
     }   

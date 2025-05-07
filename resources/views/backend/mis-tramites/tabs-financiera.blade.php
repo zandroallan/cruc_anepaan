@@ -14,7 +14,70 @@
         </div>
     </form>
 
-    <div class="_tbl_response_cpc"></div>
+    <div class="_tbl_response_cpc">
+        
+
+        <!-- <div class="card card-custom gutter-b card-stretch">
+            <div class="card-body">
+                <div class="d-flex justify-content-between flex-column pt-4 h-100">
+                    <div class="pb-5">
+                        <div class="d-flex flex-column flex-center">
+                            <div class="symbol symbol-120 symbol-circle symbol-success overflow-hidden">
+                                <span class="symbol-label">
+                                    <img src="assets/media/svg/avatars/007-boy-2.svg" class="h-75 align-self-end" alt="">
+                                </span>
+                            </div>
+                            <a href="#" class="card-title font-weight-bolder text-dark-75 text-hover-primary font-size-h4 m-0 pt-7 pb-1">Jerry Kane</a>
+                            <div class="font-weight-bold text-dark-50 font-size-sm pb-6">Grade 8, AE3 Student</div>
+                        </div>
+                        <div class="pt-1">
+                            <div class="d-flex align-items-center pb-9">
+                                <div class="symbol symbol-45 symbol-light mr-4">
+                                    <span class="symbol-label">
+                                        <span class="svg-icon svg-icon-2x svg-icon-dark-50">
+                                            <i class="flaticon2-bell-4"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="d-flex flex-column flex-grow-1">
+                                    <a href="#" class="text-dark-75 text-hover-primary mb-1 font-size-lg font-weight-bolder">Nombre</a>
+                                    <span class="text-muted font-weight-bold">PHP, SQLite, Artisan CLI</span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center pb-9">
+                                <div class="symbol symbol-45 symbol-light mr-4">
+                                    <span class="symbol-label">
+                                        <span class="svg-icon svg-icon-2x svg-icon-dark-50">
+                                            <i class="flaticon2-bell-4"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="d-flex flex-column flex-grow-1">
+                                    <a href="#" class="text-dark-75 text-hover-primary mb-1 font-size-lg font-weight-bolder">Modules</a>
+                                    <span class="text-muted font-weight-bold">Successful Fellas</span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center pb-9">
+                                <div class="symbol symbol-45 symbol-light mr-4">
+                                    <span class="symbol-label">
+                                        <span class="svg-icon svg-icon-2x svg-icon-dark-50">
+                                            <i class="flaticon2-bell-4"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="d-flex flex-column flex-grow-1">
+                                    <a href="#" class="text-dark-75 text-hover-primary mb-1 font-size-lg font-weight-bolder">Progress</a>
+                                    <span class="text-muted font-weight-bold">Successful Fellas</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+
+    </div>
 
 
 <!-- <form class="frm-capital-contable" name="frm-capital-contable">
