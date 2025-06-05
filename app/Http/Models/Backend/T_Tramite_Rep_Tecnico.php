@@ -57,7 +57,8 @@ class T_Tramite_Rep_Tecnico extends Model
         return $result;
     }
 
-    public static function datos_generales($data=[]){
+    public static function datos_generales($data=[])
+    {
         $result = T_Tramite_Rep_Tecnico::select('t_tramites_rep_tecnicos.*', 'p.nombre', 'p.ap_paterno', 'ap_materno', 'p.curp', 'p.rfc', 'p.id_nacionalidad', 'pais.nacionalidad', 'p.sexo', 'p.telefono', 'p.correo_electronico', 'p.id_tipo_identificacion', 'ti.nombre as tipo_identificacion','p.numero_identificacion', 'dp.id as id_domicilio_particular', 'mp.id_estado as id_estado_particular', 'dp.id_municipio as id_municipio_particular', 'dp.ciudad as ciudad_particular', 'dp.calle as calle_particular', 'dp.num_exterior  as ext_particular', 'dp.num_interior  as int_particular', 'dp.colonia as colonia_particular', 'dp.codigo_postal as cp_particular', 'dp.referencias as referencias_particular', 'p.id_d_domicilio', 'prof.nombre as profesion', 'col.nombre as colegio');
 
         $result= $result->Join('t_tramites', 't_tramites_rep_tecnicos.id_tramite', '=', 't_tramites.id');
@@ -223,13 +224,18 @@ class T_Tramite_Rep_Tecnico extends Model
             't_tramites_rep_tecnicos.id_registro_tmp',
             't_tramites_rep_tecnicos.num_constancia',
             't_tramites_rep_tecnicos.id_tipo_constancia',
+            DB::raw("CASE WHEN t_tramites_rep_tecnicos.id_tipo_constancia = 1 THEN 'Propia' ELSE 'Ajena' END AS tipo_constancia"),
+            DB::raw("CASE WHEN d_personales.sexo = 1 THEN 'Hombre' ELSE 'Mujer' END AS sexo"),
             't_tramites_rep_tecnicos.cedula',
+            't_tramites_rep_tecnicos.fecha_cedula',
             't_tramites_rep_tecnicos.especialidades',
+            DB::raw("CASE WHEN t_tramites_rep_tecnicos.reposicion = 1 THEN 'Si' ELSE 'No' END AS reposicion"),
             'd_personales.nombre',
             'd_personales.ap_paterno',
             'd_personales.ap_materno',
+            DB::raw('concat_ws(" ", d_personales.nombre, d_personales.ap_paterno, d_personales.ap_materno) as nombre_completo'),
             'd_personales.curp',
-            //'d_personales.rfc',
+            'd_personales.rfc',
             'c_colegios.nombre as colegio',            
             'c_profesiones.nombre as profesion'
         );

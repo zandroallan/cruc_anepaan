@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Http\Requests\Frontend\LoginRequest;
 use Illuminate\Support\Facades\Crypt;
 use App\Http\Models\Backend\T_Registro;
+use App\Http\Models\Backend\T_Registro_Bloqueado;
 use App\User;
 use Auth;
 use DB;
@@ -145,11 +146,36 @@ class LoginController extends Controller
             if ( count($this->registrosBloqueados) > 0 ) {
                 foreach ($this->registrosBloqueados as $key => $value) {
                     $_MDL_Registro=T_Registro::find($vflUsuario->id_registro);
-                    if ( $value == strtoupper($_MDL_Registro->rfc) )  $registro_bloqueado=true;
+                    if ( $value == strtoupper($_MDL_Registro->rfc) )  {
+                        $registro_bloqueado=true;
+                        
+                $fecha=date('d/m/Y');
+                $hora=date('H:i:s');
+                $_mensaje ='';
+                $_mensaje.=' Intento de acceso: La empresa '. $_MDL_Registro->razon_social_o_nombre;
+                $_mensaje.=' intentó ingresar al sistema el '. $fecha .' a las '. $hora .' pero se encuentra actualmente inhabilitada';
+                $_mensaje.=' El acceso fue denegado y se registró el evento para seguimiento.';
+
+                $_MDL_Registro_Bloqueado=new T_Registro_Bloqueado;
+                $_MDL_Registro_Bloqueado->fill(
+                    [
+                        'id_registro'   => $vflUsuario->id_registro,
+                        'descripcion'   => $_mensaje,
+                        'fecha'         => date('Y-m-d'),
+                        'hora'          => $hora
+                    ]
+                )->save();
+                        
+                        
+                        break;
+                    }
                 }
             }
 
             if ( $registro_bloqueado ) {
+
+                
+
                 $encryptedId = Crypt::encryptString($vflUsuario->id_registro);
                 return redirect()->route('registro.bloqueado', ['id_registro' => $encryptedId]);
             }

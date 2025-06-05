@@ -7,9 +7,9 @@
       
 
             <div class="row">
-                <div class="col-md-12 form-group text-right">
+                <div class="col-md-12 form-group text-center">
                     <a href="#" class="btn ripple btn-outline-success" data-effect="effect-scale" onclick="modal_rtec(0)">
-                        <i class="fa fa-save"></i> Agregar RTEC
+                        <i class="fa fa-save"></i> Agregar representante técnico
                     </a> 
                 </div>
             </div>
@@ -18,7 +18,14 @@
                 @csrf
             </form>
 
-            <table id="dtrtec_tbl" class="table table-bordered table-checkable dataTable no-footer dtr-inline">
+            <div class="row">
+                <div class="col-md-12 _rtec">
+
+                </div>
+            </div>
+
+
+            <!-- <table id="dtrtec_tbl" class="table table-bordered table-checkable dataTable no-footer dtr-inline">
                 <thead id="hdRTEC" class="thead-dark">
                     <tr>
                         <th scope="col">Nombre</th>
@@ -31,7 +38,7 @@
                 </thead>
                 <tbody>                     
                 </tbody>
-            </table>
+            </table> -->
               
 
             @include('backend.mis-tramites.mdl_rep_tec')

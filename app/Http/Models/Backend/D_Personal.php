@@ -13,6 +13,7 @@ class D_Personal extends Model
     protected $table = 'd_personales';
     protected $fillable = [
         'id', 
+        'referencia_id',
         'id_d_domicilio', 
         'colegios',
         'nombre', 
@@ -26,7 +27,10 @@ class D_Personal extends Model
         'telefono',
         'correo_electronico',
         'id_tipo_identificacion',
-        'numero_identificacion'
+        'numero_identificacion',
+        'numero_cedula',
+        'fecha_cedula',
+        'registro_agaff'
     ];
 
     protected $hidden = [
@@ -45,6 +49,20 @@ class D_Personal extends Model
         }
 
         $query->where('d_personales.colegios', 1);
+        return $query->orderByDesc('d_personales.id');
+     }
+
+    public static function queryToDB($data = [])
+     {
+        $query = D_Personal::select('d_personales.*');
+
+        if(array_key_exists('id', $data)){
+            $filtro= $data["id"];
+            $query= $query->where( function($sql) use ($filtro){
+                $sql->where('d_personales.id', $filtro);
+            });
+        }
+
         return $query->orderByDesc('d_personales.id');
      }
 

@@ -1,10 +1,14 @@
     <form class="frm-contador-publico" name="frm-contador-publico">
         <div class="row">
-            <div class="col-md-12 form-group">
+            <div class="col-md-6 form-group">
                 <label><b>Contador público certificado *</b></label>
                 <select class="form-control inp-udi" name="id_contador" id="id_contador">
                     <option value="">-- Seleccionar --</option>
                 </select>
+            </div>
+            <div class="col-md-6 form-group">
+                <label><b>Numero de constancia emitida por el colegio *</b></label>
+                <input type="text" name="no_constancia_cp" id="no_constancia_cp" class="form-control inp-udi m-b-5">
             </div>
             <div class="col-md-12 form-group text-center">
                 <button type="button" class="btn ripple btn-outline-success btn_store_cpc">

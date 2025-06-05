@@ -39,9 +39,24 @@ class T_Tramite_Contador extends Model
             'd_personales.sexo',
             'd_personales.telefono',
             'd_personales.correo_electronico',
-            DB::raw('concat_ws(" ", d_personales.nombre, d_personales.ap_paterno, d_personales.ap_materno) as nombre_completo')
+            DB::raw('concat_ws(" ", d_personales.nombre, d_personales.ap_paterno, d_personales.ap_materno) as nombre_completo'),
+            'c_tipos_identificacion.nombre as identificacion',
+            'd_personales.numero_identificacion',
+            'd_personales.numero_cedula',
+            'd_personales.fecha_cedula',
+            'd_personales.registro_agaff',
+            DB::raw("CONCAT_WS(', ',
+                d_domicilios.calle,
+                CONCAT('No. ', d_domicilios.num_exterior),
+                CONCAT('Int. ', d_domicilios.num_interior),
+                d_domicilios.colonia,
+                d_domicilios.codigo_postal,
+                d_domicilios.ciudad
+            ) AS direccion_completa")
         );  
-        $result= $result->join('d_personales', 'd_personales.id', '=', 't_tramites_contadores.id_d_personal');
+        $result= $result->join('d_personales', 't_tramites_contadores.id_d_personal', '=', 'd_personales.id');
+        $result= $result->join('c_tipos_identificacion', 'd_personales.id_tipo_identificacion', '=', 'c_tipos_identificacion.id');
+        $result= $result->leftJoin('d_domicilios', 'd_personales.id_d_domicilio', '=', 'd_domicilios.id');
 
         if (!empty($data['id_registro_tmp'])) {
             $result= $result->where('t_tramites_contadores.id_registro_tmp', $data['id_registro_tmp']);

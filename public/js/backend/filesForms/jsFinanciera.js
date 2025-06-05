@@ -6,17 +6,18 @@ function get_contadores_certificados()
 
 	$.ajax({
         type: "GET",
-        url: vuri + '/contadores/publicos/certificados',
+        //url: vuri + '/contadores/publicos/certificados',
+        url: 'https://apps.anticorrupcionybg.gob.mx/contadores/api/combo/contadores',
         data: {
             method: 'get'
         },
-        success: function(vresponse) {
+        success: function(vresponse) {            
             let html ='';
                 html+='<option value="">-- Seleccionar --</option>';
-            $.each(vresponse.data, 
+            $.each(vresponse.respuesta, 
                 function (i, valor) {
                     html+='<option value='+ valor.id +'>';
-                    html+=  valor.nombre +' '+ valor.ap_paterno +' '+ valor.ap_materno;
+                    html+=  valor.persona;
                     html+='</option>';   
                 }
             );
@@ -51,7 +52,10 @@ function store_contador_publico()
                             type: 'orange'
                         });
 
+                        $('#no_constancia_cp').val('');
+                        $('#id_contador').val("").trigger('change');
                         get_contador_tramite();
+
                     },
                     error: function(json) {
 

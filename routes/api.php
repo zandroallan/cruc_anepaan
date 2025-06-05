@@ -11,7 +11,7 @@ Route::get('padron/{year}/contratistas', 'HomeController@padron');
 
 Route::get('padron/{id_tramite}/contratista/detalle', 'HomeController@detalleContratistaPadron');
 
-
+Route::post('registro/contratista', 'Api\ApiController@registroShow');
 // 
 
 Route::post('register', 'Api\LoginSanctumController@register');

@@ -579,7 +579,7 @@ class MisTramitesController extends Controller
                                     $datosDatoLegal = T_Tramite_Dato_Legal::general(['id_registro_tmp' => Auth::user()->id_registro])->first();
                                     if (isset($datosDatoLegal)) {
                                         $vflDatoLegal['id_tramite']      = $t_tramite->id;
-                                            $vflDatoLegal['id_registro_tmp'] = null;
+                                        $vflDatoLegal['id_registro_tmp'] = null;
                                         $vdatoDatoLegal                  = T_Tramite_Dato_Legal::findOrFail($datosDatoLegal->id);
                                         $vdatoDatoLegal->fill($vflDatoLegal)->save();
                                         unset($vflDatoLegal, $vdatoDatoLegal, $datosDatoLegal);
