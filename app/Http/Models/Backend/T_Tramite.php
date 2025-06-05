@@ -187,6 +187,59 @@ class T_Tramite extends Model
         return $result;
     }
     
+    public static function estadisticasQuery($data=[])
+     {
+        $result=T_Tramite::select(
+            't_tramites.id',
+            't_tramites.folio',
+            't_tramites.fecha_inicio',
+            't_tramites.fecha_fin',
+            't_registro.razon_social_o_nombre',
+            't_registro.rfc'
+
+       );
+
+        $result=$result->join('t_registro', 't_tramites.id_cs', '=', 't_registro.id');
+        // $result=$result->leftJoin('t_tramites_rep_legales as rl', 'rl.id_tramite', '=', 't_tramites.id');
+        // $result=$result->leftJoin('t_tramites_rep_tecnicos as rt', 'rt.id_tramite', '=', 't_tramites.id');
+        // $result=$result->leftJoin('d_personales as persona', 'rl.id_d_personal', '=', 'persona.id');
+        // $result=$result->leftJoin('c_tipos_tramite as tt', 't_tramites.id_tipo_tramite', '=', 'tt.id');
+        // $result=$result->leftJoin('d_domicilios as dom_fiscal', 'r.id_d_domicilio_fiscal', '=', 'dom_fiscal.id');
+        // $result=$result->leftJoin('c_municipios as mun_fiscal', 'dom_fiscal.id_municipio', '=', 'mun_fiscal.id');
+        // $result=$result->where('t_tramites.id_status', '=', 1);
+        // $result=$result->whereNull('rt.deleted_at');
+
+        if(array_key_exists('anio', $data)){
+            $filtro= $data["anio"];
+            $result= $result->where( function($sql) use ($filtro){
+                    $sql->whereRaw('YEAR(t_tramites.fecha_inicio)='.$filtro);
+                });
+        }
+        if(array_key_exists('id_status', $data)){
+            $filtro= $data["id_status"];
+            $result= $result->where( function($sql) use ($filtro){
+                    $sql->where('t_tramites.id_status', $filtro);
+                });
+        }
+        if(array_key_exists('id_tramite', $data)){
+            $filtro= $data["id_tramite"];
+            $result= $result->where( function($sql) use ($filtro){
+                    $sql->where('t_tramites.id',$filtro);
+                });
+        }
+        if(array_key_exists('id_tipo_persona', $data)){
+            $filtro= $data["id_tipo_persona"];
+            $result= $result->where( function($sql) use ($filtro){
+                    $sql->where('t_registro.id_tipo_persona',$filtro);
+                });
+        }
+
+        $result=$result->whereNull('t_tramites.deleted_at');
+        // $result=$result->whereNotNull('t_tramites.fecha_certificado');
+        $result=$result->groupBy('t_tramites.folio');
+        return $result;
+     }
+
 
     public static function consulta_portal($data=[])
      {

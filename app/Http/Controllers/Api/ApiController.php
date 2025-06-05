@@ -87,6 +87,65 @@ class ApiController extends BaseController
         }
         return response()->json($vrespuesta, $vstatus);
      }
+    
+    public function estadisticas_api( $anio )
+     {
+        $vstatus=200;
+        $vrespuesta=array();
+        $vrespuesta=['codigo' => 1, 'mensaje' => 'Ok'];
+        try {
+            $data=[];
+            $_MDL_Tramite_Proceso=T_Tramite::estadisticasQuery(['anio'=>$anio, 'id_status'=>2, 'id_tipo_persona'=> 1])->get();
+            $_MDL_Tramite_Terminado=T_Tramite::estadisticasQuery(['anio'=>$anio, 'id_status'=>1, 'id_tipo_persona'=> 1])->get();
+            $_MDL_Tramite_Negado=T_Tramite::estadisticasQuery(['anio'=>$anio, 'id_status'=>3, 'id_tipo_persona'=> 1])->get();
+            $_MDL_Tramite_Observado=T_Tramite::estadisticasQuery(['anio'=>$anio, 'id_status'=>4, 'id_tipo_persona'=> 1])->get();
+            $_MDL_Tramite_Solventacion=T_Tramite::estadisticasQuery(['anio'=>$anio, 'id_status'=>5, 'id_tipo_persona'=> 1])->get();
+
+            // $vrespuesta['fisica_proceso']=count($_MDL_Tramite_Proceso);
+            // $vrespuesta['fisica_terminado']=count($_MDL_Tramite_Terminado);
+            // $vrespuesta['fisica_negado']=count($_MDL_Tramite_Negado);
+            // $vrespuesta['fisica_observado']=count($_MDL_Tramite_Observado);
+
+            $vrespuesta['fisica']=[
+                'proceso' => count($_MDL_Tramite_Proceso),
+                'terminado' => count($_MDL_Tramite_Terminado),
+                'negado' => count($_MDL_Tramite_Negado),
+                'observado' => count($_MDL_Tramite_Observado),
+                'solventacion' => count($_MDL_Tramite_Solventacion)
+            ];
+
+            unset($_MDL_Tramite_Proceso, $_MDL_Tramite_Terminado, $_MDL_Tramite_Negado, $_MDL_Tramite_Observado);
+
+            $_MDL_Tramite_Proceso=T_Tramite::estadisticasQuery(['anio'=>$anio, 'id_status'=>2, 'id_tipo_persona'=> 2])->get();
+            $_MDL_Tramite_Terminado=T_Tramite::estadisticasQuery(['anio'=>$anio, 'id_status'=>1, 'id_tipo_persona'=> 2])->get();
+            $_MDL_Tramite_Negado=T_Tramite::estadisticasQuery(['anio'=>$anio, 'id_status'=>3, 'id_tipo_persona'=> 2])->get();
+            $_MDL_Tramite_Observado=T_Tramite::estadisticasQuery(['anio'=>$anio, 'id_status'=>4, 'id_tipo_persona'=> 2])->get();
+            $_MDL_Tramite_Solventacion=T_Tramite::estadisticasQuery(['anio'=>$anio, 'id_status'=>5, 'id_tipo_persona'=> 2])->get();
+
+            // $vrespuesta['moral_proceso']=count($_MDL_Tramite_Proceso);
+            // $vrespuesta['moral_terminado']=count($_MDL_Tramite_Terminado);
+            // $vrespuesta['moral_negado']=count($_MDL_Tramite_Negado);
+            // $vrespuesta['moral_observado']=count($_MDL_Tramite_Observado);
+
+            $vrespuesta['moral']=[
+                'proceso' => count($_MDL_Tramite_Proceso),
+                'terminado' => count($_MDL_Tramite_Terminado),
+                'negado' => count($_MDL_Tramite_Negado),
+                'observado' => count($_MDL_Tramite_Observado),
+                'solventacion' => count($_MDL_Tramite_Solventacion)
+            ];
+
+            unset($_MDL_Tramite_Proceso, $_MDL_Tramite_Terminado, $_MDL_Tramite_Negado, $_MDL_Tramite_Observado);
+            
+            // $data['moral']=
+        }
+        catch( Exception $vexception ) {
+            DB::rollback();
+            $vstatus=500;
+            $vrespuesta=['codigo' => -1, 'mensaje' => $vexception->getMessage()];
+        }
+        return response()->json($vrespuesta, $vstatus);
+     }
 
     public function padron( $anio )
      {
