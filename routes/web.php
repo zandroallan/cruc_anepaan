@@ -18,6 +18,8 @@ Route::get('/', function () {
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('tablero', ['as'=>'tablero.index', 'uses'=>'TableroController@index']);
+
 Route::get('buscador', ['as'=>'buscador.index', 'uses'=>'ValidacionController@index']);
 
 Route::get('buscador/search', ['as'=>'buscador.search','uses' =>'ValidacionController@buscar']);
